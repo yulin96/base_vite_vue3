@@ -1,0 +1,34 @@
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+
+import '../assets/css/transition-vue.css'
+
+type TSlideType =
+  | 'Slide'
+  | 'SlideR'
+  | 'Zoom'
+  | 'FlipY'
+  | 'FlipX'
+  | 'CollapseX'
+  | 'Collapse'
+  | 'FilterBlur'
+  | 'clipPathRound'
+  | string
+
+export const useRouteTransition = (transitionTypeName: TSlideType = 'Slide') => {
+  const transitionName = ref('slideApp')
+  const slideType = transitionTypeName
+
+  const route = useRoute()
+  watch(
+    () => route.meta,
+    (newVal: any, oldVal: any) => {
+      if (newVal.transitionName) return (transitionName.value = newVal.transitionName)
+      if (!newVal.serial || !oldVal.serial) return (transitionName.value = 'slideApp')
+      if (newVal.serial == oldVal.serial) return (transitionName.value = 'FilterBlur')
+      transitionName.value = newVal.serial > oldVal.serial ? slideType + '_right' : slideType + '_left'
+    }
+  )
+
+  return { transitionName }
+}

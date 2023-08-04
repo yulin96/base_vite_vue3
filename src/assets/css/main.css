@@ -1,0 +1,55 @@
+@import './base.css';
+@import './piece.css';
+
+#app {
+  position: relative;
+  width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  overflow-y: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  perspective: 1600px;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  overflow-x: hidden;
+  height: 100%;
+  overflow-y: auto;
+  font-size: 28px;
+  scroll-behavior: smooth;
+}
+
+div::-webkit-scrollbar {
+  display: none;
+}
+
+.content {
+  width: 100vw;
+  height: 100%;
+  min-height: 1400px;
+  -webkit-overflow-scrolling: touch；;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+code {
+  font-family: inherit;
+}
+
+/* @font-face {
+  font-family: fyuan;
+  src: url(https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff2) format('woff2'),
+    url(https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff) format('woff'),
+    url(https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.ttf) format('truetype');
+  font-display: swap;
+} */
+
+/* * {
+  font-family: fyuan, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-variation-settings: 'wght' 600, 'BEVL' 0;
+} */

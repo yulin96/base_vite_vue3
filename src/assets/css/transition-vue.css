@@ -1,0 +1,294 @@
+/*
+  power1: 0.4, 0.8, 0.74, 1
+  power2: 0.32, 0.94, 0.6, 1
+  power3: 0.26, 1, 0.48, 1
+  power4: 0.22, 1, 0.36, 1
+*/
+
+/* 透明度变化 */
+.slideApp-enter-active,
+.slideApp-leave-active {
+  transition: opacity 0.39s ease;
+}
+
+.slideApp-enter-from,
+.slideApp-leave-to {
+  opacity: 0;
+}
+
+.slideBack-enter-active {
+  transition: all 5s ease 0.4s;
+}
+
+.slideBack-leave-active {
+  transition: all 5s ease 0.1s;
+}
+
+.slideBack-enter-from,
+.slideBack-leave-to {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* blur */
+.FilterBlur_right-enter-active,
+.FilterBlur_right-leave-active {
+  transition: filter 0.39s ease, opacity 0.39s ease;
+}
+
+.FilterBlur_right-enter-from,
+.FilterBlur_right-leave-to {
+  filter: blur(36px);
+  opacity: 0;
+}
+
+.FilterBlur_left-enter-active,
+.FilterBlur_left-leave-active {
+  transition: filter 0.39s ease, opacity 0.39s ease;
+}
+
+.FilterBlur_left-enter-from,
+.FilterBlur_left-leave-to {
+  filter: blur(36px);
+  opacity: 0;
+}
+
+/*  */
+.fix_p-enter-active,
+.fix_p-leave-active {
+  transition: all 0.3s ease;
+}
+
+.fix_p-enter-from,
+.fix_p-leave-to {
+  opacity: 0;
+  transform: scale(0.8);
+}
+
+/* 放大缩小动画 */
+.Zoom_right-enter-active,
+.Zoom_left-enter-active,
+.Zoom_right-leave-active,
+.Zoom_left-leave-active {
+  transition: opacity 0.3s ease, transform 0.36s ease;
+}
+
+.Zoom_right-enter-from,
+.Zoom_left-leave-to {
+  opacity: 0;
+  transform: scale(1.16);
+}
+
+.Zoom_right-leave-to,
+.Zoom_left-enter-from {
+  opacity: 0;
+  transform: scale(0.86);
+}
+
+/* 滑动切换样式 */
+.Slide_left-enter-active,
+.Slide_right-leave-active {
+  opacity: 1;
+  transition: transform 0.5s ease;
+}
+
+.Slide_left-leave-active,
+.Slide_right-enter-active {
+  z-index: 99999;
+  opacity: 1;
+  transition: transform 0.5s ease;
+}
+
+.Slide_left-leave-to,
+.Slide_right-enter-from {
+  transform: translate3d(100%, 0, 0);
+}
+
+.Slide_left-enter-from,
+.Slide_right-leave-to {
+  transform: translate3d(-36%, 0, 0);
+}
+
+/* 滑动切换样式Round */
+.SlideR_left-enter-active,
+.SlideR_right-leave-active {
+  transition: transform 0.5s ease, border-radius 0.5s ease;
+}
+
+.SlideR_left-leave-active,
+.SlideR_right-enter-active {
+  z-index: 99999;
+  transition: transform 0.5s ease, border-radius 0.5s ease;
+}
+
+.SlideR_left-leave-to,
+.SlideR_right-enter-from {
+  border-radius: 50%;
+  transform: translate3d(100%, 0, 0);
+}
+
+.SlideR_left-enter-from,
+.SlideR_right-leave-to {
+  transform: translate3d(-36%, 0, 0);
+}
+
+/* rotateY */
+.FlipY_left-enter-active,
+.FlipY_right-enter-active {
+  z-index: 1;
+  transition: transform 0.8s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.FlipY_left-leave-active,
+.FlipY_right-leave-active {
+  z-index: 2;
+  transition: transform 0.8s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.FlipY_left-leave-to,
+.FlipY_right-enter-from {
+  transform: rotateY(180deg);
+}
+
+.FlipY_left-enter-from,
+.FlipY_right-leave-to {
+  transform: rotateY(-180deg);
+}
+
+/* rotateX */
+.FlipX_left-enter-active,
+.FlipX_left-leave-active,
+.FlipX_right-enter-active,
+.FlipX_right-leave-active {
+  transition: transform 0.8s ease-out;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.FlipX_left-leave-to,
+.FlipX_right-enter-from {
+  transform: rotateX(180deg);
+}
+
+.FlipX_left-enter-from,
+.FlipX_right-leave-to {
+  transform: rotateX(-180deg);
+}
+
+/*  */
+.CollapseX_left-enter-active {
+  transition: transform 0.39s ease -0.05s;
+  transform-origin: 50% 0%;
+}
+
+.CollapseX_left-leave-active {
+  transition: transform 0.3s ease;
+  transform-origin: 50% 100%;
+}
+
+.CollapseX_left-enter-from {
+  transform: scaleY(0);
+}
+
+.CollapseX_left-leave-to {
+  transform: scaleY(0);
+}
+
+.CollapseX_right-enter-active {
+  transition: transform 0.39s ease -0.05s;
+  transform-origin: 50% 100%;
+}
+
+.CollapseX_right-leave-active {
+  transition: transform 0.3s ease;
+  transform-origin: 50% 0%;
+}
+
+.CollapseX_right-enter-from {
+  transform: scaleY(0);
+}
+
+.CollapseX_right-leave-to {
+  transform: scaleY(0);
+}
+
+/*  */
+.CollapseY_left-enter-active {
+  transition: transform 0.39s ease -0.05s;
+  transform-origin: 0% 50%;
+}
+
+.CollapseY_left-leave-active {
+  transition: transform 0.3s ease;
+  transform-origin: 100% 50%;
+}
+
+.CollapseY_left-enter-from {
+  transform: scaleX(0);
+}
+
+.CollapseY_left-leave-to {
+  transform: scaleX(0);
+}
+
+.CollapseY_right-enter-active {
+  transition: transform 0.39s ease -0.05s;
+  transform-origin: 100% 50%;
+}
+
+.CollapseY_right-leave-active {
+  transition: transform 0.3s ease;
+  transform-origin: 0% 50%;
+}
+
+.CollapseY_right-enter-from {
+  transform: scaleX(0);
+}
+
+.CollapseY_right-leave-to {
+  transform: scaleX(0);
+}
+
+.clipPathRound_right-enter-active,
+.clipPathRound_right-leave-active {
+  transition: opacity 0.2s ease, clip-path 0.6s ease-out;
+}
+
+.clipPathRound_right-enter-from {
+  opacity: 0.2;
+  clip-path: circle(0 at 110% 50%);
+}
+.clipPathRound_right-enter-to {
+  opacity: 1;
+  clip-path: circle(110% at 110% 50%);
+}
+.clipPathRound_right-leave-from {
+  opacity: 1;
+}
+.clipPathRound_right-leave-to {
+  opacity: 0;
+}
+
+.clipPathRound_left-enter-active {
+  transition: opacity 0.2s ease, clip-path 0.6s ease-out;
+}
+.clipPathRound_left-leave-active {
+  z-index: 1;
+  transition: opacity 0.2s ease, clip-path 0.6s ease;
+}
+.clipPathRound_left-enter-from {
+  opacity: 0;
+}
+.clipPathRound_left-enter-to {
+  opacity: 1;
+}
+.clipPathRound_left-leave-from {
+  clip-path: circle(110% at 110% 50%);
+}
+.clipPathRound_left-leave-to {
+  clip-path: circle(0 at 110% 50%);
+}

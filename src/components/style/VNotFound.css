@@ -1,0 +1,253 @@
+.wrapperErr {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.wrapperErr .error {
+  font-size: 50px;
+  transition: all 1s;
+  z-index: 9;
+}
+.wrapperErr .back {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 32px;
+  background: #6f5b92;
+  border-radius: 50px;
+  color: #fff;
+  width: 600px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 9;
+  font-weight: 600;
+}
+.wrapperErr .back::after {
+  content: '';
+  position: absolute;
+  width: 580px;
+  height: 80px;
+  border-radius: 50px;
+  border: 1px solid #fff6;
+}
+.wrapperErr .back::before {
+  content: '';
+  position: absolute;
+  width: 560px;
+  height: 60px;
+  border-radius: 50px;
+  border: 1px dashed #fff6;
+}
+.wrapperErr .cls-1 {
+  fill: #ffc541;
+}
+.wrapperErr .cls-2 {
+  fill: #4e4066;
+}
+.wrapperErr .cls-3 {
+  fill: #6f5b92;
+}
+.wrapperErr .cls-4 {
+  fill: #f78d5e;
+}
+.wrapperErr .cls-5 {
+  fill: #fa976c;
+}
+.wrapperErr .cls-6,
+.wrapperErr .cls-7,
+.wrapperErr .cls-8 {
+  fill: #b65c32;
+}
+.wrapperErr .cls-10,
+.wrapperErr .cls-6 {
+  opacity: 0.6;
+}
+.wrapperErr .cls-7 {
+  opacity: 0.4;
+}
+.wrapperErr .cls-9 {
+  fill: #f4b73b;
+}
+.wrapperErr .cls-11 {
+  fill: #f9c358;
+}
+.wrapperErr .cls-12 {
+  fill: #9b462c;
+}
+.wrapperErr .cls-13 {
+  fill: #aa512e;
+}
+.wrapperErr .cls-14 {
+  fill: #7d6aa5;
+}
+.wrapperErr .wheel {
+  animation: wheel-rotate 6s ease infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes wheel-rotate {
+  50% {
+    transform: rotate(360deg);
+    animation-timing-function: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  }
+  100% {
+    transform: rotate(960deg);
+  }
+}
+.wrapperErr .clock-hand-1 {
+  animation: clock-rotate 3s linear infinite;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+.wrapperErr .clock-hand-2 {
+  animation: clock-rotate 6s linear infinite;
+  transform-origin: bottom;
+  transform-box: fill-box;
+}
+@keyframes clock-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.wrapperErr #box-top {
+  animation: box-top-anim 2s linear infinite;
+  transform-origin: right top;
+  transform-box: fill-box;
+}
+@keyframes box-top-anim {
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+.wrapperErr #umbrella {
+  animation: umbrella-anim 6s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes umbrella-anim {
+  25% {
+    transform: translateY(10px) rotate(5deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+.wrapperErr #cup {
+  animation: cup-rotate 3s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+  transform-origin: top left;
+  transform-box: fill-box;
+}
+@keyframes cup-rotate {
+  50% {
+    transform: rotate(-5deg);
+  }
+}
+.wrapperErr #pillow {
+  animation: pillow-anim 3s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes pillow-anim {
+  25% {
+    transform: rotate(10deg) translateY(5px);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+}
+.wrapperErr #stripe {
+  animation: stripe-anim 3s linear infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes stripe-anim {
+  25% {
+    transform: translate(10px, 0) rotate(-10deg);
+  }
+  75% {
+    transform: translateX(10px);
+  }
+}
+.wrapperErr #bike {
+  animation: bike-anim 6s ease infinite;
+}
+@keyframes bike-anim {
+  0% {
+    transform: translateX(-1300px);
+  }
+  50% {
+    transform: translateX(0);
+    animation-timing-function: cubic-bezier(0.47, 0, 0.745, 0.715);
+  }
+  100% {
+    transform: translateX(1300px);
+  }
+}
+.wrapperErr #rucksack {
+  animation: ruck-anim 3s linear infinite;
+  transform-origin: top;
+  transform-box: fill-box;
+}
+@keyframes ruck-anim {
+  50% {
+    transform: rotate(5deg);
+  }
+}
+.wrapperErr .circle {
+  animation: circle-anim ease infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+  perspective: 0px;
+}
+.wrapperErr .circle.c1 {
+  animation-duration: 2s;
+}
+.wrapperErr .circle.c2 {
+  animation-duration: 3s;
+}
+.wrapperErr .circle.c3 {
+  animation-duration: 1s;
+}
+.wrapperErr .circle.c4 {
+  animation-duration: 1s;
+}
+.wrapperErr .circle.c5 {
+  animation-duration: 2s;
+}
+.wrapperErr .circle.c6 {
+  animation-duration: 3s;
+}
+@keyframes circle-anim {
+  50% {
+    transform: scale(0.2) rotateX(360deg) rotateY(360deg);
+  }
+}
+.wrapperErr .four,
+.wrapperErr #ou {
+  animation: four-anim cubic-bezier(0.39, 0.575, 0.565, 1) infinite;
+}
+.wrapperErr .four.a {
+  transform-origin: bottom left;
+  animation-duration: 3s;
+  transform-box: fill-box;
+}
+.wrapperErr .four.b {
+  transform-origin: bottom right;
+  animation-duration: 3s;
+  transform-box: fill-box;
+}
+.wrapperErr #ou {
+  animation-duration: 6s;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes four-anim {
+  50% {
+    transform: scale(0.98);
+  }
+}
