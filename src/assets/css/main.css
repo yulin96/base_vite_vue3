@@ -1,5 +1,6 @@
 @import './base.css';
 @import './piece.css';
+@import './progress.css';
 
 #app {
   position: relative;

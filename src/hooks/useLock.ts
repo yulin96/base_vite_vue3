@@ -1,3 +1,7 @@
+import topProgress from '~/utils/topProgress'
+
+const openProgress = true
+
 interface IRes {
   code: number | string
   [x: string]: any
@@ -9,6 +13,7 @@ export const useLock = (auto = true, delay = 150) => {
 
   const post = (_url: string, _data?: any, headers = {}): Promise<IRes | any> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
+    openProgress && topProgress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
       axios_post(_url, objToFormData(_data), headers, controller.signal)
@@ -20,6 +25,7 @@ export const useLock = (auto = true, delay = 150) => {
           reject(err)
         })
         .finally(() => {
+          openProgress && topProgress?.done()
           auto &&
             (delay
               ? setTimeout(() => {
@@ -32,6 +38,7 @@ export const useLock = (auto = true, delay = 150) => {
 
   const get = (_url: string, _data?: any, headers = {}): Promise<IRes | any> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
+    openProgress && topProgress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
       axios_get(_url, _data, headers, controller.signal)
@@ -43,6 +50,7 @@ export const useLock = (auto = true, delay = 150) => {
           reject(err)
         })
         .finally(() => {
+          openProgress && topProgress?.done()
           auto &&
             (delay
               ? setTimeout(() => {

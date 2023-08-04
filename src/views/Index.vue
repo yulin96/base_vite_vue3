@@ -1,10 +1,18 @@
 <script setup lang="ts">
-const linkTo = inject('linkTo') as ILinkTo
+const { get: get_init } = useLock()
+
+const testReq = () => {
+  get_init('http://localhost:3000').then((res) => {
+    console.log(res)
+  })
+}
 </script>
 
 <template>
   <div class="Index">
-    <div class="content"></div>
+    <div class="content">
+      <div @click="testReq" class="btn">点击</div>
+    </div>
   </div>
 </template>
 

@@ -10,7 +10,7 @@ dependencies:
     version: 10.3.0(vue@3.3.4)
   '@vueuse/integrations':
     specifier: ^10.3.0
-    version: 10.3.0(axios@1.4.0)(qrcode@1.5.3)(vue@3.3.4)
+    version: 10.3.0(axios@1.4.0)(nprogress@0.2.0)(qrcode@1.5.3)(vue@3.3.4)
   axios:
     specifier: ^1.4.0
     version: 1.4.0
@@ -23,6 +23,9 @@ dependencies:
   crypto-js:
     specifier: ^4.1.1
     version: 4.1.1
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
   gsap:
     specifier: ^3.12.2
     version: 3.12.2
@@ -35,6 +38,9 @@ dependencies:
   lottie-web:
     specifier: ^5.12.2
     version: 5.12.2
+  nprogress:
+    specifier: ^0.2.0
+    version: 0.2.0
   pinia:
     specifier: ^2.1.6
     version: 2.1.6(typescript@5.1.6)(vue@3.3.4)
@@ -76,6 +82,9 @@ devDependencies:
   '@types/node':
     specifier: ^20.4.6
     version: 20.4.6
+  '@types/nprogress':
+    specifier: ^0.2.0
+    version: 0.2.0
   '@types/qrcode':
     specifier: ^1.5.1
     version: 1.5.1
@@ -1775,6 +1784,10 @@ packages:
     resolution: {integrity: sha512-q0RkvNgMweWWIvSMDiXhflGUKMdIxBo2M2tYM/0kEGDueQByFzK4KZAgu5YHGFNxziTlppNpTIBcqHQAxlfHdA==}
     dev: true
 
+  /@types/nprogress@0.2.0:
+    resolution: {integrity: sha512-1cYJrqq9GezNFPsWTZpFut/d4CjpZqA0vhqDUPFWYKF1oIyBz5qnoYMzR+0C/T96t3ebLAC1SSnwrVOm5/j74A==}
+    dev: true
+
   /@types/qrcode@1.5.1:
     resolution: {integrity: sha512-HpSN675K0PmxIDRpjMI3Mc2GiKo3dNu+X/F5SoItiaDS1lVfgC6Wac1c5lQDfKWbTJUSHWiHKzpJpBZG7k9gaA==}
     dependencies:
@@ -2177,7 +2190,7 @@ packages:
       - '@vue/composition-api'
       - vue
 
-  /@vueuse/integrations@10.3.0(axios@1.4.0)(qrcode@1.5.3)(vue@3.3.4):
+  /@vueuse/integrations@10.3.0(axios@1.4.0)(nprogress@0.2.0)(qrcode@1.5.3)(vue@3.3.4):
     resolution: {integrity: sha512-Jgiv7oFyIgC6BxmDtiyG/fxyGysIds00YaY7sefwbhCZ2/tjEx1W/1WcsISSJPNI30in28+HC2J4uuU8184ekg==}
     peerDependencies:
       async-validator: '*'
@@ -2221,6 +2234,7 @@ packages:
       '@vueuse/core': 10.3.0(vue@3.3.4)
       '@vueuse/shared': 10.3.0(vue@3.3.4)
       axios: 1.4.0
+      nprogress: 0.2.0
       qrcode: 1.5.3
       vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
@@ -2677,6 +2691,10 @@ packages:
       whatwg-mimetype: 3.0.0
       whatwg-url: 12.0.1
     dev: true
+
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
 
   /de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
@@ -3912,6 +3930,10 @@ packages:
       shell-quote: 1.8.1
       string.prototype.padend: 3.1.4
     dev: true
+
+  /nprogress@0.2.0:
+    resolution: {integrity: sha512-I19aIingLgR1fmhftnbWWO3dXc0hSxqHQHQb3H8m+K3TnEn/iSeTZZOyvKXWqQESMwuUVnatlCnZdLBZZt2VSA==}
+    dev: false
 
   /nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
