@@ -5,8 +5,8 @@
 #app {
   position: relative;
   width: 100vw;
-  overflow-x: hidden;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,8 +17,8 @@
   position: absolute;
   top: 0;
   width: 100vw;
-  overflow-x: hidden;
   height: 100%;
+  overflow-x: hidden;
   overflow-y: auto;
   font-size: 28px;
   scroll-behavior: smooth;
