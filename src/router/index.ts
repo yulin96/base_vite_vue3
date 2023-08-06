@@ -9,13 +9,13 @@ const router = createRouter({
       path: '/',
       name: 'Index',
       component: Index,
-      meta: { title: '', transitionIndex: 1, keepAlive: true },
+      meta: { title: '', index: 1, keepAlive: true },
     },
     {
       path: '/home',
       name: 'Home',
       component: Home,
-      meta: { title: '', transitionIndex: 2, keepAlive: true },
+      meta: { title: '', index: 2, keepAlive: true },
     },
   ],
 })

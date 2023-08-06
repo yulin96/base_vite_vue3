@@ -24,9 +24,9 @@ export const useRouteTransition = (transitionTypeName: TSlideType = 'Slide') => 
     () => route.meta,
     (newVal: any, oldVal: any) => {
       if (newVal.transitionName) return (transitionName.value = newVal.transitionName)
-      if (!newVal.serial || !oldVal.serial) return (transitionName.value = 'slideApp')
-      if (newVal.serial == oldVal.serial) return (transitionName.value = 'FilterBlur')
-      transitionName.value = newVal.serial > oldVal.serial ? slideType + '_right' : slideType + '_left'
+      if (!newVal.index || !oldVal.index) return (transitionName.value = 'slideApp')
+      if (newVal.index == oldVal.index) return (transitionName.value = 'FilterBlur')
+      transitionName.value = newVal.index > oldVal.index ? slideType + '_right' : slideType + '_left'
     }
   )
 
