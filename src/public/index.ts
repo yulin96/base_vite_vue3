@@ -14,7 +14,7 @@ export const WS_API_URL = 'https://rally.event1.cn/api/bd1115/'
 export const LOCALSTORAGE_NAME = 'zCheck_20230629_1'
 
 //分享内容
-export const SHARE_CONTENT: IWxShare = {
+export const SHARE_CONTENT = {
   title: '',
   desc: '',
   link: '',
