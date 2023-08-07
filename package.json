@@ -20,6 +20,7 @@
     "compressorjs": "^1.2.1",
     "crypto-js": "^4.1.1",
     "dayjs": "^1.11.9",
+    "face-api.js": "^0.22.2",
     "gsap": "^3.12.2",
     "html2canvas": "1.0.0-rc.4",
     "jsencrypt": "^3.3.2",
