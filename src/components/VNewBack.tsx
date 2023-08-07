@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
+import './style/VNewBack.css'
 
 interface Props {
   back_achieve: { [x: string]: any }
@@ -28,7 +29,7 @@ export default defineComponent(
         backTool.show = true
         await nextTick()
         gsap.fromTo(
-          '.backFix',
+          '.v-new-back',
           { opacity: 0, scale: 0.3 },
           { opacity: 1, scale: 1, duration: 0.39, delay: 0.2, ease: 'back.out' }
         )
@@ -36,7 +37,7 @@ export default defineComponent(
         backTool.url = '/'
         backTool.query = {}
         if (!backTool.show) return
-        await gsap.to('.backFix', { opacity: 0, scale: 0.3, duration: 0.39, ease: 'back.in' })
+        await gsap.to('.v-new-back', { opacity: 0, scale: 0.3, duration: 0.39, ease: 'back.in' })
         backTool.show = false
       }
     })
@@ -54,7 +55,8 @@ export default defineComponent(
 
     const backIcon = (
       <svg
-        class={`backFix icon w-full h-full`}
+        data-z-new-back
+        class={`v-new-back icon `}
         viewBox='0 0 1024 1024'
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'

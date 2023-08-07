@@ -1,5 +1,6 @@
 import { defineComponent } from 'vue'
 import { useRouter } from 'vue-router'
+import './style/VBack.css'
 
 interface Props {
   url?: string
@@ -18,8 +19,9 @@ export default defineComponent(
 
     return () => (
       <svg
+        data-z-back
         onClick={linkTo}
-        class={`fixed icon return w-[100px] h-[100px] right-[20px] bottom-[200px]`}
+        class={`v-back icon return`}
         viewBox='0 0 1024 1024'
         version='1.1'
         xmlns='http://www.w3.org/2000/svg'

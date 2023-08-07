@@ -1,5 +1,6 @@
 import { Teleport } from 'vue'
 import { defineComponent, ref, onMounted, computed } from 'vue'
+import './style/VAudio.css'
 
 interface Props {
   [x: string]: any
@@ -47,17 +48,13 @@ export default defineComponent(
 
     return () => (
       <Teleport to={'body'}>
-        <div
-          class={`${
-            playing.value ? 'play' : ''
-          } audioFix audio absolute top-[80px] right-[50px] z-[9000] p-[5px] border-[5px] border-white rounded-[50%] invert`}>
+        <div data-z-audio class={`${playing.value ? 'play' : ''} v-audio audio `}>
           <audio
             class={`hidden`}
             src={props.src}
             ref={audio}
             loop
             autoplay
-            id='audio'
             onPlay={() => {
               playing.value = true
             }}
@@ -65,7 +62,6 @@ export default defineComponent(
               playing.value = false
             }}></audio>
           <img
-            class={`w-50 h-50 animate-rotate360`}
             style={`animation-play-state: ${playing.value ? 'running' : 'paused'}`}
             ref='playImg'
             src={playing.value ? play_icon.value : pause_icon.value}

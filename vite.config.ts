@@ -9,9 +9,9 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
-import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import postcssNesting from 'postcss-nesting'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -107,7 +107,6 @@ export default defineConfig({
   css: {
     postcss: {
       plugins: [
-        tailwindcss(),
         autoprefixer(),
         postcsspxtoviewport8plugin({
           unitToConvert: 'px',
@@ -125,6 +124,7 @@ export default defineConfig({
           landscapeUnit: 'vw',
           landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
         }),
+        postcssNesting(),
       ],
     },
   },
