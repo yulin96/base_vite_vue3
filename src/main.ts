@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { setToastDefaultOptions } from 'vant'
 
-import '~/utils/vconsole'
+import '~/utils/vConsole'
 import '~/hooks/addPcSupport'
 
 import 'vant/es/dialog/style'
