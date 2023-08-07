@@ -10,8 +10,8 @@ const { transitionName } = useRouteTransition()
 // })
 
 const router = useRouter()
-const linkTo = (path = '/', query = {}) => {
-  router.replace({ path, query })
+const linkTo = (name = 'index', query = {}, params = {}) => {
+  router.replace({ name, query, params })
 }
 provide('linkTo', linkTo)
 </script>

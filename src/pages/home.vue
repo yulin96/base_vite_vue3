@@ -5,7 +5,7 @@ const linkTo = inject('linkTo') as ILinkTo
 <template>
   <div class="home">
     <div class="content"></div>
-    <VBack url="/"></VBack>
+    <VBack name="index"></VBack>
   </div>
 </template>
 

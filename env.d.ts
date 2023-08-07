@@ -12,5 +12,5 @@ declare const WeixinJSBridge: any
 declare const VConsole: any
 
 interface ILinkTo {
-  (path?: string, query?: { [name: string]: string }): void
+  (path?: string, query?: { [name: string]: any }, params?: { [name: string]: any }): void
 }

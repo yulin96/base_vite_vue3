@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import './style/VBack.css'
 
 interface Props {
-  url?: string
+  name?: string
   query?: {}
   [key: string]: any
 }
@@ -11,7 +11,7 @@ export default defineComponent(
   (props: Props) => {
     const router = useRouter()
     const linkTo = (): void => {
-      router.replace({ path: props?.url ?? '/', query: props?.query ?? {} })
+      router.replace({ name: props?.name ?? 'index', query: props?.query ?? {} })
     }
 
     const backColor = '#f78154'
@@ -33,6 +33,6 @@ export default defineComponent(
     )
   },
   {
-    props: ['url', 'query'],
+    props: ['name', 'query'],
   }
 )

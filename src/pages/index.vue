@@ -2,6 +2,10 @@
 const linkTo = inject('linkTo') as ILinkTo
 const { get: get_init } = useLock()
 
+const route = useRoute()
+const id = route.params?.id
+console.log(id, '222')
+
 const testReq = () => {
   get_init('http://localhost:3000').then((res) => {
     console.log(res)
@@ -9,7 +13,7 @@ const testReq = () => {
 }
 
 const testReq2 = () => {
-  linkTo('/home')
+  linkTo('home')
 }
 </script>
 
