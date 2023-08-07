@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const linkTo = inject('linkTo') as ILinkTo
 const { get: get_init } = useLock()
 
 const testReq = () => {
@@ -6,14 +7,25 @@ const testReq = () => {
     console.log(res)
   })
 }
+
+const testReq2 = () => {
+  linkTo('/home')
+}
 </script>
 
 <template>
-  <div class="Index">
+  <div class="index">
     <div class="content">
       <div @click="testReq" class="btn">点击</div>
+      <div @click="testReq2" class="btn">点击2</div>
     </div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.index {
+  .content {
+    background: antiquewhite;
+  }
+}
+</style>

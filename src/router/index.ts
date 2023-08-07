@@ -1,20 +1,20 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Index from '~/views/Index.vue'
-import Home from '~/views/Home.vue'
+import index from '~/pages/index.vue'
+import home from '~/pages/home.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index,
+      name: 'index',
+      component: index,
       meta: { title: '', index: 1, keepAlive: true },
     },
     {
       path: '/home',
-      name: 'Home',
-      component: Home,
+      name: 'home',
+      component: home,
       meta: { title: '', index: 2, keepAlive: true },
     },
   ],

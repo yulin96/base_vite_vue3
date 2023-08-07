@@ -61,7 +61,7 @@ export default defineConfig({
           gsap: ['gsap'],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/public/**', './src/stores/**'],
+      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
       dts: './auto-imports.d.ts',
       vueTemplate: true,
       ignore: [],

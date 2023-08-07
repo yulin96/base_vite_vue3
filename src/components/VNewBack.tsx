@@ -1,5 +1,4 @@
 import { defineComponent } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
 import './style/VNewBack.css'
 
 interface Props {
