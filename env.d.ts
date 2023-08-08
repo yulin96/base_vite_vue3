@@ -14,3 +14,11 @@ declare const VConsole: any
 interface ILinkTo {
   (path?: string, query?: { [name: string]: any }, params?: { [name: string]: any }): void
 }
+
+interface ImportMetaEnv {
+  readonly VITE_VCONSOLE_ID: number
+  readonly VITE_OSS_URL: string
+  readonly VITE_API_URL: string
+  readonly VITE_WS_API_URL: string
+  readonly VITE_LOCALSTORAGE_NAME: string
+}

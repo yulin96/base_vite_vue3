@@ -15,7 +15,7 @@ export interface IUserStore {
 }
 
 export const useStore = defineStore('user', () => {
-  const localStrong = useLocalStorage(LOCALSTORAGE_NAME, { userInfo: {}, keepAliveId: 1 })
+  const localStrong = useLocalStorage(import.meta.env.VITE_LOCALSTORAGE_NAME, { userInfo: {}, keepAliveId: 1 })
 
   const user = reactive<IUserStore>(localStrong.value)
 

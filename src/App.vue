@@ -1,12 +1,15 @@
 <script setup lang="ts">
-// const { title, desc, link } = SHARE_CONTENT
-// title && desc && link && isWeiXin() && isHttps() && WxShare(SHARE_CONTENT, ~link.indexOf('h5.eventnet.cn') ? 2 : 1)
-
-const { transitionName } = useRouteTransition()
+// const shareContent = {
+//   title: '',
+//   desc: '',
+//   link: '',
+//   imgUrl: '',
+// }
+// isWeiXin() && isHttps() && WxShare(shareContent, ~shareContent.link.indexOf('h5.eventnet.cn') ? 2 : 1)
 
 // const { $subscribe } = useStore()
 // $subscribe((_, store) => {
-//   localStorage.setItem(LOCALSTORAGE_NAME, JSON.stringify(store.user))
+//   localStorage.setItem(import.meta.env.VITE_LOCALSTORAGE_NAME, JSON.stringify(store.user))
 // })
 
 const router = useRouter()
@@ -14,6 +17,8 @@ const linkTo = (name = 'index', query = {}, params = {}) => {
   router.replace({ name, query, params })
 }
 provide('linkTo', linkTo)
+
+const { transitionName } = useRouteTransition()
 </script>
 
 <template>

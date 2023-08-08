@@ -1,7 +1,5 @@
 <script setup lang="ts">
 const linkTo = inject('linkTo') as ILinkTo
-
-useCssModule('test')
 </script>
 
 <template>

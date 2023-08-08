@@ -2,9 +2,10 @@ import axios from 'axios'
 // import VConsole from 'vconsole'
 
 const getProjectStatus = () => {
-  if (!VCONSOLE_ID) return
+  const vConsoleId = import.meta.env.VITE_VCONSOLE_ID
+  if (!vConsoleId) return
   axios
-    .get('https://center-service.event1.cn/project?id=' + VCONSOLE_ID)
+    .get('https://center-service.event1.cn/project?id=' + vConsoleId)
     .then((res) => {
       console.log(res?.data?.message ?? '未知ID')
       const d = res.data || res
@@ -13,9 +14,9 @@ const getProjectStatus = () => {
           creteConsole('该版本未上线', '--VC-TextGreen', 20211)
           break
         case 20212:
-          if (d.message.status_text.split('|')[1] != localStorage.getItem('vConsole_1yue_' + VCONSOLE_ID)) {
+          if (d.message.status_text.split('|')[1] != localStorage.getItem('vConsole_1yue_' + vConsoleId)) {
             // localStorage.clear();
-            localStorage.setItem('vConsole_1yue_' + VCONSOLE_ID, d.message.status_text.split('|')[1])
+            localStorage.setItem('vConsole_1yue_' + vConsoleId, d.message.status_text.split('|')[1])
             window.location.reload()
           }
           break
