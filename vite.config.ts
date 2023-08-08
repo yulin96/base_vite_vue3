@@ -1,6 +1,7 @@
 import { fileURLToPath, URL } from 'node:url'
+import path from 'node:path'
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
@@ -15,12 +16,12 @@ import postcssNesting from 'postcss-nesting'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
-import path from 'node:path'
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
+    command === 'build' && buildCheck(),
     vue({ script: { defineModel: true } }),
     vueJsx(),
     Components({
@@ -115,7 +116,7 @@ export default defineConfig({
           propList: ['*'],
           viewportUnit: 'vw',
           fontViewportUnit: 'vw',
-          selectorBlackList: [],
+          selectorBlackList: ['FIX_'],
           minPixelValue: 1,
           mediaQuery: false,
           replace: true,
@@ -128,4 +129,33 @@ export default defineConfig({
       ],
     },
   },
-})
+}))
+
+function buildCheck() {
+  const env = loadEnv('production', process.cwd())
+  const {
+    VITE_APP_LOCALSTORAGE_NAME: localName,
+    VITE_APP_API_URL: apiUrl,
+    VITE_APP_TITLE: title,
+    VITE_APP_HM_BAIDU: hmBaidu,
+    VITE_APP_SHARE_TITLE: shareTitle,
+    VITE_APP_SHARE_DESC: shareDesc,
+    VITE_APP_SHARE_LINK: shareLink,
+    VITE_APP_SHARE_IMGURL: shareImgUrl,
+  } = env
+
+  import('chalk').then(({ default: chalk }) => {
+    const { bgMagentaBright, red, green } = chalk
+    console.log(bgMagentaBright('Tips:'))
+    console.log(!title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title))
+    console.log(!apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl))
+    console.log(!localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName))
+    console.log(!hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu))
+    console.log(
+      !shareTitle ? red('微信分享标题未定义') : green('微信分享标题：') + green.underline.bold(shareTitle),
+      !shareDesc ? red('描述未定义') : green('描述：') + green.underline.bold(shareDesc),
+      !shareLink ? red('链接未定义') : green('链接：') + green.underline.bold(shareLink),
+      !shareImgUrl ? red('图片未定义') : green('图片：') + green.underline.bold(shareImgUrl)
+    )
+  })
+}

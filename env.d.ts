@@ -16,9 +16,14 @@ interface ILinkTo {
 }
 
 interface ImportMetaEnv {
-  readonly VITE_VCONSOLE_ID: number
-  readonly VITE_OSS_URL: string
-  readonly VITE_API_URL: string
-  readonly VITE_WS_API_URL: string
-  readonly VITE_LOCALSTORAGE_NAME: string
+  readonly VITE_APP_VCONSOLE_ID: string
+  readonly VITE_APP_API_URL: string
+  readonly VITE_APP_WS_API_URL: string
+  readonly VITE_APP_LOCALSTORAGE_NAME: string
+  readonly VITE_APP_TITLE: string
+  readonly VITE_APP_HM_BAIDU: string
+  readonly VITE_APP_SHARE_TITLE: string
+  readonly VITE_APP_SHARE_DESC: string
+  readonly VITE_APP_SHARE_LINK: string
+  readonly VITE_APP_SHARE_IMGURL: string
 }

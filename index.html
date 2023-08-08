@@ -8,7 +8,7 @@
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0,user-scalable=no,minimal-ui,viewport-fit=cover" />
-    <title>种草小聚</title>
+    <title>%VITE_APP_TITLE%</title>
     <!-- <script src="https://oss.eventnet.cn/H5/zz/public/html2canvas.min.js"></script> -->
     <!-- <script src="https://oss.eventnet.cn/H5/zz/public/lottie.min.js"></script> -->
     <!-- <script src="https://oss.eventnet.cn/H5/zz/public/vConsole.js"></script>
@@ -20,4 +20,16 @@
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
+  <script>
+    const hmBaiduId = '%VITE_APP_HM_BAIDU%'
+    if (hmBaiduId) {
+      var _hmt = _hmt || []
+      ;(function () {
+        var hm = document.createElement('script')
+        hm.src = 'https://hm.baidu.com/hm.js?' + hmBaiduId
+        var s = document.getElementsByTagName('script')[0]
+        s.parentNode.insertBefore(hm, s)
+      })()
+    }
+  </script>
 </html>

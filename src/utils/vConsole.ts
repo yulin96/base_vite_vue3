@@ -2,7 +2,8 @@ import axios from 'axios'
 // import VConsole from 'vconsole'
 
 const getProjectStatus = () => {
-  const vConsoleId = import.meta.env.VITE_VCONSOLE_ID
+  const vConsoleId = +import.meta.env.VITE_APP_VCONSOLE_ID
+
   if (!vConsoleId) return
   axios
     .get('https://center-service.event1.cn/project?id=' + vConsoleId)

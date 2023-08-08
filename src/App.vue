@@ -1,16 +1,17 @@
 <script setup lang="ts">
-// const shareContent = {
-//   title: '',
-//   desc: '',
-//   link: '',
-//   imgUrl: '',
-// }
-// isWeiXin() && isHttps() && WxShare(shareContent, ~shareContent.link.indexOf('h5.eventnet.cn') ? 2 : 1)
+const {
+  VITE_APP_SHARE_TITLE: title,
+  VITE_APP_SHARE_DESC: desc,
+  VITE_APP_SHARE_LINK: link,
+  VITE_APP_SHARE_IMGURL: imgUrl,
+} = import.meta.env
+registerWxShare({ title, desc, link, imgUrl })
 
-// const { $subscribe } = useStore()
-// $subscribe((_, store) => {
-//   localStorage.setItem(import.meta.env.VITE_LOCALSTORAGE_NAME, JSON.stringify(store.user))
-// })
+const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
+const { $subscribe } = useStore()
+$subscribe((_, store) => {
+  localName && localStorage.setItem(localName, JSON.stringify(store.user))
+})
 
 const router = useRouter()
 const linkTo = (name = 'index', query = {}, params = {}) => {

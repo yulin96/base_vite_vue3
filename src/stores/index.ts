@@ -15,9 +15,12 @@ export interface IUserStore {
 }
 
 export const useStore = defineStore('user', () => {
-  const localStrong = useLocalStorage(import.meta.env.VITE_LOCALSTORAGE_NAME, { userInfo: {}, keepAliveId: 1 })
+  const localName = import.meta.env.VITE_APP_LOCALSTORAGE_NAME
+  const localStrong = localName
+    ? useLocalStorage(import.meta.env.VITE_APP_LOCALSTORAGE_NAME, { userInfo: {}, keepAliveId: 1 })
+    : undefined
 
-  const user = reactive<IUserStore>(localStrong.value)
+  const user = reactive<IUserStore>(localStrong?.value ?? { userInfo: {}, keepAliveId: 1 })
 
   const clearUser = () => {
     Object.keys(user).forEach((key) => {
