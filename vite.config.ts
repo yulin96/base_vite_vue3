@@ -81,6 +81,7 @@ export default defineConfig(({ command }) => ({
   base: './',
   build: {
     reportCompressedSize: false,
+    chunkSizeWarningLimit: 1000,
     minify: 'terser',
     rollupOptions: {
       input: {
@@ -124,7 +125,7 @@ export default defineConfig(({ command }) => ({
           landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
         }),
         postcssPresetEnv({
-          browsers: ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'],
+          browsers: command === 'build' ? ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'] : null,
         }),
       ],
     },
@@ -147,10 +148,12 @@ function buildCheck() {
   import('chalk').then(({ default: chalk }) => {
     const { bgMagentaBright, red, green } = chalk
     console.log(bgMagentaBright('Tips:'))
-    console.log(!title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title))
-    console.log(!apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl))
-    console.log(!localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName))
-    console.log(!hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu))
+    console.log(
+      !title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title),
+      !apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl),
+      !localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName),
+      !hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu)
+    )
     console.log(
       !shareTitle ? red('微信分享标题未定义') : green('微信分享标题：') + green.underline.bold(shareTitle),
       !shareDesc ? red('描述未定义') : green('描述：') + green.underline.bold(shareDesc),
