@@ -1,11 +1,5 @@
 <script setup lang="ts">
-const {
-  VITE_APP_SHARE_TITLE: title,
-  VITE_APP_SHARE_DESC: desc,
-  VITE_APP_SHARE_LINK: link,
-  VITE_APP_SHARE_IMGURL: imgUrl,
-} = import.meta.env
-registerWxShare({ title, desc, link, imgUrl })
+registerWxShare()
 
 const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
 const { $subscribe } = useStore()
