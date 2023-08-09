@@ -17,12 +17,12 @@ const { transitionName } = useRouteTransition()
 </script>
 
 <template>
-  <router-view class="router-view" v-slot="{ Component, route }">
+  <router-view class="wrapper" v-slot="{ Component, route }">
     <transition :name="transitionName">
       <keep-alive v-if="route.meta.keepAlive">
-        <component class="wrapper" :is="Component" />
+        <component :is="Component" />
       </keep-alive>
-      <component class="wrapper" v-else :is="Component" />
+      <component v-else :is="Component" />
     </transition>
   </router-view>
 </template>
