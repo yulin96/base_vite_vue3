@@ -27,7 +27,7 @@ const { transitionName } = useRouteTransition()
   </router-view>
 </template>
 
-<style lang="scss">
+<style>
 html,
 body {
   background-color: #fff;

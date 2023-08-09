@@ -10,9 +10,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 
-import autoprefixer from 'autoprefixer'
+import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
-import postcssNesting from 'postcss-nesting'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -108,7 +107,6 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
-        autoprefixer(),
         postcsspxtoviewport8plugin({
           unitToConvert: 'px',
           viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 750),
@@ -125,7 +123,9 @@ export default defineConfig(({ command }) => ({
           landscapeUnit: 'vw',
           landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
         }),
-        postcssNesting(),
+        postcssPresetEnv({
+          browsers: ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'],
+        }),
       ],
     },
   },

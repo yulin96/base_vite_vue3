@@ -1,6 +1,6 @@
-@import './base.css';
-@import './piece.css';
-@import './progress.css';
+@import url('./base.css');
+@import url('./piece.css');
+@import url('./progress.css');
 
 #app {
   position: relative;
@@ -18,8 +18,10 @@
   top: 0;
   width: 100vw;
   height: 100%;
+  min-height: 1360px;
   overflow-x: hidden;
   overflow-y: auto;
+  overscroll-behavior: none;
   font-size: 28px;
   scroll-behavior: smooth;
 }
@@ -30,8 +32,7 @@ div::-webkit-scrollbar {
 
 .content {
   width: 100vw;
-  height: 100%;
-  min-height: 1400px;
+  min-height: 100%;
   -webkit-overflow-scrolling: touch；;
   overflow-x: hidden;
   overflow-y: auto;
