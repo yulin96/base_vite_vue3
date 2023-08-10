@@ -9,6 +9,7 @@
     "no-duplicate-selectors": null,
     "comment-no-empty": null,
     "block-no-empty": null,
-    "no-empty-source": null
+    "no-empty-source": null,
+    "selector-id-pattern": null
   }
 }

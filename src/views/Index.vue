@@ -4,25 +4,8 @@ const linkTo = inject('linkTo') as ILinkTo
 
 <template>
   <div class="index">
-    <div class="content">
-      <div class="sss">123</div>
-    </div>
+    <div class="content"></div>
   </div>
 </template>
 
-<style scoped>
-.index {
-  .content {
-    .sss {
-      display: flex;
-      align-items: center;
-      background: red;
-      transform: translateX(10px);
-
-      &:hover {
-        background: blue;
-      }
-    }
-  }
-}
-</style>
+<style scoped></style>

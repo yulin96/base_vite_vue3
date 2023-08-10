@@ -20,7 +20,7 @@ const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [
-    command === 'build' && buildCheck(),
+    command === 'build' && handleCheck(),
     vue({ script: { defineModel: true } }),
     vueJsx(),
     Components({
@@ -107,32 +107,36 @@ export default defineConfig(({ command }) => ({
   },
   css: {
     postcss: {
-      plugins: [
-        postcsspxtoviewport8plugin({
-          unitToConvert: 'px',
-          viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 750),
-          unitPrecision: 5,
-          propList: ['*'],
-          viewportUnit: 'vw',
-          fontViewportUnit: 'vw',
-          selectorBlackList: ['FIX_'],
-          minPixelValue: 1,
-          mediaQuery: false,
-          replace: true,
-          exclude: [],
-          landscape: false,
-          landscapeUnit: 'vw',
-          landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
-        }),
-        postcssPresetEnv({
-          browsers: command === 'build' ? ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'] : null,
-        }),
-      ],
+      plugins: handleCss(command),
     },
   },
 }))
 
-function buildCheck() {
+function handleCss(command: string) {
+  const pxToVw = postcsspxtoviewport8plugin({
+    unitToConvert: 'px',
+    viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 750),
+    unitPrecision: 5,
+    propList: ['*'],
+    viewportUnit: 'vw',
+    fontViewportUnit: 'vw',
+    selectorBlackList: ['FIX_'],
+    minPixelValue: 1,
+    mediaQuery: false,
+    replace: true,
+    exclude: [],
+    landscape: false,
+    landscapeUnit: 'vw',
+    landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
+  })
+
+  const cssEnv = postcssPresetEnv({
+    browsers: ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'],
+  })
+  return command === 'build' ? [pxToVw, cssEnv] : [pxToVw]
+}
+
+function handleCheck() {
   const env = loadEnv('production', process.cwd())
   const {
     VITE_APP_LOCALSTORAGE_NAME: localName,
