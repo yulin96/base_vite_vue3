@@ -14,7 +14,7 @@ const interceptor = (instance: AxiosInstance) => {
 
     const method = response.config.method?.toLowerCase()
     const data = method === 'post' ? response.config?.data : response.config?.params
-    requestBody.data = isFromData(data) ? formDataToObj(response.config.data) : data
+    requestBody.data = isFromData(data) ? formDataToObj(data) : data
 
     response.data._request = requestBody
     return response
