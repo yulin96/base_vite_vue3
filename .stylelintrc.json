@@ -1,6 +1,11 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recommended-vue", "stylelint-config-recess-order"],
-  "plugins": ["stylelint-order"],
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-standard-scss",
+    "stylelint-config-recommended-vue",
+    "stylelint-config-recess-order"
+  ],
+  "plugins": ["stylelint-scss", "stylelint-order"],
   "rules": {
     "at-rule-no-unknown": null,
     "property-no-vendor-prefix": null,
@@ -10,6 +15,9 @@
     "comment-no-empty": null,
     "block-no-empty": null,
     "no-empty-source": null,
-    "selector-id-pattern": null
+    "selector-id-pattern": null,
+    "scss/double-slash-comment-whitespace-inside": null,
+    "no-descending-specificity": null,
+    "scss/comment-no-empty": null
   }
 }
