@@ -3,9 +3,9 @@ const linkTo = inject('linkTo') as ILinkTo
 </script>
 
 <template>
-  <div class="index">
+  <div class="Index">
     <div class="content"></div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped lang="scss"></style>
