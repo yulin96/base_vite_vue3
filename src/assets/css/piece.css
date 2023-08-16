@@ -10,13 +10,15 @@
 
 /* 斑马条纹 */
 .loadingZebra {
-  background: repeating-linear-gradient(-45deg,
-      var(--color2, #80deea80) 25%,
-      var(--color, #80deea) 0,
-      var(--color, #80deea) 50%,
-      var(--color2, #80deea80) 0,
-      var(--color2, #80deea80) 75%,
-      var(--color, #80deea) 0);
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color2, #80deea80) 25%,
+    var(--color, #80deea) 0,
+    var(--color, #80deea) 50%,
+    var(--color2, #80deea80) 0,
+    var(--color2, #80deea80) 75%,
+    var(--color, #80deea) 0
+  );
   background-size: 30px 30px;
   animation: panoramic 12s linear infinite;
 }
