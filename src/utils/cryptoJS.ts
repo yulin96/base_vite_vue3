@@ -17,6 +17,6 @@ const encrypted = cryptoJS.AES.encrypt(JSON.stringify({ name: 'yuyu', age: '1211
 console.log(encrypted)
 
 const data = cryptoJS.AES.decrypt(encrypted, key, { iv: cryptoJS.enc.Utf8.parse('f7e580d8401614c0') }).toString(
-  cryptoJS.enc.Utf8
+  cryptoJS.enc.Utf8,
 )
 console.log(data)

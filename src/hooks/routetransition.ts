@@ -27,7 +27,7 @@ export const useRouteTransition = (transitionTypeName: TSlideType = 'Slide') => 
       if (!newVal.index || !oldVal.index) return (transitionName.value = 'slideApp')
       if (newVal.index == oldVal.index) return (transitionName.value = 'FilterBlur')
       transitionName.value = newVal.index > oldVal.index ? slideType + '_right' : slideType + '_left'
-    }
+    },
   )
 
   return { transitionName }

@@ -17,7 +17,7 @@ export default defineComponent(
 
     const play_icon = computed(() => props.play_icon || 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg')
     const pause_icon = computed(
-      () => props.play_icon || 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg'
+      () => props.play_icon || 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
     )
 
     const toggleMusic = () => {
@@ -34,7 +34,7 @@ export default defineComponent(
         () => {
           audio.value?.play() // 播放
         },
-        false
+        false,
       )
 
       const control = (ele: any) => {
@@ -73,5 +73,5 @@ export default defineComponent(
   },
   {
     props: ['src', 'play_icon', 'pause_icon'],
-  }
+  },
 )

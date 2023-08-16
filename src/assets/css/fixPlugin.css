@@ -21,7 +21,9 @@
   backdrop-filter: blur(20px) saturate(200%);
   border: 2px solid var(--z-toast-background);
   border-radius: 6px;
-  box-shadow: rgb(67 71 85 / 27%) 0 0 0.25em, rgb(90 125 188 / 5%) 0 0.25em 1em;
+  box-shadow:
+    rgb(67 71 85 / 27%) 0 0 0.25em,
+    rgb(90 125 188 / 5%) 0 0.25em 1em;
 }
 
 .van-toast.text_toast {
@@ -42,7 +44,9 @@
 
 .top_fromtop_toast-enter-active,
 .top_fromtop_toast-leave-active {
-  transition: top 0.26s ease, opacity 0.2s ease;
+  transition:
+    top 0.26s ease,
+    opacity 0.2s ease;
 }
 
 .top_fromtop_toast-enter-from,
@@ -53,7 +57,9 @@
 
 .center_fromTop_toast-enter-active,
 .center_fromTop_toast-leave-active {
-  transition: top 0.26s ease, opacity 0.2s ease;
+  transition:
+    top 0.26s ease,
+    opacity 0.2s ease;
 }
 
 .center_fromTop_toast-enter-from,

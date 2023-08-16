@@ -15,13 +15,13 @@ export const useUploadImage = async (
   file: any,
   filetype?: string,
   filenameStart: string = 'az',
-  needLoading: boolean = true
+  needLoading: boolean = true,
 ) => {
   try {
     needLoading && showLoadingToast({ message: '上传中...', duration: 0 })
     const { data: configData } = await get_permissions(
       'https://center-service.event1.cn/oss/sign',
-      objToFormData({ project_uuid })
+      objToFormData({ project_uuid }),
     )
     const { host, dir, accessid: OSSAccessKeyId, policy, signature: Signature } = configData
     const key = dir + '/' + randomName(filenameStart) + '.' + (filetype ? filetype : '')
@@ -35,7 +35,7 @@ export const useUploadImage = async (
         expire: 1446727949,
         success_action_status: 200,
         file: file,
-      })
+      }),
     )
     const fileUrl = 'https://oss2.eventnet.cn/' + key
     needLoading && showSuccessToast({ message: '上传成功' })

@@ -48,5 +48,5 @@ export default defineComponent(
   },
   {
     props: ['url', 'show'],
-  }
+  },
 )

@@ -27,7 +27,7 @@ const getProjectStatus = () => {
         case 20214:
           document.body.innerHTML = ''
           document.write(
-            "<p style='text-align:center;margin-top:150px;'>项目已下线，如有需要请咨询商务经理 <a href='mailto:caiwenbin@1yue.com.cn'>caiwenbin@1yue.com.cn</a></p>"
+            "<p style='text-align:center;margin-top:150px;'>项目已下线，如有需要请咨询商务经理 <a href='mailto:caiwenbin@1yue.com.cn'>caiwenbin@1yue.com.cn</a></p>",
           )
           break
         default:

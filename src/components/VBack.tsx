@@ -34,5 +34,5 @@ export default defineComponent(
   },
   {
     props: ['name', 'query'],
-  }
+  },
 )

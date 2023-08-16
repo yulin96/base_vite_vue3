@@ -1,6 +1,6 @@
-@import url('./base.css');
-@import url('./piece.css');
-@import url('./progress.css');
+@import './base.css';
+@import './piece.css';
+@import './progress.css';
 
 #app {
   position: relative;

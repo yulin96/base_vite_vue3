@@ -30,7 +30,7 @@ export default defineComponent(
         gsap.fromTo(
           '.v-new-back',
           { opacity: 0, scale: 0.3 },
-          { opacity: 1, scale: 1, duration: 0.39, delay: 0.2, ease: 'back.out' }
+          { opacity: 1, scale: 1, duration: 0.39, delay: 0.2, ease: 'back.out' },
         )
       } else {
         backTool.url = '/'
@@ -82,5 +82,5 @@ export default defineComponent(
   },
   {
     props: ['back_achieve'],
-  }
+  },
 )
