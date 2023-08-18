@@ -64,7 +64,7 @@ export default defineConfig(({ command }) => ({
       dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
       dts: './auto-imports.d.ts',
       vueTemplate: true,
-      ignore: [],
+      ignore: ['reactify', 'reactifyObject'],
     }),
     legacy({
       targets: ['defaults', 'not IE 11', '> 1%', 'ios >= 10'],
