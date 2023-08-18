@@ -67,7 +67,7 @@ export default defineConfig(({ command }) => ({
       ignore: ['reactify', 'reactifyObject'],
     }),
     legacy({
-      targets: ['defaults', 'not IE 11', '> 1%', 'ios >= 10'],
+      targets: ['defaults', 'not dead', '> 0.5%', 'ios >= 12', 'Android >= 8'],
     }),
     visualizer({
       title: 'Dependency analysis',
@@ -131,7 +131,7 @@ function handleCss(command: string) {
   })
 
   const cssEnv = postcssPresetEnv({
-    browsers: ['last 2 versions', 'iOS >= 12', 'Android >= 8', 'not ie <= 11'],
+    browsers: ['defaults', 'not dead', '> 0.5%', 'ios >= 12', 'Android >= 8'],
   })
   return command === 'build' ? [pxToVw, cssEnv] : [pxToVw]
 }
