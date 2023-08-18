@@ -70,6 +70,16 @@ export const isMobile = (): boolean => {
   return reg.test(navigator.userAgent.toLowerCase())
 }
 
+export const isSafari = (): boolean => {
+  const reg = /Safari/i
+  return reg.test(navigator.userAgent.toLowerCase())
+}
+
+export const isAndroid = (): boolean => {
+  const reg = /Android|Linux/i
+  return reg.test(navigator.userAgent.toLowerCase())
+}
+
 /**
  * 判断当前页面是否在微信浏览器中打开
  * @returns {boolean} - 如果在微信浏览器中打开则返回 true，否则返回 false
