@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check build-only",
+    "build": "run-p stylelint type-check build-only",
     "stylelint": "stylelint 'src/**/*.{css,vue}' --fix",
     "preview": "vite preview",
     "build-only": "vite build",
