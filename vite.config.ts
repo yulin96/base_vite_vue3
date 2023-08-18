@@ -152,17 +152,13 @@ function handleCheck() {
   import('chalk').then(({ default: chalk }) => {
     const { bgMagentaBright, red, green } = chalk
     console.log(bgMagentaBright('Tips:'))
-    console.log(
-      !title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title),
-      !apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl),
-      !localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName),
-      !hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu),
-    )
-    console.log(
-      !shareTitle ? red('微信分享标题未定义') : green('微信分享标题：') + green.underline.bold(shareTitle),
-      !shareDesc ? red('描述未定义') : green('描述：') + green.underline.bold(shareDesc),
-      !shareLink ? red('链接未定义') : green('链接：') + green.underline.bold(shareLink),
-      !shareImgUrl ? red('图片未定义') : green('图片：') + green.underline.bold(shareImgUrl),
-    )
+    console.log(!title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title))
+    console.log(!apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl))
+    console.log(!localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName))
+    console.log(!hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu))
+    console.log(!shareTitle ? red('微信分享标题未定义') : green('微信分享标题：') + green.underline.bold(shareTitle))
+    console.log(!shareDesc ? red('微信分享描述未定义') : green('描述：') + green.underline.bold(shareDesc))
+    console.log(!shareLink ? red('微信分享链接未定义') : green('链接：') + green.underline.bold(shareLink))
+    console.log(!shareImgUrl ? red('微信分享图片未定义') : green('图片：') + green.underline.bold(shareImgUrl))
   })
 }
