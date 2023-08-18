@@ -120,7 +120,7 @@ function handleCss(command: string) {
     propList: ['*'],
     viewportUnit: 'vw',
     fontViewportUnit: 'vw',
-    selectorBlackList: ['FIX_'],
+    selectorBlackList: ['FIX_', 'nprogress'],
     minPixelValue: 1,
     mediaQuery: false,
     replace: true,
