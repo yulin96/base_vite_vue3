@@ -27,6 +27,8 @@ setToastDefaultOptions({
   className: 'center_toast',
 })
 
+setToastDefaultOptions('loading', { duration: 0 })
+
 if (isSafari()) {
   const html = document.querySelector('html')
   const body = document.querySelector('body')

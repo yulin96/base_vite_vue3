@@ -1,21 +1,18 @@
 <script setup lang="ts">
 const linkTo = inject('linkTo') as ILinkTo
-
-const name = useDebouncedRef(123)
-name.value = 123
 </script>
 
 <template>
   <div class="Index">
-    <div class="content">123</div>
+    <div class="content" @click="showLoadingToast({ message: '123123', forbidClick: false })">123</div>
   </div>
 </template>
 
 <style scoped lang="scss">
 .Index {
   .content {
-    width: 100px;
-    height: 200px;
+    height: 6100px;
+    background: url("https://oss.eventnet.cn/H5/CHENGHAO/LEGION818/images/bg02.jpg") top 400px center/100% auto no-repeat;
   }
 }
 </style>

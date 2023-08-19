@@ -117,7 +117,7 @@ function handleCss(command: string) {
     unitToConvert: 'px',
     viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 750),
     unitPrecision: 5,
-    propList: ['*'],
+    propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
     viewportUnit: 'vw',
     fontViewportUnit: 'vw',
     selectorBlackList: ['FIX_', 'nprogress'],
