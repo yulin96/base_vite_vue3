@@ -1,7 +1,7 @@
 import { customRef } from 'vue'
 
 export const useDebouncedRef = <T>(value: T, delay = 200) => {
-  let timeout: any
+  let timeout: NodeJS.Timeout
 
   return customRef((track, trigger) => {
     return {
