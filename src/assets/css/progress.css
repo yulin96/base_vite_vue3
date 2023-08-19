@@ -25,8 +25,6 @@
     0 0 10px var(--color-progress),
     0 0 5px var(--color-progress);
   opacity: 1;
-  -webkit-transform: rotate(3deg) translate(0, -4px);
-  -ms-transform: rotate(3deg) translate(0, -4px);
   transform: rotate(3deg) translate(0, -4px);
 }
 
@@ -62,11 +60,11 @@
 
 @keyframes nprogress-spinner {
   0% {
-    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
 
   100% {
-    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }
 

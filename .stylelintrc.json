@@ -18,6 +18,7 @@
     "selector-id-pattern": null,
     "scss/double-slash-comment-whitespace-inside": null,
     "no-descending-specificity": null,
-    "scss/comment-no-empty": null
+    "scss/comment-no-empty": null,
+    "declaration-block-no-duplicate-properties": true
   }
 }
