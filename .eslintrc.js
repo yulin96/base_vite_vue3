@@ -24,5 +24,6 @@ module.exports = {
     'no-undef': 0,
     'no-debugger': 0,
     'no-extra-semi': 0,
+    'no-unused-vars': 0,
   },
 }

@@ -12,6 +12,7 @@ import { VantResolver } from 'unplugin-vue-components/resolvers'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import tailwindcss from 'tailwindcss'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
@@ -133,7 +134,7 @@ function handleCss(command: string) {
   const cssEnv = postcssPresetEnv({
     browsers: ['defaults', 'not dead', '> 0.5%', 'ios >= 12', 'Android >= 8'],
   })
-  return command === 'build' ? [pxToVw, cssEnv] : [pxToVw]
+  return command === 'build' ? [tailwindcss, pxToVw, cssEnv] : [tailwindcss, pxToVw]
 }
 
 function handleCheck() {

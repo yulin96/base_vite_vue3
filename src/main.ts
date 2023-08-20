@@ -17,6 +17,8 @@ import '~/assets/css/main.css'
 import '~/assets/css/fixPlugin.css'
 // import '~/assets/css/fixSafari.css'
 
+import './assets/css/tailwind.css'
+
 setToastDefaultOptions({
   forbidClick: true,
   overlay: true,
