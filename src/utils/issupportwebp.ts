@@ -1,7 +1,4 @@
-export default function check_webp_feature(
-  callback: (feature: string, result: boolean) => any,
-  feature: string = 'lossless',
-) {
+export const checkWebpFeature = (callback: (feature: string, result: boolean) => any, feature: string = 'lossless') => {
   const kTestImages = {
     lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
     lossless: 'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==',

@@ -8,8 +8,9 @@ module.exports = {
   theme: {
     spacing: convertUnit(),
     extend: {
-      width: convertUnit(1000),
+      width: convertUnit(800),
       fontSize: convertUnit(100, 'px'),
+      colors: {},
     },
   },
   plugins: [],
