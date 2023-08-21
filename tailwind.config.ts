@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */
+import type { Config } from 'tailwindcss'
 
 const convertUnit = (length = 100, name = 'px') =>
   Object.fromEntries(Array.from({ length }, (_, i) => [++i, `${i}${name}`]))
@@ -13,4 +13,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+} satisfies Config
