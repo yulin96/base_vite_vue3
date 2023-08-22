@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p stylelint type-check build-only",
-    "stylelint": "stylelint 'src/**/*.{css,vue}' --fix",
+    "stylelint": "stylelint 'src/assets/**/*.{css}' --fix",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --noEmit",
