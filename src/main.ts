@@ -1,3 +1,4 @@
+import { isAndroid } from './utils/check'
 import App from './App.vue'
 import router from './router'
 import { createApp } from 'vue'
@@ -31,7 +32,7 @@ setToastDefaultOptions({
 
 setToastDefaultOptions('loading', { duration: 0 })
 
-if (isSafari()) {
+if (isSafari() && !isAndroid()) {
   const html = document.querySelector('html')
   const body = document.querySelector('body')
   if (html) html.style.height = window.innerHeight + 'px'
