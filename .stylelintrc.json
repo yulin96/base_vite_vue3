@@ -19,6 +19,7 @@
     "scss/double-slash-comment-whitespace-inside": null,
     "no-descending-specificity": null,
     "scss/comment-no-empty": null,
-    "declaration-block-no-duplicate-properties": true
+    "declaration-block-no-duplicate-properties": true,
+    "scss/at-rule-no-unknown": null
   }
 }

@@ -16,8 +16,8 @@
   color: var(--z-toast-color);
   letter-spacing: 0.3px;
   background: var(--z-toast-background);
-  backdrop-filter: saturate(180%) blur(12px);
   -webkit-backdrop-filter: saturate(180%) blur(12px);
+  backdrop-filter: saturate(180%) blur(12px);
   border: 2px solid rgb(245 245 247 / 20%);
   border-radius: 2px;
   box-shadow: rgb(0 0 0 / 12%) 0 3px 8px;

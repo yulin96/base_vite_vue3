@@ -1,7 +1,7 @@
 #nprogress {
   pointer-events: none;
 
-  --color-progress: #2ba045;
+  --color-progress: #3d5af1;
 }
 
 #nprogress .bar {
