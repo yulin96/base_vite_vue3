@@ -1,9 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div class="Index">
+  <div class="index_0d36ab">
     <div class="content"></div>
   </div>
 </template>
-
-<style scoped lang="scss"></style>
