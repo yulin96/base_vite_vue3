@@ -6,17 +6,15 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
 
-import '~/utils/vConsole'
 import '~/hooks/addPcSupport'
 
 import 'vant/es/dialog/style'
-// import 'vant/es/image-preview/style'
+import 'vant/es/image-preview/style'
 // import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 
 import '~/assets/css/main.css'
 import '~/assets/css/fixPlugin.css'
-// import '~/assets/css/fixSafari.css'
 
 import './assets/css/tailwind.css'
 

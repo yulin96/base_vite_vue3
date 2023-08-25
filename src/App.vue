@@ -2,12 +2,12 @@
 registerWxShare()
 
 const router = useRouter()
-const linkTo = (name = 'index', query = {}, params = {}) => {
-  router.replace({ name, query, params })
+const linkTo = (name: string, params = {}) => {
+  router.replace({ name, ...params })
 }
 provide('linkTo', linkTo)
 
-const { transitionName } = useRouteTransition()
+const { transitionName } = useRouteTransition('leftFlyOut')
 </script>
 
 <template>

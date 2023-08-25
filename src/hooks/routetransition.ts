@@ -3,19 +3,7 @@ import { useRoute } from 'vue-router'
 
 import '../assets/css/transition-vue.css'
 
-type TSlideType =
-  | 'Slide'
-  | 'SlideR'
-  | 'Zoom'
-  | 'FlipY'
-  | 'FlipX'
-  | 'CollapseX'
-  | 'Collapse'
-  | 'FilterBlur'
-  | 'clipPathRound'
-  | string
-
-export const useRouteTransition = (transitionTypeName: TSlideType = 'Slide') => {
+export const useRouteTransition = (transitionTypeName: RouteTransitionName = 'Slide') => {
   const transitionName = ref('slideApp')
   const slideType = transitionTypeName
 
@@ -26,7 +14,7 @@ export const useRouteTransition = (transitionTypeName: TSlideType = 'Slide') => 
       if (newVal.transitionName) return (transitionName.value = newVal.transitionName)
       if (!newVal.index || !oldVal.index) return (transitionName.value = 'slideApp')
       if (newVal.index == oldVal.index) return (transitionName.value = 'FilterBlur')
-      transitionName.value = newVal.index > oldVal.index ? slideType + '_right' : slideType + '_left'
+      transitionName.value = newVal.index > oldVal.index ? slideType + '-right' : slideType + '-left'
     },
   )
 

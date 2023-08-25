@@ -12,8 +12,10 @@ declare const WeixinJSBridge: any
 declare const VConsole: any
 
 interface ILinkTo {
-  (path?: string, query?: { [name: string]: any }, params?: { [name: string]: any }): void
+  (name: string, params?: { [x: string]: any }): void
 }
+
+type RouteTransitionName = 'Slide' | 'FilterBlur' | 'Zoom' | 'FlipY' | 'CollapseY' | 'DiagonallyFadeOut' | 'leftFlyOut'
 
 interface ImportMetaEnv {
   readonly VITE_APP_VCONSOLE_ID: string

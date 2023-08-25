@@ -1,23 +1,22 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import Index from '~/page/index.vue'
-import Home from '~/page/home.vue'
+import index from '~/views/index.vue'
+import home from '~/views/home.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: Index,
+      name: '/',
+      component: index,
       meta: { title: '', index: 1, keepAlive: true },
     },
     {
       path: '/home',
       name: 'home',
-      component: Home,
+      component: home,
       meta: { title: '', index: 2, keepAlive: true },
     },
-
     {
       path: '/:pathMatch(.*)*',
       name: '404',
