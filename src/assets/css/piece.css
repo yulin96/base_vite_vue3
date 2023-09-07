@@ -52,8 +52,43 @@
   content: '';
 }
 
-.flexcenter {
+.flex-center {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@keyframes light-flow {
+  0% {
+    background-position: 150% 0;
+  }
+
+  50%,
+  100% {
+    background-position: -50% 0;
+  }
+}
+
+.light_l {
+  position: relative;
+  overflow: hidden;
+}
+
+.light_l::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 120%;
+  content: '';
+  background: linear-gradient(90deg, transparent 0% 45%, #ffffff60 50%, transparent 55% 100%);
+  background-position: 150% 0;
+  background-size: 200% 120%;
+  transform: skewX(-30deg) translate(-50%, -50%);
+  animation: light-flow 3s infinite linear;
+  animation-play-state: paused;
+}
+
+.light_l.play::after {
+  animation-play-state: running;
 }

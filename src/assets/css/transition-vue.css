@@ -131,17 +131,17 @@
 
 .DiagonallyFadeOut-left-leave-active,
 .DiagonallyFadeOut-right-enter-active {
-  transform-origin: 50% 130%;
   transition: transform 0.36s ease 0.1s;
+  transform-origin: 50% 130%;
 }
 
 .DiagonallyFadeOut-left-enter-active,
 .DiagonallyFadeOut-right-leave-active {
-  transform-origin: 50% 130%;
+  z-index: 99;
   transition:
     transform 0.36s ease,
     opacity 0.36s ease;
-  z-index: 99;
+  transform-origin: 50% 130%;
 }
 
 .DiagonallyFadeOut-left-leave-to,
@@ -151,15 +151,15 @@
 
 .DiagonallyFadeOut-left-enter-from,
 .DiagonallyFadeOut-right-leave-to {
-  transform: rotate(-45deg);
   opacity: 0;
+  transform: rotate(-45deg);
 }
 
 /* 左侧飞出 */
 .leftFlyOut-left-leave-active,
 .leftFlyOut-right-enter-active {
-  transition: transform 0.36s ease 0.1s;
   z-index: 9;
+  transition: transform 0.36s ease 0.1s;
 }
 
 .leftFlyOut-left-leave-to,
