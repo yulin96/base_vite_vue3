@@ -1,15 +1,7 @@
-<script setup lang="ts">
-const linkTo = inject('linkTo') as ILinkTo
-
-const handleClick = () => {
-  linkTo('/')
-}
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="home">
-    <div class="content bg-cyan-500">
-      <button @click="handleClick">点击</button>
-    </div>
+    <div class="content"></div>
   </div>
 </template>
