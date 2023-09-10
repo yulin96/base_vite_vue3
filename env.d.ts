@@ -11,10 +11,6 @@ declare module 'console' {
 declare const WeixinJSBridge: any
 declare const VConsole: any
 
-interface ILinkTo {
-  (name: string, params?: { [x: string]: any }): void
-}
-
 type RouteTransitionName = 'Slide' | 'FilterBlur' | 'Zoom' | 'FlipY' | 'CollapseY' | 'DiagonallyFadeOut' | 'leftFlyOut'
 
 interface ImportMetaEnv {

@@ -1,7 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+definePage({ meta: { index: 1, keepAlive: true, transitionName: '' } })
+</script>
 
 <template>
-  <div class="index">
+  <div class="vite_index">
     <div class="content"></div>
   </div>
 </template>

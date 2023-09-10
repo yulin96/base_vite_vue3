@@ -1,11 +1,6 @@
 <script setup lang="ts">
+import type { RouteNamedMap } from 'vue-router/auto/routes'
 registerWxShare()
-
-const router = useRouter()
-const linkTo = (name: string, params = {}) => {
-  router.replace({ name, ...params })
-}
-provide('linkTo', linkTo)
 
 const { transitionName } = useRouteTransition('leftFlyOut')
 </script>
