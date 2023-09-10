@@ -1,4 +1,4 @@
-import { isMobile } from '~/utils/check'
+import { isMobile } from '@/utils/check'
 import { useUrlSearchParams } from '@vueuse/core'
 
 const params = useUrlSearchParams()

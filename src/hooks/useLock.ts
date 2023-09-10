@@ -1,4 +1,4 @@
-import topProgress from '~/utils/topProgress'
+import topProgress from '@/utils/topProgress'
 
 const openProgress = true
 
@@ -30,8 +30,8 @@ export const useLock = (auto = true, delay = 150) => {
           auto &&
             (delay
               ? setTimeout(() => {
-                  lock.value = false
-                }, delay)
+                lock.value = false
+              }, delay)
               : (lock.value = false))
         })
     })
@@ -56,8 +56,8 @@ export const useLock = (auto = true, delay = 150) => {
           auto &&
             (delay
               ? setTimeout(() => {
-                  lock.value = false
-                }, delay)
+                lock.value = false
+              }, delay)
               : (lock.value = false))
         })
     })
