@@ -5,6 +5,10 @@ declare module 'console' {
   export = typeof import('console')
 }
 
+interface ILinkTo {
+  (name: string, params?: { [x: string]: any }): void
+}
+
 // declare const html2canvas: typeof import('html2canvas').default
 // declare const lottie: typeof import('lottie-web').default
 

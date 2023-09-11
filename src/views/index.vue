@@ -1,9 +1,9 @@
 <script setup lang="ts">
-definePage({ meta: { index: 1, keepAlive: true, transitionName: '' } })
+const linkTo = inject('linkTo') as ILinkTo
 </script>
 
 <template>
-  <div class="vite_index">
+  <div class="index">
     <div class="content"></div>
   </div>
 </template>

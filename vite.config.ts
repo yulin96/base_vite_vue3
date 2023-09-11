@@ -5,12 +5,10 @@ import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
-import VueRouter from 'unplugin-vue-router/vite'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -24,9 +22,6 @@ const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' && handleCheck(),
-    VueRouter({
-      routesFolder: 'src/views',
-    }),
     vue({ script: { defineModel: true } }),
     vueJsx(),
     Components({
@@ -40,7 +35,7 @@ export default defineConfig(({ command }) => ({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
         'vue',
-        VueRouterAutoImports,
+        'vue-router',
         'pinia',
         '@vueuse/core',
         'vue-i18n',
