@@ -68,7 +68,7 @@ export default defineConfig(({ command }) => ({
       ignore: ['reactify', 'reactifyObject'],
     }),
     legacy({
-      targets: ['defaults', 'not dead', '> 0.5%', 'ios >= 12', 'Android >= 8'],
+      targets: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
     }),
     visualizer({
       title: 'Dependency analysis',
@@ -132,9 +132,9 @@ function handleCss(command: string) {
   })
 
   const cssEnv = postcssPresetEnv({
-    browsers: ['defaults', 'not dead', '> 0.5%', 'ios >= 12', 'Android >= 8'],
+    browsers: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
   })
-  return command === 'build' ? [tailwindcss, pxToVw, cssEnv] : [tailwindcss, pxToVw]
+  return command === 'build' ? [tailwindcss, cssEnv, pxToVw] : [tailwindcss, pxToVw]
 }
 
 function handleCheck() {
