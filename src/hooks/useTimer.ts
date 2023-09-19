@@ -7,6 +7,7 @@ export const useTimer = (data: number = 60) => {
   })
 
   const startTimer = (): void => {
+    if (countdown.sending) return
     countdown.sending = true
     countdown.timerId = setInterval(() => {
       countdown.timer--
