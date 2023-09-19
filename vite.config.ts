@@ -16,7 +16,7 @@ import tailwindcss from 'tailwindcss'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
-const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
+const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'vant', 'vueuse', 'canvas-confetti']
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
