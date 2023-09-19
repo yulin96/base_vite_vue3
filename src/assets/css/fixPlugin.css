@@ -39,3 +39,25 @@
   opacity: 0;
   transform: translateY(calc(-50% + 180px));
 }
+
+.van-popup__close-icon::after {
+  content: '';
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+}
+
+.popup-enter-active,
+.popup-leave-active {
+  transition:
+    opacity 0.26s ease,
+    transform 0.26s ease !important;
+}
+
+.popup-enter-from,
+.popup-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% + 180px)) !important;
+}
