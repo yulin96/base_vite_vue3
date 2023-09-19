@@ -25,5 +25,6 @@ module.exports = {
     'no-debugger': 0,
     'no-extra-semi': 0,
     'no-unused-vars': 0,
+    'no-prototype-builtins': 0,
   },
 }

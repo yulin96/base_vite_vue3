@@ -209,3 +209,17 @@ export const ScrollToTop = (e: Element) => {
 
 export const fixHeight_en_bmw = (e: string) =>
   e.replace(/[^\u4e00-\u9fa5]/g, (m) => '<i style="font-style: normal;position: relative;top: 1px;">' + m + '</i>')
+
+export const deepCopy = (obj: any): any => {
+  if (obj === null || typeof obj !== 'object') return obj
+
+  if (Array.isArray(obj)) return obj.map(deepCopy)
+
+  const copy = {}
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      copy[key] = deepCopy(obj[key])
+    }
+  }
+  return copy
+}
