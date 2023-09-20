@@ -1,6 +1,4 @@
-<script setup lang="ts">
-const linkTo = inject('linkTo') as ILinkTo
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="index">
