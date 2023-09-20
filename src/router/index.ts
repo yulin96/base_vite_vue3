@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, type RouteLocationRaw } from 'vue-router'
 import index from '@/views/index.vue'
 
 const router = createRouter({
@@ -17,10 +17,10 @@ const router = createRouter({
       component: () => import('@/components/VNotFound'),
       meta: { index: 404, keepAlive: true },
     },
-  ]
+  ],
 })
 
-router.beforeEach(async (to, from) => { })
+router.beforeEach(async (to, from) => {})
 
 // router.afterEach((to, from) => {})
 
@@ -35,5 +35,11 @@ declare module 'vue-router' {
     [x: string]: string | number | boolean | undefined
   }
 }
+
+export const replace = (to: RouteLocationRaw) => {
+  return router.replace(to)
+}
+
+export const toKey = Symbol() as InjectionKey<typeof replace>
 
 export default router

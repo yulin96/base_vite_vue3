@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const linkTo = inject(toKey) as IReplace
+</script>
 
 <template>
   <div class="index">

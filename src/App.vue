@@ -1,13 +1,10 @@
 <script setup lang="ts">
+provide(toKey, replace)
+
+/* 路由动画 */
+const { transitionName } = useRouteTransition('Slide')
+/* 分享 */
 registerWxShare()
-
-const router = useRouter()
-const linkTo = (name = 'index', params: {}) => {
-  router.replace({ name, ...params })
-}
-provide('linkTo', linkTo)
-
-const { transitionName } = useRouteTransition('leftFlyOut')
 </script>
 
 <template>

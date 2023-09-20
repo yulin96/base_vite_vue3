@@ -62,10 +62,10 @@ export default defineConfig(({ command }) => ({
           gsap: ['gsap'],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
+      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
       dts: './auto-imports.d.ts',
       vueTemplate: true,
-      ignore: ['reactify', 'reactifyObject'],
+      ignore: ['reactify', 'reactifyObject', 'router'],
     }),
     legacy({
       targets: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
