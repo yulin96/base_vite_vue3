@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { replace } from '@/router'
 provide(toKey, replace)
 
 /* 路由动画 */

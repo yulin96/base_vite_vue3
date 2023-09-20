@@ -5,7 +5,7 @@ declare module 'console' {
   export = typeof import('console')
 }
 
-type IReplace = typeof replace
+type IReplace = typeof import('@/router').replace
 
 // declare const html2canvas: typeof import('html2canvas').default
 // declare const lottie: typeof import('lottie-web').default

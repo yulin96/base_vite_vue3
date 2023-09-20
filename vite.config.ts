@@ -62,7 +62,7 @@ export default defineConfig(({ command }) => ({
           gsap: ['gsap'],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
+      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
       dts: './auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
