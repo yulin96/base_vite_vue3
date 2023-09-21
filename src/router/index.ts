@@ -36,10 +36,4 @@ declare module 'vue-router' {
   }
 }
 
-export const replace = (to: RouteLocationRaw) => {
-  return router.replace(to)
-}
-
-export const toKey = Symbol() as InjectionKey<typeof replace>
-
 export default router
