@@ -6,6 +6,10 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
 
+checkWebpFeature((_, result) => {
+  if (result) document.documentElement.classList.add('webp')
+}, 'lossless')
+
 import '@/hooks/addPcSupport'
 
 import 'vant/es/dialog/style'
