@@ -12,6 +12,7 @@ type IReplace = typeof import('@/router').replace
 
 declare const WeixinJSBridge: any
 declare const VConsole: any
+declare const dd: any
 
 type RouteTransitionName = 'Slide' | 'FilterBlur' | 'Zoom' | 'FlipY' | 'CollapseY' | 'DiagonallyFadeOut' | 'leftFlyOut'
 
