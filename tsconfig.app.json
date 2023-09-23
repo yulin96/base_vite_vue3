@@ -7,7 +7,8 @@
     "./auto-imports.d.ts",
     "./components.d.ts",
     "index.d.ts",
-    "typed-router.d.ts"
+    "typed-router.d.ts",
+    "scan/**/*"
   ],
   "exclude": ["src/**/__tests__/*", "src/base/**/*", "src/utils/other/**/*", "dist"],
   "compilerOptions": {
