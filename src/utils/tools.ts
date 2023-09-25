@@ -223,3 +223,5 @@ export const deepCopy = (obj: any): any => {
   }
   return copy
 }
+
+export const handlePhone = (phone: string) => phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
