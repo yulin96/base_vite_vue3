@@ -14,7 +14,7 @@ export const registerWxShare = () => {
     shareContent.imgUrl &&
     isWeiXin() &&
     isHttps() &&
-    WxShare(shareContent, ~shareContent.link.indexOf('h5.eventnet.cn') ? 2 : 1)
+    WxShare(shareContent)
 
   dd.ready(function () {
     dd.biz.navigation.setRight({

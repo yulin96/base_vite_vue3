@@ -1,7 +1,8 @@
 import wx from 'weixin-js-sdk'
 import axios from 'axios'
 
-const _getWXconfig = (urlType: number): Promise<any> => {
+const _getWXconfig = (): Promise<any> => {
+  const urlType = ~location.href.indexOf('h5.eventnet.cn') ? 2 : 1
   return new Promise((resolve, reject) => {
     const wxLink = window.location.href.split('#')[0]
     const data = new FormData()
@@ -42,9 +43,9 @@ export interface IWxShare {
   imgUrl: string
 }
 
-export const WxShare = (data: IWxShare, urlType = 1): void => {
+export const WxShare = (data: IWxShare): void => {
   const { title, desc, link, imgUrl } = data
-  _getWXconfig(urlType)
+  _getWXconfig()
     .then(() => {
       wx.updateAppMessageShareData({ title, desc, link, imgUrl, success() {} })
       wx.updateTimelineShareData({ title, link, imgUrl, success() {} })
@@ -54,9 +55,9 @@ export const WxShare = (data: IWxShare, urlType = 1): void => {
     })
 }
 
-export const WxScanQRCode = (urlType = 1): Promise<{ resultStr: string; [x: string]: string }> => {
+export const WxScanQRCode = (): Promise<{ resultStr: string; [x: string]: string }> => {
   return new Promise((resolve, reject) => {
-    _getWXconfig(urlType)
+    _getWXconfig()
       .then(() => {
         wx.scanQRCode({
           needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
@@ -81,9 +82,9 @@ export interface IWxOpenLocation {
   infoUrl?: string
 }
 
-export const WxOpenLocation = (data: IWxOpenLocation, urlType = 1): void => {
+export const WxOpenLocation = (data: IWxOpenLocation): void => {
   const { latitude, longitude, name, address, scale = 10, infoUrl = '' } = data
-  _getWXconfig(urlType)
+  _getWXconfig()
     .then(() => {
       wx.openLocation({ latitude, longitude, name, address, scale, infoUrl })
     })
