@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     spacing: convertUnit(),
     extend: {
-      width: convertUnit(800),
+      width: convertUnit(1000),
       fontSize: convertUnit(100, 'px'),
       colors: {},
     },
