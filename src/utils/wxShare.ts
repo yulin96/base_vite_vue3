@@ -16,7 +16,7 @@ export const registerWxShare = () => {
     isHttps() &&
     WxShare(shareContent)
 
-  dd.ready(function () {
+  dd?.ready(function () {
     dd.biz.navigation.setRight({
       show: true, //控制按钮显示， true 显示， false 隐藏， 默认true
       control: true, //是否控制点击事件，true 控制，false 不控制， 默认false
