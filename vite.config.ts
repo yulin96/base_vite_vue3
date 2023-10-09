@@ -87,7 +87,7 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
-        scan: path.resolve(__dirname, 'scan/index.html'),
+        // scan: path.resolve(__dirname, 'scan/index.html'),
       },
       output: {
         chunkFileNames: 'assets/static/[name]-[hash].js',
