@@ -31,10 +31,10 @@ div::-webkit-scrollbar {
 
 .content {
   width: 100vw;
-  min-height: max(1360px, 100%);
+  min-height: max(1440px, 100%);
   -webkit-overflow-scrolling: touch；;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
 
   /* overscroll-behavior: none; */
 }
