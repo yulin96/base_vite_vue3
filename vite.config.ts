@@ -18,6 +18,8 @@ import { visualizer } from 'rollup-plugin-visualizer'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'vant', 'vueuse', 'canvas-confetti']
 
+const env = loadEnv('production', process.cwd())
+
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [
@@ -70,9 +72,7 @@ export default defineConfig(({ command }) => ({
     legacy({
       targets: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
     }),
-    visualizer({
-      title: 'Dependency analysis',
-    }),
+    visualizer(),
   ],
   resolve: {
     alias: {
@@ -87,7 +87,7 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
-        // scan: path.resolve(__dirname, 'scan/index.html'),
+        scan: path.resolve(__dirname, 'scan/index.html'),
       },
       output: {
         chunkFileNames: 'assets/static/[name]-[hash].js',
@@ -98,8 +98,8 @@ export default defineConfig(({ command }) => ({
     },
     terserOptions: {
       compress: {
-        drop_console: true,
-        drop_debugger: true,
+        drop_console: env.VITE_DROP_CONSOLE == '1' ? true : false,
+        drop_debugger: env.VITE_DROP_DEBUGGER == '1' ? true : false,
       },
     },
   },
@@ -139,28 +139,32 @@ function handleCss(command: string) {
 }
 
 function handleCheck() {
-  const env = loadEnv('production', process.cwd())
   const {
-    VITE_APP_LOCALSTORAGE_NAME: localName,
-    VITE_APP_API_URL: apiUrl,
-    VITE_APP_TITLE: title,
-    VITE_APP_HM_BAIDU: hmBaidu,
-    VITE_APP_SHARE_TITLE: shareTitle,
-    VITE_APP_SHARE_DESC: shareDesc,
-    VITE_APP_SHARE_LINK: shareLink,
-    VITE_APP_SHARE_IMGURL: shareImgUrl,
+    VITE_APP_LOCALSTORAGE_NAME,
+    VITE_APP_API_URL,
+    VITE_APP_TITLE,
+    VITE_APP_HM_BAIDU,
+    VITE_APP_SHARE_TITLE,
+    VITE_APP_SHARE_DESC,
+    VITE_APP_SHARE_LINK,
+    VITE_APP_SHARE_IMGURL,
   } = env
 
   import('chalk').then(({ default: chalk }) => {
     const { bgMagentaBright, red, green } = chalk
+
+    function logTips(name: string, nameSuccess: string, checkName: string) {
+      console.log(!checkName ? red(name) : green(nameSuccess) + green.underline.bold(checkName))
+    }
+
     console.log(bgMagentaBright('Tips:'))
-    console.log(!title ? red('网站标题未定义') : green('网站标题：') + green.underline.bold(title))
-    console.log(!apiUrl ? red('接口地址未定义') : green('接口地址：') + green.underline.bold(apiUrl))
-    console.log(!localName ? red('本地存储名称未定义') : green('本地存储名称：') + green.underline.bold(localName))
-    console.log(!hmBaidu ? red('百度统计ID未定义') : green('百度统计ID：') + green.underline.bold(hmBaidu))
-    console.log(!shareTitle ? red('微信分享标题未定义') : green('微信分享标题：') + green.underline.bold(shareTitle))
-    console.log(!shareDesc ? red('微信分享描述未定义') : green('描述：') + green.underline.bold(shareDesc))
-    console.log(!shareLink ? red('微信分享链接未定义') : green('链接：') + green.underline.bold(shareLink))
-    console.log(!shareImgUrl ? red('微信分享图片未定义') : green('图片：') + green.underline.bold(shareImgUrl))
+    logTips('网站标题未定义', '网站标题', VITE_APP_TITLE)
+    logTips('接口地址未定义', '接口地址', VITE_APP_API_URL)
+    logTips('本地存储名称未定义', '本地存储名称', VITE_APP_LOCALSTORAGE_NAME)
+    logTips('百度统计ID未定义', '百度统计ID', VITE_APP_HM_BAIDU)
+    logTips('微信分享标题未定义', '微信分享标题', VITE_APP_SHARE_TITLE)
+    logTips('微信分享描述未定义', '微信分享描述', VITE_APP_SHARE_DESC)
+    logTips('微信分享链接未定义', '微信分享链接', VITE_APP_SHARE_LINK)
+    logTips('微信分享图片未定义', '微信分享图片', VITE_APP_SHARE_IMGURL)
   })
 }
