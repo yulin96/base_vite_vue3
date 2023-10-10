@@ -2,6 +2,6 @@
 
 <template>
   <div class="index">
-    <div @click="showToast({ message: 'hello' })" class="content"></div>
+    <div class="content"></div>
   </div>
 </template>
