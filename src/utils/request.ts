@@ -23,11 +23,11 @@ const interceptor = (instance: AxiosInstance) => {
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
-  timeout: 10000,
+  timeout: 5000,
 })
 
 const instanceHttp = axios.create({
-  timeout: 10000,
+  timeout: 5000,
 })
 
 interceptor(instance)
@@ -46,19 +46,12 @@ export const axios_get = (
   headers: object = {},
   signal: AbortSignal,
 ): Promise<any> => {
-  return url.startsWith('http')
-    ? new Promise((resolve, reject) =>
-        instanceHttp
-          .get(url, { params, headers, signal })
-          .then((response: any) => resolve(response.data))
-          .catch((error: any) => reject(error)),
-      )
-    : new Promise((resolve, reject) =>
-        instance
-          .get(url, { params, headers, signal })
-          .then((response: any) => resolve(response.data))
-          .catch((error: any) => reject(error)),
-      )
+  return new Promise((resolve, reject) =>
+    (url.startsWith('http') ? instanceHttp : instance)
+      .get(url, { params, headers, signal })
+      .then((response: any) => resolve(response.data))
+      .catch((error: any) => reject(error)),
+  )
 }
 
 /**
@@ -69,19 +62,12 @@ export const axios_get = (
  * @returns {Promise<any>} - 返回 Promise 对象
  */
 export const axios_post = (url: string, data: object, headers: object = {}, signal: AbortSignal): Promise<any> => {
-  return url.startsWith('http')
-    ? new Promise((resolve, reject) =>
-        instanceHttp
-          .post(url, data, { headers, signal })
-          .then((response: any) => resolve(response.data))
-          .catch((error: any) => reject(error)),
-      )
-    : new Promise((resolve, reject) =>
-        instance
-          .post(url, data, { headers, signal })
-          .then((response: any) => resolve(response.data))
-          .catch((error: any) => reject(error)),
-      )
+  return new Promise((resolve, reject) =>
+    (url.startsWith('http') ? instanceHttp : instance)
+      .post(url, data, { headers, signal })
+      .then((response: any) => resolve(response.data))
+      .catch((error: any) => reject(error)),
+  )
 }
 
 /**
