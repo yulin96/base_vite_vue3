@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, type RouteLocationRaw } from 'vue-router'
-import index from '@/views/index.vue'
+import index from '~/views/index.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -14,7 +14,7 @@ const router = createRouter({
     {
       path: '/:pathMatch(.*)*',
       name: '404',
-      component: () => import('@/components/VNotFound'),
+      component: () => import('~/components/VNotFound'),
       meta: { index: 404, keepAlive: true },
     },
   ],

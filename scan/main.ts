@@ -1,5 +1,5 @@
-import { isAndroid, isSafari } from '@/utils/check'
-import { checkWebpFeature } from '@/utils/issupportwebp'
+import { isAndroid, isSafari } from '~/utils/check'
+import { checkWebpFeature } from '~/utils/issupportwebp'
 import App from './App.vue'
 import router from './router'
 import { createApp } from 'vue'
@@ -12,9 +12,9 @@ import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
 // import 'vant/es/notify/style'
 import 'vant/es/toast/style'
-import '@/assets/css/main.css'
-import '@/assets/css/fixPlugin.css'
-import '@/assets/css/tailwind.css'
+import '~/assets/css/main.css'
+import '~/assets/css/fixPlugin.css'
+import '~/assets/css/tailwind.css'
 
 if (isSafari() && !isAndroid()) {
   const html = document.querySelector('html')

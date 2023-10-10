@@ -1,5 +1,5 @@
 import axios, { type AxiosInstance } from 'axios'
-import { isFromData, formDataToObj } from '@/utils/tools'
+import { isFromData, formDataToObj } from '~/utils/tools'
 
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)
@@ -48,17 +48,17 @@ export const axios_get = (
 ): Promise<any> => {
   return url.startsWith('http')
     ? new Promise((resolve, reject) =>
-      instanceHttp
-        .get(url, { params, headers, signal })
-        .then((response: any) => resolve(response.data))
-        .catch((error: any) => reject(error)),
-    )
+        instanceHttp
+          .get(url, { params, headers, signal })
+          .then((response: any) => resolve(response.data))
+          .catch((error: any) => reject(error)),
+      )
     : new Promise((resolve, reject) =>
-      instance
-        .get(url, { params, headers, signal })
-        .then((response: any) => resolve(response.data))
-        .catch((error: any) => reject(error)),
-    )
+        instance
+          .get(url, { params, headers, signal })
+          .then((response: any) => resolve(response.data))
+          .catch((error: any) => reject(error)),
+      )
 }
 
 /**
@@ -71,17 +71,17 @@ export const axios_get = (
 export const axios_post = (url: string, data: object, headers: object = {}, signal: AbortSignal): Promise<any> => {
   return url.startsWith('http')
     ? new Promise((resolve, reject) =>
-      instanceHttp
-        .post(url, data, { headers, signal })
-        .then((response: any) => resolve(response.data))
-        .catch((error: any) => reject(error)),
-    )
+        instanceHttp
+          .post(url, data, { headers, signal })
+          .then((response: any) => resolve(response.data))
+          .catch((error: any) => reject(error)),
+      )
     : new Promise((resolve, reject) =>
-      instance
-        .post(url, data, { headers, signal })
-        .then((response: any) => resolve(response.data))
-        .catch((error: any) => reject(error)),
-    )
+        instance
+          .post(url, data, { headers, signal })
+          .then((response: any) => resolve(response.data))
+          .catch((error: any) => reject(error)),
+      )
 }
 
 /**

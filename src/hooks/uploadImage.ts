@@ -1,4 +1,4 @@
-import { objToFormData } from '@/utils/tools'
+import { objToFormData } from '~/utils/tools'
 
 const { post: get_permissions } = useLock()
 const { post: post_upload } = useLock()
