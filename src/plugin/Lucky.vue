@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { LuckyGrid } from 'lucky-canvas'
-const linkTo = inject('linkTo') as ILinkTo
 
 onMounted(() => {
   const myLucky = new LuckyGrid('#my-lucky' as any, {

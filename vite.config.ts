@@ -31,7 +31,7 @@ export default defineConfig(({ command }) => ({
       extensions: ['vue', 'tsx', 'jsx'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.tsx/, /\.jsx/],
       resolvers: [VantResolver()],
-      dts: './components.d.ts',
+      dts: './src/types/components.d.ts',
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
@@ -65,7 +65,7 @@ export default defineConfig(({ command }) => ({
         },
       ],
       dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
-      dts: './auto-imports.d.ts',
+      dts: './src/types/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
     }),
