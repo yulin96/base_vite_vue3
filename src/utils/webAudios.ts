@@ -2,9 +2,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext
 
 function webAudio(url) {
-  let webAudioObj
   const context = new window.AudioContext()
-  let gainNode = null
   let source = null
   let audioBuffer = null
 
@@ -42,19 +40,14 @@ function webAudio(url) {
   }
 
   function playEffectInit() {
-    gainNode = context.createGain()
     source = context.createBufferSource()
     source.buffer = audioBuffer
     source.loop = false
-    source.connect(gainNode)
-    // source = context.createBufferSource();
-    // source.buffer = audioBuffer;
-    // source.loop = false;
-    // source.connect(context.destination);
-    gainNode.connect(context.destination)
-    gainNode.gain.value = 0
+    source.connect(context.destination)
     source.start()
+    source.stop()
   }
+
   return {
     play: playEffect,
     playInit: playEffectInit,
