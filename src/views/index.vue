@@ -2,6 +2,6 @@
 
 <template>
   <div class="index">
-    <div class="content">1</div>
+    <div class="content"></div>
   </div>
 </template>
