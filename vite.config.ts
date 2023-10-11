@@ -117,7 +117,8 @@ export default defineConfig(({ command }) => ({
 function handleCss(command: string) {
   const pxToVw = postcsspxtoviewport8plugin({
     unitToConvert: 'px',
-    viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 750),
+    viewportWidth: (file) =>
+      ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
     unitPrecision: 5,
     propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
     viewportUnit: 'vw',
@@ -129,7 +130,8 @@ function handleCss(command: string) {
     exclude: [],
     landscape: false,
     landscapeUnit: 'vw',
-    landscapeWidth: (file) => (~file.indexOf('node_modules/vant') ? 720 : 1440),
+    landscapeWidth: (file) =>
+      ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
   })
 
   const cssEnv = postcssPresetEnv({

@@ -29,6 +29,9 @@ dependencies:
   dayjs:
     specifier: ^1.11.10
     version: 1.11.10
+  driver.js:
+    specifier: ^1.3.0
+    version: 1.3.0
   gsap:
     specifier: ^3.12.2
     version: 3.12.2
@@ -3221,6 +3224,10 @@ packages:
       domelementtype: 2.3.0
       domhandler: 5.0.3
     dev: true
+
+  /driver.js@1.3.0:
+    resolution: {integrity: sha512-ilUkVc5iMIYfMd8FdWy8n5Wv//gsJuRP+lo8QfWpwP9c0UGOgD7P9nVQMZwcdW84aqAZHHUHrV7GgiopAN6HUQ==}
+    dev: false
 
   /editorconfig@1.0.4:
     resolution: {integrity: sha512-L9Qe08KWTlqYMVvMcTIvMAdl1cDUubzRNYL+WfA4bLDMHe4nemKkpmYzkznE1FwLKu0EEmy6obgQKzMJrg4x9Q==}
