@@ -1,36 +1,46 @@
-export const useSlide = (ele: HTMLElement, toUp?: Function | undefined, slideNumber = 100) => {
-  const eleCanScroll = !ele ? false : ele.scrollHeight > ele.clientHeight
+import { useScroll } from '@vueuse/core'
 
-  const { arrivedState } = useScroll(ele, { offset: { bottom: 0 } })
-
-  const startMove = ref({ clientX: 0, clientY: 0 })
-
-  ele.addEventListener('touchstart', (t) => {
-    const _start = () => {
-      const { clientY, clientX } = t.changedTouches[0]
-      startMove.value = { clientY, clientX }
-    }
-
-    if (!eleCanScroll || arrivedState.bottom) _start()
-  })
+export const useSlide = (
+  ele: HTMLElement,
+  toUp?: Function | undefined,
+  toDown?: Function | undefined,
+  toUpIng?: Function | undefined,
+  toDownIng?: Function | undefined,
+  slideNumber = 100,
+) => {
+  const startMove = ref({ clientY: 0, once: true })
+  const { arrivedState, directions } = useScroll(ele, { offset: { bottom: 0 } })
 
   ele.addEventListener('touchmove', (t) => {
-    const { clientY: startClientY } = startMove.value
+    const clientY = t.changedTouches[0].clientY
+    if (directions.bottom || directions.top) startMove.value.clientY = clientY
 
-    const _move = () => {
-      const { clientY } = t.changedTouches[0]
-      if ((!arrivedState.bottom || startClientY < clientY) && eleCanScroll) return
+    if (arrivedState.top || arrivedState.bottom) {
+      if (startMove.value.once) {
+        startMove.value.clientY = clientY
+        startMove.value.once = false
+      }
 
-      if (startClientY - clientY > slideNumber) {
-        toUp?.()
-        t.preventDefault()
+      const startClientY = startMove.value.clientY
+
+      if (Math.abs(startClientY - clientY) > slideNumber) {
+        if (t.cancelable) {
+          t.preventDefault()
+        }
+        return startClientY > clientY ? toUp?.() : toDown?.()
+      }
+
+      if (Math.abs(startClientY - clientY) > 10) return
+      if (startClientY > clientY) {
+        return toUpIng?.(Math.round(startClientY - clientY))
+      } else if (startClientY < clientY) {
+        return toDownIng?.(Math.round(startClientY - clientY))
       }
     }
-
-    if (!eleCanScroll || startClientY) return _move()
   })
 
   ele.addEventListener('touchend', () => {
-    startMove.value = { clientX: 0, clientY: 0 }
+    startMove.value.clientY = 0
+    startMove.value.once = true
   })
 }
