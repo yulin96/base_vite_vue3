@@ -9,11 +9,11 @@ export const useSlide = (
   slideNumber = 100,
 ) => {
   const startMove = ref({ clientY: 0, once: true })
-  const { arrivedState, directions } = useScroll(ele, { offset: { bottom: 0 } })
+  const { arrivedState, isScrolling } = useScroll(ele, { offset: { bottom: 0 } })
 
   ele.addEventListener('touchmove', (t) => {
     const clientY = t.changedTouches[0].clientY
-    if (directions.bottom || directions.top) startMove.value.clientY = clientY
+    if (isScrolling.value) startMove.value.clientY = clientY
 
     if (arrivedState.top || arrivedState.bottom) {
       if (startMove.value.once) {
@@ -30,7 +30,8 @@ export const useSlide = (
         return startClientY > clientY ? toUp?.() : toDown?.()
       }
 
-      if (Math.abs(startClientY - clientY) > 10) return
+      if (Math.abs(startClientY - clientY) < 20) return
+
       if (startClientY > clientY) {
         return toUpIng?.(Math.round(startClientY - clientY))
       } else if (startClientY < clientY) {
