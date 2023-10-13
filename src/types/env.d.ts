@@ -8,7 +8,7 @@ declare module 'console' {
 type IReplace = typeof import('~/router').replace
 
 // declare const html2canvas: typeof import('html2canvas').default
-// declare const lottie: typeof import('lottie-web').default
+declare const lottie: typeof import('lottie-web').default
 
 declare const WeixinJSBridge: any
 declare const VConsole: any

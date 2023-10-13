@@ -16,7 +16,7 @@ import tailwindcss from 'tailwindcss'
 
 import { visualizer } from 'rollup-plugin-visualizer'
 
-const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'vant', 'vueuse', 'canvas-confetti']
+const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
 const env = loadEnv('production', process.cwd())
 

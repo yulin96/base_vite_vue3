@@ -225,3 +225,5 @@ export const deepCopy = (obj: any): any => {
 }
 
 export const handlePhone = (phone: string) => phone.replace(/(\d{3})\d{4}(\d{4})/, '$1****$2')
+
+export const getRandomInt = (n: number, m: number) => Math.floor(Math.random() * (m - n + 1) + n)

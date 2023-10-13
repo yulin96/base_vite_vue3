@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, type RouteLocationRaw } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import index from '~/views/index.vue'
 
 const router = createRouter({
