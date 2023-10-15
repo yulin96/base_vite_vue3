@@ -33,8 +33,7 @@
     <script type="module" src="/src/main.ts"></script>
   </body>
   <script>
-    const hmBaiduId = '%VITE_APP_HM_BAIDU%'
-    if (hmBaiduId) {
+    if ('%VITE_APP_HM_BAIDU%' && '%PROD%' === 'true') {
       var _hmt = _hmt || []
       ;(function () {
         var hm = document.createElement('script')
