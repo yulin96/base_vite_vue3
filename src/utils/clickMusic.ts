@@ -1,11 +1,11 @@
 import { webAudio } from './webAudios'
 
-export const NEED_CLICK_MUSIC = false
+const needMusic = false
 
-export const CLICK_MUSIC = 'https://oss.eventnet.cn/H5/Aodi/2211/an.mp3'
+const url = 'https://oss.eventnet.cn/H5/Aodi/2211/an.mp3'
 
-const audioControl = NEED_CLICK_MUSIC
-  ? webAudio(CLICK_MUSIC)
+const audioControl = needMusic
+  ? webAudio(url)
   : {
       play: () => {},
       playInit: () => {},
@@ -15,7 +15,7 @@ export const playClickMusic = (): void => {
   audioControl?.play()
 }
 
-NEED_CLICK_MUSIC &&
+needMusic &&
   document.body.addEventListener(
     'click',
     () => {
