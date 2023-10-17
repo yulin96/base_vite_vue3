@@ -5,7 +5,6 @@ fetch('https://oss.eventnet.cn/H5/zz/public/lotties/btn/btn3.json')
   })
 
 export const showLottie = (e: MouseEvent) => {
-  if (!window['loadingLottieJson']) return
   const width = 200
 
   const { clientX, clientY } = e
@@ -23,8 +22,10 @@ export const showLottie = (e: MouseEvent) => {
     container: div,
     loop: false,
     autoplay: true,
-    animationData: window['loadingLottieJson'],
     renderer: 'canvas',
+    ...(window['loadingLottieJson']
+      ? { animationData: window['loadingLottieJson'] }
+      : { path: 'https://oss.eventnet.cn/H5/zz/public/lotties/btn/btn3.json' }),
   })
   templo.setSpeed(1.6)
 
