@@ -1,6 +1,5 @@
 /// <reference types="vite/client" />
 
-declare module 'weixin-js-sdk'
 declare module 'console' {
   export = typeof import('console')
 }

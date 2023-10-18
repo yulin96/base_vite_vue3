@@ -15,13 +15,7 @@ const _getWXconfig = (): Promise<any> => {
           timestamp: el.data.timestamp,
           nonceStr: el.data.nonceStr,
           signature: el.data.signature,
-          jsApiList: [
-            'checkJsApi',
-            'scanQRCode',
-            'updateAppMessageShareData',
-            'updateTimelineShareData',
-            'openLocation',
-          ],
+          jsApiList: ['scanQRCode', 'updateAppMessageShareData', 'updateTimelineShareData', 'openLocation'],
         })
         wx.ready(function () {
           resolve(null)
@@ -82,6 +76,14 @@ export interface IWxOpenLocation {
   infoUrl?: string
 }
 
+/**
+{
+  latitude: 0,
+  longitude: 0,
+  name: '',
+  address: '',
+}
+ */
 export const WxOpenLocation = (data: IWxOpenLocation): void => {
   const { latitude, longitude, name, address, scale = 10, infoUrl = '' } = data
   _getWXconfig()
