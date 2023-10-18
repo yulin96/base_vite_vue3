@@ -109,36 +109,33 @@ export default defineConfig(({ command }) => ({
   },
   css: {
     postcss: {
-      plugins: handleCss(command),
+      plugins: [
+        postcssPresetEnv({
+          browsers: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
+        }),
+        tailwindcss,
+        postcsspxtoviewport8plugin({
+          unitToConvert: 'px',
+          viewportWidth: (file) =>
+            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
+          unitPrecision: 5,
+          propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
+          viewportUnit: 'vw',
+          fontViewportUnit: 'vw',
+          selectorBlackList: ['FIX_', 'nprogress'],
+          minPixelValue: 1,
+          mediaQuery: false,
+          replace: true,
+          exclude: [],
+          landscape: false,
+          landscapeUnit: 'vw',
+          landscapeWidth: (file) =>
+            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
+        }),
+      ],
     },
   },
 }))
-
-function handleCss(command: string) {
-  const pxToVw = postcsspxtoviewport8plugin({
-    unitToConvert: 'px',
-    viewportWidth: (file) =>
-      ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
-    unitPrecision: 5,
-    propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
-    viewportUnit: 'vw',
-    fontViewportUnit: 'vw',
-    selectorBlackList: ['FIX_', 'nprogress'],
-    minPixelValue: 1,
-    mediaQuery: false,
-    replace: true,
-    exclude: [],
-    landscape: false,
-    landscapeUnit: 'vw',
-    landscapeWidth: (file) =>
-      ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
-  })
-
-  const cssEnv = postcssPresetEnv({
-    browsers: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
-  })
-  return command === 'build' ? [tailwindcss, cssEnv, pxToVw] : [tailwindcss, pxToVw]
-}
 
 function handleCheck() {
   const {
