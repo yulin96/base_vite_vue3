@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  html2canvas@1.0.0-rc.4:
+    hash: rvxr5pigab2r57sw5os3vvlayu
+    path: patches/html2canvas@1.0.0-rc.4.patch
+
 dependencies:
   '@vueuse/core':
     specifier: ^10.5.0
@@ -37,7 +42,7 @@ dependencies:
     version: 3.12.2
   html2canvas:
     specifier: 1.0.0-rc.4
-    version: 1.0.0-rc.4
+    version: 1.0.0-rc.4(patch_hash=rvxr5pigab2r57sw5os3vvlayu)
   jsencrypt:
     specifier: ^3.3.2
     version: 3.3.2
@@ -3803,12 +3808,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /html2canvas@1.0.0-rc.4:
+  /html2canvas@1.0.0-rc.4(patch_hash=rvxr5pigab2r57sw5os3vvlayu):
     resolution: {integrity: sha512-5sJ+oM3FfNFpGVbMQkJFDl1WH5Sa293l2koMEZWbaehJ3dWHty4mSrmZtfWlWDoLckfGojZS9aZ7Zk3uFouyPw==}
     engines: {node: '>=8.0.0'}
     dependencies:
       css-line-break: 1.1.1
     dev: false
+    patched: true
 
   /htmlparser2@8.0.2:
     resolution: {integrity: sha512-GYdjWKDkbRLkZ5geuHs5NY1puJ+PXwP7+fHPRz06Eirsb9ugf6d8kkXav6ADhcODhFFPMIXyxkxSuMf3D6NCFA==}
