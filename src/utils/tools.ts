@@ -7,6 +7,10 @@ export const getSrc = (name: string) => {
   return (modules[path] as any)?.default
 }
 
+export const prodModel = import.meta.env.PROD
+
+export const devModel = import.meta.env.DEV
+
 export const Trim = (str: string): string => {
   // return str.replace(/(^\s*)|(\s*$)/g, '')
   return str.replace(/\s/g, '')
