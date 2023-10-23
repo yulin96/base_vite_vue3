@@ -7,8 +7,8 @@
 
 const { get } = useLock()
 
-export const getOpenId = (name = '互动微平台', id?: string): Promise<boolean | void> => {
-  return new Promise<any>((resolve) => {
+export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => {
+  return new Promise<boolean>((resolve) => {
     const { user } = useStore()
     if (user?.wxInfo?.openid) return resolve(true)
     const params = useUrlSearchParams()
@@ -26,7 +26,9 @@ export const getOpenId = (name = '互动微平台', id?: string): Promise<boolea
     } else {
       resolve(false)
       // location.href =
-      //   'https://wechat-oauth.event1.cn/wechat/code?name=' + name + '&state=' + id + '&type=2'
+      //   'https://wechat-oauth.event1.cn/wechat/code?name=%E4%BA%92%E5%8A%A8%E5%BE%AE%E5%B9%B3%E5%8F%B0&state=' +
+      //   '20653539b3ee1ee' +
+      //   '&type=2'
     }
   })
 }
