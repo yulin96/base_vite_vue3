@@ -78,15 +78,14 @@ export default class LineCanvas {
   }
 
   // 保存为图片
-  public save = (): Promise<string> =>
-    new Promise((resolve, reject) => {
-      if (!this.signing) {
-        showToast('请先签名')
-        reject()
-      } else {
-        resolve(this.canvas.toDataURL('image/jpeg', 0.8))
-      }
-    })
+  public save = () => {
+    if (!this.signing) {
+      showToast('请先签名')
+      return ''
+    } else {
+      return this.canvas.toDataURL('image/png', 0.8)
+    }
+  }
 
   public getColor = () => this.color
   public setColor = (color: string) => (this.color = color)
