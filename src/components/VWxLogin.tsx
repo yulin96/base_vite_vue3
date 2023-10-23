@@ -14,8 +14,8 @@ export default defineComponent(
 
     const overlayStyle = {
       background: '#0003',
-      backdropFilter: 'blur(100px)',
-      WebkitBackdropFilter: 'blur(100px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      backdropFilter: 'blur(20px)',
     }
 
     return () => (
