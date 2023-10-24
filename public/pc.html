@@ -36,6 +36,12 @@
     </style>
   </head>
   <body>
-    <iframe src="./index.html?device=PC" frameborder="0" id="FIX_PC"></iframe>
+    <iframe frameborder="0" id="FIX_PC"></iframe>
+    <script>
+      const urlParams = new URLSearchParams(location.search)
+      let urlSearchList = ''
+      urlParams.forEach((item, key) => (urlSearchList += `&${key}=${item}`))
+      document.getElementById('FIX_PC').src = `./index.html?device=PC${urlSearchList}`
+    </script>
   </body>
 </html>
