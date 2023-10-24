@@ -62,6 +62,7 @@ export default defineConfig(({ command }) => ({
             'showImagePreview',
           ],
           gsap: ['gsap'],
+          html2canvas: ['html2canvas'],
         },
       ],
       dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],

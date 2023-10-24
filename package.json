@@ -11,6 +11,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@types/zoomist": "^1.1.2",
     "@vueuse/core": "^10.5.0",
     "@vueuse/integrations": "^10.5.0",
     "axios": "^1.5.1",
@@ -30,11 +31,14 @@
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.0",
     "qrcode": "^1.5.3",
+    "uuid": "^9.0.1",
     "vant": "^4.7.2",
     "vue": "^3.3.6",
+    "vue-cropper": "^1.1.1",
     "vue-i18n": "^9.5.0",
     "vue-router": "^4.2.5",
-    "weixin-js-sdk": "^1.6.2"
+    "weixin-js-sdk": "^1.6.2",
+    "zoomist": "^1.1.1"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.5.1",
@@ -45,6 +49,7 @@
     "@types/lodash-es": "^4.17.10",
     "@types/nprogress": "^0.2.2",
     "@types/qrcode": "^1.5.4",
+    "@types/uuid": "^9.0.6",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
@@ -69,7 +74,7 @@
     "unplugin-auto-import": "^0.16.6",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^4.5.0",
-    "vue-tsc": "^1.8.19"
+    "vue-tsc": "^1.8.20"
   },
   "pnpm": {
     "patchedDependencies": {

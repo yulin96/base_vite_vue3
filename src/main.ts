@@ -10,6 +10,8 @@ checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')
 }, 'lossless')
 
+import './assets/css/tailwind.css'
+
 import '~/hooks/addPcSupport'
 
 import 'vant/es/dialog/style'
@@ -19,8 +21,6 @@ import 'vant/es/toast/style'
 
 import '~/assets/css/main.css'
 import '~/assets/css/fixPlugin.css'
-
-import './assets/css/tailwind.css'
 
 setToastDefaultOptions({
   forbidClick: true,
