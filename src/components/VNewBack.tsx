@@ -15,22 +15,33 @@ export default defineComponent(
     const { icon, axis, magnetic, linkMap } = props
 
     const { user } = useStore()
-    const { offsetx, offsety } = user.userInfo
+
+    const offsetx = computed(() => user.offsetx)
+    const offsety = computed(() => user.offsety)
 
     const router = useRouter()
 
     const backIns = ref({
       show: false,
       name: '',
-      offset: { x: offsetx ?? innerWidth - 80, y: offsety ?? innerHeight - 200 },
+      offset: { x: 0, y: 0 },
       onClick() {
         router.replace({ name: this.name || 'index' })
       },
     })
 
+    watch(
+      [offsetx, offsety],
+      () => {
+        backIns.value.offset.x = offsetx.value ?? innerWidth - 60
+        backIns.value.offset.y = offsety.value ?? innerHeight - 200
+      },
+      { immediate: true },
+    )
+
     const offsetChange = ({ x, y }: any) => {
-      user.userInfo.offsetx = ~~x
-      user.userInfo.offsety = ~~y
+      user.offsetx = ~~x
+      user.offsety = ~~y
     }
 
     const route = useRoute()
@@ -48,7 +59,8 @@ export default defineComponent(
       },
       { immediate: true },
     )
-    const linkTo = () => {
+    const linkTo = (e: MouseEvent) => {
+      showLottie(e)
       const { name } = backIns.value
       router.replace({ name })
     }
@@ -60,11 +72,11 @@ export default defineComponent(
             class={'w-100'}
             onOffsetChange={offsetChange}
             offset={backIns.value.offset}
-            icon={icon ?? 'https://oss.eventnet.cn/H5/zz/celoma/back_t.png'}
+            icon={icon}
             axis={axis ?? 'xy'}
             magnetic={magnetic ?? 'x'}
-            gap={20}
-            onClick={linkTo}></FloatingBubble>
+            gap={10}
+            onClick={(e) => linkTo(e)}></FloatingBubble>
         )}
       </>
     )
