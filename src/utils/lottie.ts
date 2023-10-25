@@ -4,6 +4,15 @@ fetch('https://oss.eventnet.cn/H5/zz/public/lotties/btn/btn3.json')
     window['loadingLottieJson'] = res
   })
 
+const registerBody = () => {
+  document.body.addEventListener('click', (e) => {
+    const target = e.target
+    target instanceof HTMLElement &&
+      (target.hasAttribute('effect') || target?.parentElement?.hasAttribute('effect')) &&
+      showLottie(e)
+  })
+}
+
 export const showLottie = (e: MouseEvent) => {
   const width = 200
 
@@ -32,4 +41,6 @@ export const showLottie = (e: MouseEvent) => {
   animation.addEventListener('complete', () => {
     document.body.removeChild(div)
   })
+
+  registerBody()
 }
