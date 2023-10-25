@@ -18,7 +18,7 @@ export const showLottie = (e: MouseEvent) => {
   div.style.transform = `rotate(${Math.floor(Math.random() * 180)}deg)`
   document.body.appendChild(div)
 
-  const templo = lottie.loadAnimation({
+  const animation = lottie.loadAnimation({
     container: div,
     loop: false,
     autoplay: true,
@@ -27,9 +27,9 @@ export const showLottie = (e: MouseEvent) => {
       ? { animationData: window['loadingLottieJson'] }
       : { path: 'https://oss.eventnet.cn/H5/zz/public/lotties/btn/btn3.json' }),
   })
-  templo.setSpeed(1.6)
+  animation.setSpeed(1.6)
 
-  templo.addEventListener('complete', () => {
+  animation.addEventListener('complete', () => {
     document.body.removeChild(div)
   })
 }
