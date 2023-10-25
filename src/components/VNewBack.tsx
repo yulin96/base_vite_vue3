@@ -85,3 +85,9 @@ export default defineComponent(
     props: ['icon', 'axis', 'magnetic', 'linkMap'],
   },
 )
+
+/*
+  <!-- <v-new-back
+    :icon="'https://oss.eventnet.cn/H5/zz/celoma/back_t.png'"
+    :link-map="{ reg: 'home', line: 'home', index: 'index' }"></v-new-back> -->
+*/

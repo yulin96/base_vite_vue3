@@ -6,10 +6,10 @@ export interface IUserStore {
     [x: string]: any
   }
   keepAliveId: number
-  wxInfo?: {
-    openid: string
-    nickname: string
-    portrait: string
+  wxInfo: {
+    openid?: string
+    nickname?: string
+    portrait?: string
   }
   [x: string]: any
 }
@@ -17,7 +17,7 @@ export interface IUserStore {
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive<IUserStore>({ userInfo: {}, keepAliveId: 1 })
+    const user = reactive<IUserStore>({ userInfo: {}, wxInfo: {}, keepAliveId: 1 })
 
     const clearUser = () => {
       Object.keys(user).forEach((key) => {
