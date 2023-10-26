@@ -40,8 +40,9 @@
     <script>
       const urlParams = new URLSearchParams(location.search)
       let urlSearchList = ''
-      urlParams.forEach((item, key) => (urlSearchList += `&${key}=${item}`))
-      document.getElementById('FIX_PC').src = `./index.html?device=PC${urlSearchList}`
+      urlParams.forEach((item, key) => (urlSearchList += `${urlSearchList ? '&' : '?'}${key}=${item}`))
+      urlSearchList += `${urlSearchList ? '&' : '?'}device=PC`
+      document.getElementById('FIX_PC').src = `./index.html${urlSearchList}`
     </script>
   </body>
 </html>
