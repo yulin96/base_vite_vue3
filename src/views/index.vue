@@ -1,8 +1,4 @@
-<script setup lang="ts">
-onMounted(() => {
-  gsap.context(() => {}, '.index')
-})
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="index">
