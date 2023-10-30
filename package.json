@@ -78,7 +78,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "html2canvas@1.0.0-rc.4": "patches/html2canvas@1.0.0-rc.4.patch"
+      "html2canvas@1.0.0-rc.4": "patches/html2canvas@1.0.0-rc.4.patch",
+      "gsap@3.12.2": "patches/gsap@3.12.2.patch"
     }
   }
 }

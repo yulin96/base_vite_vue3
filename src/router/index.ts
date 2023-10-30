@@ -22,7 +22,14 @@ const router = createRouter({
 
 router.beforeEach(async (to, from) => {})
 
-// router.afterEach((to, from) => {})
+router.afterEach((_, from) => {
+  if (!from.name) return
+  const fromGsap = window[gsapAll]?.[from.name?.toString()]
+  if (fromGsap)
+    setTimeout(() => {
+      fromGsap?.revert()
+    }, 500)
+})
 
 declare module 'vue-router' {
   interface RouteMeta {

@@ -9,6 +9,7 @@ module.exports = {
     spacing: convertUnit(),
     extend: {
       width: convertUnit(1000),
+      height: convertUnit(1000),
       fontSize: convertUnit(100, 'px'),
       colors: {},
     },

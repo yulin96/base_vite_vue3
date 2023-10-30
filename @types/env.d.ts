@@ -35,3 +35,7 @@ interface ImportMetaEnv {
   readonly VITE_APP_SHARE_LINK: string
   readonly VITE_APP_SHARE_IMGURL: string
 }
+
+interface Window {
+  [gsapAll]: { [key: string]: gsap.Context | undefined }
+}

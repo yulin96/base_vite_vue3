@@ -1,3 +1,5 @@
+export const gsapAll = Symbol('gsapAll')
+
 export const getImageUrl = (name: string) => new URL(`../assets/images/${name}`, import.meta.url).href
 
 export const getSrc = (name: string) => {

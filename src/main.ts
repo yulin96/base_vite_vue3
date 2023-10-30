@@ -6,6 +6,8 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
 
+window[gsapAll] = {}
+
 checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')
 }, 'lossless')
