@@ -9,6 +9,8 @@ import legacy from '@vitejs/plugin-legacy'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
+import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -23,7 +25,11 @@ const env = loadEnv('production', process.cwd())
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [
-    command === 'build' && handleCheck(),
+    handleCheck(),
+    VueRouter({
+      dts: './@types/typed-router.d.ts',
+      routesFolder: ['src/pages'],
+    }),
     vue({ script: { defineModel: true } }),
     vueJsx(),
     Components({
@@ -37,10 +43,10 @@ export default defineConfig(({ command }) => ({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
         'vue',
-        'vue-router',
         'pinia',
         '@vueuse/core',
         'vue-i18n',
+        VueRouterAutoImports,
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           vant: [

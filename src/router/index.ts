@@ -1,33 +1,24 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import index from '~/views/index.vue'
+import { createRouter, createWebHashHistory } from 'vue-router/auto'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: index,
-      meta: { title: '', index: 1, keepAlive: true },
-    },
+})
 
-    {
-      path: '/:pathMatch(.*)*',
-      name: '404',
-      component: () => import('~/components/VNotFound'),
-      meta: { index: 404, keepAlive: true },
-    },
-  ],
+router.addRoute({
+  path: '/:pathMatch(.*)*',
+  name: '404',
+  component: () => import('~/components/VNotFound'),
+  meta: { index: 404, keepAlive: true },
 })
 
 router.beforeEach(async (to, from) => {})
 
 router.afterEach((_, from) => {
-  if (!from.name) return
-  const fromGsap = window[gsapAll]?.[from.name?.toString()]
-  if (fromGsap)
+  const fromName = from.meta.gsapName
+  if (fromName)
     setTimeout(() => {
-      fromGsap?.revert()
+      window[gsapAll]?.[fromName]?.revert()
+      delete window[gsapAll]?.[fromName]
     }, 500)
 })
 
@@ -38,6 +29,8 @@ declare module 'vue-router' {
 
     index?: number
     transitionName?: string
+
+    gsapName?: string
 
     [x: string]: string | number | boolean | undefined
   }
