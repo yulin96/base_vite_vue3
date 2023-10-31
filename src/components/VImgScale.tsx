@@ -10,11 +10,15 @@ export default defineComponent(
   (props: Props) => {
     const uuid = 'zoomist_' + +new Date()
 
+    let zoomist: Zoomist | null = null
+
     watchPostEffect(() => {
       if (props.url) {
         const zoomEle = document.querySelector(`.zoomist.${uuid}`)
-        if (zoomEle) new Zoomist(zoomEle, { height: false })
-        else showDialog({ message: 'NOT_HAVE_DOM' })
+        if (zoomEle) {
+          if (zoomist) zoomist.update()
+          else zoomist = new Zoomist(zoomEle, { height: false, fill: 'cover' })
+        } else showDialog({ message: 'NOT_HAVE_DOM' })
       }
     })
 

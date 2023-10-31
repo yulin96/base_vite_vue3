@@ -61,3 +61,7 @@
   opacity: 0 !important;
   transform: translateY(calc(-50% + 100px)) !important;
 }
+
+.van-toast__text {
+  white-space: nowrap;
+}

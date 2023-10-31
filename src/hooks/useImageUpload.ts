@@ -1,6 +1,6 @@
+import axios from 'axios'
 import { objToFormData } from '~/utils/tools'
 import { v1 } from 'uuid'
-import compressorjs from 'compressorjs'
 
 /**
  *
@@ -11,46 +11,40 @@ import compressorjs from 'compressorjs'
  * @param needLoading 是否需要loading
  */
 
-const uploadConfig = {
-  prefix: 'az_',
-  project_uuid: '',
-}
-
-export const useUploadImage = (file: File | Blob) => {
-  return new Promise<string>((resolve, reject) => {
-    const { project_uuid, prefix } = uploadConfig
-    try {
-      new compressorjs(file, {
-        convertTypes: 'image/png',
-        success: async (result) => {
-          file = result
-          const { data: configData } = await useLock().post(
-            'https://center-service.event1.cn/oss/sign',
-            objToFormData({ project_uuid }),
-          )
-          const { host, dir, accessid, policy, signature } = configData
-          const key = dir + '/' + prefix + v1() + '.png'
-          await useLock().post(
+export const useUploadImage = async (
+  project_uuid: string,
+  file: any,
+  filetype?: string,
+  filenameStart: string = 'az',
+  needLoading: boolean = false,
+) => {
+  return new Promise<string>((resolve, _) => {
+    axios
+      .post('https://center-service.event1.cn/oss/sign', { project_uuid })
+      .then(({ data: configData }) => {
+        const { host, dir, accessid: OSSAccessKeyId, policy, signature: Signature } = configData
+        const key = dir + '/' + filenameStart + v1() + '.' + (filetype ? filetype : 'png')
+        axios
+          .post(
             host,
             objToFormData({
               key,
-              OSSAccessKeyId: accessid,
+              OSSAccessKeyId,
               policy,
-              Signature: signature,
+              Signature,
               expire: 1446727949,
               success_action_status: 200,
               file: file,
             }),
           )
-          const url = 'https://oss2.eventnet.cn/' + key
-          resolve(url)
-        },
-        error: () => {
-          reject()
-        },
+          .finally(() => {
+            const fileUrl = 'https://oss2.eventnet.cn/' + key
+            needLoading && showSuccessToast({ message: '上传成功' })
+            resolve(fileUrl)
+          })
       })
-    } catch (error) {
-      reject()
-    }
+      .catch(() => {
+        resolve('')
+      })
   })
 }
