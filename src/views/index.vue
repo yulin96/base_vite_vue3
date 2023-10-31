@@ -8,6 +8,6 @@ onMounted(() => {
 
 <template>
   <div class="pages_index">
-    <div class="content">123</div>
+    <div class="content"></div>
   </div>
 </template>
