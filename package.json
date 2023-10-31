@@ -2,6 +2,7 @@
   "name": "vite_base",
   "version": "2.2.0",
   "private": true,
+  "author": "Yulin Zhao",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
