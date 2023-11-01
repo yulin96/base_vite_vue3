@@ -71,7 +71,7 @@ export default defineConfig(({ command }) => ({
           compressorjs: [['default', 'compressorjs']],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
+      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
       dts: './@types/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],

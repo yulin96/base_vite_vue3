@@ -1,19 +1,3 @@
-export interface IUserStore {
-  userInfo: {
-    name?: string
-    phone?: string
-    code?: string
-    [x: string]: any
-  }
-  keepAliveId: number
-  wxInfo: {
-    openid?: string
-    nickname?: string
-    portrait?: string
-  }
-  [x: string]: any
-}
-
 export const useStore = defineStore(
   'user',
   () => {

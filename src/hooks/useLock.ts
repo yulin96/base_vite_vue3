@@ -8,16 +8,11 @@ nprogress.configure({
 
 const openProgress = true
 
-interface IRes {
-  code: number | string
-  [x: string]: any
-}
-
 export const useLock = (auto = true, delay = 150) => {
   const lock = ref(false)
   let controller: AbortController
 
-  const post = (_url: string, _data?: any, headers = {}): Promise<IRes | any> => {
+  const post = (_url: string, _data?: any, headers = {}): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
     controller = new AbortController()
     openProgress && nprogress?.start()
@@ -43,7 +38,7 @@ export const useLock = (auto = true, delay = 150) => {
     })
   }
 
-  const get = (_url: string, _data?: any, headers = {}): Promise<IRes | any> => {
+  const get = (_url: string, _data?: any, headers = {}): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
     controller = new AbortController()
     openProgress && nprogress?.start()
