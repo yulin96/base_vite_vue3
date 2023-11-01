@@ -1,3 +1,4 @@
+import type { RouterTyped } from 'vue-router/auto'
 import { createRouter, createWebHashHistory } from 'vue-router/auto'
 
 const router = createRouter({
@@ -36,4 +37,4 @@ declare module 'vue-router' {
   }
 }
 
-export default router
+export default router as RouterTyped

@@ -28,6 +28,7 @@ export default defineConfig(({ command }) => ({
     command === 'build' ? handleCheck() : undefined,
     VueRouter({
       dts: './@types/typed-router.d.ts',
+      routesFolder: 'src/views',
     }),
     vue({ script: { defineModel: true } }),
     vueJsx(),

@@ -1,3 +1,4 @@
+import type { RouteNamedMap } from 'vue-router/auto/routes'
 import { FloatingBubble } from 'vant'
 import 'vant/es/floating-bubble/style'
 import './style/VNewBack.css'
@@ -6,7 +7,9 @@ interface Props {
   icon: string
   axis?: 'x' | 'y' | 'xy'
   magnetic?: 'x' | 'y'
-  linkMap: object
+  linkMap: {
+    [key in keyof RouteNamedMap]?: keyof RouteNamedMap
+  }
   [key: string]: any
 }
 
@@ -16,32 +19,32 @@ export default defineComponent(
 
     const { user } = useStore()
 
-    const offsetx = computed(() => user.offsetx)
-    const offsety = computed(() => user.offsety)
+    const offsetX = computed(() => user.offsetX)
+    const offsetY = computed(() => user.offsetY)
 
     const router = useRouter()
 
     const backIns = ref({
       show: false,
-      name: '',
+      name: undefined as undefined | keyof RouteNamedMap,
       offset: { x: 0, y: 0 },
       onClick() {
-        router.replace({ name: this.name || 'index' })
+        router.replace({ name: this.name || '/' })
       },
     })
 
     watch(
-      [offsetx, offsety],
+      [offsetX, offsetY],
       () => {
-        backIns.value.offset.x = offsetx.value ?? innerWidth - 60
-        backIns.value.offset.y = offsety.value ?? innerHeight - 200
+        backIns.value.offset.x = offsetX.value ?? innerWidth - 60
+        backIns.value.offset.y = offsetY.value ?? innerHeight - 200
       },
       { immediate: true },
     )
 
     const offsetChange = ({ x, y }: any) => {
-      user.offsetx = ~~x
-      user.offsety = ~~y
+      user.offsetX = ~~x
+      user.offsetY = ~~y
     }
 
     const route = useRoute()
@@ -49,9 +52,8 @@ export default defineComponent(
     watch(
       () => route.name,
       (name) => {
-        const backMap = linkMap
-        if (name && backMap?.[name]) {
-          backIns.value.name = backMap[name]
+        if (name && linkMap?.[name]) {
+          backIns.value.name = linkMap[name]
           backIns.value.show = true
         } else {
           backIns.value.show = false
@@ -59,8 +61,7 @@ export default defineComponent(
       },
       { immediate: true },
     )
-    const linkTo = (e: MouseEvent) => {
-      showLottie(e)
+    const linkTo = () => {
       const { name } = backIns.value
       router.replace({ name })
     }
@@ -76,7 +77,7 @@ export default defineComponent(
             axis={axis ?? 'xy'}
             magnetic={magnetic ?? 'x'}
             gap={10}
-            onClick={(e) => linkTo(e)}></FloatingBubble>
+            onClick={() => linkTo()}></FloatingBubble>
         )}
       </>
     )
