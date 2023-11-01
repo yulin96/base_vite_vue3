@@ -25,10 +25,9 @@ const env = loadEnv('production', process.cwd())
 // https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [
-    handleCheck(),
+    command === 'build' ? handleCheck() : undefined,
     VueRouter({
       dts: './@types/typed-router.d.ts',
-      routesFolder: ['src/views'],
     }),
     vue({ script: { defineModel: true } }),
     vueJsx(),
