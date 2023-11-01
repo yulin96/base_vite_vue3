@@ -21,7 +21,7 @@ export const useUploadImage = async (
   return new Promise<string>((resolve, _) => {
     axios
       .post('https://center-service.event1.cn/oss/sign', { project_uuid })
-      .then(({ data: configData }) => {
+      .then(({ data: { data: configData } }) => {
         const { host, dir, accessid: OSSAccessKeyId, policy, signature: Signature } = configData
         const key = dir + '/' + filenameStart + v1() + '.' + (filetype ? filetype : 'png')
         axios
