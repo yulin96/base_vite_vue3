@@ -16,7 +16,7 @@ router.beforeEach(async (to, from) => {})
 
 router.afterEach((_, from) => {
   const fromName = from.meta.gsapName
-  if (fromName)
+  if (fromName && window[gsapAll]?.[fromName])
     setTimeout(() => {
       window[gsapAll]?.[fromName]?.revert()
       delete window[gsapAll]?.[fromName]
