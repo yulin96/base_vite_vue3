@@ -1,8 +1,9 @@
 import { defineComponent } from 'vue'
+import type { RouteNamedMap } from 'vue-router/auto/routes'
 import './style/VBack.css'
 
 interface Props {
-  name?: string
+  name?: keyof RouteNamedMap
   query?: {}
   [key: string]: any
 }
@@ -11,7 +12,7 @@ export default defineComponent(
   (props: Props) => {
     const router = useRouter()
     const linkTo = (): void => {
-      router.replace({ name: props?.name ?? 'index', query: props?.query ?? {} })
+      router.replace({ name: props?.name ?? '/', query: props?.query ?? {} })
     }
 
     const backColor = '#f78154'

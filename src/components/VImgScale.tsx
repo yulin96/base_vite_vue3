@@ -1,5 +1,5 @@
 import Zoomist from 'zoomist'
-import { defineComponent, defineProps, watch } from 'vue'
+import { defineComponent } from 'vue'
 
 interface Props {
   url: string
