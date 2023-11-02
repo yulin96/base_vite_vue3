@@ -1,13 +1,12 @@
 <script setup lang="ts">
-definePage({ meta: { gsapName: 'views_index', index: 10 } })
+definePage({ meta: { gsapName: 'index', index: 10 } })
 
 onMounted(() => {
-  window[gsapAll]['views_index'] = gsap.context(() => {}, '.views_index')
+  window[gsapAll]['index'] = gsap.context(() => {}, '.index')
 })
 </script>
-
 <template>
-  <div class="views_index">
+  <div class="index">
     <div class="content"></div>
   </div>
 </template>
