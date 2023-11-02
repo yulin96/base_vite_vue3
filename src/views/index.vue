@@ -8,6 +8,6 @@ onMounted(() => {
 
 <template>
   <div class="index">
-    <div class="content">{{}}</div>
+    <div class="content"></div>
   </div>
 </template>
