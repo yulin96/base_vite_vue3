@@ -1,4 +1,5 @@
 import nprogress from 'nprogress'
+import type { ToastWrapperInstance } from 'vant'
 
 nprogress.configure({
   showSpinner: false,
@@ -18,6 +19,11 @@ export const useLock = (auto = true, delay = 150) => {
     openProgress && nprogress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
+      let requestToast: ToastWrapperInstance | undefined
+      const requestTimer = setTimeout(() => {
+        requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
+      }, 300)
+
       axios_post(_url, objToFormData(_data), headers, controller.signal)
         .then((res: any) => {
           resolve(res)
@@ -27,6 +33,9 @@ export const useLock = (auto = true, delay = 150) => {
           reject(err)
         })
         .finally(() => {
+          clearTimeout(requestTimer)
+          requestToast?.close()
+
           openProgress && nprogress?.done()
           auto &&
             (delay
@@ -44,6 +53,11 @@ export const useLock = (auto = true, delay = 150) => {
     openProgress && nprogress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
+      let requestToast: ToastWrapperInstance | undefined
+      const requestTimer = setTimeout(() => {
+        requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
+      }, 300)
+
       axios_get(_url, _data, headers, controller.signal)
         .then((res: any) => {
           resolve(res)
@@ -53,6 +67,9 @@ export const useLock = (auto = true, delay = 150) => {
           reject(err)
         })
         .finally(() => {
+          clearTimeout(requestTimer)
+          requestToast?.close()
+
           openProgress && nprogress?.done()
           auto &&
             (delay
