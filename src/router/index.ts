@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router/auto'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-})
+}) as RouterTyped
 
 router.addRoute({
   path: '/:pathMatch(.*)*',
@@ -37,4 +37,4 @@ declare module 'vue-router' {
   }
 }
 
-export default router as RouterTyped
+export default router
