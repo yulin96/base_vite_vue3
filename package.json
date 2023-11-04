@@ -37,7 +37,7 @@
     "vant": "^4.7.3",
     "vue": "^3.3.7",
     "vue-cropper": "^1.1.1",
-    "vue-i18n": "^9.6.2",
+    "vue-i18n": "^9.6.5",
     "vue-router": "^4.2.5",
     "weixin-js-sdk": "^1.6.3",
     "zoomist": "^1.1.1"
@@ -59,7 +59,7 @@
     "@vue/test-utils": "^2.4.1",
     "@vue/tsconfig": "^0.4.0",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.52.0",
+    "eslint": "^8.53.0",
     "eslint-plugin-vue": "^9.18.1",
     "jsdom": "^22.1.0",
     "npm-run-all": "^4.1.5",
