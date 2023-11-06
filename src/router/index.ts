@@ -23,7 +23,7 @@ router.addRoute({
 router.beforeEach(async (to, from) => {})
 
 router.afterEach((_, from) => {
-  const fromName = from.name
+  const fromName = from.name as string
   if (fromName && window[gsapAll]?.[fromName])
     setTimeout(() => {
       window[gsapAll]?.[fromName]?.revert()
