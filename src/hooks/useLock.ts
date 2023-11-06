@@ -22,7 +22,7 @@ export const useLock = (auto = true, delay = 150) => {
       let requestToast: ToastWrapperInstance | undefined
       const requestTimer = setTimeout(() => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
-      }, 300)
+      }, 1000)
 
       axios_post(_url, objToFormData(_data), headers, controller.signal)
         .then((res: any) => {
@@ -56,7 +56,7 @@ export const useLock = (auto = true, delay = 150) => {
       let requestToast: ToastWrapperInstance | undefined
       const requestTimer = setTimeout(() => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
-      }, 300)
+      }, 1000)
 
       axios_get(_url, _data, headers, controller.signal)
         .then((res: any) => {

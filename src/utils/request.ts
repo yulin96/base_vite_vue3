@@ -23,11 +23,11 @@ const interceptor = (instance: AxiosInstance) => {
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
-  timeout: 5000,
+  timeout: 10000,
 })
 
 const instanceHttp = axios.create({
-  timeout: 5000,
+  timeout: 10000,
 })
 
 interceptor(instance)
