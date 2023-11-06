@@ -2,6 +2,7 @@
 /* 路由动画 */
 const { transitionName } = useRouteTransition('Slide')
 /* 分享 */
+wxPreventShare()
 </script>
 
 <template>
