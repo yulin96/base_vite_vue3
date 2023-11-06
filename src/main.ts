@@ -14,8 +14,6 @@ checkWebpFeature((_, result) => {
 
 import './assets/css/tailwind.css'
 
-import '~/hooks/addPcSupport'
-
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
 // import 'vant/es/notify/style'
