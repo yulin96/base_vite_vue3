@@ -4,9 +4,6 @@ import './style/VNotFound.css'
 
 export default defineComponent(() => {
   const router = useRouter()
-  const linkTo = (path = '/', query = {}) => {
-    router.replace({ path, query })
-  }
 
   const getRandomInt = (n: number, m: number) => Math.floor(Math.random() * (m - n + 1) + n)
   const { user } = useStore()
@@ -15,12 +12,12 @@ export default defineComponent(() => {
   user.userInfo.errId = id
 
   onMounted(() => {
-    const errorele = document.getElementById('error') as HTMLElement
+    const errorEle = document.getElementById('error') as HTMLElement
 
-    errorele &&
+    errorEle &&
       lottie?.loadAnimation({
         path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
-        container: errorele,
+        container: errorEle,
         loop: true,
         autoplay: true,
       })
@@ -30,7 +27,7 @@ export default defineComponent(() => {
     <div class='wrapperErr'>
       <div class='error'>ERROR 404</div>
       <div id='error'></div>
-      <div onClick={() => linkTo('/')} class='back'>
+      <div onClick={() => router.replace({ name: 'index' })} class='back'>
         回首页
       </div>
     </div>

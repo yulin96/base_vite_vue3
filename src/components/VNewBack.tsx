@@ -1,4 +1,3 @@
-import type { RouteNamedMap } from 'vue-router/auto/routes'
 import { FloatingBubble } from 'vant'
 import 'vant/es/floating-bubble/style'
 import './style/VNewBack.css'
@@ -8,7 +7,7 @@ interface Props {
   axis?: 'x' | 'y' | 'xy'
   magnetic?: 'x' | 'y'
   linkMap: {
-    [key in keyof RouteNamedMap]?: keyof RouteNamedMap
+    [x: string]: string
   }
   [key: string]: any
 }
@@ -26,10 +25,10 @@ export default defineComponent(
 
     const backIns = ref({
       show: false,
-      name: undefined as undefined | keyof RouteNamedMap,
+      name: undefined as undefined | string,
       offset: { x: 0, y: 0 },
       onClick() {
-        router.replace({ name: this.name || '/' })
+        router.replace({ name: this.name || 'index' })
       },
     })
 
@@ -51,7 +50,8 @@ export default defineComponent(
 
     watch(
       () => route.name,
-      (name) => {
+      (newVal) => {
+        const name = newVal as string
         if (name && linkMap?.[name]) {
           backIns.value.name = linkMap[name]
           backIns.value.show = true
