@@ -66,7 +66,7 @@ export default defineConfig(({ command }) => ({
           compressorjs: [['default', 'compressorjs']],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
+      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**'],
       dts: './@types/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
@@ -79,6 +79,7 @@ export default defineConfig(({ command }) => ({
   resolve: {
     alias: {
       '~': fileURLToPath(new URL('./src', import.meta.url)),
+      '~~': fileURLToPath(new URL('./scan', import.meta.url)),
     },
   },
   base: './',
@@ -89,6 +90,7 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
+        scan: path.resolve(__dirname, 'scan/index.html'),
       },
       output: {
         chunkFileNames: 'assets/static/[name]-[hash].js',
