@@ -1,9 +1,17 @@
-import type { RouterTyped } from 'vue-router/auto'
-import { createRouter, createWebHashHistory } from 'vue-router/auto'
+import { createRouter, createWebHashHistory } from 'vue-router'
+import index from '~/views/index.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-}) as RouterTyped
+  routes: [
+    {
+      path: '/',
+      name: 'index',
+      component: index,
+      meta: { index: 10, keepAlive: true },
+    },
+  ],
+})
 
 router.addRoute({
   path: '/:pathMatch(.*)*',
@@ -15,7 +23,7 @@ router.addRoute({
 router.beforeEach(async (to, from) => {})
 
 router.afterEach((_, from) => {
-  const fromName = from.meta.gsapName
+  const fromName = from.name
   if (fromName && window[gsapAll]?.[fromName])
     setTimeout(() => {
       window[gsapAll]?.[fromName]?.revert()

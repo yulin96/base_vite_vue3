@@ -1,6 +1,5 @@
 <script setup lang="ts">
-definePage({ meta: { gsapName: 'index', index: 10 } })
-
+/*  */
 onMounted(() => {
   window[gsapAll]['index'] = gsap.context(() => {}, '.index')
 })
