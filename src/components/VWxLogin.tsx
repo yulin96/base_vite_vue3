@@ -2,7 +2,7 @@ import { defineComponent } from 'vue'
 import './style/VWxLogin.css'
 
 interface Props {
-  name: string
+  name?: string
   code: string
 }
 
@@ -11,7 +11,9 @@ export default defineComponent(
     const show = ref(false)
 
     const openLink = () => {
-      const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name)}&state=${props.code}&type=2`
+      const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name ?? '互动微平台')}&state=${
+        props.code
+      }&type=2`
 
       if (parent) parent.location.href = url
       else window.location.href = url
