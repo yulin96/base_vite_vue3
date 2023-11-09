@@ -1,6 +1,3 @@
-/**
- * beta 版本
- */
 export class CanvasAnimation {
   private option: {
     urlPrefix: string
@@ -14,6 +11,7 @@ export class CanvasAnimation {
     replayLoopTo?: number
     replayLoopFrom?: number
     frame: number
+    gap?: number
   }
   private imgArr: HTMLImageElement[] = []
   private canvas: HTMLCanvasElement
@@ -23,12 +21,15 @@ export class CanvasAnimation {
   private timer: number | any
   private frameIndex = 0
   private framePlaying = false
+  public gap = 0
+  private canPlay = true
 
   constructor(option: CanvasAnimation['option']) {
     this.option = option
     this.canvas = document.getElementById(this.option.el) as HTMLCanvasElement
     this.xtc = this.canvas.getContext('2d')!
     this.CreateImgList()
+    this.gap = this.option.gap || this.gap
   }
 
   private CreateImgList() {
@@ -41,6 +42,7 @@ export class CanvasAnimation {
           this.CH = img.height * this.option.dpr
           this.canvas.width = this.CW
           this.canvas.height = this.CH
+          this.canvas.style.pointerEvents = 'none'
           this.OnReady()
         }
       }
@@ -66,7 +68,8 @@ export class CanvasAnimation {
     if (this.framePlaying) {
       return
     }
-    this.timer = setInterval(() => {
+
+    const IntervalFun = () => {
       this.frameIndex++
       this.xtc.clearRect(0, 0, this.CW, this.CH)
       if (this.frameIndex < this.imgArr.length - 1 && this.imgArr[this.frameIndex] == undefined) {
@@ -100,6 +103,17 @@ export class CanvasAnimation {
         this.framePlaying = false
         this.frameIndex = 0
       }
+    }
+
+    this.timer = setInterval(() => {
+      if (this.canPlay) IntervalFun()
+      if (this.frameIndex + 2 >= this.option.MaxL) {
+        if (!this.canPlay) return
+        this.canPlay = false
+        setTimeout(() => {
+          this.canPlay = true
+        }, this.gap)
+      }
     }, 1000 / this.option.frame)
     return this
   }
@@ -113,14 +127,15 @@ export class CanvasAnimation {
   }
 }
 
-// let vCar = new CA({
-//     urlPrefix: 'static/images/car/c',
-//     suffix: '.png',
-//     MaxL: 23,
-//     el: 'vCar',
-//     dpr: 1,
-//     poster: true,
-//     posterUrl: 'static/images/car/c1.png',
-//     loop: true,
-//     frame: 20,
-// }).play();
+// new CanvasAnimation({
+//   urlPrefix: 'https://oss.eventnet.cn/H5/zz/cibipat/x/1/',
+//   suffix: '.png',
+//   MaxL: 44,
+//   el: 'bottomCanvas',
+//   dpr: 1,
+//   poster: true,
+//   posterUrl: 'https://oss.eventnet.cn/H5/zz/cibipat/x/1/0.png',
+//   loop: true,
+//   frame: 32,
+//   gap: 0,
+// }).play()
