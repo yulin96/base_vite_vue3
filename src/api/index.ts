@@ -1,1 +1,0 @@
-const errorStr = 'msg'
