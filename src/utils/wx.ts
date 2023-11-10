@@ -15,7 +15,14 @@ const _getWXconfig = (): Promise<any> => {
           timestamp: el.data.timestamp,
           nonceStr: el.data.nonceStr,
           signature: el.data.signature,
-          jsApiList: ['scanQRCode', 'updateAppMessageShareData', 'updateTimelineShareData', 'openLocation'],
+          jsApiList: [
+            'scanQRCode',
+            'updateAppMessageShareData',
+            'updateTimelineShareData',
+            'openLocation',
+            'previewImage',
+            'hideAllNonBaseMenuItem',
+          ],
         })
         wx.ready(function () {
           resolve(null)
@@ -93,6 +100,22 @@ export const WxOpenLocation = (data: IWxOpenLocation): void => {
     .catch((err) => {
       console.log(err)
     })
+}
+
+export const WxPreviewImage = (current: string, urls: string[]): void => {
+  _getWXconfig()
+    .then(() => {
+      wx.previewImage({ current, urls })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
+}
+
+export const wxHideAllNonBaseMenuItem = () => {
+  _getWXconfig().then(() => {
+    wx.hideAllNonBaseMenuItem()
+  })
 }
 
 export const wxPreventShare = () => {
