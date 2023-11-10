@@ -30,26 +30,28 @@
     <link rel="dns-prefetch" href="%VITE_APP_API_URL%" />
 
     <script>
-      function isMobile() {
-        const reg =
-          /phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/i
-        return reg.test(navigator.userAgent.toLowerCase())
-      }
+      if ('%VITE_APP_OPENPC%' == '1') {
+        function isMobile() {
+          const reg =
+            /phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/i
+          return reg.test(navigator.userAgent.toLowerCase())
+        }
 
-      const paramsSearch = new URLSearchParams(window.location.search)
-      let params = {}
+        const paramsSearch = new URLSearchParams(window.location.search)
+        let params = {}
 
-      for (const key of paramsSearch.keys()) {
-        params[key] = paramsSearch.get(key)
-      }
+        for (const key of paramsSearch.keys()) {
+          params[key] = paramsSearch.get(key)
+        }
 
-      const { device = '', ...data } = params
+        const { device = '', ...data } = params
 
-      let urlParams = ''
-      for (const key in data) urlParams += (urlParams ? '&' : '?') + `${key}=${data[key]}`
+        let urlParams = ''
+        for (const key in data) urlParams += (urlParams ? '&' : '?') + `${key}=${data[key]}`
 
-      if (!isMobile() && !~device.indexOf('PC')) {
-        window.location.href = './pc.html' + urlParams
+        if (!isMobile() && !~device.indexOf('PC')) {
+          window.location.href = './pc.html' + urlParams
+        }
       }
     </script>
 
