@@ -44,16 +44,20 @@ code {
 }
 
 [btn] {
-  transition:
-    opacity 0.09s ease,
-    transform 0.09s ease;
   cursor: pointer;
-  box-shadow: #0003 4px 4px 5px;
+  filter: drop-shadow(4px 4px 5px #0003);
 }
 
 [btn]:active {
+  transition:
+    opacity 0.09s ease,
+    transform 0.09s ease;
   opacity: 0.9;
   transform: scale(0.96) translateZ(0);
+}
+
+[code] {
+  pointer-events: none;
 }
 
 /* @font-face {
