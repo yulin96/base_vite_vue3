@@ -4,6 +4,7 @@ import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import legacy from '@vitejs/plugin-legacy'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -69,6 +70,10 @@ export default defineConfig(({ command }) => ({
       dts: './@types/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
+    }),
+    legacy({
+      targets: ['ios >= 11', 'chrome >= 64'],
+      modernPolyfills: true,
     }),
     visualizer(),
   ],
