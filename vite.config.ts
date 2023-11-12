@@ -4,7 +4,6 @@ import path from 'node:path'
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import legacy from '@vitejs/plugin-legacy'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
@@ -71,9 +70,6 @@ export default defineConfig(({ command }) => ({
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
     }),
-    legacy({
-      targets: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
-    }),
     visualizer(),
   ],
   resolve: {
@@ -83,10 +79,14 @@ export default defineConfig(({ command }) => ({
     },
   },
   base: './',
+  esbuild: {
+    drop: env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
+  },
   build: {
-    reportCompressedSize: false,
+    assetsDir: 'assets',
+    reportCompressedSize: true,
     chunkSizeWarningLimit: 1000,
-    minify: 'terser',
+    target: ['ios11', 'chrome64'],
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
@@ -99,12 +99,6 @@ export default defineConfig(({ command }) => ({
         },
       },
     },
-    terserOptions: {
-      compress: {
-        drop_console: env.VITE_DROP_CONSOLE == '1' ? true : false,
-        drop_debugger: env.VITE_DROP_DEBUGGER == '1' ? true : false,
-      },
-    },
   },
   server: {
     host: '0.0.0.0',
@@ -114,7 +108,7 @@ export default defineConfig(({ command }) => ({
     postcss: {
       plugins: [
         postcssPresetEnv({
-          browsers: ['defaults', 'not dead', '> 1%', 'ios >= 13', 'Android >= 10'],
+          browsers: ['ios >= 11', 'chrome >= 64'],
         }),
         tailwindcss,
         postcsspxtoviewport8plugin({

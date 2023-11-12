@@ -189,9 +189,6 @@ devDependencies:
   tailwindcss:
     specifier: ^3.3.5
     version: 3.3.5
-  terser:
-    specifier: ^5.24.0
-    version: 5.24.0
   unplugin-auto-import:
     specifier: ^0.16.7
     version: 0.16.7(@vueuse/core@10.6.0)
