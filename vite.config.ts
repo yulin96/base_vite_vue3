@@ -91,7 +91,6 @@ export default defineConfig(({ command }) => ({
     assetsDir: 'assets',
     reportCompressedSize: true,
     chunkSizeWarningLimit: 1000,
-    target: ['ios11', 'chrome64'],
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
