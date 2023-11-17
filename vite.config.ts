@@ -20,7 +20,6 @@ const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
 const env = loadEnv('production', process.cwd())
 
-// https://vitejs.dev/config/
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
