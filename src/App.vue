@@ -18,7 +18,8 @@ registerWxShare()
 
 <style>
 html,
-body {
+body,
+.wrapper {
   background-color: #fff;
 }
 </style>
