@@ -1,6 +1,6 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["@types/**/*", "src/**/*", "src/**/*.vue", "scan/**/*", "node_modules/typed.js/index.d.ts"],
+  "include": ["typings/**/*", "src/**/*", "src/**/*.vue", "scan/**/*", "node_modules/typed.js/index.d.ts"],
   "exclude": ["src/**/__tests__/*", "src/base/**/*", "src/utils/other/**/*", "dist", "src/components/plugin/**/*.vue"],
   "compilerOptions": {
     "composite": true,
