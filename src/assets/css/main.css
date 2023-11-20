@@ -4,7 +4,7 @@
 
 #app {
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -16,7 +16,7 @@
 .wrapper {
   position: absolute;
   top: 0;
-  width: 100vw;
+  width: 100%;
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
@@ -30,7 +30,7 @@ div::-webkit-scrollbar {
 }
 
 .content {
-  width: 100vw;
+  width: 100%;
   min-height: max(1430px, 100%);
   -webkit-overflow-scrolling: touch；;
   overflow-x: hidden;
