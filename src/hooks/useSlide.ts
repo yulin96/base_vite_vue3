@@ -1,7 +1,7 @@
 import { useScroll } from '@vueuse/core'
 
 export const useSlide = (
-  ele: HTMLElement,
+  eleName: string,
   toUp?: Function | undefined,
   toDown?: Function | undefined,
   toUpIng?: Function | undefined,
@@ -9,7 +9,14 @@ export const useSlide = (
   slideNumber = 100,
 ) => {
   const startMove = ref({ clientY: 0, once: true })
+  const ele = document.querySelector(eleName) as HTMLDivElement | null
+  if (!ele) return console.error('ele is not found')
   const { arrivedState, isScrolling } = useScroll(ele, { offset: { bottom: 0 } })
+
+  let lock = false
+  ele.addEventListener('touchstart', () => {
+    lock = false
+  })
 
   ele.addEventListener('touchmove', (t) => {
     const clientY = t.changedTouches[0].clientY
@@ -27,6 +34,8 @@ export const useSlide = (
         if (t.cancelable) {
           t.preventDefault()
         }
+        if (lock) return
+        lock = true
         return startClientY > clientY ? toUp?.() : toDown?.()
       }
 
@@ -43,5 +52,6 @@ export const useSlide = (
   ele.addEventListener('touchend', () => {
     startMove.value.clientY = 0
     startMove.value.once = true
+    lock = false
   })
 }
