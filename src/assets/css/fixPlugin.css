@@ -11,7 +11,8 @@
 }
 
 .van-toast.center_toast {
-  padding: 18px 36px;
+  min-width: 160px;
+  padding: 14px 28px;
   font-size: 28px;
   color: var(--z-toast-color);
   letter-spacing: 0.3px;
