@@ -6,14 +6,14 @@ registerWxShare()
 </script>
 
 <template>
-  <RouterView class="wrapper" v-slot="{ Component, route }">
-    <Transition :name="transitionName">
-      <KeepAlive v-if="route.meta.keepAlive">
+  <router-view class="wrapper" v-slot="{ Component, route }">
+    <transition :name="transitionName">
+      <keep-alive v-if="route.meta.keepAlive">
         <component :is="Component" />
-      </KeepAlive>
+      </keep-alive>
       <component v-else :is="Component" />
-    </Transition>
-  </RouterView>
+    </transition>
+  </router-view>
 </template>
 
 <style>

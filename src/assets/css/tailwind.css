@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-.flexcenter {
-  @apply flex justify-center items-center;
+/* TODO:: */
+
+@layer utilities {
+  .flexcenter {
+    @apply flex items-center justify-center;
+  }
+
+  .paused {
+    animation-play-state: paused;
+  }
+  .running {
+    animation-play-state: running;
+  }
 }

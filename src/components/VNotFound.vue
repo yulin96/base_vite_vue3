@@ -1,3 +1,38 @@
+<script setup lang="ts">
+const router = useRouter()
+const toIndex = () => {
+  router.replace({ name: 'index' })
+}
+
+const getRandomInt = (n: number, m: number) => Math.floor(Math.random() * (m - n + 1) + n)
+const { user } = useStore()
+const id = user.userInfo.errId || getRandomInt(1, 10)
+user.userInfo.errId = id + ''
+
+const errorEle = ref<HTMLDivElement | null>(null)
+
+/*  */
+onMounted(() => {
+  if (!errorEle.value) return console.error('errorEle is null')
+  errorEle &&
+    lottie?.loadAnimation({
+      path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
+      container: errorEle.value,
+      loop: true,
+      autoplay: true,
+    })
+})
+</script>
+
+<template>
+  <div class="wrapperErr">
+    <div class="error">ERROR 404</div>
+    <div ref="errorEle"></div>
+    <div @click="toIndex" class="back">回首页</div>
+  </div>
+</template>
+
+<style>
 .wrapperErr {
   display: flex;
   flex-direction: column;
@@ -54,3 +89,4 @@
   width: 100%;
   height: 500px;
 }
+</style>
