@@ -28,21 +28,23 @@ export default defineComponent(
       }
     }
 
+    const control = (ele: any) => {
+      if (ele.target != playImg.value && audio.value?.paused) {
+        audio.value?.play()
+      }
+      document.body.removeEventListener('click', control)
+    }
+
     onMounted(() => {
       document.addEventListener(
         'WeixinJSBridgeReady',
         () => {
-          audio.value?.play() // 播放
+          audio.value?.play()
+          document.body.removeEventListener('click', control)
         },
         false,
       )
 
-      const control = (ele: any) => {
-        if (ele.target != playImg.value && audio.value?.paused) {
-          audio.value?.play()
-        }
-        document.body.removeEventListener('click', control)
-      }
       document.body.addEventListener('click', control)
     })
 
