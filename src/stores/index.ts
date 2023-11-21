@@ -1,12 +1,11 @@
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive<IUserStore>({ userInfo: {}, wxInfo: {}, keepAliveId: 1 })
+    const user = reactive<IUserStore>({ userInfo: {}, wxInfo: {} })
 
     const clearUser = () => {
-      Object.keys(user).forEach((key) => {
-        delete user[key]
-      })
+      user.userInfo = {}
+      user.wxInfo = {}
     }
 
     return { user, clearUser }

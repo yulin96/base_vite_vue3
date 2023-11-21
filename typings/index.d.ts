@@ -1,8 +1,3 @@
-interface IRes {
-  code: number
-  [x: string]: any
-}
-
 interface IUserStore {
   userInfo: {
     name?: string
@@ -15,6 +10,10 @@ interface IUserStore {
     nickname?: string
     portrait?: string
   }
-  keepAliveId: number
+  [x: string]: any
+}
+
+interface IRes {
+  code: number
   [x: string]: any
 }
