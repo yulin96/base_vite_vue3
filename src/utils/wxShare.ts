@@ -8,13 +8,7 @@ export const registerWxShare = () => {
 
   const shareContent = { title, desc, link, imgUrl }
 
-  shareContent.title &&
-    shareContent.desc &&
-    shareContent.link &&
-    shareContent.imgUrl &&
-    isWeiXin() &&
-    isHttps() &&
-    WxShare(shareContent)
+  shareContent.title && shareContent.link && shareContent.imgUrl && isWeiXin() && isHttps() && WxShare(shareContent)
 
   isHttps() &&
     typeof dd !== 'undefined' &&
