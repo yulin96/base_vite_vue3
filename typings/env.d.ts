@@ -13,16 +13,6 @@ declare const WeixinJSBridge: any
 declare const VConsole: any
 declare const dd: any
 
-type RouteTransitionName =
-  | 'Slide'
-  | 'FilterBlur'
-  | 'Zoom'
-  | 'FlipY'
-  | 'CollapseY'
-  | 'DiagonallyFadeOut'
-  | 'leftFlyOut'
-  | String
-
 interface ImportMetaEnv {
   readonly VITE_APP_VCONSOLE_ID: string
   readonly VITE_APP_API_URL: string

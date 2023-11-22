@@ -3,6 +3,16 @@ import { useRoute } from 'vue-router'
 
 import '../assets/css/transition-vue.css'
 
+type RouteTransitionName =
+  | 'Slide'
+  | 'FilterBlur'
+  | 'Zoom'
+  | 'FlipY'
+  | 'CollapseY'
+  | 'DiagonallyFadeOut'
+  | 'leftFlyOut'
+  | (string & {})
+
 export const useRouteTransition = (transitionTypeName: RouteTransitionName = 'Slide') => {
   const transitionName = ref('slideApp')
   const slideType = transitionTypeName
