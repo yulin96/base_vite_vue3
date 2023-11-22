@@ -205,7 +205,7 @@ env 文件下可以配置页面标题，分享标题描述等(配置即生效)
       "prefix": "ag",
       "body": [
         "const { get: get_${1:name} } = useLock()",
-        "export const api_${1:name} = (data: { [x: string]: any } = {}) =>",
+        "export const api_${1:name} = (data: Record<string, any> = {}) =>",
         "  new Promise<IRes | null>((resolve, _) => {",
         "    get_${1:name}('/${1:name}', data).then((res) => {",
         "      if (res.code == 200) {",
@@ -223,7 +223,7 @@ env 文件下可以配置页面标题，分享标题描述等(配置即生效)
       "prefix": "ap",
       "body": [
         "const { post: post_${1:name} } = useLock()",
-        "export const api_${1:name} = (data: { [x: string]: any } = {}) =>",
+        "export const api_${1:name} = (data: Record<string, any> = {}) =>",
         "  new Promise<IRes | null>((resolve, _) => {",
         "    post_${1:name}('/${1:name}', data).then((res) => {",
         "      if (res.code == 200) {",

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const props = defineProps<{ name: string; params?: { [x: string]: any }; backColor?: string }>()
+const props = defineProps<{ name: string; params?: Record<string, any>; backColor?: string }>()
 
 const router = useRouter()
 const linkTo = () => {
