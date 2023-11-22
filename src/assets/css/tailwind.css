@@ -2,17 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* TODO:: */
+/* truncate  文本溢出 */
 
-@layer utilities {
-  .flexcenter {
-    @apply flex items-center justify-center;
-  }
+/* line-clamp-1 行夹 */
 
-  .paused {
-    animation-play-state: paused;
-  }
-  .running {
-    animation-play-state: running;
-  }
-}
+/* tracking 字间距 */
