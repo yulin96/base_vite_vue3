@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /* 路由动画 */
-const { transitionName } = useRouteTransition('Slide')
+const { transitionName } = useRouteTransition()
 /* 分享 */
 wxPreventShare()
 </script>

@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'index',
       component: index,
-      meta: { index: 10, keepAlive: true },
+      meta: { index: 10 },
     },
   ],
 })
@@ -17,7 +17,7 @@ router.addRoute({
   path: '/:pathMatch(.*)*',
   name: '404',
   component: () => import('~/components/VNotFound.vue'),
-  meta: { index: 404, keepAlive: true },
+  meta: { index: 404 },
 })
 
 router.beforeEach(async (to, from) => {})
