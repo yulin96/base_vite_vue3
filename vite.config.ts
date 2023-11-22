@@ -3,7 +3,6 @@ import path from 'node:path'
 
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 
 import AutoImport from 'unplugin-auto-import/vite'
@@ -24,7 +23,6 @@ export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     vue({ script: { defineModel: true } }),
-    vueJsx(),
     Components({
       dirs: ['src/components'],
       extensions: ['vue', 'tsx', 'jsx'],
