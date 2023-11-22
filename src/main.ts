@@ -5,6 +5,11 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
+import { addPcSupport } from '~/utils/addPcSupport'
+
+if (import.meta.env.VITE_APP_OPENPC == '1') {
+  addPcSupport().then(() => {})
+}
 
 checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')
@@ -17,8 +22,9 @@ import 'vant/es/image-preview/style'
 // import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 
-import '~/assets/css/main.css'
 import '~/assets/css/fixPlugin.css'
+
+import '~/assets/css/main.css'
 
 setToastDefaultOptions({
   forbidClick: true,

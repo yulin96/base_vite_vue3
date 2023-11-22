@@ -18,6 +18,9 @@ const overlayStyle = {
 }
 
 onMounted(async () => {
+  if (import.meta.env.VITE_APP_OPENPC == '1') {
+    await addPcSupport()
+  }
   if (!(await getOpenId())) show.value = true
 })
 </script>

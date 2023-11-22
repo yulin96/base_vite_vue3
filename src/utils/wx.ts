@@ -1,9 +1,13 @@
 import wx from 'weixin-js-sdk'
 import axios from 'axios'
 
-const _getWXconfig = (): Promise<any> => {
-  const urlType = ~location.href.indexOf('h5.eventnet.cn') ? 2 : 1
-  return new Promise((resolve, reject) => {
+const wxConfigReady = Symbol('wxConfigReady')
+window[wxConfigReady] = false
+
+const _getWXconfig = () => {
+  return new Promise<void>((resolve, reject) => {
+    if (window[wxConfigReady]) return resolve()
+    const urlType = ~location.href.indexOf('h5.eventnet.cn') ? 2 : 1
     const wxLink = window.location.href.split('#')[0]
     const data = new FormData()
     data.append('url', wxLink)
@@ -22,10 +26,12 @@ const _getWXconfig = (): Promise<any> => {
             'openLocation',
             'previewImage',
             'hideAllNonBaseMenuItem',
+            'closeWindow',
           ],
         })
         wx.ready(function () {
-          resolve(null)
+          resolve()
+          window[wxConfigReady] = true
         })
         wx.error(function (res: any) {
           reject(res.errMsg)
@@ -136,4 +142,12 @@ export const wxPreventShare = () => {
   } else {
     onBridgeReady()
   }
+}
+
+export const closeWindow = () => {
+  isWeiXin()
+    ? _getWXconfig().then(() => {
+        wx.closeWindow()
+      })
+    : window.close()
 }
