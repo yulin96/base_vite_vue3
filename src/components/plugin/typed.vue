@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import Typed from 'typed.js'
-definePage({ meta: { gsapName: 'pages_index', index: 10 } })
 
 onMounted(() => {
   window[gsapAll]['pages_index'] = gsap.context(() => {}, '.pages_index')
