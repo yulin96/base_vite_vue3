@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <transition name="slide-up" mode="out-in">
     <slot></slot>
