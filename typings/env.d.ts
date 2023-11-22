@@ -4,8 +4,6 @@ declare module 'console' {
   export = typeof import('console')
 }
 
-type IReplace = typeof import('~/router').replace
-
 // declare const html2canvas: typeof import('html2canvas').default
 declare const lottie: typeof import('lottie-web').default
 
@@ -14,18 +12,21 @@ declare const VConsole: any
 declare const dd: any
 
 interface ImportMetaEnv {
-  readonly VITE_APP_VCONSOLE_ID: string
   readonly VITE_APP_API_URL: string
-  readonly VITE_APP_WS_API_URL: string
   readonly VITE_APP_LOCALSTORAGE_NAME: string
+  readonly VITE_IMAGE_WEBP: string
+  readonly VITE_APP_OPENPC: string
+  readonly VITE_DROP_CONSOLE: string
   readonly VITE_APP_TITLE: string
   readonly VITE_APP_HM_BAIDU: string
   readonly VITE_APP_SHARE_TITLE: string
   readonly VITE_APP_SHARE_DESC: string
   readonly VITE_APP_SHARE_LINK: string
   readonly VITE_APP_SHARE_IMGURL: string
+  readonly VITE_APP_AUTHOR: string
+  readonly VITE_APP_CONTACT: string
+  readonly VITE_APP_COMPANY: string
+  readonly VITE_APP_COMPANY_LINK: string
 }
 
-interface Window {
-  [gsapAll]: { [key: string]: gsap.Context | undefined }
-}
+interface Window {}
