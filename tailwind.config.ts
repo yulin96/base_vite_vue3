@@ -48,6 +48,16 @@ export default {
           'background-repeat': 'no-repeat',
           'background-position': 'bottom',
         },
+        '.flash': {} /* 流光动画 */,
+        '.flash-play': {} /* 流光动画播放 */,
+        '.expand': {
+          'position': 'relative',
+          '&::before': {
+            content: "''",
+            position: 'absolute',
+            inset: '-20px',
+          },
+        },
       })
     }),
   ],

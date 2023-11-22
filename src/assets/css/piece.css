@@ -42,23 +42,7 @@
   animation: heartBeat_k 1.5s 0.3s ease-in-out infinite;
 }
 
-.expand {
-  position: relative;
-}
-
-.expand::before {
-  position: absolute;
-  inset: -20px;
-  content: '';
-}
-
-.flex-center {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-@keyframes light-flow {
+@keyframes flash-flow {
   0% {
     background-position: 150% 0;
   }
@@ -69,30 +53,32 @@
   }
 }
 
-.light_l {
+.flash {
   position: relative;
   overflow: hidden;
 }
 
-.light_l::after {
+.flash::after {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 150%;
   height: 120%;
   content: '';
-  background: linear-gradient(90deg, transparent 0% 45%, #ffffff60 50%, transparent 55% 100%);
+  background: linear-gradient(90deg, transparent 0% 45%, #ffffffaa 50%, transparent 55% 100%);
   background-position: 150% 0;
   background-size: 200% 120%;
   transform: skewX(-30deg) translate(-50%, -50%);
-  animation: light-flow 3s infinite linear;
+  animation: flash-flow 3s infinite linear;
   animation-play-state: paused;
+  pointer-events: none;
 }
 
-.light_l.play::after {
+.flash.flash-play::after {
   animation-play-state: running;
 }
 
+/*  */
 @keyframes waterfall {
   0% {
     opacity: 0;

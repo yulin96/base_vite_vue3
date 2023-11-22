@@ -8,7 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'index',
       component: index,
-      meta: { index: 10, keepAlive: true },
+      meta: { index: 10 },
     },
   ],
 })
@@ -26,13 +26,9 @@ router.afterEach((to, from) => {})
 
 declare module 'vue-router' {
   interface RouteMeta {
-    title?: string
-    keepAlive?: boolean
-
     index?: number
+    title?: string
     transitionName?: string
-
-    gsapName?: string
 
     [x: string]: string | number | boolean | undefined
   }

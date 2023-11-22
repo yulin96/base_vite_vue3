@@ -8,10 +8,9 @@ registerWxShare()
 <template>
   <router-view class="wrapper" v-slot="{ Component, route }">
     <transition :name="transitionName">
-      <keep-alive v-if="route.meta.keepAlive">
+      <keep-alive exclude="">
         <component :is="Component" />
       </keep-alive>
-      <component v-else :is="Component" />
     </transition>
   </router-view>
 </template>
