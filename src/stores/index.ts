@@ -1,19 +1,3 @@
-interface IUserStore {
-  userInfo: {
-    name?: string
-    phone?: string
-    code?: string
-    errId?: string
-    [x: string]: any
-  }
-  wxInfo: {
-    openid?: string
-    nickname?: string
-    portrait?: string
-  }
-  [x: string]: any
-}
-
 export const useStore = defineStore(
   'user',
   () => {
