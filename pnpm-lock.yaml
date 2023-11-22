@@ -108,9 +108,6 @@ dependencies:
     version: 1.1.1
 
 devDependencies:
-  '@rushstack/eslint-patch':
-    specifier: ^1.6.0
-    version: 1.6.0
   '@tsconfig/node18':
     specifier: ^18.2.2
     version: 18.2.2
@@ -2245,10 +2242,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@rushstack/eslint-patch@1.6.0:
-    resolution: {integrity: sha512-2/U3GXA6YiPYQDLGwtGlnNgKYBSwCFIHf8Y9LUY5VATHdtbLlU0Y1R3QoBnT0aB4qv/BEiVVsj7LJXoQCgJ2vA==}
-    dev: true
 
   /@tootallnate/once@2.0.0:
     resolution: {integrity: sha512-XCuKFP5PS55gnMVu3dty8KPatLqUoy/ZYzDzAGCQ8JNFCkLXzmI7vNHCR+XpbZaMWQK/vQubr7PkYq8g470J/A==}
