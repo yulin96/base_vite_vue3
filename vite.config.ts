@@ -40,7 +40,7 @@ export default defineConfig(({ command }) => ({
         'vue-router',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
-          vant: [
+          'vant': [
             'showToast',
             'showFailToast',
             'showSuccessToast',
@@ -58,9 +58,9 @@ export default defineConfig(({ command }) => ({
             'showIm',
             'showImagePreview',
           ],
-          gsap: ['gsap'],
-          html2canvas: [['default', 'html2canvas']],
-          compressorjs: [['default', 'compressorjs']],
+          'gsap': ['gsap'],
+          'html2canvas': [['default', 'html2canvas']],
+          'compressorjs': [['default', 'compressorjs']],
         },
       ],
       dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
