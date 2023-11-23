@@ -23,6 +23,8 @@ const control = (ele: any) => {
   document.body.removeEventListener('click', control)
 }
 
+useMediaSession(audio)
+
 /*  */
 onMounted(() => {
   document.addEventListener(
