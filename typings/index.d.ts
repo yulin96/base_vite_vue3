@@ -1,8 +1,3 @@
-interface IRes {
-  code: number
-  [x: string]: any
-}
-
 interface IUserStore {
   userInfo: {
     name?: string
@@ -18,3 +13,19 @@ interface IUserStore {
   }
   [x: string]: any
 }
+
+interface IRes {
+  code: number
+  [x: string]: any
+}
+
+type RouteTransitionName =
+  | 'Slide'
+  | 'FilterBlur'
+  | 'Zoom'
+  | 'FlipY'
+  | 'CollapseY'
+  | 'DiagonallyFadeOut'
+  | 'leftFlyOut'
+  | 'slidePage'
+  | (string & {})
