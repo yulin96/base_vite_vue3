@@ -6,6 +6,9 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
 import { addPcSupport } from '~/utils/addPcSupport'
+import { checkBuildVersion } from '~/utils/checkBuildVersion'
+
+checkBuildVersion()
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
   addPcSupport().then(() => {})
