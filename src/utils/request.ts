@@ -1,4 +1,4 @@
-import axios, { type AxiosInstance } from 'axios'
+import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import { isFromData, formDataToObj } from '~/utils/tools'
 
 const interceptor = (instance: AxiosInstance) => {
@@ -33,50 +33,38 @@ const instanceHttp = axios.create({
 interceptor(instance)
 interceptor(instanceHttp)
 
-/**
- * 发送 GET 请求
- * @param {string} url - 请求地址
- * @param {object} params - 请求参数
- * @param {object} headers - headers配置项
- * @returns {Promise<any>} - 返回 Promise 对象
- */
 export const axios_get = (
   url: string,
-  params: object = {},
-  headers: object = {},
+  params: Record<string, any> | null,
+  headers: Record<string, any> | null,
   signal: AbortSignal,
-): Promise<any> => {
+  otherConfig: AxiosRequestConfig = {},
+) => {
   return new Promise((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .get(url, { params, headers, signal })
-      .then((response: any) => resolve(response.data))
-      .catch((error: any) => reject(error)),
+      .get(url, { ...otherConfig, ...(params ? { params } : {}), ...(headers ? { headers } : {}), signal })
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error)),
   )
 }
 
-/**
- * 发送 POST 请求
- * @param {string} url - 请求地址
- * @param {object} data - 请求参数
- * @param {object} headers - headers 配置项
- * @returns {Promise<any>} - 返回 Promise 对象
- */
-export const axios_post = (url: string, data: object, headers: object = {}, signal: AbortSignal): Promise<any> => {
+export const axios_post = (
+  url: string,
+  data: Record<string, any> | null,
+  headers: Record<string, any> | null,
+  signal: AbortSignal,
+  otherConfig: AxiosRequestConfig = {},
+) => {
   return new Promise((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, data, { headers, signal })
-      .then((response: any) => resolve(response.data))
-      .catch((error: any) => reject(error)),
+      .post(url, data, { ...otherConfig, ...(headers ? { headers } : {}), signal })
+      .then((response) => resolve(response.data))
+      .catch((error) => reject(error)),
   )
 }
 
-/**
- * 获取本地 JSON 文件
- * @param {string} url - JSON 文件路径
- * @returns {Promise<any>} - 返回 Promise 对象
- */
-export const getLocalJson = (url: string): Promise<any> =>
-  new Promise<any>((resolve, reject) => {
+export const getLocalJson = (url: string) =>
+  new Promise((resolve, reject) => {
     fetch('./' + url)
       .then((response) => response.json())
       .then((res) => {
