@@ -31,7 +31,7 @@ watch(
   { immediate: true },
 )
 
-const offsetChange = ({ x, y }: any) => {
+const offsetChange = ({ x, y }: Record<'x' | 'y', number>) => {
   user.offsetX = ~~x
   user.offsetY = ~~y
 }

@@ -33,7 +33,7 @@ const _getWXconfig = () => {
           resolve()
           window[wxConfigReady] = true
         })
-        wx.error(function (res: any) {
+        wx.error(function (res) {
           reject(res.errMsg)
         })
       })
@@ -43,12 +43,7 @@ const _getWXconfig = () => {
   })
 }
 
-export interface IWxShare {
-  title: string
-  desc: string
-  link: string
-  imgUrl: string
-}
+type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
 
 export const WxShare = (data: IWxShare): void => {
   const { title, desc, link, imgUrl } = data
@@ -62,15 +57,15 @@ export const WxShare = (data: IWxShare): void => {
     })
 }
 
-export const WxScanQRCode = (): Promise<{ resultStr: string; [x: string]: string }> => {
+export const WxScanQRCode = (): Promise<string> => {
   return new Promise((resolve, reject) => {
     _getWXconfig()
       .then(() => {
         wx.scanQRCode({
-          needResult: 1, // 默认为0，扫描结果由微信处理，1则直接返回扫描结果，
-          scanType: ['qrCode', 'barCode'], // 可以指定扫二维码还是一维码，默认二者都有
-          success: function (res: any) {
-            resolve(res)
+          needResult: 1,
+          scanType: ['qrCode', 'barCode'],
+          success: function (res: Record<'resultStr', string>) {
+            resolve(res.resultStr)
           },
         })
       })
@@ -80,14 +75,8 @@ export const WxScanQRCode = (): Promise<{ resultStr: string; [x: string]: string
   })
 }
 
-export interface IWxOpenLocation {
-  latitude: number
-  longitude: number
-  name: string
-  address: string
-  scale?: number
-  infoUrl?: string
-}
+type IWxOpenLocation = Pick<wx.IopenLocation, 'latitude' | 'longitude' | 'name' | 'address'> &
+  Partial<Pick<wx.IopenLocation, 'scale' | 'infoUrl'>>
 
 /**
 {

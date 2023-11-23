@@ -13,7 +13,7 @@ import { v1 } from 'uuid'
 
 export const useUploadImage = async (
   project_uuid: string,
-  file: any,
+  file: File | Blob,
   filetype?: string,
   filenameStart: string = 'az',
   needLoading: boolean = false,

@@ -16,8 +16,8 @@ const toggleMusic = () => {
   }
 }
 
-const control = (ele: any) => {
-  if (ele.target != playImg.value && audio.value?.paused) {
+const control = (ele: MouseEvent) => {
+  if (ele?.target != playImg.value && audio.value?.paused) {
     audio.value?.play()
   }
   document.body.removeEventListener('click', control)
