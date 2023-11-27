@@ -28,6 +28,7 @@ const _getWXconfig = () => {
             'hideAllNonBaseMenuItem',
             'closeWindow',
           ],
+          openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp'],
         })
         wx.ready(function () {
           resolve()
