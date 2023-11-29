@@ -1,6 +1,21 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import { isFromData, formDataToObj } from '~/utils/tools'
 
+function convertData(data: Record<string, any>) {
+  if (data == null) return
+  for (const key in data) {
+    if (Object.prototype.hasOwnProperty.call(data, key)) {
+      if (key == 'code') {
+        data[key] = +data[key]
+        continue
+      }
+      if (typeof data[key] === 'object') convertData(data[key])
+      else if (typeof data[key] === 'number') data[key] = data[key].toString()
+      if (data[key] === 'null') data[key] = null
+    }
+  }
+}
+
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)
 
@@ -17,6 +32,9 @@ const interceptor = (instance: AxiosInstance) => {
     requestBody.data = isFromData(data) ? formDataToObj(data) : data
 
     response.data._request = requestBody
+
+    convertData(response.data)
+
     return response
   })
 }
