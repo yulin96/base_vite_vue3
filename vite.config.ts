@@ -76,7 +76,14 @@ export default defineConfig(({ command }) => ({
           'compressorjs': [['default', 'compressorjs']],
         },
       ],
-      dirs: ['./src/utils/**', './src/hooks/**', './src/config/**', './src/stores/**', './src/router/**'],
+      dirs: [
+        './src/utils/**',
+        './src/hooks/**',
+        './src/config/**',
+        './src/stores/**',
+        './src/router/**',
+        './src/api/**',
+      ],
       dts: './typings/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
@@ -95,7 +102,7 @@ export default defineConfig(({ command }) => ({
   },
   base: './',
   esbuild: {
-    drop: env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
+    drop: command === 'serve' ? [] : env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
   },
   build: {
     assetsDir: 'assets',
