@@ -1,12 +1,13 @@
-import { isAndroid } from './utils/check'
 import App from './App.vue'
 import router from './router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
+import { isAndroid } from './utils/check'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkBuildVersion } from '~/utils/checkBuildVersion'
+import { checkWebpFeature } from '~/utils/isSupportWebp'
 
 checkBuildVersion()
 
