@@ -106,38 +106,6 @@ export const Base64ToBlob = (urlData: any): Blob => {
   })
 }
 
-export function debounce(func: { apply: (arg0: any, arg1: IArguments) => void }, wait = 300, immediate = true) {
-  let timeout: number | any
-  return function executedFunction(this: any) {
-    const self = this
-    const args = arguments
-    const later = function () {
-      timeout = 0
-      if (!immediate) func.apply(self, args)
-    }
-    const callNow = immediate && !timeout
-    clearTimeout(timeout)
-    timeout = setTimeout(later, wait)
-    if (callNow) func.apply(self, args)
-  }
-}
-
-export function throttle(fn: { apply: (arg0: any, arg1: IArguments) => any }, wait = 300, isImmediate = true) {
-  let flag = true
-  return function (this: any) {
-    if (flag == true) {
-      const _this = this
-      const args = arguments
-      flag = false
-      isImmediate && fn.apply(_this, args)
-      setTimeout(() => {
-        !isImmediate && fn.apply(_this, args)
-        flag = true
-      }, wait)
-    }
-  }
-}
-
 export const dayDif = (date1: any, date2: any) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
 
 export const dayOfYear = (date: any) =>
