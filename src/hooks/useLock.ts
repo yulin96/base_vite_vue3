@@ -10,7 +10,7 @@ nprogress.configure({
 
 const openProgress = true
 
-export const usePostLock = (auto = true, delay = 150) => {
+export const usePostLock = (auto = true, delay = 300) => {
   const lock = ref(false)
   let controller: AbortController
 
@@ -60,7 +60,7 @@ export const usePostLock = (auto = true, delay = 150) => {
   return [post, lock, abort] as [typeof post, typeof lock, typeof abort]
 }
 
-export const useGetLock = (auto = true, delay = 150) => {
+export const useGetLock = (auto = true, delay = 300) => {
   const lock = ref(false)
   let controller: AbortController
 
