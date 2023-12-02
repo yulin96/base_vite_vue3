@@ -1,12 +1,30 @@
+interface IUserInfo {
+  name: string
+  phone: string
+  code: string
+  [x: string]: any
+}
+
+interface IWxInfo {
+  openid: string
+  nickname: string
+  portrait: string
+}
+
+interface IUserStore {
+  userInfo: Partial<IUserInfo>
+  wxInfo: Partial<IWxInfo>
+  [x: string]: any
+}
+
 export const useScanStore = defineStore(
   'scan',
   () => {
     const user = reactive<IUserStore>({ userInfo: {}, wxInfo: {} })
 
     const clearUser = () => {
-      Object.keys(user).forEach((key) => {
-        delete user[key]
-      })
+      user.userInfo = {}
+      user.wxInfo = {}
     }
 
     return { user, clearUser }

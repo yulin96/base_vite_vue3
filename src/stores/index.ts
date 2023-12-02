@@ -1,3 +1,22 @@
+interface IUserInfo {
+  name: string
+  phone: string
+  code: string
+  [x: string]: any
+}
+
+interface IWxInfo {
+  openid: string
+  nickname: string
+  portrait: string
+}
+
+interface IUserStore {
+  userInfo: Partial<IUserInfo>
+  wxInfo: Partial<IWxInfo>
+  [x: string]: any
+}
+
 export const useStore = defineStore(
   'user',
   () => {
