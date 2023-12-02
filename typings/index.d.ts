@@ -4,14 +4,3 @@ interface IRes {
   message?: string
   [x: string]: any
 }
-
-type RouteTransitionName =
-  | 'Slide'
-  | 'FilterBlur'
-  | 'Zoom'
-  | 'FlipY'
-  | 'CollapseY'
-  | 'DiagonallyFadeOut'
-  | 'leftFlyOut'
-  | 'slidePage'
-  | (string & {})

@@ -1,5 +1,14 @@
 import { useScroll } from '@vueuse/core'
 
+interface ISlideOptions {
+  eleName: string
+  prev?: () => void
+  next?: () => void
+  prevScroll?: (num: number) => void
+  nextScroll?: (num: number) => void
+  slideNumber?: number
+}
+
 /**
  * A custom hook for handling slide functionality.
  * @param {Object} options - The options for the slide functionality.
@@ -10,21 +19,7 @@ import { useScroll } from '@vueuse/core'
  * @param {Function} [options.nextScroll] - The function to be called when scrolling to the next slide.
  * @param {number} [options.slideNumber=100] - The threshold number for triggering the slide action.
  */
-export const useSlide = ({
-  eleName,
-  prev,
-  next,
-  prevScroll,
-  nextScroll,
-  slideNumber = 100,
-}: {
-  eleName: string
-  prev?: () => void
-  next?: () => void
-  prevScroll?: (num: number) => void
-  nextScroll?: (num: number) => void
-  slideNumber?: number
-}) => {
+export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions): void => {
   const startMove = ref({ clientY: 0, once: true })
 
   onMounted(() => {
