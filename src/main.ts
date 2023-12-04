@@ -9,16 +9,6 @@ import { addPcSupport } from '~/utils/addPcSupport'
 import { checkBuildVersion } from '~/utils/checkBuildVersion'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
 
-checkBuildVersion()
-
-if (import.meta.env.VITE_APP_OPENPC == '1') {
-  addPcSupport().then(() => {})
-}
-
-checkWebpFeature((_, result) => {
-  if (result) document.documentElement.classList.add('webp')
-}, 'lossless')
-
 import './assets/css/tailwind.css'
 
 import 'vant/es/dialog/style'
@@ -29,6 +19,16 @@ import 'vant/es/toast/style'
 import '~/assets/css/fixPlugin.css'
 
 import '~/assets/css/main.css'
+
+checkBuildVersion()
+
+if (import.meta.env.VITE_APP_OPENPC == '1') {
+  addPcSupport().then(() => {})
+}
+
+checkWebpFeature((_, result) => {
+  if (result) document.documentElement.classList.add('webp')
+}, 'lossless')
 
 setToastDefaultOptions({
   forbidClick: true,
