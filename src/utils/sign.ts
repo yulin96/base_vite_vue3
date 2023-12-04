@@ -1,3 +1,5 @@
+import { showToast } from 'vant'
+
 export default class LineCanvas {
   private el: HTMLElement
   private lineWidth: number
