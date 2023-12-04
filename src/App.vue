@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { registerWxShare } from './utils/wxShare';
+
 /* 路由动画 */
 const { transitionName } = useRouteTransition()
 /* 分享 */

@@ -1,6 +1,8 @@
 import nprogress from 'nprogress'
-import type { ToastWrapperInstance } from 'vant'
+import { showLoadingToast, showToast, type ToastWrapperInstance } from 'vant'
 import type { AxiosRequestConfig } from 'axios'
+import { axios_get, axios_post } from '~/utils/request'
+import { toFormData } from '~/utils/tools'
 
 nprogress.configure({
   showSpinner: false,
@@ -30,7 +32,7 @@ export const usePostLock = (auto = true, delay = 300) => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
       }, 2000)
 
-      axios_post(_url, _data ? objToFormData(_data) : null, headers ? headers : null, controller.signal, otherConfig)
+      axios_post(_url, _data ? toFormData(_data) : null, headers ? headers : null, controller.signal, otherConfig)
         .then((res) => {
           resolve(res as never)
         })

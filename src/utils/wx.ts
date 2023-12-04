@@ -1,5 +1,6 @@
 import wx from 'weixin-js-sdk'
 import axios from 'axios'
+import { isWeiXin } from './check'
 
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false

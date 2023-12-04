@@ -1,3 +1,6 @@
+import { isHttps, isWeiXin } from "./check"
+import { WxShare } from "./wx"
+
 export const registerWxShare = () => {
   const {
     VITE_APP_SHARE_TITLE: title,

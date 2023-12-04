@@ -1,7 +1,7 @@
 export const useTimer = (data: number = 60) => {
   const countdown = reactive({
     timer: data,
-    timerId: undefined as number | any,
+    timerId: undefined as number | undefined,
     timerText: '获取验证码',
     sending: false,
   })

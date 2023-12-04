@@ -1,6 +1,7 @@
 import axios from 'axios'
-import { objToFormData } from '~/utils/tools'
+import { toFormData } from '~/utils/tools'
 import { v1 } from 'uuid'
+import { showSuccessToast } from 'vant'
 
 /**
  *
@@ -27,7 +28,7 @@ export const useUploadImage = async (
         axios
           .post(
             host,
-            objToFormData({
+            toFormData({
               key,
               OSSAccessKeyId,
               policy,

@@ -7,10 +7,6 @@ export const getSrc = (name: string) => {
   return (modules[path] as any)?.default
 }
 
-export const prodModel = import.meta.env.PROD
-
-export const devModel = import.meta.env.DEV
-
 export const Trim = (str: string): string => {
   // return str.replace(/(^\s*)|(\s*$)/g, '')
   return str.replace(/\s/g, '')
@@ -132,7 +128,7 @@ export const blobToBase64 = (blob: any) => {
   })
 }
 
-export const objToFormData = (object: Object) => {
+export const toFormData = (object: Object) => {
   const Data = new FormData()
   for (const key in object) {
     Data.append(key, object[key])

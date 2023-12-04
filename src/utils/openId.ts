@@ -5,7 +5,9 @@
  * @returns {Promise<boolean | void>} 获取是否成功
  */
 
-const { get } = useLock()
+import { useUrlSearchParams } from '@vueuse/core'
+
+const [get] = useGetLock()
 
 export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => {
   return new Promise<boolean>((resolve) => {
@@ -15,7 +17,7 @@ export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => 
     const code = params?.code
     if (code) {
       get('https://center-service.event1.cn/wechat/user', { name, code })
-        .then((res) => {
+        .then((res: Record<string, any>) => {
           if (!res.data?.openid) return resolve(false)
           Object.assign(user.wxInfo, res.data)
           resolve(true)
