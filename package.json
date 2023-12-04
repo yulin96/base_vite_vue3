@@ -73,10 +73,10 @@
     "postcss-px-to-viewport-8-plugin": "^1.2.3",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7",
-    "rollup-plugin-visualizer": "^5.9.3",
+    "rollup-plugin-visualizer": "^5.10.0",
     "sass": "^1.69.5",
     "tailwindcss": "^3.3.5",
-    "unplugin-auto-import": "^0.17.1",
+    "unplugin-auto-import": "^0.17.2",
     "unplugin-vue-components": "^0.25.2",
     "vite": "^5.0.4",
     "vue-tsc": "^1.8.24"
