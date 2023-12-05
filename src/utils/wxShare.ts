@@ -1,5 +1,5 @@
-import { isHttps, isWeiXin } from "./check"
-import { WxShare } from "./wx"
+import { isHttps, isWeiXin } from './check'
+import { WxShare } from './wx'
 
 export const registerWxShare = () => {
   const {
