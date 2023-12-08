@@ -123,9 +123,6 @@ devDependencies:
   '@types/lodash-es':
     specifier: ^4.17.12
     version: 4.17.12
-  '@types/node':
-    specifier: 20.10.4
-    version: 20.10.4
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
@@ -209,7 +206,7 @@ devDependencies:
     version: 0.26.0(vue@3.3.11)
   vite:
     specifier: ^5.0.6
-    version: 5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0)
+    version: 5.0.6(sass@1.69.5)(terser@5.26.0)
   vue-tsc:
     specifier: ^1.8.25
     version: 1.8.25(typescript@5.3.3)
@@ -2194,7 +2191,7 @@ packages:
       vite: ^5.0.0 || >4.0.0 || ^3.0.0
     dependencies:
       '@plugin-web-update-notification/core': 1.7.0
-      vite: 5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0)
+      vite: 5.0.6(sass@1.69.5)(terser@5.26.0)
     dev: true
 
   /@rollup/pluginutils@5.1.0:
@@ -2550,7 +2547,7 @@ packages:
       regenerator-runtime: 0.14.0
       systemjs: 6.14.2
       terser: 5.26.0
-      vite: 5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0)
+      vite: 5.0.6(sass@1.69.5)(terser@5.26.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2565,7 +2562,7 @@ packages:
       '@babel/core': 7.23.5
       '@babel/plugin-transform-typescript': 7.23.5(@babel/core@7.23.5)
       '@vue/babel-plugin-jsx': 1.1.5(@babel/core@7.23.5)
-      vite: 5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0)
+      vite: 5.0.6(sass@1.69.5)(terser@5.26.0)
       vue: 3.3.11(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
@@ -2578,7 +2575,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0)
+      vite: 5.0.6(sass@1.69.5)(terser@5.26.0)
       vue: 3.3.11(typescript@5.3.3)
     dev: true
 
@@ -6213,7 +6210,7 @@ packages:
       vue: 3.3.11(typescript@5.3.3)
     dev: false
 
-  /vite@5.0.6(@types/node@20.10.4)(sass@1.69.5)(terser@5.26.0):
+  /vite@5.0.6(sass@1.69.5)(terser@5.26.0):
     resolution: {integrity: sha512-MD3joyAEBtV7QZPl2JVVUai6zHms3YOmLR+BpMzLlX2Yzjfcc4gTgNi09d/Rua3F4EtC8zdwPU8eQYyib4vVMQ==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6241,7 +6238,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.10.4
       esbuild: 0.19.8
       postcss: 8.4.32
       rollup: 4.6.1
