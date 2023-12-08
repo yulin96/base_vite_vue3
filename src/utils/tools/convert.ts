@@ -1,4 +1,4 @@
-export const jpgUrlToPngBlob = (url: string) => {
+export const urlToBlob = (url: string) => {
   return new Promise<Blob>((resolve, reject) => {
     const image = new Image()
     image.crossOrigin = 'anonymous'

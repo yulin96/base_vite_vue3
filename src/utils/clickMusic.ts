@@ -1,4 +1,4 @@
-import { webAudio } from './webAudios'
+import { webAudio } from './webAudio'
 
 const needMusic = false
 
