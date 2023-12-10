@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/prettierrc",
   "bracketSameLine": true,
   "jsxSingleQuote": true,
   "printWidth": 120,

@@ -1,18 +1,21 @@
 module.exports = {
   root: true,
-  extends: ['plugin:vue/vue3-essential', 'eslint:recommended', '@vue/eslint-config-typescript'],
+  extends: [
+    'plugin:vue/vue3-essential',
+    'eslint:recommended',
+    '@vue/eslint-config-typescript',
+    '@vue/eslint-config-prettier/skip-formatting',
+  ],
   parserOptions: {
     ecmaVersion: 'latest',
-    parser: '@typescript-eslint/parser',
-    sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'vue'],
+  plugins: [],
   rules: {
-    'vue/multi-word-component-names': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
-    '@typescript-eslint/no-empty-function': 'off',
-    '@typescript-eslint/no-extra-semi': 'off',
-    'prefer-rest-params': 'off',
+    'vue/multi-word-component-names': 0,
+    '@typescript-eslint/no-explicit-any': 0,
+    '@typescript-eslint/no-empty-function': 0,
+    '@typescript-eslint/no-extra-semi': 0,
+    'prefer-rest-params': 0,
     '@typescript-eslint/no-this-alias': [
       'error',
       {
@@ -26,6 +29,5 @@ module.exports = {
     'no-extra-semi': 0,
     'no-unused-vars': 0,
     'no-prototype-builtins': 0,
-    'vue/no-unused-vars': 0,
   },
 }

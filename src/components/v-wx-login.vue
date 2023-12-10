@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { addPcSupport } from '~/utils/addPcSupport'
+import { getOpenId } from '~/utils/openId'
+
 const props = defineProps<{ code: string; name?: string }>()
 
 const show = ref(false)

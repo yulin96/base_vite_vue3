@@ -65,7 +65,7 @@ export const randomName = (device = 'z', len = 16): string => {
 }
 
 export const uuid = (): string => {
-  const s = []
+  const s: Array<string> = []
   const hexDigits = '0123456789abcdef'
   for (let i = 0; i < 36; i++) {
     s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)

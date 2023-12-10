@@ -1,4 +1,9 @@
-export const checkWebpFeature = (callback: (feature: string, result: boolean) => any, feature: string = 'lossless') => {
+type WebpFeature = 'lossy' | 'lossless' | 'alpha' | 'animation'
+
+export const checkWebpFeature = (
+  callback: (feature: WebpFeature, result: boolean) => any,
+  feature: WebpFeature = 'lossless',
+) => {
   const kTestImages = {
     lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
     lossless: 'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==',
