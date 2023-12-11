@@ -5,10 +5,8 @@ function convertData(data: Record<string, any>) {
   if (data == null) return
   for (const key in data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
-      if (key == 'code') {
-        data[key] = +data[key]
-        continue
-      }
+      if (key == 'code') continue
+
       if (typeof data[key] === 'object') convertData(data[key])
       else if (typeof data[key] === 'number') data[key] = data[key].toString()
       if (data[key] === 'null') data[key] = null
