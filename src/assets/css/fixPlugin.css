@@ -22,6 +22,11 @@
   border: 2px solid #f5f5f733;
   border-radius: 4px;
   box-shadow: #0000001f 0 3px 8px;
+  /* text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: #3051db;
+  color: #091d6e;
+  text-underline-offset: 6px; */
 }
 
 .center_toast_overlay {
@@ -53,8 +58,8 @@
 .popup-enter-active,
 .popup-leave-active {
   transition:
-    opacity 0.26s ease,
-    transform 0.26s ease !important;
+    opacity 0.16s ease,
+    transform 0.26s cubic-bezier(0.32, 0.94, 0.6, 1) !important;
 }
 
 .popup-enter-from,
