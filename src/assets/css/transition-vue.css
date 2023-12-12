@@ -66,14 +66,14 @@
 .Slide-left-enter-active,
 .Slide-right-leave-active {
   opacity: 1;
-  transition: transform 0.5s ease;
+  transition: transform 0.39s ease;
 }
 
 .Slide-left-leave-active,
 .Slide-right-enter-active {
   z-index: 99999;
   opacity: 1;
-  transition: transform 0.5s ease;
+  transition: transform 0.39s ease;
 }
 
 .Slide-left-leave-to,
