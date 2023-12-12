@@ -12,7 +12,7 @@ nprogress.configure({
 
 const openProgress = true
 
-export const usePostLock = (auto = true, delay = 300) => {
+export const useLock = (delay = 300) => {
   const lock = ref(false)
   let controller: AbortController
 
@@ -45,26 +45,14 @@ export const usePostLock = (auto = true, delay = 300) => {
           requestToast?.close()
 
           openProgress && nprogress?.done()
-          auto &&
-            (delay
-              ? setTimeout(() => {
-                  lock.value = false
-                }, delay)
-              : (lock.value = false))
+          delay
+            ? setTimeout(() => {
+                lock.value = false
+              }, delay)
+            : (lock.value = false)
         })
     })
   }
-
-  const abort = () => {
-    controller?.abort()
-  }
-
-  return [post, lock, abort] as [typeof post, typeof lock, typeof abort]
-}
-
-export const useGetLock = (auto = true, delay = 300) => {
-  const lock = ref(false)
-  let controller: AbortController
 
   const get = (
     _url: string,
@@ -95,12 +83,11 @@ export const useGetLock = (auto = true, delay = 300) => {
           requestToast?.close()
 
           openProgress && nprogress?.done()
-          auto &&
-            (delay
-              ? setTimeout(() => {
-                  lock.value = false
-                }, delay)
-              : (lock.value = false))
+          delay
+            ? setTimeout(() => {
+                lock.value = false
+              }, delay)
+            : (lock.value = false)
         })
     })
   }
@@ -109,5 +96,5 @@ export const useGetLock = (auto = true, delay = 300) => {
     controller?.abort()
   }
 
-  return [get, lock, abort] as [typeof get, typeof lock, typeof abort]
+  return { post, get, lock: readonly(lock), abort }
 }
