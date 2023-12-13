@@ -8,6 +8,7 @@ import { isAndroid, isSafari } from './utils/check'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkBuildVersion } from '~/utils/checkBuildVersion'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
+import '~/utils/gsap/easeIn'
 
 import './assets/css/tailwind.css'
 
