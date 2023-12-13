@@ -81,7 +81,7 @@ export default defineConfig(({ command }) => ({
   },
   build: {
     assetsDir: 'assets',
-    reportCompressedSize: true,
+    reportCompressedSize: false,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
