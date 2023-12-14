@@ -59,7 +59,10 @@ export const WxShare = (data: IWxShare): void => {
     })
 }
 
+let scanLock = false
 export const WxScanQRCode = (): Promise<string> => {
+  if (scanLock) return Promise.reject('扫码中')
+  scanLock = true
   return new Promise((resolve, reject) => {
     _getWXconfig()
       .then(() => {
@@ -68,6 +71,9 @@ export const WxScanQRCode = (): Promise<string> => {
           scanType: ['qrCode', 'barCode'],
           success: function (res: Record<'resultStr', string>) {
             resolve(res.resultStr)
+          },
+          complete: function () {
+            scanLock = false
           },
         })
       })
