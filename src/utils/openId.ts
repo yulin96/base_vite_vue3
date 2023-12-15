@@ -7,7 +7,7 @@
 
 import { useUrlSearchParams } from '@vueuse/core'
 
-const [get] = useGetLock()
+const { get } = useLock()
 
 export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => {
   return new Promise<boolean>((resolve) => {
