@@ -21,6 +21,8 @@ const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
 const env = loadEnv('production', process.cwd())
 
+const propOssPath = 'https://oss.eventnet.cn/' + env.VITE_OSS_ROOT_DIRNAME + '/' + env.VITE_OSS_DIRNAME + '/'
+
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
@@ -75,7 +77,7 @@ export default defineConfig(({ command }) => ({
       '~~': fileURLToPath(new URL('./scan', import.meta.url)),
     },
   },
-  base: './',
+  base: command === 'serve' ? './' : propOssPath,
   esbuild: {
     drop: command === 'serve' ? [] : env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
   },
