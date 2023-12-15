@@ -127,7 +127,7 @@ export default defineConfig(({ command }) => ({
         }),
       ],
     },
-  },
+  } as any,
 }))
 
 function handleCheck() {
