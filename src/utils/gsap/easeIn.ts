@@ -8,7 +8,7 @@ gsap.registerEffect({
       filter: 'blur(10px)',
       opacity: 0,
       z: 0,
-      stagger: 0.06,
+      stagger: 0.04,
       ...config,
     }),
   defaults: { duration: 0.6, delay: -0.2, ease: 'expo.out' },

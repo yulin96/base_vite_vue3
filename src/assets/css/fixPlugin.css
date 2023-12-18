@@ -10,6 +10,10 @@
   --z-toast-color: #1d1d1f;
 }
 
+.van-dialog__header {
+  padding-top: 40px;
+}
+
 .van-toast.center_toast {
   min-width: 160px;
   padding: 14px 28px;
