@@ -34,3 +34,5 @@ auto-imports.d.ts
 typed-router.d.ts
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
+
+vite.config.ts.timestamp-*.mjs
