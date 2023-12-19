@@ -6,7 +6,6 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
 import { isAndroid, isSafari } from './utils/check'
 import { addPcSupport } from '~/utils/addPcSupport'
-import { checkBuildVersion } from '~/utils/checkBuildVersion'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
 import '~/utils/gsap/easeIn'
 
@@ -21,7 +20,6 @@ import '~/assets/css/fixPlugin.css'
 
 import '~/assets/css/main.css'
 
-checkBuildVersion()
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
   addPcSupport().then(() => {})
