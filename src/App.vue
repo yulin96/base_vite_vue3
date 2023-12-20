@@ -21,6 +21,6 @@ registerWxShare()
 html,
 body,
 .wrapper {
-  background-color: #fff;
+  background-color: var(--main-color);
 }
 </style>

@@ -15,6 +15,7 @@
     "upDistToOss": "node ./upDistToOss.js"
   },
   "dependencies": {
+    "@types/ssh2": "^1.11.18",
     "@vueuse/core": "^10.7.0",
     "@vueuse/integrations": "^10.7.0",
     "animate.css": "^4.1.1",
@@ -36,6 +37,7 @@
     "pinia": "^2.1.7",
     "pinia-plugin-persistedstate": "^3.2.1",
     "qrcode": "^1.5.3",
+    "ssh2": "^1.15.0",
     "typed.js": "^2.1.0",
     "ua-parser-js": "^1.0.37",
     "uuid": "^9.0.1",

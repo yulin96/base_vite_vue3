@@ -27,10 +27,8 @@
       #FIX_PC {
         display: block;
         margin: 0 auto;
-        width: 375px;
-        height: 720px;
-        margin-top: 2px;
-        border-radius: 12px;
+        width: 600px;
+        height: 100vh;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
     </style>
@@ -38,6 +36,8 @@
   <body>
     <iframe frameborder="0" id="FIX_PC"></iframe>
     <script>
+      document.body.style.backgroundColor = '%VITE_APP_MAIN_COLOR%'
+
       const urlParams = new URLSearchParams(location.search)
       let urlSearchList = ''
       urlParams.forEach((item, key) => (urlSearchList += `${urlSearchList ? '&' : '?'}${key}=${item}`))
