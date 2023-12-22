@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { type AnimationItem } from 'lottie-web'
 
-const props = defineProps<{ like: boolean }>()
+const props = defineProps<{ like: boolean; json: any }>()
 
-fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
-  .then((res) => res.json())
-  .then((res) => {
-    window['lottieJson-like'] = res
-  })
+// fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
+//   .then((res) => res.json())
+//   .then((res) => {
+//     window['lottieJson-like'] = res
+//   })
 
 const likeEle = ref<HTMLDivElement | null>(null)
 
@@ -29,11 +29,7 @@ onMounted(() => {
     loop: false,
     autoplay: false,
     renderer: 'canvas',
-    ...(window['lottieJson-like']
-      ? {
-          animationData: window['lottieJson-like'],
-        }
-      : { path: 'https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json' }),
+    animationData: props.json,
   })
 
   lottieLike.addEventListener('config_ready', () => {
