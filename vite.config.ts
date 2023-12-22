@@ -83,6 +83,7 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
+        pc: path.resolve(__dirname, 'pc.html'),
         // scan: path.resolve(__dirname, 'scan/index.html'),
       },
       output: {
