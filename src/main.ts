@@ -13,13 +13,12 @@ import './assets/css/tailwind.css'
 
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
-// import 'vant/es/notify/style'
+import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 
 import '~/assets/css/fixPlugin.css'
 
 import '~/assets/css/main.css'
-
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
   addPcSupport().then(() => {})
