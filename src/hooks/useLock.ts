@@ -37,7 +37,7 @@ export const useLock = (delay = 300) => {
           resolve(res as never)
         })
         .catch((err) => {
-          if (err.name !== 'CanceledError') showToast({ message: '网络繁忙，请稍后重试' })
+          if (err.name !== 'CanceledError') showNotify({ type: 'danger', message: '网络繁忙，请稍后重试' })
           reject(err)
         })
         .finally(() => {
@@ -75,7 +75,7 @@ export const useLock = (delay = 300) => {
           resolve(res as never)
         })
         .catch((err) => {
-          if (err.name !== 'CanceledError') showToast({ message: '网络繁忙，请稍后重试' })
+          if (err.name !== 'CanceledError') showNotify({ type: 'danger', message: '网络繁忙，请稍后重试' })
           reject(err)
         })
         .finally(() => {
