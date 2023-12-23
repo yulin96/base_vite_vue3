@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
-import { isAndroid, isSafari } from './utils/check'
+import { isSafari, isAndroid } from '~/utils/tools/ua-parser'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
 import '~/utils/gsap/easeIn'
@@ -40,7 +40,7 @@ setToastDefaultOptions({
 
 setToastDefaultOptions('loading', { duration: 0 })
 
-if (isSafari() && !isAndroid()) {
+if (isSafari && !isAndroid) {
   const html = document.querySelector('html')
   const body = document.querySelector('body')
   if (html) html.style.height = window.innerHeight + 'px'

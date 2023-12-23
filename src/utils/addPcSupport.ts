@@ -1,4 +1,4 @@
-import { isMobile } from '~/utils/check'
+import { isMobile } from '~/utils/tools/ua-parser'
 
 export const addPcSupport = () => {
   return new Promise<void>((resolve, _) => {
@@ -14,7 +14,7 @@ export const addPcSupport = () => {
     let urlParams = ''
     for (const key in data) urlParams += (urlParams ? '&' : '?') + `${key}=${data[key]}`
 
-    if (!isMobile() && !~device.indexOf('PC')) {
+    if (!isMobile && !~device.indexOf('PC')) {
       window.location.href = './pc.html' + urlParams
     } else {
       resolve()

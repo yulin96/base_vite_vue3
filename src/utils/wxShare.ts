@@ -1,4 +1,5 @@
-import { isHttps, isWeiXin } from './check'
+import { isWeChat } from '~/utils/tools/ua-parser'
+import { isHttps } from './check'
 import { WxShare } from './wx'
 
 export const registerWxShare = () => {
@@ -11,7 +12,7 @@ export const registerWxShare = () => {
 
   const shareContent = { title, desc, link, imgUrl }
 
-  shareContent.title && shareContent.link && shareContent.imgUrl && isWeiXin() && isHttps() && WxShare(shareContent)
+  shareContent.title && shareContent.link && shareContent.imgUrl && isWeChat && isHttps() && WxShare(shareContent)
 
   isHttps() &&
     typeof dd !== 'undefined' &&

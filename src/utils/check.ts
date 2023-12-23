@@ -61,34 +61,6 @@ export const isIdCard = (idCard: string): boolean | void => {
 export const isHttps = (): boolean => location.href.split(':')[0] == 'https'
 
 /**
- * 判断当前设备是否为移动设备
- * @returns {boolean} - 如果是移动设备则返回 true，否则返回 false
- */
-export const isMobile = (): boolean => {
-  const reg =
-    /phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/i
-  return reg.test(navigator.userAgent.toLowerCase())
-}
-
-export const isSafari = (): boolean => {
-  const reg = /Safari/i
-  return reg.test(navigator.userAgent.toLowerCase())
-}
-
-export const isAndroid = (): boolean => {
-  const reg = /Android|Linux/i
-  return reg.test(navigator.userAgent.toLowerCase())
-}
-
-/**
- * 判断当前页面是否在微信浏览器中打开
- * @returns {boolean} - 如果在微信浏览器中打开则返回 true，否则返回 false
- */
-export const isWeiXin = (): boolean => {
-  return (window.navigator.userAgent.toLowerCase().match(/MicroMessenger/i) as any) == 'micromessenger' ? true : false
-}
-
-/**
  * 判断当前系统是否开启了深色模式
  * @type {boolean} - 如果开启了深色模式则为 true，否则为 false
  */

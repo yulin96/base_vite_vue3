@@ -1,6 +1,6 @@
 import wx from 'weixin-js-sdk'
 import axios from 'axios'
-import { isWeiXin } from './check'
+import { isWeChat } from '~/utils/tools/ua-parser'
 
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false
@@ -142,7 +142,7 @@ export const wxPreventShare = () => {
 }
 
 export const closeWindow = () => {
-  isWeiXin()
+  isWeChat
     ? _getWXconfig().then(() => {
         wx.closeWindow()
       })
