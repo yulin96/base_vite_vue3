@@ -10,13 +10,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" -- && node upDistToOss",
+    "build": "run-p type-check \"build-only {@}\" -- && npm run upDist",
     "preview": "vite preview",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "upDistToOss": "node ./upDistToOss.js"
+    "upDist": "node ./upDist.js"
   },
   "dependencies": {
     "@types/lodash-es": "^4.17.12",
