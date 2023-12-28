@@ -13,7 +13,9 @@ export default {
       height: convertUnit(1000),
       fontSize: convertUnit(100),
       borderRadius: convertUnit(100),
-      colors: {},
+      colors: {
+        primary: '#fff',
+      },
       animation: {
         'spin-slow': 'spin 4s linear infinite',
       },
@@ -36,6 +38,9 @@ export default {
         },
         '.text-last-center': {
           'text-align-last': 'center',
+        },
+        '.text-last-justify': {
+          'text-align-last': 'justify',
         },
       })
       addComponents({
