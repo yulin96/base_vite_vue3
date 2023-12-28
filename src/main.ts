@@ -3,7 +3,7 @@ import router from './router'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { setToastDefaultOptions } from 'vant'
+import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
 import { isSafari, isAndroid } from '~/utils/tools/ua-parser'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
@@ -39,6 +39,10 @@ setToastDefaultOptions({
 })
 
 setToastDefaultOptions('loading', { duration: 0 })
+
+setNotifyDefaultOptions({ type: 'warning' })
+
+setDialogDefaultOptions({ title: '温馨提示' })
 
 if (isSafari && !isAndroid) {
   const html = document.querySelector('html')

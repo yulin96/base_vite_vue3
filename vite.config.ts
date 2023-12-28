@@ -63,6 +63,7 @@ export default defineConfig(({ command }) => ({
             'showImagePreview',
             'showSuccessToast',
           ],
+          '@vueuse/core': ['useToggle'],
         },
       ],
       dirs: ['./src/hooks/**', './src/config/**', './src/stores/**', './src/router/**', './src/api/**'],
