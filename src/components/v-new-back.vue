@@ -50,11 +50,6 @@ watch(
   },
   { immediate: true },
 )
-
-/*  */
-onMounted(() => {
-  gsap.context(() => {}, '.VNewBack')
-})
 </script>
 
 <template>
