@@ -28,7 +28,7 @@ if (env.VITE_OSS_ROOT_DIRNAME && env.VITE_OSS_DIRNAME) {
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
-    vue({ script: { defineModel: true } }),
+    vue({ script: {} }),
     vueJsx(),
     Components({
       dirs: ['src/components'],
