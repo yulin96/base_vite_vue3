@@ -42,7 +42,7 @@ setToastDefaultOptions('loading', { duration: 0 })
 
 setNotifyDefaultOptions({ type: 'warning' })
 
-setDialogDefaultOptions({ title: '温馨提示' })
+setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button' })
 
 if (isSafari && !isAndroid) {
   const html = document.querySelector('html')

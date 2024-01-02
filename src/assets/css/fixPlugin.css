@@ -3,6 +3,10 @@
   --van-toast-position-top-distance: 9%;
   --van-toast-loading-icon-color: #111;
   --van-floating-bubble-background: transparent;
+
+  /*  */
+
+  --van-action-bar-button-danger-color: linear-gradient(to right, #607ffa, #3051db, #607ffa);
 }
 
 :root:root {
