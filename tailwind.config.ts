@@ -42,8 +42,18 @@ export default {
         '.text-last-justify': {
           'text-align-last': 'justify',
         },
+        '.flash': {} /* 流光动画 */,
+        '.flash-play': {} /* 流光动画播放 */,
+        /* vant */
+        '.van-hairline--top': {},
+        '.van-hairline--bottom': {},
+        '.van-hairline--left': {},
+        '.van-hairline--right': {},
+        '.van-hairline--top-bottom': {},
+        '.van-hairline--surround': {},
       })
       addComponents({
+        /* base */
         '.center': {
           'display': 'flex',
           'justify-content': 'center',
@@ -59,14 +69,18 @@ export default {
           'background-repeat': 'no-repeat',
           'background-position': 'bottom',
         },
-        '.flash': {} /* 流光动画 */,
-        '.flash-play': {} /* 流光动画播放 */,
         '.expand': {
           'position': 'relative',
           '&::before': {
             content: "''",
             position: 'absolute',
             inset: '-20px',
+          },
+        },
+        '.haptic': {
+          'cursor': 'pointer',
+          '&::active': {
+            opacity: '.6',
           },
         },
       })
