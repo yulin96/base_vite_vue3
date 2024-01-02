@@ -63,17 +63,30 @@
   height: 150%;
 }
 
+.popup-down-enter-active,
+.popup-down-leave-active {
+  transition:
+    opacity 0.16s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-down-enter-from,
+.popup-down-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% + 120px)) !important;
+}
+
 .popup-enter-active,
 .popup-leave-active {
   transition:
     opacity 0.16s ease,
-    transform 0.26s cubic-bezier(0.32, 0.94, 0.6, 1) !important;
+    transform 0.3s ease !important;
 }
 
 .popup-enter-from,
 .popup-leave-to {
   opacity: 0 !important;
-  transform: translateY(calc(-50% + 100px)) !important;
+  transform: translateY(-50%) scale(0.6) !important;
 }
 
 /* .van-toast__text {
