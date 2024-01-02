@@ -1,6 +1,6 @@
 export const useSetFocus = () => {
-  const focus = (name: string) => {
-    const element = document.querySelector(`[f-${name}]`) as HTMLElement
+  const setFocus = (name: string) => {
+    const element = document.querySelector(`[${name}]`) as HTMLElement
     if (!element) return
     element.setAttribute('tabindex', '-1')
     element?.focus()
@@ -9,5 +9,5 @@ export const useSetFocus = () => {
     }, 200)
   }
 
-  return { focus }
+  return { setFocus }
 }
