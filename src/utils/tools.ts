@@ -88,13 +88,11 @@ export const randomNum = (m: number, n: number): number => {
   return parseInt(String(Math.random() * (n - m + 1) + m))
 }
 
-export const blobToFile = (theBlob: any, fileName: any): File => {
-  theBlob.lastModifiedDate = new Date()
-  theBlob.name = fileName
-  return theBlob
+export const blobToFile = (blob: Blob, fileName: any) => {
+  return new File([blob], fileName, { type: blob.type })
 }
 
-export const Base64ToBlob = (urlData: any): Blob => {
+export const base64ToBlob = (urlData: string | any): Blob => {
   const arr = urlData.split(',')
   const _arr = arr[1].substring(0, arr[1].length - 2)
   const mime = arr[0].match(/:(.*?);/)[1]
