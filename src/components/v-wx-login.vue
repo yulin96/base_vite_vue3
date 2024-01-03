@@ -20,6 +20,13 @@ const overlayStyle = {
   backdropFilter: 'blur(20px)',
 }
 
+const router = useRouter()
+router.beforeEach((to) => {
+  const { user } = useStore()
+  const { openid } = user.wxInfo
+  if (!openid && to.path !== '/') return { path: '/' }
+})
+
 onMounted(async () => {
   if (import.meta.env.VITE_APP_OPENPC == '1') {
     await addPcSupport()
