@@ -8,6 +8,7 @@ import { isSafari, isAndroid } from '~/utils/tools/ua-parser'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
 import '~/utils/gsap/easeIn'
+// import i18n from '~/lang'
 
 import './assets/css/tailwind.css'
 
@@ -57,8 +58,9 @@ app.directive('focus', (el: HTMLElement) => el.focus())
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
-app.use(pinia)
 
+// app.use(i18n)
+app.use(pinia)
 app.use(router)
 
 app.mount('#app')

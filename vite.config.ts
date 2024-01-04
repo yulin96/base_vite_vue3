@@ -48,6 +48,7 @@ export default defineConfig(({ command }) => ({
         'vue',
         'pinia',
         'vue-router',
+        'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           'gsap': ['gsap'],
