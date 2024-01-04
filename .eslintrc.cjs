@@ -32,5 +32,6 @@ module.exports = {
     'no-extra-semi': 0,
     'no-unused-vars': 0,
     'no-prototype-builtins': 0,
+    'vue/valid-v-bind': 0,
   },
 }
