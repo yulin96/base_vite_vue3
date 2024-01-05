@@ -9,6 +9,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -28,6 +29,7 @@ if (env.VITE_OSS_ROOT_DIRNAME && env.VITE_OSS_DIRNAME) {
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
+    topLevelAwait(),
     vue({ script: {} }),
     vueJsx(),
     Components({
