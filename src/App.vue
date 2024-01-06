@@ -16,7 +16,7 @@ registerWxShare()
 <template>
   <router-view class="wrapper" v-slot="{ Component }">
     <transition :name="transitionName">
-      <keep-alive exclude="">
+      <keep-alive :exclude="[]">
         <component :is="Component" />
       </keep-alive>
     </transition>
