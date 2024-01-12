@@ -38,10 +38,14 @@ export const useUploadImage = async (
               file: file,
             }),
           )
-          .finally(() => {
-            const fileUrl = 'https://oss2.eventnet.cn/' + key
-            needLoading && showSuccessToast({ message: '上传成功' })
-            resolve(fileUrl)
+          .then((res) => {
+            if (res.status == 200) {
+              const fileUrl = 'https://oss2.eventnet.cn/' + key
+              needLoading && showSuccessToast({ message: '上传成功' })
+              resolve(fileUrl)
+            } else {
+              resolve('')
+            }
           })
       })
       .catch(() => {
