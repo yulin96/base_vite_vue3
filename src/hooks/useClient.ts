@@ -1,3 +1,5 @@
+import { ref } from 'vue'
+
 export const useClient = (
   subScribes: Array<string> | string,
   pub = 'pub_3dc08e65ff36ed08185a82db5091922c',
