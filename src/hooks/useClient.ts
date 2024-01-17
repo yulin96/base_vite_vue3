@@ -54,7 +54,7 @@ export const useClient = (
     })
 
     function Publish() {
-      // ROP.Publish(document.getElementById('idtext').value, document.getElementById('idscope').value)
+      // ROP.Publish()
     }
 
     function OnEnter() {
