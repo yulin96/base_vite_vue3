@@ -172,6 +172,16 @@ export const randomLenString = (len: number) => {
   return pwd
 }
 
+export const randomStr = (len = 12) => {
+  const $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz'
+  const maxPos = $chars.length
+  let pwd = ''
+  for (let i = 0; i < len; i++) {
+    pwd += $chars.charAt(Math.floor(Math.random() * maxPos))
+  }
+  return pwd
+}
+
 export const ScrollToTop = (e: Element) => {
   e.scrollTo({
     top: 0,
