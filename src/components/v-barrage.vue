@@ -15,20 +15,30 @@ onMounted(() => {
     item.classList.add(uuid2)
   }
 
+  const gap = props.gap ?? 20
+  const speed = props.speed ?? 50
+
+  const parents = document.querySelectorAll(`.${uuid2}`) as NodeListOf<HTMLDivElement>
+
   const autoCreateBarrage = () => {
-    createBarrage(props.barrageList[currentId.value])
+    createBarrage({ params: props.barrageList[currentId.value], gap, speed, parents })
     requestAnimationFrame(autoCreateBarrage)
   }
   autoCreateBarrage()
 })
 
-function createBarrage(params: any) {
+function createBarrage({
+  params,
+  gap,
+  speed,
+  parents,
+}: {
+  params: any
+  gap: number
+  speed: number
+  parents: NodeListOf<HTMLDivElement>
+}) {
   if (!params) return
-
-  const gap = props.gap ?? 20
-  const speed = props.speed ?? 50
-
-  const parents = document.querySelectorAll(`.${uuid2}`) as NodeListOf<HTMLDivElement>
 
   const index = Array.from(parents).findIndex(
     (item) => item.lastChild === null || (item.lastChild as HTMLDivElement).getBoundingClientRect().right < innerWidth,
