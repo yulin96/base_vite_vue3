@@ -81,11 +81,15 @@ export const useClient = (
     })
   }
 
-  const rop_client = document.createElement('script')
-  rop_client.src = 'https://cdn.aodianyun.com/dms/rop_client.js'
-  rop_client.type = 'text/javascript'
-  rop_client.onload = onload
-  document.body.appendChild(rop_client)
+  if (typeof ROP !== 'undefined') {
+    onload()
+  } else {
+    const rop_client = document.createElement('script')
+    rop_client.src = 'https://cdn.aodianyun.com/dms/rop_client.js'
+    rop_client.type = 'text/javascript'
+    rop_client.onload = onload
+    document.head.appendChild(rop_client)
+  }
 
   return { data }
 }
