@@ -45,7 +45,7 @@ function createSnow(wrapper: HTMLDivElement) {
   snowImg.style.animation = `rotateSnow ${randomNum(20, 30)}s linear infinite`
   snow.appendChild(snowImg)
 
-  snow.style.position = 'absolute'
+  snow.style.position = 'fixed'
   snow.style.width = randomNum(10, 26) + 'px'
   snow.style.left = Math.random() * 100 + '%'
   snow.style.bottom = '100%'
