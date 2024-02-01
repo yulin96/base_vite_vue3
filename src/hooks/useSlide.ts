@@ -84,7 +84,7 @@ export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNum
     ele.value.addEventListener('wheel', eleEffect)
   })
 
-  onMounted(() => {
+  onBeforeUnmount(() => {
     ele.value.removeEventListener('touchstart', onStart)
     ele.value.removeEventListener('touchmove', onMove)
     ele.value.removeEventListener('touchend', onEnd)
@@ -92,6 +92,9 @@ export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNum
   })
 
   onDeactivated(() => {
+    startMove.value.pageY = 0
+    startMove.value.once = true
+    lock = false
     ele.value.removeEventListener('touchstart', onStart)
     ele.value.removeEventListener('touchmove', onMove)
     ele.value.removeEventListener('touchend', onEnd)
