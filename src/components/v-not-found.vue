@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Lottie from 'lottie-web'
-
 const router = useRouter()
 const toIndex = () => {
   router.replace({ name: 'index' })
@@ -17,7 +15,7 @@ const errorEle = ref<HTMLDivElement | null>(null)
 onMounted(() => {
   if (!errorEle.value) return console.error('errorEle is null')
   errorEle &&
-    Lottie?.loadAnimation({
+    lottie?.loadAnimation({
       path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
       container: errorEle.value,
       loop: true,

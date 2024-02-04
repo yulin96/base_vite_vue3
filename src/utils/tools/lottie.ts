@@ -1,5 +1,3 @@
-import Lottie from 'lottie-web'
-
 fetch('https://oss.eventnet.cn/H5/zz/public/lotties/btn/btn3.json')
   .then((res) => res.json())
   .then((res) => {
@@ -29,7 +27,7 @@ export const showLottie = (e: MouseEvent) => {
   div.style.transform = `rotate(${Math.floor(Math.random() * 180)}deg)`
   document.body.appendChild(div)
 
-  const animation = Lottie.loadAnimation({
+  const animation = lottie.loadAnimation({
     container: div,
     loop: false,
     autoplay: true,

@@ -4,6 +4,9 @@ declare module 'console' {
   export = typeof import('console')
 }
 
+declare const lottie: typeof import('lottie-web').default
+type AnimationItem = import('lottie-web').AnimationItem
+
 declare const WeixinJSBridge: any
 declare const VConsole: any
 declare const dd: any
