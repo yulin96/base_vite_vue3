@@ -12,6 +12,7 @@ type RouteTransitionName =
   | 'DiagonallyFadeOut'
   | 'leftFlyOut'
   | 'slidePage'
+  | 'slide-cover'
   | (string & {})
 
 export const useRouteTransition = (transitionTypeName: RouteTransitionName = 'Slide') => {

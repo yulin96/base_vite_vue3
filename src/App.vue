@@ -2,7 +2,7 @@
 import { registerWxShare } from './utils/wxShare'
 
 /* 路由动画 */
-const { transitionName } = useRouteTransition()
+const { transitionName } = useRouteTransition('slide-cover')
 /* 分享 */
 registerWxShare()
 
