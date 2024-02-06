@@ -14,13 +14,15 @@ registerWxShare()
 </script>
 
 <template>
-  <router-view class="wrapper" v-slot="{ Component }">
-    <transition :name="transitionName">
-      <keep-alive :exclude="[]">
-        <component :is="Component" />
-      </keep-alive>
-    </transition>
-  </router-view>
+  <suspense>
+    <router-view class="wrapper" v-slot="{ Component }">
+      <transition :name="transitionName">
+        <keep-alive :exclude="[]">
+          <component :is="Component" />
+        </keep-alive>
+      </transition>
+    </router-view>
+  </suspense>
 </template>
 
 <style>
