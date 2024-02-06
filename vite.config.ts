@@ -55,7 +55,7 @@ export default defineConfig(({ command }) => ({
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           'gsap': ['gsap'],
           'html2canvas': [['default', 'html2canvas']],
-          'compressorjs': [['default', 'compressorjs']],
+          'compressorjs': [['default', 'Compressor']],
           'vant': [
             'showToast',
             'showLoadingToast',
