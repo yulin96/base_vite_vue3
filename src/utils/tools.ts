@@ -214,3 +214,13 @@ export const getRandomInt = (n: number, m: number) => Math.floor(Math.random() *
 export const maskPhone = (phone: string) => {
   return phone.replace(/(\d{3})\d+(\d{4})/u, '$1****$2')
 }
+
+export const importScript = (url: string) => {
+  return new Promise<void>((resolve, reject) => {
+    const script = document.createElement('script')
+    script.src = url
+    script.onload = () => resolve()
+    script.onerror = () => reject()
+    document.body.appendChild(script)
+  })
+}
