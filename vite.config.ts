@@ -27,6 +27,9 @@ if (env.VITE_OSS_ROOT_DIRNAME && env.VITE_OSS_DIRNAME) {
 }
 
 export default defineConfig(({ command }) => ({
+  define: {
+    __VUE_PROD_DEVTOOLS__: command !== 'build',
+  },
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     topLevelAwait(),
