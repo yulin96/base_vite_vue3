@@ -18,7 +18,7 @@ export const isChrome = uaParser.getBrowser().name === 'Chrome'
 
 export const isFirefox = uaParser.getBrowser().name === 'Firefox'
 
-export const isSafari = uaParser.getBrowser().name === 'Safari'
+export const isMobileSafari = uaParser.getBrowser().name === 'Mobile Safari'
 
 export const isEdge = uaParser.getBrowser().name === 'Edge'
 
