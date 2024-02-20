@@ -88,25 +88,6 @@ export const randomNum = (m: number, n: number): number => {
   return parseInt(String(Math.random() * (n - m + 1) + m))
 }
 
-export const blobToFile = (blob: Blob, fileName: any) => {
-  return new File([blob], fileName, { type: blob.type })
-}
-
-export const base64ToBlob = (urlData: string | any): Blob => {
-  const arr = urlData.split(',')
-  const _arr = arr[1].substring(0, arr[1].length - 2)
-  const mime = arr[0].match(/:(.*?);/)[1]
-  const bstr = window.atob(_arr)
-  let n = bstr.length
-  const u8arr = new Uint8Array(n)
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n)
-  }
-  return new Blob([u8arr], {
-    type: mime,
-  })
-}
-
 export const dayDif = (date1: any, date2: any) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
 
 export const dayOfYear = (date: any) =>
@@ -118,20 +99,6 @@ export const randomHex = () =>
     .padEnd(6, '0')}`
 
 export const randomString = (): string => `${Math.random().toString(36).slice(6)}-`
-
-//blobToBase64
-export const blobToBase64 = (blob: any) => {
-  return new Promise((resolve, reject) => {
-    const fileReader = new FileReader()
-    fileReader.onload = (e) => {
-      resolve(e?.target?.result)
-    }
-    fileReader.readAsDataURL(blob)
-    fileReader.onerror = () => {
-      reject(new Error('blobToBase64 error'))
-    }
-  })
-}
 
 export const toFormData = (object: Object) => {
   const Data = new FormData()
