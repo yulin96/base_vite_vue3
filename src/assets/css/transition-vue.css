@@ -218,7 +218,7 @@
 .slide-cover-right-enter-from,
 .slide-cover-left-leave-to {
   opacity: 1;
-  transform: translate3d(0, 100%, 0) scale(1.2);
+  transform: translate3d(0, 100%, 0) scale(1);
 }
 
 .slide-cover-right-leave-to,
