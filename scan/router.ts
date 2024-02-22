@@ -1,7 +1,7 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHashHistory, useRoute } from 'vue-router'
 import index from '~~/views/index.vue'
 
-const router = createRouter({
+const scanRouter = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
     {
@@ -13,16 +13,16 @@ const router = createRouter({
   ],
 })
 
-router.addRoute({
+scanRouter.addRoute({
   path: '/:pathMatch(.*)*',
   name: '404',
   component: () => import('~/components/v-not-found.vue'),
   meta: { index: 404 },
 })
 
-router.beforeEach(async (to, from) => {})
+scanRouter.beforeEach(async (to, from) => {})
 
-router.afterEach((to, from) => {})
+scanRouter.afterEach((to, from) => {})
 
 declare module 'vue-router' {
   interface RouteMeta {
@@ -38,4 +38,4 @@ declare module 'vue-router' {
   }
 }
 
-export default router
+export { scanRouter }

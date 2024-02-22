@@ -10,6 +10,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import topLevelAwait from 'vite-plugin-top-level-await'
+import VueRouter from 'unplugin-vue-router/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -30,6 +32,9 @@ export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     topLevelAwait(),
+    VueRouter({
+      dts: 'typings/typed-router.d.ts',
+    }),
     vue({ script: {} }),
     vueJsx(),
     Components({
@@ -47,13 +52,17 @@ export default defineConfig(({ command }) => ({
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
+        VueRouterAutoImports,
         'vue',
         'pinia',
-        'vue-router',
         'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           'gsap': ['gsap'],
+          'vue-router': [
+            ['useRoute', 'useRootRoute'],
+            ['useRouter', 'useRootRouter'],
+          ],
           'html2canvas': [['default', 'html2canvas']],
           'compressorjs': [['default', 'Compressor']],
           'vant': [
@@ -88,7 +97,7 @@ export default defineConfig(({ command }) => ({
           ],
         },
       ],
-      dirs: ['./src/hooks/**', './src/config/**', './src/stores/**', './src/router/**', './src/api/**'],
+      dirs: ['./src/hooks/**', './src/config/**', './src/stores/**', './src/router/**', './src/api/**', './scan/**'],
       dts: './typings/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],

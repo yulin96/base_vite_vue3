@@ -31,7 +31,6 @@ stats.html
 components.d.ts
 auto-imports.d.ts
 .eslintrc-auto-import.json
-typed-router.d.ts
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
 
