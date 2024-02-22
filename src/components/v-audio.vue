@@ -10,7 +10,7 @@ const pause_icon = computed(() => props.pausedIcon || 'https://oss.eventnet.cn/H
 
 const toggleMusic = () => {
   if (audio.value?.paused) {
-    audio.value?.play()
+    audio.value?.play().catch(() => {})
   } else {
     audio.value?.pause()
   }
@@ -18,7 +18,7 @@ const toggleMusic = () => {
 
 const control = (ele: MouseEvent) => {
   if (ele?.target != playImg.value && audio.value?.paused) {
-    audio.value?.play()
+    audio.value?.play().catch(() => {})
   }
   document.body.removeEventListener('click', control)
 }
@@ -30,7 +30,7 @@ onMounted(() => {
   document.addEventListener(
     'WeixinJSBridgeReady',
     () => {
-      audio.value?.play()
+      audio.value?.play().catch(() => {})
       document.body.removeEventListener('click', control)
     },
     false,
