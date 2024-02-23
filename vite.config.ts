@@ -10,8 +10,8 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import topLevelAwait from 'vite-plugin-top-level-await'
-import VueRouter from 'unplugin-vue-router/vite'
-import { VueRouterAutoImports } from 'unplugin-vue-router'
+// import VueRouter from 'unplugin-vue-router/vite'
+// import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -32,12 +32,18 @@ export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     topLevelAwait(),
-    VueRouter({
-      dts: 'typings/typed-router.d.ts',
-      routesFolder: [{ src: 'src/pages' }],
-      extensions: ['.vue', '.tsx'],
-      importMode: 'sync',
-    }),
+    // VueRouter({
+    //   dts: 'typings/typed-router.d.ts',
+    //   routesFolder: [{ src: 'src/pages' }],
+    //   extensions: ['.vue', '.tsx'],
+    //   importMode: 'sync',
+    //   extendRoute(route) {
+    //     if (route.name === '/') {
+    //       route.meta ??= { index: 20 }
+    //     }
+    //     console.log(route.name)
+    //   },
+    // }),
     vue({ script: {} }),
     vueJsx(),
     Components({
@@ -55,17 +61,18 @@ export default defineConfig(({ command }) => ({
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
-        VueRouterAutoImports,
+        // VueRouterAutoImports,
+        'vue-router',
         'vue',
         'pinia',
         'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           'gsap': ['gsap'],
-          'vue-router': [
-            ['useRoute', 'useRootRoute'],
-            ['useRouter', 'useRootRouter'],
-          ],
+          // 'vue-router': [
+          //   ['useRoute', 'useRootRoute'],
+          //   ['useRouter', 'useRootRouter'],
+          // ],
           'html2canvas': [['default', 'html2canvas']],
           'compressorjs': [['default', 'Compressor']],
           'vant': [
