@@ -1,27 +1,28 @@
 <script setup lang="ts">
-const props = defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>()
+import { useEventListener, useToggle } from '@vueuse/core'
 
-const audio = ref<HTMLAudioElement | null>(null)
-const playImg = ref<HTMLImageElement | null>(null)
-const playing = ref(false)
+withDefaults(defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>(), {
+  playIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
+  pausedIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
+})
 
-const play_icon = computed(() => props.playIcon || 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg')
-const pause_icon = computed(() => props.pausedIcon || 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg')
+const audio = ref<HTMLAudioElement>()
+const playImg = ref<HTMLImageElement>()
+const [isPlay, toggleIsPlay] = useToggle(false)
 
-const toggleMusic = () => {
-  if (audio.value?.paused) {
-    audio.value?.play().catch(() => {})
-  } else {
-    audio.value?.pause()
-  }
+const togglePlayStatus = () => {
+  if (!audio.value) return console.error('audio is not ready!')
+  if (audio.value.paused) audio.value.play().catch(() => {})
+  else audio.value.pause()
 }
 
-const control = (ele: MouseEvent) => {
-  if (ele?.target != playImg.value && audio.value?.paused) {
-    audio.value?.play().catch(() => {})
-  }
-  document.body.removeEventListener('click', control)
+const clickPlay = (ele: MouseEvent) => {
+  if (!audio.value) return console.error('audio is not ready!')
+  if (ele.target !== playImg.value && audio.value.paused) audio.value?.play().catch((e) => console.error(e))
 }
+
+const cleanupClick = useEventListener(document, 'click', clickPlay, { once: true })
+const cleanupTouchend = useEventListener(document, 'touchend', clickPlay, { once: true })
 
 useMediaSession(audio)
 
@@ -30,36 +31,38 @@ onMounted(() => {
   document.addEventListener(
     'WeixinJSBridgeReady',
     () => {
-      audio.value?.play().catch(() => {})
-      document.body.removeEventListener('click', control)
+      audio.value
+        ?.play()
+        .then(() => {
+          cleanupClick()
+          cleanupTouchend()
+        })
+        .catch(() => {})
     },
     false,
   )
-
-  document.body.addEventListener('click', control)
 })
 </script>
 
 <template>
   <teleport to="body">
     <div
-      class="absolute right-[50px] top-[50px] z-[200] rounded-[50%] border-[5px] border-[#fff] p-[5px]"
+      class="absolute right-[50px] top-[50px] z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="['invert']">
       <audio
         class="hidden"
-        :src="props.src"
+        :src="src"
         ref="audio"
         loop
         autoplay
-        @play="playing = true"
-        @pause="playing = false"></audio>
+        @play="toggleIsPlay(true)"
+        @pause="toggleIsPlay(false)"></audio>
       <img
         class="h-40 w-40 animate-spin-slow"
-        :class="[playing ? 'paused' : 'running']"
-        :style="{ animationPlayState: playing ? 'running' : 'paused' }"
+        :class="[isPlay ? 'running' : 'paused']"
         ref="playImg"
-        :src="playing ? play_icon : pause_icon"
-        @click="toggleMusic" />
+        :src="isPlay ? playIcon : pausedIcon"
+        @click="togglePlayStatus" />
     </div>
   </teleport>
 </template>
