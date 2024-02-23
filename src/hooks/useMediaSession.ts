@@ -17,7 +17,7 @@ export const useMediaSession = (ele: Ref<HTMLMediaElement | null>, option?: Medi
             ],
       })
       navigator.mediaSession.setActionHandler('play', function () {
-        ele.value?.play()
+        ele.value?.play().catch(() => {})
       })
       navigator.mediaSession.setActionHandler('pause', function () {
         ele.value?.pause()
