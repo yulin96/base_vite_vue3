@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router/auto'
+import { type _RouterTyped } from 'unplugin-vue-router/types'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
