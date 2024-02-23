@@ -1,4 +1,5 @@
 <script setup lang="ts">
+definePage({ meta: { index: 10 } })
 /*  */
 onMounted(() => {
   gsap.context(() => {}, '.index')
@@ -7,6 +8,6 @@ onMounted(() => {
 
 <template>
   <div class="index">
-    <div class="content">Index</div>
+    <div class="content"></div>
   </div>
 </template>

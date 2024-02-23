@@ -34,6 +34,9 @@ export default defineConfig(({ command }) => ({
     topLevelAwait(),
     VueRouter({
       dts: 'typings/typed-router.d.ts',
+      routesFolder: [{ src: 'src/pages' }],
+      extensions: ['.vue', '.tsx'],
+      importMode: 'sync',
     }),
     vue({ script: {} }),
     vueJsx(),

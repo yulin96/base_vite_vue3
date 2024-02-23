@@ -15,14 +15,14 @@ router.beforeEach(async (to, from) => {})
 
 router.afterEach((to, from) => {})
 
-// declare module 'vue-router' {
-//   interface RouteMeta {
-//     index?: number
-//     title?: string
-//     transitionName?: string
+declare module 'vue-router' {
+  interface RouteMeta {
+    index?: number
+    title?: string
+    transitionName?: string
 
-//     [x: string]: string | number | boolean | undefined
-//   }
-// }
+    [x: string]: string | number | boolean | undefined
+  }
+}
 
 export default router
