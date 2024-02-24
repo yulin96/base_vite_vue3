@@ -32,7 +32,7 @@ div::-webkit-scrollbar {
 .content {
   width: 100%;
   min-height: max(1400px, 100%);
-  -webkit-overflow-scrolling: touch；;
+  -webkit-overflow-scrolling: touch;
   overflow-x: hidden;
   overflow-y: hidden;
 
