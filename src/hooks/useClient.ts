@@ -9,47 +9,49 @@ export const useClient = (
 
   const data = ref()
 
-  const onload = () => {
-    ROP.On('enter_suc', function () {
+  const ROPReady = () => {
+    ROP.On('enter_suc', () => {
       console.log('连接成功')
     })
+
     // 重连中
-    ROP.On('reconnect', function () {
+    ROP.On('reconnect', () => {
       console.log('重连中')
     })
+
     // 离线状态，之后会重连
-    ROP.On('offline', function (err: any) {
-      console.log('离线!!')
+    ROP.On('offline', (err: string) => {
+      console.error('离线!!', err)
       setTimeout(() => {
-        OnEnter()
-        OnJoin()
+        linkROP()
       }, 2000)
     })
+
     // 登陆失败
-    ROP.On('enter_fail', function (err: any) {
-      console.log('登陆失败')
+    ROP.On('enter_fail', (err: string) => {
+      console.error('登陆失败', err)
     })
+
     // 收到消息
-    ROP.On('publish_data', function (res: any, topic: any) {
-      if ((subIsString ? topic === subScribes : subScribes.includes(topic)) && res) {
+    ROP.On('publish_data', (message: string, topic: string) => {
+      if ((subIsString ? topic === subScribes : subScribes.includes(topic)) && message) {
         try {
-          const _data = JSON.parse(res)
-          if (typeof res === 'number') throw new Error(res.toString())
-          data.value = _data
+          const data = JSON.parse(message)
+          data.value = data
         } catch (error) {
           console.log('已连接 , 解析为json失败', error)
         }
       } else {
-        console.log('连接成功.2', res)
+        console.log('连接成功.2', message)
       }
     })
+
     // 彻底断线了
-    ROP.On('losed', function () {
-      console.log('短线')
+    ROP.On('losed', () => {
+      console.error('断线')
 
       setTimeout(() => {
-        OnEnter()
-        OnJoin()
+        linkROP()
       }, 2000)
     })
 
@@ -58,8 +60,7 @@ export const useClient = (
     }
 
     function OnEnter() {
-      const num = Math.floor(Math.random() * (1 - 289207) + 289207)
-      ROP.Enter(pub, sub, 'suid_' + num, true)
+      ROP.Enter(pub, sub, 'suid_' + +new Date() + Math.floor(Math.random() * 1_000_000_000), true)
     }
 
     function OnJoin() {
@@ -70,24 +71,30 @@ export const useClient = (
           })
     }
 
-    OnEnter()
-    OnJoin()
+    linkROP()
 
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState == 'visible') {
+    const visibility = useDocumentVisibility()
+    watchEffect(() => {
+      if (visibility.value === 'visible') linkROP()
+    })
+
+    function linkROP() {
+      try {
         OnEnter()
         OnJoin()
+      } catch (error) {
+        console.error(error, '🔗 🐛')
       }
-    })
+    }
   }
 
   if (typeof ROP !== 'undefined') {
-    onload()
+    ROPReady()
   } else {
     const rop_client = document.createElement('script')
     rop_client.src = 'https://cdn.aodianyun.com/dms/rop_client.js'
     rop_client.type = 'text/javascript'
-    rop_client.onload = onload
+    rop_client.onload = ROPReady
     document.head.appendChild(rop_client)
   }
 
