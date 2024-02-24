@@ -104,6 +104,7 @@ export default defineConfig(({ command }) => ({
             'useOffsetPagination',
             'createReusableTemplate',
             'onClickOutside',
+            'useMagicKeys',
           ],
         },
       ],
