@@ -79,7 +79,7 @@
     "@vue/tsconfig": "^0.5.1",
     "ali-oss": "^6.20.0",
     "autoprefixer": "^10.4.17",
-    "eslint": "^8.56.0",
+    "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",
