@@ -95,7 +95,7 @@
     "typescript": "latest",
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
-    "unplugin-vue-router": "^0.8.3",
+    "unplugin-vue-router": "^0.8.4",
     "vite": "^5.1.4",
     "vue-tsc": "latest"
   },
