@@ -2,7 +2,7 @@ import nprogress from 'nprogress'
 import { showLoadingToast, showToast, type ToastWrapperInstance } from 'vant'
 import type { AxiosRequestConfig } from 'axios'
 import { axios_get, axios_post } from '~/utils/request'
-import { toFormData } from '~/utils/tools'
+import { toFormData } from 'axios'
 
 nprogress.configure({
   showSpinner: false,

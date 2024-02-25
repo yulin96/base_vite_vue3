@@ -100,14 +100,6 @@ export const randomHex = () =>
 
 export const randomString = (): string => `${Math.random().toString(36).slice(6)}-`
 
-export const toFormData = (object: Object) => {
-  const Data = new FormData()
-  for (const key in object) {
-    Data.append(key, object[key])
-  }
-  return Data
-}
-
 export const formDataToObj = (formData: FormData) => {
   const object = {}
   for (const [key, value] of formData) {
