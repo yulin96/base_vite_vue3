@@ -3,30 +3,16 @@ import { useRoute } from 'vue-router'
 
 import '../assets/css/transition-vue.css'
 
-type RouteTransitionName =
-  | 'Slide'
-  | 'FilterBlur'
-  | 'Zoom'
-  | 'FlipY'
-  | 'CollapseY'
-  | 'DiagonallyFadeOut'
-  | 'leftFlyOut'
-  | 'slidePage'
-  | 'slide-cover'
-  | (string & {})
-
-export const useRouteTransition = (transitionTypeName: RouteTransitionName = 'Slide') => {
+export const useRouteTransition = (name: RouteTransitionName = 'Slide') => {
   const transitionName = ref('slideApp')
-  const slideType = transitionTypeName
 
   const route = useRoute()
   watch(
-    () => route.meta,
-    (newVal, oldVal) => {
-      if (newVal.transitionName) return (transitionName.value = newVal.transitionName)
-      if (!newVal.index || !oldVal.index) return (transitionName.value = 'slideApp')
-      if (newVal.index == oldVal.index) return (transitionName.value = 'FilterBlur')
-      transitionName.value = newVal.index > oldVal.index ? slideType + '-right' : slideType + '-left'
+    () => route.meta.index,
+    (newIndex, oldIndex) => {
+      if (!newIndex || !oldIndex) return (transitionName.value = 'slideApp')
+      if (newIndex === oldIndex) return (transitionName.value = 'FilterBlur')
+      transitionName.value = name + (newIndex > oldIndex ? '-right' : '-left')
     },
   )
 
