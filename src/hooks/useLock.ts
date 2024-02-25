@@ -1,5 +1,5 @@
 import nprogress from 'nprogress'
-import { showLoadingToast, showToast, type ToastWrapperInstance } from 'vant'
+import { showLoadingToast, type ToastWrapperInstance } from 'vant'
 import type { AxiosRequestConfig } from 'axios'
 import { axios_get, axios_post } from '~/utils/request'
 import { toFormData } from 'axios'
@@ -30,7 +30,7 @@ export const useLock = (delay = 300) => {
       let requestToast: ToastWrapperInstance | undefined
       const requestTimer = setTimeout(() => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
-      }, 2000)
+      }, 5000)
 
       axios_post(_url, _data ? toFormData(_data) : null, headers ? headers : null, controller.signal, otherConfig)
         .then((res) => {
@@ -68,7 +68,7 @@ export const useLock = (delay = 300) => {
       let requestToast: ToastWrapperInstance | undefined
       const requestTimer = setTimeout(() => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
-      }, 2000)
+      }, 5000)
 
       axios_get(_url, _data ? _data : null, headers ? headers : null, controller.signal, otherConfig)
         .then((res) => {
