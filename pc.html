@@ -8,18 +8,7 @@
     <meta name="renderer" content="webkit" />
     <meta name="force-rendering" content="webkit" />
     <link rel="icon" href="https://oss.eventnet.cn/H5/zz/public/favicon.png" />
-    <title></title>
-    <script>
-      function is_mobile() {
-        return /phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone/i.test(
-          navigator.userAgent.toLowerCase(),
-        )
-      }
-
-      if (is_mobile()) {
-        location.replace('./index.html')
-      }
-    </script>
+    <title>%VITE_APP_TITLE%</title>
     <style>
       body {
         margin: 0;
@@ -27,22 +16,12 @@
       #FIX_PC {
         display: block;
         margin: 0 auto;
-        width: 600px;
-        height: 100vh;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
       }
     </style>
   </head>
   <body>
     <iframe frameborder="0" id="FIX_PC"></iframe>
-    <script>
-      document.body.style.backgroundColor = '%VITE_APP_MAIN_COLOR%'
-
-      const urlParams = new URLSearchParams(location.search)
-      let urlSearchList = ''
-      urlParams.forEach((item, key) => (urlSearchList += `${urlSearchList ? '&' : '?'}${key}=${item}`))
-      urlSearchList += `${urlSearchList ? '&' : '?'}device=PC`
-      document.getElementById('FIX_PC').src = `./index.html${urlSearchList}`
-    </script>
   </body>
+  <script type="module" src="/src/utils/pcSupport.ts"></script>
 </html>

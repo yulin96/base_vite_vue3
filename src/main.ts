@@ -6,6 +6,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
+import { throttle } from 'lodash-es'
 import '@vant/touch-emulator'
 import '~/utils/gsap/easeIn'
 // import i18n from '~/lang'
@@ -17,6 +18,15 @@ import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/fixPlugin.css'
 import '~/assets/css/main.css'
+
+const _window = parent || window
+
+_window.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
+_window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
+_window.addEventListener(
+  'resize',
+  throttle(() => _window.location.reload(), 300),
+)
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
   addPcSupport().then(() => {})
