@@ -78,3 +78,15 @@ export const base64ToFile = (urlData: string | any, fileName: string): File => {
   const blob = base64ToBlob(urlData)
   return new File([blob], fileName, { type: blob.type })
 }
+
+export const convertObjectName = (obj: Record<string, any>, nameKey: Record<string, string>) => {
+  const newObj: Record<string, any> = {}
+  const keys = Object.keys(nameKey)
+  for (const [key, value] of Object.entries(obj)) {
+    if (!value) continue
+    if (typeof value === 'object') newObj[key] = convertObjectName(value, nameKey)
+    else newObj[keys.includes(key) ? nameKey[key] : key] = value
+  }
+
+  return newObj
+}
