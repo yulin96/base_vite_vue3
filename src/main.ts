@@ -6,6 +6,7 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
 import { addPcSupport } from '~/utils/addPcSupport'
 import { checkWebpFeature } from '~/utils/isSupportWebp'
+import '@vant/touch-emulator'
 import '~/utils/gsap/easeIn'
 // import i18n from '~/lang'
 
