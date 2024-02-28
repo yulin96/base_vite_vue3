@@ -148,8 +148,8 @@ devDependencies:
     specifier: ^21.1.6
     version: 21.1.6
   '@types/node':
-    specifier: ^20.11.20
-    version: 20.11.20
+    specifier: ^20.11.21
+    version: 20.11.21
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
@@ -242,7 +242,7 @@ devDependencies:
     version: 0.8.4(vue-router@4.3.0)(vue@3.4.20)
   vite:
     specifier: ^5.1.4
-    version: 5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1)
+    version: 5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1)
   vue-tsc:
     specifier: latest
     version: 1.8.27(typescript@5.3.3)
@@ -2716,7 +2716,7 @@ packages:
   /@types/jsdom@21.1.6:
     resolution: {integrity: sha512-/7kkMsC+/kMs7gAYmmBR9P0vGTnOoLhQhyhQJSlXGI5bzTHp6xdo0TtKWQAsz6pmSAeVqKSbqeyP6hytqr9FDw==}
     dependencies:
-      '@types/node': 20.11.20
+      '@types/node': 20.11.21
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
     dev: true
@@ -2735,14 +2735,14 @@ packages:
     resolution: {integrity: sha512-OvlIYQK9tNneDlS0VN54LLd5uiPCBOp7gS5Z0f1mjoJYBrtStzgmJBxONW3U6OZqdtNzZPmn9BS/7WI7BFFcFQ==}
     dev: false
 
-  /@types/node@18.19.18:
-    resolution: {integrity: sha512-80CP7B8y4PzZF0GWx15/gVWRrB5y/bIjNI84NK3cmQJu0WZwvmj2WMA5LcofQFVfLqqCSp545+U2LsrVzX36Zg==}
+  /@types/node@18.19.19:
+    resolution: {integrity: sha512-qqV6hSy9zACEhQUy5CEGeuXAZN0fNjqLWRIvOXOwdFYhFoKBiY08VKR5kgchr90+TitLVhpUEb54hk4bYaArUw==}
     dependencies:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.11.20:
-    resolution: {integrity: sha512-7/rR21OS+fq8IyHTgtLkDK949uzsa6n8BkziAKtPVpugIkO6D+/ooXMvzXxDnZrmtXVfjb1bKQafYpb8s89LOg==}
+  /@types/node@20.11.21:
+    resolution: {integrity: sha512-/ySDLGscFPNasfqStUuWWPfL78jompfIoVzLJPVVAHBh6rpG68+pI2Gk+fNLeI8/f1yPYL4s46EleVIc20F1Ow==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2753,7 +2753,7 @@ packages:
   /@types/qrcode@1.5.5:
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
-      '@types/node': 20.11.20
+      '@types/node': 20.11.21
     dev: true
 
   /@types/semver@7.5.8:
@@ -2763,7 +2763,7 @@ packages:
   /@types/ssh2@1.11.19:
     resolution: {integrity: sha512-ydbQAqEcdNVy2t1w7dMh6eWMr+iOgtEkqM/3K9RMijMaok/ER7L8GW6PwsOypHCN++M+c8S/UR9SgMqNIFstbA==}
     dependencies:
-      '@types/node': 18.19.18
+      '@types/node': 18.19.19
     dev: true
 
   /@types/tough-cookie@4.0.5:
@@ -2957,7 +2957,7 @@ packages:
       regenerator-runtime: 0.14.1
       systemjs: 6.14.3
       terser: 5.28.1
-      vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1)
+      vite: 5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1)
     transitivePeerDependencies:
       - esbuild
       - supports-color
@@ -2973,7 +2973,7 @@ packages:
       '@babel/core': 7.23.9
       '@babel/plugin-transform-typescript': 7.23.6(@babel/core@7.23.9)
       '@vue/babel-plugin-jsx': 1.2.1(@babel/core@7.23.9)
-      vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1)
+      vite: 5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1)
       vue: 3.4.20(typescript@5.3.3)
     transitivePeerDependencies:
       - supports-color
@@ -2986,7 +2986,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1)
+      vite: 5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1)
       vue: 3.4.20(typescript@5.3.3)
     dev: true
 
@@ -3569,7 +3569,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001591
-      electron-to-chromium: 1.4.682
+      electron-to-chromium: 1.4.684
       node-releases: 2.0.14
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
@@ -4020,8 +4020,8 @@ packages:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
     dev: true
 
-  /electron-to-chromium@1.4.682:
-    resolution: {integrity: sha512-oCglfs8yYKs9RQjJFOHonSnhikPK3y+0SvSYc/YpYJV//6rqc0/hbwd0c7vgK4vrl6y2gJAwjkhkSGWK+z4KRA==}
+  /electron-to-chromium@1.4.684:
+    resolution: {integrity: sha512-MoDE0pUsIzTewI96Vbv84sTkER9Nbp58pa1K7Ub03s6+2HvuJ+jbnxcLJm22mpomJe+5PWtiPXqhbU5ZkyHU5A==}
     dev: true
 
   /emoji-regex@8.0.0:
@@ -6761,13 +6761,13 @@ packages:
       '@rollup/plugin-virtual': 3.0.2
       '@swc/core': 1.4.2
       uuid: 9.0.1
-      vite: 5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1)
+      vite: 5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1)
     transitivePeerDependencies:
       - '@swc/helpers'
       - rollup
     dev: false
 
-  /vite@5.1.4(@types/node@20.11.20)(sass@1.71.1)(terser@5.28.1):
+  /vite@5.1.4(@types/node@20.11.21)(sass@1.71.1)(terser@5.28.1):
     resolution: {integrity: sha512-n+MPqzq+d9nMVTKyewqw6kSt+R3CkvF9QAKY8obiQn8g1fwTscKxyfaYnC632HtBXAQGc1Yjomphwn1dtwGAHg==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6795,7 +6795,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.20
+      '@types/node': 20.11.21
       esbuild: 0.19.12
       postcss: 8.4.35
       rollup: 4.12.0
