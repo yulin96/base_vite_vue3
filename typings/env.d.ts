@@ -4,6 +4,8 @@ declare module 'console' {
   export = typeof import('console')
 }
 
+type LinkTo = (name: string, props?: Record<'params' | 'query', Record<string, string>>) => void
+
 declare const lottie: typeof import('lottie-web').default
 type AnimationItem = import('lottie-web').AnimationItem
 
