@@ -1,11 +1,12 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
-  "include": ["typings/**/*", "src/**/*", "src/**/*.vue", "scan/**/*", "node_modules/vue-i18n/dist/vue-i18n.d.ts"],
-  "exclude": ["src/**/__tests__/*", "dist"],
+  "include": ["typings/**/*", "src/**/*", "src/**/*.vue", "scan/**/*"],
+  "exclude": ["src/**/__tests__/*", "dist", "node_modules/@types/node", "node_modules/.pnpm/@types/node/*"],
   "compilerOptions": {
     "types": ["unplugin-vue-router/client"],
     "composite": true,
-    "noEmit": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+
     "baseUrl": "./",
     "paths": {
       "~/*": ["./src/*"],
@@ -13,10 +14,5 @@
     },
     "allowJs": true,
     "noImplicitAny": false
-    // "lib": ["ESNext", "dom", "dom.iterable", "scripthost"],
-    // "outDir": "./",
-    // "isolatedModules": true,
-    // "ignoreDeprecations": "5.0",
-    // "allowImportingTsExtensions": true
   }
 }
