@@ -23,9 +23,16 @@ const _window = parent || window
 
 _window.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
 _window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
+
+let lastWidth = _window.innerWidth
 _window.addEventListener(
   'resize',
-  throttle(() => _window.location.reload(), 300),
+  throttle(() => {
+    if (lastWidth !== _window.innerWidth) {
+      _window.location.reload()
+      lastWidth = _window.innerWidth
+    }
+  }, 300),
 )
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
