@@ -18,6 +18,7 @@ export default {
       },
       animation: {
         'spin-slow': 'spin 4s linear infinite',
+        'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
       },
       keyframes: {
         bounce: {
