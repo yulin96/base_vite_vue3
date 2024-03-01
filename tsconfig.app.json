@@ -1,7 +1,7 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "include": ["typings/**/*", "src/**/*", "src/**/*.vue", "scan/**/*"],
-  "exclude": ["src/**/__tests__/*", "dist", "node_modules/@types/node", "node_modules/.pnpm/@types/node/*"],
+  "exclude": ["src/**/__tests__/*", "dist", "node_modules/@types/node"],
   "compilerOptions": {
     "types": ["unplugin-vue-router/client"],
     "composite": true,

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const linkTo = inject('linkTo') as LinkTo
+
 /*  */
 onMounted(() => {
   gsap.context(() => {}, '.index')
