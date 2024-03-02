@@ -30,8 +30,8 @@ onMounted(async () => {
   <VanPopup
     data-z-wx-login
     :show="show"
-    :close-on-click-overlay="false"
-    :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
+    :closeOnClickOverlay="false"
+    :overlayStyle="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
     class="bg-transparent">
     <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
       <p class="mb-40 text-32">您还没有登录</p>
