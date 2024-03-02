@@ -37,12 +37,6 @@ export default defineConfig(({ command }) => ({
     //   routesFolder: [{ src: 'src/pages' }],
     //   extensions: ['.vue', '.tsx'],
     //   importMode: 'sync',
-    //   extendRoute(route) {
-    //     if (route.name === '/') {
-    //       route.meta ??= { index: 20 }
-    //     }
-    //     console.log(route.name)
-    //   },
     // }),
     vue({ script: {} }),
     vueJsx(),
