@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { registerWxShare } from './utils/wxShare'
 
+registerWxShare()
+
 /* 路由动画 */
 const { transitionName } = useRouteTransition('slide-cover')
-/* 分享 */
-registerWxShare()
 
 const linkTo: LinkTo = (name, props) => {
   router.replace({ name, ...props })
