@@ -1,13 +1,14 @@
 <script setup lang="ts">
+import { randomNum } from '~/utils/tools'
+
 const router = useRouter()
 const toIndex = () => {
-  router.replace({ name: 'index' })
+  router.replace({ path: '/' })
 }
 
-const getRandomInt = (n: number, m: number) => Math.floor(Math.random() * (m - n + 1) + n)
 const { user } = useStore()
-const id = user.userInfo.errId || getRandomInt(1, 10)
-user.userInfo.errId = id + ''
+const id = String(user.userInfo.errId || randomNum(1, 10))
+user.userInfo.errId = id
 
 const errorEle = ref<HTMLDivElement | null>(null)
 

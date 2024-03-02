@@ -2,22 +2,13 @@
 import { addPcSupport } from '~/utils/addPcSupport'
 import { getOpenId } from '~/utils/openId'
 
-const props = defineProps<{ code: string; name?: string }>()
+const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
 
 const show = ref(false)
 
 const openLink = () => {
-  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name ?? '互动微平台')}&state=${
-    props.code
-  }&type=2`
-
-  ;(parent || window).location.href = url
-}
-
-const overlayStyle = {
-  background: '#0003',
-  WebkitBackdropFilter: 'blur(20px)',
-  backdropFilter: 'blur(20px)',
+  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name)}&state=${props.code}&type=2`
+  theWindow.location.href = url
 }
 
 const router = useRouter()
@@ -40,7 +31,7 @@ onMounted(async () => {
     data-z-wx-login
     :show="show"
     :close-on-click-overlay="false"
-    :overlay-style="overlayStyle"
+    :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
     class="bg-transparent">
     <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
       <p class="mb-40 text-32">您还没有登录</p>

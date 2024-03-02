@@ -2,7 +2,9 @@
 import Zoomist from 'zoomist'
 import { showDialog } from 'vant'
 
-const props = defineProps<{ url: string; fillType?: 'cover' | 'contain' | 'none' }>()
+const props = withDefaults(defineProps<{ url: string; fillType?: 'cover' | 'contain' | 'none' }>(), {
+  fillType: 'cover',
+})
 
 const uuid = 'zoomist_' + +new Date()
 
@@ -13,7 +15,7 @@ watchPostEffect(() => {
     const zoomEle = document.querySelector(`.zoomist.${uuid}`)
     if (zoomEle) {
       if (zoomist) zoomist.update()
-      else zoomist = new Zoomist(zoomEle, { height: false, fill: props.fillType ?? 'cover' })
+      else zoomist = new Zoomist(zoomEle, { height: false, fill: props.fillType })
     } else showDialog({ message: 'NOT_HAVE_DOM' })
   }
 })
