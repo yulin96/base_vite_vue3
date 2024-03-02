@@ -1,8 +1,7 @@
 import nprogress from 'nprogress'
 import { showLoadingToast, type ToastWrapperInstance } from 'vant'
 import type { AxiosRequestConfig } from 'axios'
-import { axios_get, axios_post } from '~/utils/request'
-import { toFormData } from 'axios'
+import { axiosGet, axiosPost } from '~/tools/request'
 
 nprogress.configure({
   showSpinner: false,
@@ -10,9 +9,7 @@ nprogress.configure({
   trickleSpeed: 120,
 })
 
-const openProgress = true
-
-export const useLock = (delay = 300) => {
+export const useLock = (delay = 300, showProgress = true) => {
   const lock = ref(false)
   let controller: AbortController
 
@@ -20,11 +17,11 @@ export const useLock = (delay = 300) => {
     _url: string,
     _data?: Record<string, any>,
     headers?: Record<string, any>,
-    otherConfig: AxiosRequestConfig = {},
-  ): Promise<never> => {
+    config: AxiosRequestConfig = {},
+  ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
     controller = new AbortController()
-    openProgress && nprogress?.start()
+    showProgress && nprogress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
       let requestToast: ToastWrapperInstance | undefined
@@ -32,9 +29,9 @@ export const useLock = (delay = 300) => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
       }, 5000)
 
-      axios_post(_url, _data ? toFormData(_data) : null, headers ? headers : null, controller.signal, otherConfig)
+      axiosPost(_url, _data, headers, config)
         .then((res) => {
-          resolve(res as never)
+          resolve(res)
         })
         .catch((err) => {
           if (err.name !== 'CanceledError') showNotify({ type: 'danger', message: '网络繁忙，请稍后重试' })
@@ -44,7 +41,7 @@ export const useLock = (delay = 300) => {
           clearTimeout(requestTimer)
           requestToast?.close()
 
-          openProgress && nprogress?.done()
+          showProgress && nprogress?.done()
           delay
             ? setTimeout(() => {
                 lock.value = false
@@ -58,11 +55,11 @@ export const useLock = (delay = 300) => {
     _url: string,
     _data?: Record<string, any>,
     headers?: Record<string, any>,
-    otherConfig: AxiosRequestConfig = {},
-  ): Promise<never> => {
+    config: AxiosRequestConfig = {},
+  ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
-    controller = new AbortController()
-    openProgress && nprogress?.start()
+
+    showProgress && nprogress?.start()
     lock.value = true
     return new Promise((resolve, reject) => {
       let requestToast: ToastWrapperInstance | undefined
@@ -70,9 +67,9 @@ export const useLock = (delay = 300) => {
         requestToast = showLoadingToast({ message: '加载中...', duration: 0 })
       }, 5000)
 
-      axios_get(_url, _data ? _data : null, headers ? headers : null, controller.signal, otherConfig)
+      axiosGet(_url, _data, headers, config)
         .then((res) => {
-          resolve(res as never)
+          resolve(res)
         })
         .catch((err) => {
           if (err.name !== 'CanceledError') showNotify({ type: 'danger', message: '网络繁忙，请稍后重试' })
@@ -82,7 +79,7 @@ export const useLock = (delay = 300) => {
           clearTimeout(requestTimer)
           requestToast?.close()
 
-          openProgress && nprogress?.done()
+          showProgress && nprogress?.done()
           delay
             ? setTimeout(() => {
                 lock.value = false

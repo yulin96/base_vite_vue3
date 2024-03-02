@@ -1,4 +1,4 @@
-import { isMobile } from '~/utils/tools/ua-parser'
+import { isMobile } from '~/utils/uaParser'
 
 if (isMobile) {
   location.replace('./index.html')

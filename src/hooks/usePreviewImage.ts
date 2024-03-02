@@ -1,5 +1,5 @@
-import { isWeChat } from '~/utils/tools/ua-parser'
-import { WxPreviewImage } from '~/utils/wx'
+import { isWeChat } from '~/utils/uaParser'
+import { WxPreviewImage } from '~/tools/wx'
 import { showImagePreview } from 'vant'
 
 export const usePreviewImage = () => {

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { registerWxShare } from './utils/wxShare'
+import { registerWxShare } from '~/tools/share'
 
 registerWxShare()
 
@@ -38,3 +38,4 @@ body,
   background-color: var(--main-color);
 }
 </style>
+./tools/wxShare

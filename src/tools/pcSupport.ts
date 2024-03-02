@@ -1,6 +1,6 @@
-import { isMobile } from '~/utils/tools/ua-parser'
+import { isMobile } from '~/utils/uaParser'
 
-export const addPcSupport = () => {
+export const pcSupport = () => {
   return new Promise<void>((resolve, _) => {
     const paramsSearch = new URLSearchParams(window.location.search)
     const params: { [x: string]: string } = {}

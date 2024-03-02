@@ -1,6 +1,8 @@
 @import './base.css';
-@import './piece.css';
-@import './progress.css';
+@import './plugin/tailwind.css';
+@import './plugin/progress.css';
+@import './plugin/piece.css';
+@import './plugin/fixPlugin.css';
 
 #app {
   position: relative;

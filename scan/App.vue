@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { wxPreventShare } from '~/utils/wx'
+import { wxPreventShare } from '~/tools/wx'
 
 /* 路由动画 */
-const { transitionName } = useRouteTransition()
+const { name } = useRouteTransition()
 /* 分享 */
 wxPreventShare()
 </script>
 
 <template>
   <router-view class="wrapper" v-slot="{ Component }">
-    <transition :name="transitionName">
+    <transition :name>
       <component :is="Component" />
     </transition>
   </router-view>
@@ -21,3 +21,4 @@ body {
   background-color: #fff;
 }
 </style>
+~/tools/wx

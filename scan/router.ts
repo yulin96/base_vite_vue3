@@ -16,7 +16,7 @@ const scanRouter = createRouter({
 scanRouter.addRoute({
   path: '/:pathMatch(.*)*',
   name: '404',
-  component: () => import('~/components/v-not-found.vue'),
+  component: () => import('~/components/NotFound.vue'),
   meta: { index: 404 },
 })
 

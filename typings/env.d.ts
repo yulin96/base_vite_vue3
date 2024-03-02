@@ -1,4 +1,5 @@
 /// <reference types="vite/client" />
+/// <reference types="@plugin-web-update-notification/vite" />
 
 type LinkTo = (name: string, props?: Record<'params' | 'query', Record<string, string>>) => void
 

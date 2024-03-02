@@ -1,11 +1,14 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
-import { isFromData, formDataToObj } from '~/utils/tools'
+import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
+import { isFromData, formDataToObj } from '~/utils/common'
 
 function convertData(data: Record<string, any>) {
   if (data == null) return
   for (const key in data) {
     if (Object.prototype.hasOwnProperty.call(data, key)) {
-      if (key == 'code') continue
+      if (key == 'code') {
+        data[key] = +data[key]
+        continue
+      }
 
       if (typeof data[key] === 'object') convertData(data[key])
       else if (typeof data[key] === 'number') data[key] = data[key].toString()
@@ -49,31 +52,29 @@ const instanceHttp = axios.create({
 interceptor(instance)
 interceptor(instanceHttp)
 
-export const axios_get = (
+export const axiosGet = (
   url: string,
-  params: Record<string, any> | null,
-  headers: Record<string, any> | null,
-  signal: AbortSignal,
-  otherConfig: AxiosRequestConfig = {},
+  params: Record<string, any> | undefined,
+  headers: Record<string, any> | undefined,
+  config: AxiosRequestConfig = {},
 ) => {
-  return new Promise((resolve, reject) =>
-    (url.startsWith('http') ? instanceHttp : instance)
-      .get(url, { ...otherConfig, ...(params ? { params } : {}), ...(headers ? { headers } : {}), signal })
+  return new Promise<IRes>((resolve, reject) => {
+    ;(url.startsWith('http') ? instanceHttp : instance)
+      .get(url, { ...(params ? { params } : {}), ...(headers ? { headers } : {}), ...config })
       .then((response) => resolve(response.data))
-      .catch((error) => reject(error)),
-  )
+      .catch(() => reject())
+  })
 }
 
-export const axios_post = (
+export const axiosPost = (
   url: string,
-  data: Record<string, any> | null,
-  headers: Record<string, any> | null,
-  signal: AbortSignal,
-  otherConfig: AxiosRequestConfig = {},
+  data: Record<string, any> = {},
+  headers: Record<string, any> | undefined,
+  config: AxiosRequestConfig = {},
 ) => {
-  return new Promise((resolve, reject) =>
+  return new Promise<IRes>((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, data, { ...otherConfig, ...(headers ? { headers } : {}), signal })
+      .post(url, toFormData(data), { ...config, ...(headers ? { headers } : {}) })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error)),
   )

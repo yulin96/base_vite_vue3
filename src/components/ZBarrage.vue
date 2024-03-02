@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { randomStr } from '~/utils/tools'
 const uuid = randomStr()
 const uuid2 = randomStr()
 
@@ -113,3 +112,4 @@ function createBarrage({
   margin-left: 10px;
 }
 </style>
+~/utils/basic

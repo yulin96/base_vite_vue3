@@ -4,19 +4,18 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
-import { addPcSupport } from '~/utils/addPcSupport'
-import { checkWebpFeature } from '~/utils/isSupportWebp'
+import { pcSupport } from '~/tools/pcSupport'
+import { checkWebpFeature } from '~/utils/checkWebpFeature'
 import { throttle } from 'lodash-es'
+import '~/tools/checkUpdate'
 import '@vant/touch-emulator'
-import '~/utils/gsap/easeIn'
 // import i18n from '~/lang'
 
-import './assets/css/tailwind.css'
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
-import '~/assets/css/fixPlugin.css'
+
 import '~/assets/css/main.css'
 
 const _window = parent || window
@@ -36,7 +35,7 @@ _window.addEventListener(
 )
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
-  addPcSupport().then(() => {})
+  pcSupport().then(() => {})
 }
 
 checkWebpFeature((_, result) => {

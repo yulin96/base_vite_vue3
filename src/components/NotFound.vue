@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { randomNum } from '~/utils/tools'
-
 const router = useRouter()
 const toIndex = () => {
   router.replace({ path: '/' })
@@ -91,3 +89,4 @@ onMounted(() => {
   height: 500px;
 }
 </style>
+~/utils/basic

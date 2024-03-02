@@ -1,19 +1,20 @@
 import wx from 'weixin-js-sdk'
 import axios from 'axios'
-import { isWeChat } from '~/utils/tools/ua-parser'
+import { isWeChat } from '~/utils/uaParser'
 
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false
 
-const _getWXconfig = () => {
+export const getWxConfig = () => {
+  if (window[wxConfigReady]) return Promise.resolve()
+
   return new Promise<void>((resolve, reject) => {
-    if (window[wxConfigReady]) return resolve()
-    const urlType = ~location.href.indexOf('h5.eventnet.cn') ? 2 : 1
-    const wxLink = window.location.href.split('#')[0]
+    const urlType = ~theWindow.location.href.indexOf('h5.eventnet.cn') ? 'h5' : 'www'
+    const wxLink = theWindow.location.href.split('#')[0]
     const data = new FormData()
     data.append('url', wxLink)
     axios
-      .post(`https://${urlType == 1 ? 'www' : urlType == 2 ? 'h5' : 'www'}.eventnet.cn/wxAjax/fx/index.php`, data)
+      .post(`https://${urlType}.eventnet.cn/wxAjax/fx/index.php`, data)
       .then((el) => {
         wx.config({
           appId: el.data.appId,
@@ -45,11 +46,11 @@ const _getWXconfig = () => {
   })
 }
 
-type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
+export type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
 
 export const WxShare = (data: IWxShare): void => {
   const { title, desc, link, imgUrl } = data
-  _getWXconfig()
+  getWxConfig()
     .then(() => {
       wx.updateAppMessageShareData({ title, desc, link, imgUrl, success() {} })
       wx.updateTimelineShareData({ title, link, imgUrl, success() {} })
@@ -64,20 +65,21 @@ export const WxScanQRCode = (): Promise<string> => {
   if (scanLock) return Promise.reject('扫码中')
   scanLock = true
   return new Promise((resolve, reject) => {
-    _getWXconfig()
+    getWxConfig()
       .then(() => {
         wx.scanQRCode({
           needResult: 1,
           scanType: ['qrCode', 'barCode'],
-          success: function (res: Record<'resultStr', string>) {
+          success: (res) => {
             resolve(res.resultStr)
           },
-          complete: function () {
+          complete: () => {
             scanLock = false
           },
         })
       })
       .catch((err) => {
+        scanLock = false
         reject(err)
       })
   })
@@ -94,19 +96,33 @@ type IWxOpenLocation = Pick<wx.IopenLocation, 'latitude' | 'longitude' | 'name' 
   address: '',
 }
  */
+let openLocationLock = false
 export const WxOpenLocation = (data: IWxOpenLocation): void => {
+  if (openLocationLock) return
+  openLocationLock = true
   const { latitude, longitude, name, address, scale = 10, infoUrl = '' } = data
-  _getWXconfig()
+  getWxConfig()
     .then(() => {
-      wx.openLocation({ latitude, longitude, name, address, scale, infoUrl })
+      wx.openLocation({
+        latitude,
+        longitude,
+        name,
+        address,
+        scale,
+        infoUrl,
+        complete: () => {
+          openLocationLock = false
+        },
+      })
     })
     .catch((err) => {
       console.log(err)
+      openLocationLock = false
     })
 }
 
 export const WxPreviewImage = (current: string, urls: string[]): void => {
-  _getWXconfig()
+  getWxConfig()
     .then(() => {
       wx.previewImage({ current, urls })
     })
@@ -116,7 +132,7 @@ export const WxPreviewImage = (current: string, urls: string[]): void => {
 }
 
 export const wxHideAllNonBaseMenuItem = () => {
-  _getWXconfig().then(() => {
+  getWxConfig().then(() => {
     wx.hideAllNonBaseMenuItem()
   })
 }
@@ -143,7 +159,7 @@ export const wxPreventShare = () => {
 
 export const closeWindow = () => {
   isWeChat
-    ? _getWXconfig().then(() => {
+    ? getWxConfig().then(() => {
         wx.closeWindow()
       })
     : window.close()

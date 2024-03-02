@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { addPcSupport } from '~/utils/addPcSupport'
-import { getOpenId } from '~/utils/openId'
+import { pcSupport } from '~/tools/pcSupport'
+import { getOpenId } from '~/tools/getOpenId'
 
 const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
 
@@ -20,7 +20,7 @@ router.beforeEach((to) => {
 
 onMounted(async () => {
   if (import.meta.env.VITE_APP_OPENPC == '1') {
-    await addPcSupport()
+    await pcSupport()
   }
   if (!(await getOpenId())) show.value = true
 })
@@ -59,3 +59,4 @@ onMounted(async () => {
     </div>
   </VanPopup>
 </template>
+~/tools/openId

@@ -4,7 +4,7 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
-import { checkWebpFeature } from '~/utils/isSupportWebp'
+import { checkWebpFeature } from '~/utils/checkWebpFeature'
 
 checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')

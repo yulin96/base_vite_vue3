@@ -18,6 +18,7 @@ import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import tailwindcss from 'tailwindcss'
 
 import { visualizer } from 'rollup-plugin-visualizer'
+import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
@@ -106,9 +107,10 @@ export default defineConfig(({ command }) => ({
         './src/hooks/**',
         './src/config/**',
         './src/stores/**',
-        './src/utils/auto/**',
         './src/router/**',
         './src/api/**',
+        './src/utils/**/*',
+        './src/tools/**/*',
         './scan/**',
       ],
       dts: './typings/auto-imports.d.ts',
@@ -118,6 +120,14 @@ export default defineConfig(({ command }) => ({
     legacy({
       targets: ['ios >= 11', 'chrome >= 64'],
       modernPolyfills: true,
+    }),
+    webUpdateNotice({
+      hiddenDefaultNotification: true,
+      logVersion: (version) => {
+        console.log(`🦄 🚧 version: %c123123 `, 'color: #3a4aca;')
+      },
+      injectFileBase: './',
+      versionType: 'build_timestamp',
     }),
     visualizer(),
   ],

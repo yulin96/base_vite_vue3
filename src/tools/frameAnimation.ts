@@ -66,9 +66,13 @@ export default class FrameAnimation {
     } = this.option
 
     if (poster) {
-      const img = await loadImg(poster)
-      this.posterImg = img
-      this.animationCtx.drawImage(img, ...this.path)
+      try {
+        const img = await loadImg(poster)
+        this.posterImg = img
+        this.animationCtx.drawImage(img, ...this.path)
+      } catch (error) {
+        console.error(`加载封面图片失败: ${poster}`, error)
+      }
     }
 
     if (loop) this.fromTo = [loopStartIndex, loopEndIndex - 1]
@@ -136,7 +140,7 @@ async function loadImg(url: string) {
     img.onload = () => {
       resolve(img)
     }
-    img.onerror = reject
+    img.onerror = () => reject(new Error(`加载图片失败: ${url}`))
     img.src = url
   })
 }
