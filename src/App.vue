@@ -20,15 +20,15 @@ provide('linkTo', linkTo)
 </script>
 
 <template>
-  <suspense>
-    <router-view class="wrapper" v-slot="{ Component }">
-      <transition :name="transitionName">
-        <keep-alive :include="[]">
+  <Suspense>
+    <RouterView class="wrapper" v-slot="{ Component }">
+      <Transition :name="transitionName">
+        <KeepAlive :include="[]">
           <component :is="Component" />
-        </keep-alive>
-      </transition>
-    </router-view>
-  </suspense>
+        </KeepAlive>
+      </Transition>
+    </RouterView>
+  </Suspense>
 </template>
 
 <style>

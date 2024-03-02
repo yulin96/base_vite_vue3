@@ -1,7 +1,7 @@
 <template>
-  <transition name="slide-up" mode="out-in">
+  <Transition name="slide-up" mode="out-in">
     <slot></slot>
-  </transition>
+  </Transition>
 </template>
 
 <style>
