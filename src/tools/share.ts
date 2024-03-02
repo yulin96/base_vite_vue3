@@ -1,6 +1,6 @@
 import { isWeChat } from '~/utils/uaParser'
 import { isHttps } from '~/utils/check'
-import { WxShare, type IWxShare } from '~/tools/wx'
+import { wxShare, type IWxShare } from '~/tools/wx'
 
 export const registerWxShare = () => {
   const title = import.meta.env.VITE_APP_SHARE_TITLE
@@ -9,12 +9,12 @@ export const registerWxShare = () => {
   const imgUrl = import.meta.env.VITE_APP_SHARE_IMGURL
 
   if (title && link && imgUrl && isWeChat && isHttps()) {
-    WxShare({ title, desc, link, imgUrl })
-    RegisterDDShare({ title, desc, link, imgUrl })
+    wxShare({ title, desc, link, imgUrl })
+    registerDDShare({ title, desc, link, imgUrl })
   }
 }
 
-export const RegisterDDShare = ({ title, desc, link, imgUrl }: IWxShare) => {
+export const registerDDShare = ({ title, desc, link, imgUrl }: IWxShare) => {
   if (!isHttps() || typeof dd === 'undefined') throw new Error('钉钉分享需要在钉钉环境下使用')
 
   dd.ready(function () {

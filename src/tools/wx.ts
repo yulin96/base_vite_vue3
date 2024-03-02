@@ -48,7 +48,7 @@ export const getWxConfig = () => {
 
 export type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
 
-export const WxShare = (data: IWxShare): void => {
+export const wxShare = (data: IWxShare): void => {
   const { title, desc, link, imgUrl } = data
   getWxConfig()
     .then(() => {
@@ -97,7 +97,7 @@ type IWxOpenLocation = Pick<wx.IopenLocation, 'latitude' | 'longitude' | 'name' 
 }
  */
 let openLocationLock = false
-export const WxOpenLocation = (data: IWxOpenLocation): void => {
+export const wxOpenLocation = (data: IWxOpenLocation): void => {
   if (openLocationLock) return
   openLocationLock = true
   const { latitude, longitude, name, address, scale = 10, infoUrl = '' } = data
@@ -121,7 +121,7 @@ export const WxOpenLocation = (data: IWxOpenLocation): void => {
     })
 }
 
-export const WxPreviewImage = (current: string, urls: string[]): void => {
+export const wxPreviewImage = (current: string, urls: string[]): void => {
   getWxConfig()
     .then(() => {
       wx.previewImage({ current, urls })
