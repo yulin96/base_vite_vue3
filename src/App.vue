@@ -4,7 +4,7 @@ import { registerWxShare } from './utils/wxShare'
 registerWxShare()
 
 /* 路由动画 */
-const { transitionName } = useRouteTransition('slide-cover')
+const { name } = useRouteTransition('slide-cover')
 
 const linkTo: LinkTo = (name, props) => {
   router.replace({ name, ...props })
@@ -22,7 +22,7 @@ provide('linkTo', linkTo)
 <template>
   <Suspense>
     <RouterView class="wrapper" v-slot="{ Component }">
-      <Transition :name="transitionName">
+      <Transition :name>
         <KeepAlive :include="[]">
           <component :is="Component" />
         </KeepAlive>
