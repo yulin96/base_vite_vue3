@@ -85,3 +85,64 @@
 /* .van-toast__text {
   white-space: nowrap;
 } */
+
+.van-dialog--round-button::after {
+  content: '';
+  position: absolute;
+  background-color: #84b0f9aa;
+  width: 300px;
+  height: 300px;
+  right: -90px;
+  top: -100px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.van-dialog--round-button::before {
+  content: '';
+  position: absolute;
+  background-color: #edf9bfaa;
+  width: 200px;
+  height: 200px;
+  left: -30px;
+  bottom: -60px;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.van-dialog__message--has-title {
+  padding: 36px 20px 90px !important;
+}
+
+.van-dialog--round-button .van-dialog__footer {
+  padding: 12px 50px 60px;
+  background: transparent;
+}
+
+.van-dialog--round-button .van-dialog__footer .van-dialog__cancel {
+  margin-right: 50px;
+  flex: 1;
+}
+
+.van-dialog--round-button .van-dialog__footer .van-button {
+  border-radius: 9999px;
+}
+
+.van-dialog--round-button .van-dialog__footer .van-dialog__cancel .van-button__content {
+  border: 1px solid #777;
+  border-radius: 9999px;
+  color: #555;
+  font-weight: normal;
+}
+
+.van-dialog--round-button .van-dialog__footer .van-dialog__confirm {
+  flex: 1.6;
+}
+
+.van-dialog--round-button .van-dialog__footer .van-dialog__confirm .van-button__content {
+  border-radius: 9999px;
+  background: linear-gradient(to right, #5769b6, #344bb6, #5769b6);
+  box-shadow: #5769b666 2px 6px 12px;
+}
