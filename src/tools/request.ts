@@ -54,8 +54,8 @@ interceptor(instanceHttp)
 
 export const axiosGet = (
   url: string,
-  params: Record<string, any> | undefined,
-  headers: Record<string, any> | undefined,
+  params?: Record<string, any>,
+  headers?: Record<string, any>,
   config: AxiosRequestConfig = {},
 ) => {
   return new Promise<IRes>((resolve, reject) => {
@@ -69,12 +69,13 @@ export const axiosGet = (
 export const axiosPost = (
   url: string,
   data: Record<string, any> = {},
+  dataType: 'FormData' | 'JSON' = 'FormData',
   headers: Record<string, any> | undefined,
   config: AxiosRequestConfig = {},
 ) => {
   return new Promise<IRes>((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, toFormData(data), { ...config, ...(headers ? { headers } : {}) })
+      .post(url, dataType === 'FormData' ? toFormData(data) : data, { ...config, ...(headers ? { headers } : {}) })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error)),
   )
