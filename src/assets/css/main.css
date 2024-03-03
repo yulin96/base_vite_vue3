@@ -27,10 +27,6 @@
   scroll-behavior: smooth;
 }
 
-div::-webkit-scrollbar {
-  display: none;
-}
-
 .content {
   width: 100%;
   min-height: max(1410px, 100%);
