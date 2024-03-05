@@ -1,5 +1,10 @@
 type WebpFeature = 'lossy' | 'lossless' | 'alpha' | 'animation'
 
+/**
+ * 检查浏览器是否支持 WebP
+ * @param callback - 回调函数
+ * @param feature - WebP 特性
+ */
 export const checkWebpFeature = (
   callback: (feature: WebpFeature, result: boolean) => any,
   feature: WebpFeature = 'lossless',

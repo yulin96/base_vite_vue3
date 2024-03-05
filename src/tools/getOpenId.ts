@@ -1,14 +1,12 @@
-/**
- *
- * @param id 活动id
- * @param name? 授权公众号名称
- * @returns {Promise<boolean | void>} 获取是否成功
- */
-
 import { useUrlSearchParams } from '@vueuse/core'
 
 const { get } = useLock()
 
+/**
+ * 获取微信用户openid
+ * @param name 平台名称
+ * @returns 是否获取成功
+ */
 export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => {
   return new Promise<boolean>((resolve) => {
     const { user } = useStore()

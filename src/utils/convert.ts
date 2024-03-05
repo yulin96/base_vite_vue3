@@ -1,3 +1,8 @@
+/**
+ * 将URL转换为Blob对象。
+ * @param url - 要转换的URL。
+ * @returns 一个Promise，当转换完成时，将返回一个Blob对象。
+ */
 export const urlToBlob = (url: string) => {
   return new Promise<Blob>((resolve, reject) => {
     const image = new Image()
@@ -19,6 +24,15 @@ export const urlToBlob = (url: string) => {
   })
 }
 
+/**
+ * 改变图像大小
+ * @param originBlob 原始图像的 Blob 对象
+ * @param width 图像的宽度，默认为 600
+ * @param height 图像的高度，默认为 800
+ * @returns 返回一个 Promise，该 Promise 在图像大小改变后解析为新的 Blob 对象
+ * @throws 如果浏览器不支持 canvas，则会抛出错误
+ * @throws 如果无法获取到 Blob 对象，则会抛出错误
+ */
 export const changeImageSize = (originBlob: Blob, width = 600, height = 800) => {
   return new Promise<Blob>((resolve, reject) => {
     const canvas = document.createElement('canvas')
@@ -42,6 +56,11 @@ export const changeImageSize = (originBlob: Blob, width = 600, height = 800) => 
   })
 }
 
+/**
+ * 将 Blob 对象转换为 Base64 字符串
+ * @param blob 要转换的 Blob 对象
+ * @returns 返回一个 Promise，解析为转换后的 Base64 字符串
+ */
 export const blobToBase64 = (blob: any) => {
   return new Promise((resolve, reject) => {
     const fileReader = new FileReader()
@@ -55,10 +74,21 @@ export const blobToBase64 = (blob: any) => {
   })
 }
 
+/**
+ * 将 Blob 对象转换为 File 对象。
+ * @param blob - 要转换的 Blob 对象。
+ * @param fileName - 转换后的 File 对象的文件名。
+ * @returns 转换后的 File 对象。
+ */
 export const blobToFile = (blob: Blob, fileName: string) => {
   return new File([blob], fileName, { type: blob.type })
 }
 
+/**
+ * 将 base64 字符串转换为 Blob 对象
+ * @param urlData - base64 字符串
+ * @returns Blob 对象
+ */
 export const base64ToBlob = (urlData: string | any): Blob => {
   const arr = urlData.split(',')
   const _arr = arr[1].substring(0, arr[1].length - 2)
@@ -74,11 +104,23 @@ export const base64ToBlob = (urlData: string | any): Blob => {
   })
 }
 
+/**
+ * 将 base64 数据转换为 File 对象。
+ * @param urlData - base64 数据或任意类型数据。
+ * @param fileName - 文件名。
+ * @returns 转换后的 File 对象。
+ */
 export const base64ToFile = (urlData: string | any, fileName: string): File => {
   const blob = base64ToBlob(urlData)
   return new File([blob], fileName, { type: blob.type })
 }
 
+/**
+ * 将对象的属性名转换为指定的名称。
+ * @param obj - 要转换的对象。
+ * @param nameKey - 包含属性名映射关系的对象。
+ * @returns 转换后的新对象。
+ */
 export const convertObjectName = (obj: Record<string, any>, nameKey: Record<string, string>) => {
   const newObj: Record<string, any> = {}
   const keys = Object.keys(nameKey)

@@ -19,6 +19,11 @@ export const isEmail = (email: string): boolean => /(\S)+[@]{1}(\S)+[.]{1}(\w)+/
  */
 export const isPhone = (phone: string): boolean => /^1[3-9]\d{9}$/.test(phone)
 
+/**
+ *
+ * @param idCard 身份证号
+ * @returns {boolean | void} - 如果是身份证号则返回 true，否则返回 false
+ */
 export const isIdCard = (idCard: string): boolean | void => {
   const regIdCard =
     /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
