@@ -16,7 +16,8 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/",
-    "upDist": "node ./upDist.js"
+    "upDist": "node ./upDist.js",
+    "prepare": "husky"
   },
   "dependencies": {
     "@types/canvas-confetti": "^1.6.4",
@@ -82,6 +83,7 @@
     "autoprefixer": "^10.4.18",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
+    "husky": "^9.0.11",
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",
     "postcss-html": "^1.6.0",
