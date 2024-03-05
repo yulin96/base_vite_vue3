@@ -1,9 +1,10 @@
-export const sleep = (time: number) =>
-  new Promise<void>((resolve, _) => {
+export const sleep = (time: number) => {
+  return new Promise<void>((resolve, _) => {
     setTimeout(() => {
       resolve()
     }, time)
   })
+}
 
 export const getImageUrl = (name: string) => new URL(`../assets/images/${name}`, import.meta.url).href
 
