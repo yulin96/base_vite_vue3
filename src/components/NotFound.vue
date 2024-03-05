@@ -89,4 +89,3 @@ onMounted(() => {
   height: 500px;
 }
 </style>
-~/utils/basic

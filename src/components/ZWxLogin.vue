@@ -59,4 +59,3 @@ onMounted(async () => {
     </div>
   </VanPopup>
 </template>
-~/tools/openId

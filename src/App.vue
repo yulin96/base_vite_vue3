@@ -38,4 +38,3 @@ body,
   background-color: var(--main-color);
 }
 </style>
-./tools/wxShare
