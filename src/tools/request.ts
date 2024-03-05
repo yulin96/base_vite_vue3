@@ -1,5 +1,6 @@
 import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
-import { isFromData, formDataToObj } from '~/utils/common'
+import { isFromData } from '~/utils/common'
+import { formDataToObj } from '~/utils/convert'
 
 function convertData(data: Record<string, any>) {
   if (data == null) return

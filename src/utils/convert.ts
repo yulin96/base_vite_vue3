@@ -132,3 +132,16 @@ export const convertObjectName = (obj: Record<string, any>, nameKey: Record<stri
 
   return newObj
 }
+
+/**
+ * 将 FormData 转换为对象
+ * @param formData 要转换的 FormData 对象
+ * @returns 转换后的对象
+ */
+export const formDataToObj = (formData: FormData) => {
+  const object = {}
+  for (const [key, value] of formData) {
+    object[key] = value
+  }
+  return object
+}
