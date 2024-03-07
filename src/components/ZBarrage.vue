@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const uuid = randomStr()
-const uuid2 = randomStr()
+const uuid = randomString()
+const uuid2 = randomString()
 
 const props = withDefaults(defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>(), {
   gap: 20,
