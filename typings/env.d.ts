@@ -1,7 +1,7 @@
 /// <reference types="vite/client" />
 /// <reference types="@plugin-web-update-notification/vite" />
 
-type LinkTo = (name: string, props?: Record<'params' | 'query', Record<string, string>>) => void
+type LinkTo = (name: string, props?: { params?: Record<string, string>; query?: Record<string, string> }) => void
 
 declare const lottie: typeof import('lottie-web').default
 type AnimationItem = import('lottie-web').AnimationItem
