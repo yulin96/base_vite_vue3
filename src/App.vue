@@ -17,6 +17,10 @@ provide('linkTo', linkTo)
 // watch(locale, (newVal) => {
 //   localStorage.setItem((localName || 'test') + '-local', newVal)
 // })
+
+onMounted(() => {
+  if (!devModel) router.replace({ path: '/' })
+})
 </script>
 
 <template>
