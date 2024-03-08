@@ -124,7 +124,7 @@ export default defineConfig(({ command }) => ({
     webUpdateNotice({
       hiddenDefaultNotification: true,
       logVersion: (version) => {
-        console.log(`🦄 🚧 version: %c123123 `, 'color: #3a4aca;')
+        console.log(`🦄 🚧 version: %c${version}`, 'color: #3a4aca;')
       },
       injectFileBase: './',
       versionType: 'build_timestamp',
