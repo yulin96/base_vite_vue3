@@ -20,18 +20,16 @@ import '~/assets/css/main.css'
 
 !devModel && getWxConfig()
 
-const _window = parent || window
+theWindow.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
+theWindow.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 
-_window.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
-_window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
-
-let lastWidth = _window.innerWidth
-_window.addEventListener(
+let lastWidth = theWindow.innerWidth
+theWindow.addEventListener(
   'resize',
   throttle(() => {
-    if (lastWidth !== _window.innerWidth) {
-      _window.location.reload()
-      lastWidth = _window.innerWidth
+    if (lastWidth !== theWindow.innerWidth) {
+      theWindow.location.reload()
+      lastWidth = theWindow.innerWidth
     }
   }, 300),
 )
