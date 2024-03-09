@@ -18,6 +18,8 @@ import 'vant/es/toast/style'
 
 import '~/assets/css/main.css'
 
+!devModel && getWxConfig()
+
 const _window = parent || window
 
 _window.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
