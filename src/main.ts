@@ -23,16 +23,18 @@ import '~/assets/css/main.css'
 theWindow.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
 theWindow.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 
-let lastWidth = theWindow.innerWidth
-theWindow.addEventListener(
-  'resize',
-  throttle(() => {
-    if (lastWidth !== theWindow.innerWidth) {
-      theWindow.location.reload()
-      lastWidth = theWindow.innerWidth
-    }
-  }, 300),
-)
+if (devModel) {
+  let lastWidth = theWindow.innerWidth
+  theWindow.addEventListener(
+    'resize',
+    throttle(() => {
+      if (lastWidth !== theWindow.innerWidth) {
+        theWindow.location.reload()
+        lastWidth = theWindow.innerWidth
+      }
+    }, 300),
+  )
+}
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
   pcSupport().then(() => {})
