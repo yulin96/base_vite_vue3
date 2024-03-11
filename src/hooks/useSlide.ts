@@ -10,7 +10,7 @@ interface ISlideOptions {
   slideNumber?: number
 }
 
-export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions) => {
+export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 200 }: ISlideOptions) => {
   const startMove = ref({ pageY: 0, once: true })
 
   const ele = eleName
@@ -22,9 +22,21 @@ export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNum
     lock = false
   }
 
-  const onMove = (t: any) => {
-    const pageY = t?.changedTouches?.[0]?.pageY || t.pageY
-    if (arrivedState.top || arrivedState.bottom || ele.value.scrollTop < 0) {
+  watch(
+    [() => arrivedState.bottom, () => arrivedState.bottom],
+    () => {
+      startMove.value.pageY = 0
+      startMove.value.once = true
+    },
+    {
+      flush: 'pre',
+    },
+  )
+
+  const onMove = (t: TouchEvent) => {
+    const pageY = t?.changedTouches?.[0]?.pageY
+
+    if (arrivedState.top || ele.value.scrollTop < 0 || arrivedState.bottom) {
       if (startMove.value.once) {
         startMove.value.pageY = pageY
         startMove.value.once = false
