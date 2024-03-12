@@ -27,11 +27,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <VanPopup
+  <van-popup
     data-z-wx-login
     :show="show"
-    :closeOnClickOverlay="false"
-    :overlayStyle="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
+    :close-on-click-overlay="false"
+    :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
     class="bg-transparent">
     <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
       <p class="mb-40 text-32">您还没有登录</p>
@@ -57,5 +57,5 @@ onMounted(async () => {
         <p class="text-30">微信一键登录</p>
       </button>
     </div>
-  </VanPopup>
+  </van-popup>
 </template>

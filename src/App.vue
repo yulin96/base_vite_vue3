@@ -24,15 +24,15 @@ onMounted(() => {
 </script>
 
 <template>
-  <Suspense>
-    <RouterView class="wrapper" v-slot="{ Component }">
-      <Transition :name>
-        <KeepAlive :include="[]">
+  <suspense>
+    <router-view class="wrapper" v-slot="{ Component }">
+      <transition :name>
+        <keep-alive :include="[]">
           <component :is="Component" />
-        </KeepAlive>
-      </Transition>
-    </RouterView>
-  </Suspense>
+        </keep-alive>
+      </transition>
+    </router-view>
+  </suspense>
 </template>
 
 <style>
