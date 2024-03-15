@@ -70,12 +70,12 @@ export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNum
   const eleEffect = (t: any) => {
     if (!ele.value) return
 
-    if (t.deltaY < 0 && ele.value.scrollTop === 0) {
+    if (t.deltaY < -60 && ele.value.scrollTop === 0) {
       prev?.()
     }
 
     if (
-      t.deltaY > 0 &&
+      t.deltaY > -60 &&
       Math.ceil(ele.value.scrollTop) + Math.ceil(ele.value.clientHeight) + 2 >= ele.value.scrollHeight
     ) {
       next?.()
