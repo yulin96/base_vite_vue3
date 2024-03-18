@@ -104,8 +104,8 @@ dependencies:
     specifier: ^9.0.1
     version: 9.0.1
   vant:
-    specifier: ^4.8.6
-    version: 4.8.6(vue@3.4.21)
+    specifier: ^4.8.7
+    version: 4.8.7(vue@3.4.21)
   vite-plugin-top-level-await:
     specifier: ^1.4.1
     version: 1.4.1(vite@5.1.6)
@@ -6538,8 +6538,8 @@ packages:
     hasBin: true
     dev: false
 
-  /vant@4.8.6(vue@3.4.21):
-    resolution: {integrity: sha512-1k1D5wDivY8n8BYD52kM042hR8avV3LV5kDeic3ce4XgqtJl9vlLX0ASyPYeNIe/ufSe2TRvlZ8K12+uPpe26g==}
+  /vant@4.8.7(vue@3.4.21):
+    resolution: {integrity: sha512-puBsqVzC94niN2fFLbkpZGInE8fYK+jjoOAhQ7XAreFCn8xkxnjGpcLNoLvQSP2hUYKN7+kES1bbz/h7RHF7vQ==}
     peerDependencies:
       vue: ^3.0.0
     dependencies:
