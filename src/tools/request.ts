@@ -1,4 +1,4 @@
-import axios, { type AxiosInstance, type AxiosRequestConfig } from 'axios'
+import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import { isFromData } from '~/utils/common'
 import { formDataToObj } from '~/utils/convert'
 
@@ -69,14 +69,15 @@ export const axiosPost = (
   headers: Record<string, any> | undefined,
   config: AxiosRequestConfig = {},
 ) => {
+  const isFromData = dataType === 'FormData'
   const _headers = {
     ...headers,
-    ...(dataType === 'FormData' ? { 'Content-Type': 'multipart/form-data' } : {}),
+    ...(isFromData ? { 'Content-Type': 'multipart/form-data' } : {}),
   }
 
   return new Promise<IRes>((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, data, { ...config, headers: _headers })
+      .post(url, isFromData ? toFormData(data) : data, { ...config, headers: _headers })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error)),
   )
