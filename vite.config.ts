@@ -108,7 +108,6 @@ export default defineConfig(({ command }) => ({
         './src/config/**',
         './src/stores/**',
         './src/router/**',
-        './src/api/**',
         './src/utils/**/*',
         './src/tools/**/*',
         './scan/**',
