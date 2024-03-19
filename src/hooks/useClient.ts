@@ -36,8 +36,9 @@ export const useClient = (
     ROP.On('publish_data', (message: string, topic: string) => {
       if ((subIsString ? topic === subScribes : subScribes.includes(topic)) && message) {
         try {
-          const data = JSON.parse(message)
-          data.value = data
+          const _message = JSON.parse(message)
+          if (['number', 'string'].includes(typeof message)) console.warn('收到消息,类型非object', _message)
+          data.value = _message
         } catch (error) {
           console.log('已连接 , 解析为json失败', error)
         }
