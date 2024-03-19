@@ -74,8 +74,8 @@ export const useClient = (
     linkROP()
 
     const visibility = useDocumentVisibility()
-    watchEffect(() => {
-      if (visibility.value === 'visible') linkROP()
+    watch(visibility, (nv) => {
+      if (nv === 'visible') linkROP()
     })
 
     function linkROP() {
