@@ -1,13 +1,13 @@
 import Compressor from 'compressorjs'
 
 export const compressImage = (file: File, options?: Compressor.Options) => {
-  return new Promise<File>((resolve, reject) => {
+  return new Promise<Blob>((resolve, reject) => {
     new Compressor(file, {
       quality: 0.6,
       mimeType: 'image/jpeg',
       ...options,
       success(result) {
-        resolve(result as File)
+        resolve(result as Blob)
       },
       error(err) {
         reject(err)

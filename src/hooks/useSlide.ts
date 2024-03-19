@@ -10,7 +10,7 @@ interface ISlideOptions {
   slideNumber?: number
 }
 
-export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 200 }: ISlideOptions) => {
+export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions) => {
   const startMove = ref({ pageY: 0, once: true })
 
   const ele = eleName
