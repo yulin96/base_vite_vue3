@@ -37,7 +37,7 @@ export const useClient = (
       if ((subIsString ? topic === subScribes : subScribes.includes(topic)) && message) {
         try {
           const _message = JSON.parse(message)
-          if (['number', 'string'].includes(typeof message)) console.warn('收到消息,类型非object', _message)
+          if (['number', 'string'].includes(typeof _message)) console.warn('收到消息,类型非object', _message)
           data.value = _message
         } catch (error) {
           console.log('已连接 , 解析为json失败', error)
