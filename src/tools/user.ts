@@ -1,5 +1,10 @@
 import { v1 } from 'uuid'
 
+/**
+ * 获取用户图片
+ * @param option 压缩选项
+ * @returns 返回一个 Promise，该 Promise 在用户选择图片后解析为 File 对象
+ */
 export const getUserImage = (option?: Compressor.Options) => {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
