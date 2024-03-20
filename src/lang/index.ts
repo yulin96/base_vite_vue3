@@ -9,7 +9,7 @@ declare module 'vue-i18n' {
 }
 
 const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
-const localeName = useLocalStorage((localName || 'test') + '-local', 'zh-CN')
+const localeName = useLocalStorage(`${localName || 'test'}-local`, 'zh-CN')
 
 const i18n = createI18n<[MessageSchema], 'zh-CN' | 'en'>({
   inheritLocale: true,

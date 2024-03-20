@@ -10,19 +10,19 @@ const iframe = document.getElementById('FIX_PC') as HTMLIFrameElement
 if (import.meta.env.VITE_APP_OPENPC_FULL === '1') {
   const needHeight = Math.floor(innerHeight * 0.91)
 
-  iframe.style.height = needHeight + 'px'
-  iframe.style.width = needHeight / scale + 'px'
-  iframe.style.marginTop = (innerHeight - needHeight) / 6 + 'px'
+  iframe.style.height = `${needHeight}px`
+  iframe.style.width = `${needHeight / scale}px`
+  iframe.style.marginTop = `${(innerHeight - needHeight) / 6}px`
   iframe.style.borderRadius = '12px'
 } else {
   const width = import.meta.env.VITE_APP_OPENPC_WIDTH
-  iframe.style.width = width + 'px'
-  iframe.style.height = innerHeight + 'px'
+  iframe.style.width = `${width}px`
+  iframe.style.height = `${innerHeight}px`
 
   const trueHeight = scale * width
 
   if (trueHeight < innerHeight) {
-    iframe.style.height = trueHeight + 'px'
+    iframe.style.height = `${trueHeight}px`
     iframe.style.marginTop = '12px'
     iframe.style.borderRadius = '12px'
   }

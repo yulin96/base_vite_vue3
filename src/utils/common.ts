@@ -85,7 +85,7 @@ export const randomString = (prefix = 'z', len = 16): string => {
     createStr += seed[j]
   }
   // return createStr
-  return prefix + '_' + timestamp + '_' + createStr
+  return `${prefix}_${timestamp}_${createStr}`
 }
 
 /**

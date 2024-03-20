@@ -31,7 +31,7 @@ export const useScanStore = defineStore(
   },
   {
     persist: {
-      key: (import.meta.env.VITE_APP_LOCALSTORAGE_NAME ?? 'test') + '_scan',
+      key: `${import.meta.env.VITE_APP_LOCALSTORAGE_NAME ?? 'test'}_scan`,
       paths: undefined,
       beforeRestore: () => {},
       debug: true,

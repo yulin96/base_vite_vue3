@@ -15,7 +15,7 @@ provide('linkTo', linkTo)
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
 // watch(locale, (newVal) => {
-//   localStorage.setItem((localName || 'test') + '-local', newVal)
+//   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
 onMounted(() => {

@@ -49,7 +49,7 @@ function createBarrage({
 
   const barrage = document.createElement('div')
   barrage.classList.add('barrage')
-  barrage.style.left = innerWidth + gap + 'px'
+  barrage.style.left = `${innerWidth + gap}px`
   barrage.innerHTML = `
     <img src="${params.img}" alt="${params.name}"/>
     <span>${params.name}：</span>

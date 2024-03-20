@@ -46,12 +46,12 @@ function createSnow(wrapper: HTMLDivElement) {
   snow.appendChild(snowImg)
 
   snow.style.position = 'fixed'
-  snow.style.width = randomNum(10, 26) + 'px'
-  snow.style.left = Math.random() * 100 + '%'
+  snow.style.width = `${randomNum(10, 26)}px`
+  snow.style.left = `${Math.random() * 100}%`
   snow.style.bottom = '100%'
   snow.style.zIndex = '1'
   snow.style.pointerEvents = 'none'
-  snow.style.opacity = randomNum(8, 10) / 10 + ''
+  snow.style.opacity = String(randomNum(8, 10) / 10)
   snow.addEventListener(
     'animationend',
     () => {

@@ -13,7 +13,7 @@ export const getUserImage = (option?: Compressor.Options) => {
       if (file) {
         compressImage(file, option)
           .then((f) => {
-            resolve(blobToFile(f, v1() + '.jpg'))
+            resolve(blobToFile(f, `${v1()}.jpg`))
           })
           .catch((err) => {
             reject(err)
