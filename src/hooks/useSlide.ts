@@ -2,18 +2,30 @@ import { useScroll } from '@vueuse/core'
 import { type Ref } from 'vue'
 
 interface ISlideOptions {
-  eleName: Ref<HTMLElement>
+  /** ### 传入元素名称的引用 ref() 不要.value */
+  ele: Ref<HTMLElement>
   prev?: () => void
   next?: () => void
+  /** ### 🚧 */
   prevScroll?: (num: number) => void
+  /** ### 🚧 */
   nextScroll?: (num: number) => void
   slideNumber?: number
 }
 
-export const useSlide = ({ eleName, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions) => {
+/**
+ * 使用滑动的自定义钩子函数
+ * @param options - 钩子函数选项
+ * @param options.eleName - 元素名称的引用 ref()
+ * @param options.prev - 上一个滑动的回调函数
+ * @param options.next - 下一个滑动的回调函数
+ * @param options.prevScroll - 向上滑动的回调函数
+ * @param options.nextScroll - 向下滑动的回调函数
+ * @param options.slideNumber - 滑动距离的阈值，默认为100
+ */
+export const useSlide = ({ ele, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions) => {
   const startMove = ref({ pageY: 0, once: true })
 
-  const ele = eleName
   const { arrivedState } = useScroll(ele, { offset: { bottom: 0 } })
 
   let lock = false
