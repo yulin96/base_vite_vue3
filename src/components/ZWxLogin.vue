@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { pcSupport } from '~/tools/pcSupport'
 import { getOpenId } from '~/tools/getOpenId'
+import { pcSupport } from '~/tools/pcSupport'
 
 const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
 

@@ -1,21 +1,20 @@
-import App from './App.vue'
-import router from './router'
-import { createApp } from 'vue'
+import '@vant/touch-emulator'
+import { throttle } from 'lodash-es'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
+import { createApp } from 'vue'
+import '~/tools/checkUpdate'
 import { pcSupport } from '~/tools/pcSupport'
 import { checkWebpFeature } from '~/utils/checkWebpFeature'
-import { throttle } from 'lodash-es'
-import '~/tools/checkUpdate'
-import '@vant/touch-emulator'
+import App from './App.vue'
+import router from './router'
 // import i18n from '~/lang'
 
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
-
 import '~/assets/css/main.css'
 
 !devModel && getWxConfig()

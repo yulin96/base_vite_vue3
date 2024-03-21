@@ -1,6 +1,6 @@
 import { onMounted, onUnmounted } from 'vue'
-import { randomNum } from '~/utils/common'
 import '~/assets/css/plugin/snow.css'
+import { randomNum } from '~/utils/common'
 
 export const useSnow = (el: string) => {
   onMounted(() => {

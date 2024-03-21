@@ -1,5 +1,5 @@
-import wx from 'weixin-js-sdk'
 import axios from 'axios'
+import wx from 'weixin-js-sdk'
 import { isWeChat } from '~/utils/uaParser'
 
 const wxConfigReady = Symbol('wxConfigReady')

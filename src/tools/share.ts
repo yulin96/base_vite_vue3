@@ -1,6 +1,6 @@
-import { isWeChat } from '~/utils/uaParser'
-import { isHttps } from '~/utils/check'
 import { wxShare, type IWxShare } from '~/tools/wx'
+import { isHttps } from '~/utils/check'
+import { isWeChat } from '~/utils/uaParser'
 
 export const registerWxShare = () => {
   const title = import.meta.env.VITE_APP_SHARE_TITLE

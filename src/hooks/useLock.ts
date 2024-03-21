@@ -1,6 +1,6 @@
+import type { AxiosRequestConfig } from 'axios'
 import nprogress from 'nprogress'
 import { showLoadingToast, type ToastWrapperInstance } from 'vant'
-import type { AxiosRequestConfig } from 'axios'
 import { axiosGet, axiosPost } from '~/tools/request'
 
 nprogress.configure({

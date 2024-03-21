@@ -1,5 +1,4 @@
-import axios from 'axios'
-import { toFormData } from 'axios'
+import axios, { toFormData } from 'axios'
 import { v1 } from 'uuid'
 import { showSuccessToast } from 'vant'
 

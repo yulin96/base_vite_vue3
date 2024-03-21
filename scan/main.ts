@@ -1,10 +1,10 @@
-import App from './App.vue'
-import { scanRouter } from './router'
-import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { setToastDefaultOptions } from 'vant'
+import { createApp } from 'vue'
 import { checkWebpFeature } from '~/utils/checkWebpFeature'
+import App from './App.vue'
+import { scanRouter } from './router'
 
 checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')
