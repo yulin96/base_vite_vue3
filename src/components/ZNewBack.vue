@@ -62,7 +62,8 @@ watch(
     :axis="props.axis ?? 'xy'"
     :magnetic="props.magnetic ?? 'x'"
     :gap="10"
-    @click="backIns.onClick()">
+    @click="backIns.onClick()"
+  >
   </van-floating-bubble>
 </template>
 
