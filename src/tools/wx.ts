@@ -88,15 +88,16 @@ export const WxScanQRCode = (): Promise<string> => {
 type IWxOpenLocation = Pick<wx.IopenLocation, 'latitude' | 'longitude' | 'name' | 'address'> &
   Partial<Pick<wx.IopenLocation, 'scale' | 'infoUrl'>>
 
-/**
-{
-  latitude: 0,
-  longitude: 0,
-  name: '',
-  address: '',
-}
- */
 let openLocationLock = false
+/**
+ * @example
+ * wxOpenLocation({
+ *  latitude: 0,
+ *  longitude: 0,
+ *  name: '',
+ *  address: '',
+ * })
+ */
 export const wxOpenLocation = (data: IWxOpenLocation): void => {
   if (openLocationLock) return
   openLocationLock = true

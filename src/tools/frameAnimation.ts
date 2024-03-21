@@ -13,7 +13,17 @@ export interface FrameAnimationOption {
   loopEndIndex?: number // 循环结束序号
 }
 
-//图片序列帧动画
+/**
+ * 帧动画
+ * @example
+ * new FrameAnimation({
+ *   el: '#flower1',
+ *   urlPrefix: 'https://oss.eventnet.cn/H5/zz/auto/fimfibde_20240229/imgs/',
+ *   urlSuffix: '.png',
+ *   maxLength: 35,
+ *   fps: 30,
+ * })
+ */
 export default class FrameAnimation {
   private option: FrameAnimationOption
   public canPlay = false
