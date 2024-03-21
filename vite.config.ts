@@ -63,14 +63,14 @@ export default defineConfig(({ command }) => ({
         'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
-          'gsap': ['gsap'],
+          gsap: ['gsap'],
           // 'vue-router': [
           //   ['useRoute', 'useRootRoute'],
           //   ['useRouter', 'useRootRouter'],
           // ],
-          'html2canvas': [['default', 'html2canvas']],
-          'compressorjs': [['default', 'Compressor']],
-          'vant': [
+          html2canvas: [['default', 'html2canvas']],
+          compressorjs: [['default', 'Compressor']],
+          vant: [
             'showToast',
             'showLoadingToast',
             'showDialog',
