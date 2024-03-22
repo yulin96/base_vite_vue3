@@ -98,7 +98,7 @@
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "unplugin-vue-router": "^0.8.5",
-    "vite": "^5.2.2",
+    "vite": "^5.2.3",
     "vue-tsc": "latest"
   },
   "pnpm": {
