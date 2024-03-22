@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { toFormData } from 'axios'
 import wx from 'weixin-js-sdk'
 import { isWeChat } from '~/utils/uaParser'
 
@@ -9,18 +9,21 @@ export const getWxConfig = () => {
   if (window[wxConfigReady]) return Promise.resolve()
 
   return new Promise<void>((resolve, reject) => {
-    const urlType = ~theWindow.location.href.indexOf('h5.eventnet.cn') ? 'h5' : 'www'
     const wxLink = theWindow.location.href.split('#')[0]
-    const data = new FormData()
-    data.append('url', wxLink)
     axios
-      .post(`https://${urlType}.eventnet.cn/wxAjax/fx/index.php`, data)
-      .then((el) => {
+      .post(
+        `https://wechat.event1.cn/api/getJsSdk`,
+        toFormData({
+          url: wxLink,
+          name: 'hudongweipingtai',
+        }),
+      )
+      .then(({ data: { data } }) => {
         wx.config({
-          appId: el.data.appId,
-          timestamp: el.data.timestamp,
-          nonceStr: el.data.nonceStr,
-          signature: el.data.signature,
+          appId: data.appId,
+          timestamp: data.timestamp,
+          nonceStr: data.nonceStr,
+          signature: data.signature,
           jsApiList: [
             'scanQRCode',
             'updateAppMessageShareData',
