@@ -1,3 +1,5 @@
+type ResData<T> = IRes & { data: T }
+
 interface IRes {
   code: number
   msg?: string
