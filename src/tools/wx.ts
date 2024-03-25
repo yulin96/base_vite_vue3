@@ -62,7 +62,12 @@ export const wxShare = (data: IWxShare): void => {
         imgUrl,
         success() {},
       })
-      wx.updateTimelineShareData({ title, link, imgUrl, success() {} })
+      wx.updateTimelineShareData({
+        title,
+        link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
+        imgUrl,
+        success() {},
+      })
     })
     .catch((err) => {
       console.log(err)
