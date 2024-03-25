@@ -5,7 +5,7 @@ const convertUnit = (length = 100, name = 'px') =>
   Object.fromEntries(Array.from({ length: length + 1 }, (_, i) => [i, `${i}${name}`]))
 
 export default {
-  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}', './scan/**/*.{vue,js,ts,jsx,tsx}'],
+  content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     spacing: convertUnit(100),
     extend: {

@@ -1,6 +1,6 @@
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { setToastDefaultOptions } from 'vant'
+import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
 import { createApp } from 'vue'
 import { checkWebpFeature } from '~/utils/checkWebpFeature'
 import App from './App.vue'
@@ -10,15 +10,14 @@ checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')
 }, 'lossless')
 
-import '~/assets/css/tailwind.css'
-
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
-// import 'vant/es/notify/style'
+import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 
-import '~/assets/css/fixPlugin.css'
 import '~/assets/css/main.css'
+
+!devModel && getWxConfig()
 
 setToastDefaultOptions({
   forbidClick: true,
@@ -29,7 +28,9 @@ setToastDefaultOptions({
   position: 'middle',
   className: 'center_toast',
 })
-
+setToastDefaultOptions('loading', { duration: 0 })
+setNotifyDefaultOptions({ type: 'warning' })
+setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button' })
 setToastDefaultOptions('loading', { duration: 0 })
 
 const app = createApp(App)

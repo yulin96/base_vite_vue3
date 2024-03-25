@@ -110,7 +110,6 @@ export default defineConfig(({ command }) => ({
         './src/router/**',
         './src/utils/**/*',
         './src/tools/**/*',
-        './scan/**',
       ],
       dts: './typings/auto-imports.d.ts',
       vueTemplate: true,

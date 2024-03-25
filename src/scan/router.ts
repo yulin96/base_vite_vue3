@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, useRoute } from 'vue-router'
-import index from '~~/views/index.vue'
+import index from '~/scan/views/index.vue'
 
 const scanRouter = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),

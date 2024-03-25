@@ -7,6 +7,6 @@ onMounted(() => {
 
 <template>
   <div class="index">
-    <div class="content"></div>
+    <div class="content">Scan</div>
   </div>
 </template>
