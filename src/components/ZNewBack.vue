@@ -55,7 +55,7 @@ watch(
 <template>
   <van-floating-bubble
     v-if="backIns.show"
-    class="w-90"
+    class="size-80"
     @offset-change="offsetChange"
     :offset="backIns.offset"
     :icon="props.icon"
@@ -70,6 +70,9 @@ watch(
 <style>
 .van-floating-bubble .van-icon {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .van-floating-bubble .van-icon img {
