@@ -18,9 +18,7 @@ provide('linkTo', linkTo)
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
-onMounted(() => {
-  if (!devModel) router.replace({ path: '/' })
-})
+onMounted(() => {})
 </script>
 
 <template>
