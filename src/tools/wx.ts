@@ -55,7 +55,13 @@ export const wxShare = (data: IWxShare): void => {
   const { title, desc, link, imgUrl } = data
   getWxConfig()
     .then(() => {
-      wx.updateAppMessageShareData({ title, desc, link, imgUrl, success() {} })
+      wx.updateAppMessageShareData({
+        title,
+        desc,
+        link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
+        imgUrl,
+        success() {},
+      })
       wx.updateTimelineShareData({ title, link, imgUrl, success() {} })
     })
     .catch((err) => {
