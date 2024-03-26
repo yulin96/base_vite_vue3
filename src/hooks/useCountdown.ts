@@ -11,7 +11,7 @@ export const useCountdown = (data: number = 60) => {
     countdown.sending = true
     countdown.timerId = setInterval(() => {
       countdown.timer--
-      countdown.timerText = `${countdown.timer}s`
+      countdown.timerText = `${countdown.timer}秒`
       if (countdown.timer <= 0) {
         clearInterval(countdown.timerId)
         countdown.sending = false
