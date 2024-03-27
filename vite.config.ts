@@ -71,7 +71,6 @@ export default defineConfig(({ command }) => ({
           html2canvas: [['default', 'html2canvas']],
           compressorjs: [['default', 'Compressor']],
           vant: [
-            'showToast',
             'showLoadingToast',
             'showDialog',
             'showFailToast',

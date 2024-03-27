@@ -30,6 +30,15 @@
   box-shadow: #0000001f 0 3px 8px;
 }
 
+.van-toast--html .van-toast__text {
+  display: flex;
+  align-items: center;
+}
+
+.van-toast--html .van-toast__text img {
+  display: inline;
+}
+
 .center_toast_overlay {
   background: #0006;
 }
