@@ -11,15 +11,6 @@ export const sleep = (time: number) => {
   })
 }
 
-export const getImageUrl = (name: string) => new URL(`../assets/images/${name}`, import.meta.url).href
-
-export const getSrc = (name: string) => {
-  if (typeof name === 'undefined') return 'error.png'
-  const path = `/src/assets/contract/${name}.png`
-  const modules = import.meta.glob('/src/assets/contract/*', { eager: true })
-  return (modules[path] as any)?.default
-}
-
 /**
  * 去除字符串两端的空格
  * @param str 要处理的字符串
