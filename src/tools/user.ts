@@ -31,7 +31,7 @@ export const getUserImage = (option?: Compressor.Options) => {
   })
 }
 
-export const getUserVideo = (option?: Compressor.Options) => {
+export const getUserVideo = () => {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
     input.type = 'file'
