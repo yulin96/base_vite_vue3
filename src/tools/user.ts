@@ -30,3 +30,23 @@ export const getUserImage = (option?: Compressor.Options) => {
     input.click()
   })
 }
+
+export const getUserVideo = (option?: Compressor.Options) => {
+  return new Promise<File>((resolve, reject) => {
+    const input = document.createElement('input')
+    input.type = 'file'
+    input.accept = 'video/*'
+    input.multiple = false
+
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (!file) return
+      if (file) {
+        resolve(file)
+      } else {
+        reject(new Error('No file selected'))
+      }
+    }
+    input.click()
+  })
+}
