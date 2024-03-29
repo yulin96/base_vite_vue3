@@ -62,7 +62,7 @@
   },
   "devDependencies": {
     "@plugin-web-update-notification/vite": "^1.7.1",
-    "@rushstack/eslint-patch": "^1.10.0",
+    "@rushstack/eslint-patch": "^1.10.1",
     "@tsconfig/node20": "^20.1.4",
     "@types/ali-oss": "^6.16.11",
     "@types/crypto-js": "^4.2.2",
@@ -98,7 +98,7 @@
     "unplugin-auto-import": "^0.17.5",
     "unplugin-vue-components": "^0.26.0",
     "unplugin-vue-router": "^0.8.5",
-    "vite": "^5.2.6",
+    "vite": "^5.2.7",
     "vue-tsc": "latest"
   },
   "pnpm": {
