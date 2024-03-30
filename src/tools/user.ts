@@ -8,6 +8,7 @@ import { v1 } from 'uuid'
 export const getUserImage = (option?: Compressor.Options) => {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
+    document.body.appendChild(input)
     input.type = 'file'
     input.accept = 'image/*'
     input.multiple = false
@@ -23,7 +24,11 @@ export const getUserImage = (option?: Compressor.Options) => {
           .catch((err) => {
             reject(err)
           })
+          .finally(() => {
+            document.body.removeChild(input)
+          })
       } else {
+        document.body.removeChild(input)
         reject(new Error('No file selected'))
       }
     }
@@ -34,6 +39,7 @@ export const getUserImage = (option?: Compressor.Options) => {
 export const getUserVideo = () => {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
+    document.body.appendChild(input)
     input.type = 'file'
     input.accept = 'video/*'
     input.multiple = false
@@ -46,6 +52,7 @@ export const getUserVideo = () => {
       } else {
         reject(new Error('No file selected'))
       }
+      document.body.removeChild(input)
     }
     input.click()
   })
