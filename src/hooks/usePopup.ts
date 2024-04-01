@@ -21,7 +21,7 @@ export const usePopup = (options: PopupOption[]) => {
     columns: [] as PickerOption[],
 
     cancel() {
-      this.show = false
+      popupIns.value.show = false
     },
 
     confirm(data: {
