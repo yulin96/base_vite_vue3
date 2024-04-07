@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import '~/assets/css/plugin/cascade.css'
 import { registerWxShare } from '~/tools/share'
 
 registerWxShare()
@@ -31,13 +30,7 @@ onMounted(() => {})
             <component class="wrapper" :is="Component"></component>
             <template #fallback>
               <div class="center h-full w-full">
-                <div class="cascade">
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
-                </div>
+                <z-loading></z-loading>
               </div>
             </template>
           </suspense>
