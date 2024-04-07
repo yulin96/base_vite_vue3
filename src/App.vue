@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import '~/assets/css/plugin/cascade.css'
 import { registerWxShare } from '~/tools/share'
 
 registerWxShare()
@@ -22,15 +23,28 @@ onMounted(() => {})
 </script>
 
 <template>
-  <suspense>
-    <router-view class="wrapper" v-slot="{ Component }">
+  <router-view v-slot="{ Component }">
+    <template v-if="Component">
       <transition :name>
         <keep-alive :include="[]">
-          <component :is="Component" />
+          <suspense>
+            <component class="wrapper" :is="Component"></component>
+            <template #fallback>
+              <div class="center h-full w-full">
+                <div class="cascade">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+            </template>
+          </suspense>
         </keep-alive>
       </transition>
-    </router-view>
-  </suspense>
+    </template>
+  </router-view>
 </template>
 
 <style>
