@@ -31,6 +31,9 @@ export default {
   plugins: [
     plugin(({ addUtilities, addComponents }) => {
       addUtilities({
+        'text-security-disc': {
+          '-webkit-text-security': 'disc',
+        },
         '.paused': {
           'animation-play-state': 'paused',
         },
