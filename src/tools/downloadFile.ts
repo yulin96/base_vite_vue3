@@ -20,7 +20,11 @@ export const downloadFile = (url: string, filename?: string) => {
         const blob = new Blob([xhr.response], { type: 'application/octet-stream' })
         const a = document.createElement('a')
         a.href = window.URL.createObjectURL(blob)
-        a.download = filename || url.split('.').pop() || 'download'
+        a.download = filename
+          ? filename.includes('.')
+            ? filename
+            : filename + '.' + url.split('.').pop()
+          : 'download.' + url.split('.').pop()
         a.click()
         lock = false
         nProgress.done()
