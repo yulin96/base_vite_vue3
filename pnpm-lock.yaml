@@ -148,8 +148,8 @@ devDependencies:
     specifier: ^21.1.6
     version: 21.1.6
   '@types/node':
-    specifier: ^20.12.5
-    version: 20.12.5
+    specifier: ^20.12.6
+    version: 20.12.6
   '@types/nprogress':
     specifier: ^0.2.3
     version: 0.2.3
@@ -239,7 +239,7 @@ devDependencies:
     version: 0.8.5(vue-router@4.3.0)(vue@3.4.21)
   vite:
     specifier: ^5.2.8
-    version: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+    version: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
   vue-tsc:
     specifier: latest
     version: 2.0.11(typescript@5.4.4)
@@ -2258,7 +2258,7 @@ packages:
       vite: ^5.0.0 || >4.0.0 || ^3.0.0
     dependencies:
       '@plugin-web-update-notification/core': 1.7.1
-      vite: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+      vite: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
     dev: true
 
   /@rollup/plugin-virtual@3.0.2:
@@ -2552,7 +2552,7 @@ packages:
   /@types/jsdom@21.1.6:
     resolution: {integrity: sha512-/7kkMsC+/kMs7gAYmmBR9P0vGTnOoLhQhyhQJSlXGI5bzTHp6xdo0TtKWQAsz6pmSAeVqKSbqeyP6hytqr9FDw==}
     dependencies:
-      '@types/node': 20.12.5
+      '@types/node': 20.12.6
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
     dev: true
@@ -2571,14 +2571,14 @@ packages:
     resolution: {integrity: sha512-t7dhREVv6dbNj0q17X12j7yDG4bD/DHYX7o5/DbDxobP0HnGPgpRz2Ej77aL7TZT3DSw13fqUTj8J4mMnqa7WA==}
     dev: false
 
-  /@types/node@18.19.30:
-    resolution: {integrity: sha512-453z1zPuJLVDbyahaa1sSD5C2sht6ZpHp5rgJNs+H8YGqhluCXcuOUmBYsAo0Tos0cHySJ3lVUGbGgLlqIkpyg==}
+  /@types/node@18.19.31:
+    resolution: {integrity: sha512-ArgCD39YpyyrtFKIqMDvjz79jto5fcI/SVUs2HwB+f0dAzq68yqOdyaSivLiLugSziTpNXLQrVb7RZFmdZzbhA==}
     dependencies:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node@20.12.5:
-    resolution: {integrity: sha512-BD+BjQ9LS/D8ST9p5uqBxghlN+S42iuNxjsUGjeZobe/ciXzk2qb1B6IXc6AnRLS+yFJRpN2IPEHMzwspfDJNw==}
+  /@types/node@20.12.6:
+    resolution: {integrity: sha512-3KurE8taB8GCvZBPngVbp0lk5CKi8M9f9k1rsADh0Evdz5SzJ+Q+Hx9uHoFGsLnLnd1xmkDQr2hVhlA0Mn0lKQ==}
     dependencies:
       undici-types: 5.26.5
 
@@ -2589,7 +2589,7 @@ packages:
   /@types/qrcode@1.5.5:
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
     dependencies:
-      '@types/node': 20.12.5
+      '@types/node': 20.12.6
     dev: true
 
   /@types/semver@7.5.8:
@@ -2599,7 +2599,7 @@ packages:
   /@types/ssh2@1.15.0:
     resolution: {integrity: sha512-YcT8jP5F8NzWeevWvcyrrLB3zcneVjzYY9ZDSMAMboI+2zR1qYWFhwsyOFVzT7Jorn67vqxC0FRiw8YyG9P1ww==}
     dependencies:
-      '@types/node': 18.19.30
+      '@types/node': 18.19.31
     dev: true
 
   /@types/tough-cookie@4.0.5:
@@ -2793,7 +2793,7 @@ packages:
       regenerator-runtime: 0.14.1
       systemjs: 6.14.3
       terser: 5.30.3
-      vite: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+      vite: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2808,7 +2808,7 @@ packages:
       '@babel/core': 7.24.4
       '@babel/plugin-transform-typescript': 7.24.4(@babel/core@7.24.4)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.24.4)
-      vite: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+      vite: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
       vue: 3.4.21(typescript@5.4.4)
     transitivePeerDependencies:
       - supports-color
@@ -2821,7 +2821,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+      vite: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
       vue: 3.4.21(typescript@5.4.4)
     dev: true
 
@@ -6560,13 +6560,13 @@ packages:
       '@rollup/plugin-virtual': 3.0.2
       '@swc/core': 1.4.12
       uuid: 9.0.1
-      vite: 5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3)
+      vite: 5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3)
     transitivePeerDependencies:
       - '@swc/helpers'
       - rollup
     dev: false
 
-  /vite@5.2.8(@types/node@20.12.5)(sass@1.74.1)(terser@5.30.3):
+  /vite@5.2.8(@types/node@20.12.6)(sass@1.74.1)(terser@5.30.3):
     resolution: {integrity: sha512-OyZR+c1CE8yeHw5V5t59aXsUPPVTHMDjEZz8MgguLL/Q7NblxhZUlTu9xSPqlsUO/y+X7dlU05jdhvyycD55DA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -6594,7 +6594,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.12.5
+      '@types/node': 20.12.6
       esbuild: 0.20.2
       postcss: 8.4.38
       rollup: 4.14.1
