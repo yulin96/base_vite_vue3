@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { registerWxShare } from '~/tools/share'
-
 registerWxShare()
+
+import { registerButtonEffect } from '~/tools/effect'
+registerButtonEffect()
 
 /* 路由动画 */
 const { name } = useRouteTransition('Slide')
@@ -17,7 +19,6 @@ provide('linkTo', linkTo)
 // watch(locale, (newVal) => {
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
-
 onMounted(() => {})
 </script>
 
