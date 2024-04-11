@@ -15,6 +15,7 @@ export default {
       borderRadius: convertUnit(100),
       colors: {
         primary: '#fff',
+        danger: '#ee0a24',
       },
       animation: {
         'spin-slow': 'spin 4s linear infinite',
@@ -31,7 +32,7 @@ export default {
   plugins: [
     plugin(({ addUtilities, addComponents }) => {
       addUtilities({
-        'text-security-disc': {
+        '.text-security-disc': {
           '-webkit-text-security': 'disc',
         },
         '.paused': {
