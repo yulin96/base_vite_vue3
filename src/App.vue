@@ -4,7 +4,7 @@ import { registerWxShare } from '~/tools/share'
 registerWxShare()
 
 /* 路由动画 */
-const { name } = useRouteTransition('slide-cover')
+const { name } = useRouteTransition('Slide')
 
 const linkTo: LinkTo = (name, props) => {
   router.replace({ name, ...props })
@@ -22,22 +22,15 @@ onMounted(() => {})
 </script>
 
 <template>
-  <router-view v-slot="{ Component }">
-    <template v-if="Component">
+  <suspense>
+    <router-view class="wrapper" v-slot="{ Component }">
       <transition :name>
-        <keep-alive :include="[]">
-          <suspense>
-            <component class="wrapper" :is="Component"></component>
-            <template #fallback>
-              <div class="center h-full w-full">
-                <z-loading></z-loading>
-              </div>
-            </template>
-          </suspense>
+        <keep-alive :exclude="[]">
+          <component :is="Component" />
         </keep-alive>
       </transition>
-    </template>
-  </router-view>
+    </router-view>
+  </suspense>
 </template>
 
 <style>
