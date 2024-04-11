@@ -15,7 +15,7 @@ export const registerWxShare = () => {
 }
 
 export const registerDDShare = ({ title, desc, link, imgUrl }: IWxShare) => {
-  if (!isHttps() || typeof dd === 'undefined') throw new Error('钉钉分享需要在钉钉环境下使用')
+  if (!isHttps() || typeof dd === 'undefined') return console.error('钉钉分享需要在钉钉环境下使用')
 
   dd.ready(function () {
     dd.biz.navigation.setRight({
