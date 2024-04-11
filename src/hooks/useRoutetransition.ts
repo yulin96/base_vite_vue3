@@ -1,16 +1,20 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import '../assets/css/transition-vue.css'
+import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
-  const name = ref('slideApp')
+  const name = ref('alpha')
+
+  watchEffect(() => {
+    console.log(name.value)
+  })
 
   const route = useRoute()
   watch(
     () => route.meta.index,
     (newIndex, oldIndex) => {
-      if (!newIndex || !oldIndex) return (name.value = 'slideApp')
-      if (newIndex === oldIndex) return (name.value = 'FilterBlur')
+      if (!newIndex || !oldIndex) return (name.value = 'alpha')
+      if (newIndex === oldIndex) return (name.value = 'alpha')
       name.value = transitionName + (newIndex > oldIndex ? '-right' : '-left')
     },
   )

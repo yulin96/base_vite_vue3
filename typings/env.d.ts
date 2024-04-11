@@ -32,13 +32,14 @@ interface ImportMetaEnv {
 interface Window {}
 
 type RouteTransitionName =
-  | 'Slide'
-  | 'FilterBlur'
-  | 'Zoom'
-  | 'FlipY'
-  | 'CollapseY'
-  | 'DiagonallyFadeOut'
-  | 'leftFlyOut'
-  | 'slidePage'
+  | 'alpha'
+  | 'blur'
+  | 'zoom'
+  | 'slide'
+  | 'flip-y'
+  | 'collapse-y'
+  | 'diagonally-fade-out'
+  | 'left-fly-out'
+  | 'slide-page'
   | 'slide-cover'
   | (string & {})

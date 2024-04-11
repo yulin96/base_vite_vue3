@@ -1,0 +1,16 @@
+.slide-page-right-enter-active,
+.slide-page-left-enter-active,
+.slide-page-right-leave-active,
+.slide-page-left-leave-active {
+  transition: transform 0.45s ease;
+}
+
+.slide-page-right-enter-from,
+.slide-page-left-leave-to {
+  transform: translate3d(0, 100%, 0);
+}
+
+.slide-page-right-leave-to,
+.slide-page-left-enter-from {
+  transform: translate3d(0, -100%, 0);
+}

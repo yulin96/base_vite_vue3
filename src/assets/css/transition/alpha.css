@@ -1,0 +1,9 @@
+.alpha-enter-active,
+.alpha-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.alpha-enter-from,
+.alpha-leave-to {
+  opacity: 0;
+}

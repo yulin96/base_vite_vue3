@@ -6,7 +6,7 @@ import { registerButtonEffect } from '~/tools/effect'
 registerButtonEffect()
 
 /* 路由动画 */
-const { name } = useRouteTransition('Slide')
+const { name } = useRouteTransition('slide')
 
 const linkTo: LinkTo = (name, props) => {
   router.replace({ name, ...props })
