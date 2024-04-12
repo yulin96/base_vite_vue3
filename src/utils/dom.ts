@@ -8,6 +8,6 @@ export const setFocus = (name: string) => {
   element.setAttribute('tabindex', '-1')
   element?.focus()
   setTimeout(() => {
-    element.removeAttribute('tabindex')
+    element?.removeAttribute('tabindex')
   }, 200)
 }
