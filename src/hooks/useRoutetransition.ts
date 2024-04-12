@@ -5,10 +5,6 @@ import '../assets/css/transition.css'
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
   const name = ref('alpha')
 
-  watchEffect(() => {
-    console.log(name.value)
-  })
-
   const route = useRoute()
   watch(
     () => route.meta.index,
