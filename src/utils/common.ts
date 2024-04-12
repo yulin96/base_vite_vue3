@@ -12,12 +12,11 @@ export const sleep = (time: number) => {
 }
 
 /**
- * 去除字符串两端的空格
+ * 去除字符串中的所有空格
  * @param str 要处理的字符串
  * @returns 处理后的字符串
  */
-export const Trim = (str: string): string => {
-  // return str.replace(/(^\s*)|(\s*$)/g, '')
+export const trimAll = (str: string): string => {
   return str.replace(/\s/g, '')
 }
 
@@ -28,54 +27,9 @@ export const Trim = (str: string): string => {
  * @returns {string} - 生成的随机名称
  */
 export const randomString = (prefix = 'z', len = 16): string => {
-  const seed = [
-    'a',
-    'b',
-    'c',
-    'd',
-    'e',
-    'f',
-    'g',
-    'h',
-    'i',
-    'j',
-    'k',
-    'l',
-    'm',
-    'n',
-    'o',
-    'p',
-    'q',
-    'r',
-    's',
-    't',
-    'u',
-    'v',
-    'w',
-    'x',
-    'y',
-    'z',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-    '0',
-  ] // 数组->种子数据
-  // let timestamp = Date.parse(new Date()) // 精确到秒
-  const timestamp = new Date().getTime() // 当前毫秒的时间戳
-  // console.log('时间戳:', timestamp)
-  const seedLength = seed.length // 数组长度
-  let createStr = ''
-  for (let i = 0; i < len; i++) {
-    const j = Math.floor(Math.random() * seedLength)
-    createStr += seed[j]
-  }
-  // return createStr
+  const seed = 'abcdefghijklmnopqrstuvwxyz1234567890'
+  const timestamp = new Date().getTime()
+  const createStr = Array.from({ length: len }, () => seed[Math.floor(Math.random() * seed.length)]).join('')
   return `${prefix}_${timestamp}_${createStr}`
 }
 
@@ -84,16 +38,11 @@ export const randomString = (prefix = 'z', len = 16): string => {
  * @returns 生成的 UUID 字符串。
  */
 export const uuid = (): string => {
-  const s: Array<string> = []
-  const hexDigits = '0123456789abcdef'
-  for (let i = 0; i < 36; i++) {
-    s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1)
-  }
-  s[14] = '4'
-  s[19] = hexDigits.substr((+s[19] & 0x3) | 0x8, 1)
-  s[8] = s[13] = s[18] = s[23] = '-'
-  const uuid = s.join('')
-  return uuid
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
 }
 
 /**
@@ -112,15 +61,27 @@ export const randomNum = (m: number, n: number): number => {
  * @param date2 - 第二个日期。
  * @returns 两个日期之间的天数差异。
  */
-export const dayDif = (date1: any, date2: any) => Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
-
+export const dayDiff = (date1: Date, date2: Date) => {
+  if (!(date1 instanceof Date) || !(date2 instanceof Date)) {
+    throw new Error('Invalid date')
+  }
+  return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
+}
 /**
  * 计算给定日期是一年中的第几天。
  * @param date - 要计算的日期。
  * @returns 给定日期是一年中的第几天。
  */
-export const dayOfYear = (date: any) =>
-  Math.floor((date - new Date(date.getFullYear(), 0, 0).getTime()) / 1000 / 60 / 60 / 24)
+export const dayOfYear = (now = new Date()): number => {
+  if (!(now instanceof Date)) {
+    throw new Error('Invalid date')
+  }
+  const start = new Date(now.getFullYear(), 0, 0)
+  const diff = now.getTime() - start.getTime()
+  const oneDay = 1000 * 60 * 60 * 24
+  const day = Math.floor(diff / oneDay)
+  return day
+}
 
 /**
  * 生成一个随机的十六进制颜色值。
@@ -142,23 +103,13 @@ export const isFromData = <T>(formData: T) => {
 }
 
 /**
- * 计算给定日期是一年中的第几天。
- * @param now - 要计算的日期。如果未提供，则默认为当前日期。
- * @returns 一个表示给定日期是一年中的第几天的数字。
- */
-export const darOfYear = (now = new Date()): number => {
-  const start = new Date(now.getFullYear(), 0, 0)
-  const diff = now.getTime() - start.getTime()
-  const oneDay = 1000 * 60 * 60 * 24
-  const day = Math.floor(diff / oneDay)
-  return day
-}
-
-/**
  * 滚动到顶部
  * @param {Element} e - 要滚动的元素
  */
-export const ScrollToTop = (e: Element) => {
+export const scrollToTop = (e: Element) => {
+  if (!(e instanceof Element)) {
+    throw new Error('Invalid element')
+  }
   e.scrollTo({
     top: 0,
     left: 0,
@@ -172,6 +123,9 @@ export const ScrollToTop = (e: Element) => {
  * @returns 脱敏后的手机号码
  */
 export const maskPhone = (phone: string) => {
+  if (!/^1[3456789]\d{9}$/.test(phone)) {
+    throw new Error('Invalid phone number')
+  }
   return phone.replace(/(\d{3})\d+(\d{4})/u, '$1****$2')
 }
 
@@ -184,12 +138,14 @@ export const importScript = (url: string) => {
   return new Promise<void>((resolve, reject) => {
     const script = document.createElement('script')
     script.src = url
-    script.onload = () => resolve()
+    script.onload = () => {
+      resolve()
+      script.remove()
+    }
     script.onerror = () => reject()
     document.body.appendChild(script)
   })
 }
-
 export const usePromise = (): [Promise<unknown>, (value: unknown) => void, (reason?: any) => void] => {
   let resolve: (value: unknown) => void = () => {}
   let reject: (reason?: any) => void = () => {}

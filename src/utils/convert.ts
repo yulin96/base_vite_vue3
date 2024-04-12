@@ -3,7 +3,7 @@
  * @param url - 要转换的URL。
  * @returns 一个Promise，当转换完成时，将返回一个Blob对象。
  */
-export const urlToBlob = (url: string) => {
+export const urlToBlob = async (url: string): Promise<Blob> => {
   return new Promise<Blob>((resolve, reject) => {
     const image = new Image()
     image.crossOrigin = 'anonymous'
@@ -16,7 +16,7 @@ export const urlToBlob = (url: string) => {
       context?.drawImage(target, 0, 0)
       canvas.toBlob((blob) => {
         if (blob) resolve(blob)
-        else reject()
+        else reject(new Error('无法生成Blob对象'))
       }, 'image/png')
     }
     image.onerror = reject
@@ -33,7 +33,7 @@ export const urlToBlob = (url: string) => {
  * @throws 如果浏览器不支持 canvas，则会抛出错误
  * @throws 如果无法获取到 Blob 对象，则会抛出错误
  */
-export const changeImageSize = (originBlob: Blob, width = 600, height = 800) => {
+export const changeImageSize = async (originBlob: Blob, width = 600, height = 800): Promise<Blob> => {
   return new Promise<Blob>((resolve, reject) => {
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
@@ -51,6 +51,7 @@ export const changeImageSize = (originBlob: Blob, width = 600, height = 800) => 
         'image/jpeg',
         1,
       )
+      URL.revokeObjectURL(img.src)
     }
     img.src = URL.createObjectURL(originBlob)
   })
@@ -61,11 +62,15 @@ export const changeImageSize = (originBlob: Blob, width = 600, height = 800) => 
  * @param blob 要转换的 Blob 对象
  * @returns 返回一个 Promise，解析为转换后的 Base64 字符串
  */
-export const blobToBase64 = (blob: any) => {
-  return new Promise((resolve, reject) => {
+export const blobToBase64 = async (blob: any): Promise<string> => {
+  return new Promise<string>((resolve, reject) => {
     const fileReader = new FileReader()
     fileReader.onload = (e) => {
-      resolve(e?.target?.result)
+      if (e.target && typeof e.target.result === 'string') {
+        resolve(e.target.result)
+      } else {
+        reject(new Error('FileReader结果不是字符串'))
+      }
     }
     fileReader.readAsDataURL(blob)
     fileReader.onerror = () => {
@@ -80,7 +85,7 @@ export const blobToBase64 = (blob: any) => {
  * @param fileName - 转换后的 File 对象的文件名。
  * @returns 转换后的 File 对象。
  */
-export const blobToFile = (blob: Blob, fileName: string) => {
+export const blobToFile = (blob: Blob, fileName: string): File => {
   return new File([blob], fileName, { type: blob.type })
 }
 
@@ -139,9 +144,5 @@ export const convertObjectName = (obj: Record<string, any>, nameKey: Record<stri
  * @returns 转换后的对象
  */
 export const formDataToObj = (formData: FormData) => {
-  const object = {}
-  for (const [key, value] of formData) {
-    object[key] = value
-  }
-  return object
+  return Object.fromEntries(formData)
 }
