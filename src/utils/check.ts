@@ -63,7 +63,7 @@ export const isIdCard = (idCard: string): boolean | void => {
  * 判断当前页面是否使用 HTTPS 协议
  * @returns {boolean} - 如果是 HTTPS 协议则返回 true，否则返回 false
  */
-export const isHttps = (): boolean => location.href.split(':')[0] == 'https'
+export const isHttps = (): boolean => location.protocol === 'https:'
 
 /**
  * 判断当前系统是否开启了深色模式
