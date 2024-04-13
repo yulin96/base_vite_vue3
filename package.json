@@ -79,7 +79,6 @@
     "@vue/test-utils": "^2.4.5",
     "@vue/tsconfig": "^0.5.1",
     "ali-oss": "^6.20.0",
-    "autoprefixer": "^10.4.19",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.24.1",
     "jsdom": "^24.0.0",
