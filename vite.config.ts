@@ -165,10 +165,10 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
+        tailwindcss,
         postcssPresetEnv({
           browsers: ['ios >= 11', 'chrome >= 64'],
         }),
-        tailwindcss,
         postcsspxtoviewport8plugin({
           unitToConvert: 'px',
           viewportWidth: (file) =>
