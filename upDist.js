@@ -22,7 +22,7 @@ if (!rootName || !uploadDirName) {
   process.exit()
 }
 
-const accessKeyId = 'LTAI5tE5fAzeb5YCupoUtgsa'
+const accessKeyId = process.env.zAccessKeyId
 const accessKeySecret = process.env.zAccessKeySecret
 const bucket = process.env.zBucket
 
