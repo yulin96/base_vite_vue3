@@ -1,4 +1,4 @@
-interface IUserInfo {
+interface IInfo {
   name: string
   phone: string
   code: string
@@ -12,7 +12,7 @@ interface IWxInfo {
 }
 
 interface IUserStore {
-  userInfo: Partial<IUserInfo>
+  info: Partial<IInfo>
   wxInfo: Partial<IWxInfo>
   [x: string]: any
 }
@@ -20,10 +20,10 @@ interface IUserStore {
 export const useScanStore = defineStore(
   'scan',
   () => {
-    const user = reactive<IUserStore>({ userInfo: {}, wxInfo: {} })
+    const user = reactive<IUserStore>({ info: {}, wxInfo: {} })
 
     const clearUser = () => {
-      user.userInfo = {}
+      user.info = {}
       user.wxInfo = {}
     }
 

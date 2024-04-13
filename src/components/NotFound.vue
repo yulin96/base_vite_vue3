@@ -5,8 +5,8 @@ const toIndex = () => {
 }
 
 const { user } = useStore()
-const id = String(user.userInfo.errId || randomNum(1, 10))
-user.userInfo.errId = id
+const id = String(user.info.errId || randomNum(1, 10))
+user.info.errId = id
 
 const errorEle = ref<HTMLDivElement | null>(null)
 
