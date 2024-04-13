@@ -52,6 +52,9 @@ export default {
         '.text-last-justify': {
           'text-align-last': 'justify',
         },
+        '.touch-callout': {
+          '-webkit-touch-callout': 'default',
+        },
         '.flash': {} /* 流光动画 */,
         '.flash-play': {} /* 流光动画播放 */,
         /* vant */
