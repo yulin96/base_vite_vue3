@@ -70,6 +70,7 @@ export default defineConfig(({ command }) => ({
           // ],
           html2canvas: [['default', 'html2canvas']],
           compressorjs: [['default', 'Compressor']],
+          dayjs: [['default', 'dayjs']],
           vant: [
             'showLoadingToast',
             'showDialog',
