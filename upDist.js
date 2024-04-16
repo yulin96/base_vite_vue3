@@ -5,7 +5,6 @@ import oss from 'ali-oss'
 import chalk from 'chalk'
 import { readdirSync, rmdirSync } from 'fs'
 import { join } from 'path'
-import CryptoJS from 'crypto-js'
 
 dotenv.config()
 
@@ -119,15 +118,4 @@ function removeEmptyDirectories(directory) {
       }
     }
   })
-}
-
-function decrypt(text, keyStr, ivStr) {
-  const key = CryptoJS.enc.Utf8.parse(keyStr)
-  const iv = CryptoJS.enc.Utf8.parse(ivStr)
-  try {
-    const decrypted = JSON.parse(CryptoJS.AES.decrypt(text, key, { iv }).toString(CryptoJS.enc.Utf8))
-    return decrypted
-  } catch (error) {
-    return null
-  }
 }
