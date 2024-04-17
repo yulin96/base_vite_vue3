@@ -32,6 +32,8 @@ export const getWxConfig = () => {
             'previewImage',
             'hideAllNonBaseMenuItem',
             'closeWindow',
+            'hideMenuItems',
+            'hideOptionMenu',
           ],
           openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp'],
         })
@@ -51,27 +53,40 @@ export const getWxConfig = () => {
 
 export type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
 
-export const wxShare = (data: IWxShare): void => {
-  const { title, desc, link, imgUrl } = data
-  getWxConfig()
-    .then(() => {
-      wx.updateAppMessageShareData({
-        title,
-        desc,
-        link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
-        imgUrl,
-        success() {},
+export const wxShare = (data: IWxShare) => {
+  return new Promise<boolean>((resolve, reject) => {
+    const { title, desc, link, imgUrl } = data
+    getWxConfig()
+      .then(() => {
+        wx.updateAppMessageShareData({
+          title,
+          desc,
+          link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
+          imgUrl,
+          success() {
+            resolve(true)
+          },
+          fail() {
+            resolve(false)
+          },
+        })
+        wx.updateTimelineShareData({
+          title,
+          link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
+          imgUrl,
+          success() {
+            resolve(true)
+          },
+          fail() {
+            resolve(false)
+          },
+        })
       })
-      wx.updateTimelineShareData({
-        title,
-        link: `${link}${~link.indexOf('?') ? '&' : '?'}t=${+new Date()}`,
-        imgUrl,
-        success() {},
+      .catch((err) => {
+        resolve(false)
+        console.log(err)
       })
-    })
-    .catch((err) => {
-      console.log(err)
-    })
+  })
 }
 
 let scanLock = false
@@ -178,4 +193,14 @@ export const closeWindow = () => {
         wx.closeWindow()
       })
     : window.close()
+}
+
+export const wxDisableTimeline = () => {
+  if (isWeChat) {
+    wx.hideMenuItems({
+      menuList: ['menuItem:share:QZone', 'menuItem:share:timeline'],
+    })
+  } else {
+    console.error('disableTimeline: not in wechat')
+  }
 }

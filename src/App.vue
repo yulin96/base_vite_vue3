@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import { registerWxShare } from '~/tools/share'
+import { registerButtonEffect } from '~/tools/effect'
+
 registerWxShare()
 
-import { registerButtonEffect } from '~/tools/effect'
 registerButtonEffect()
 
 /* 路由动画 */

@@ -3,15 +3,20 @@ import { isHttps } from '~/utils/check'
 import { isWeChat } from '~/utils/uaParser'
 
 export const registerWxShare = () => {
-  const title = import.meta.env.VITE_APP_SHARE_TITLE
-  const desc = import.meta.env.VITE_APP_SHARE_DESC
-  const link = import.meta.env.VITE_APP_SHARE_LINK
-  const imgUrl = import.meta.env.VITE_APP_SHARE_IMGURL
+  return new Promise<void>((resolve, reject) => {
+    const title = import.meta.env.VITE_APP_SHARE_TITLE
+    const desc = import.meta.env.VITE_APP_SHARE_DESC
+    const link = import.meta.env.VITE_APP_SHARE_LINK
+    const imgUrl = import.meta.env.VITE_APP_SHARE_IMGURL
 
-  if (title && link && imgUrl && isWeChat && isHttps()) {
-    wxShare({ title, desc, link, imgUrl })
-    registerDDShare({ title, desc, link, imgUrl })
-  }
+    if (title && link && imgUrl && isWeChat && isHttps()) {
+      wxShare({ title, desc, link, imgUrl }).then(() => {
+        resolve()
+      })
+
+      registerDDShare({ title, desc, link, imgUrl })
+    }
+  })
 }
 
 export const registerDDShare = ({ title, desc, link, imgUrl }: IWxShare) => {
