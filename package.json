@@ -51,7 +51,7 @@
     "uuid": "^9.0.1",
     "vant": "^4.8.11",
     "vite-plugin-top-level-await": "^1.4.1",
-    "vue": "^3.4.22",
+    "vue": "^3.4.23",
     "vue-cropper": "^1.1.1",
     "vue-i18n": "^9.12.1",
     "vue-router": "^4.3.0",
