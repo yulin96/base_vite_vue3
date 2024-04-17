@@ -42,6 +42,11 @@ div::-webkit-scrollbar {
   /* overscroll-behavior: none; */
 }
 
+img,
+video {
+  max-width: none;
+}
+
 code {
   font-family: inherit;
 }
