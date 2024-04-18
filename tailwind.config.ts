@@ -17,11 +17,6 @@ export default {
         primary: '#fff',
         danger: '#ee0a24',
       },
-      animation: {
-        'spin-slow': 'spin 4s linear infinite',
-        'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
-        handle: 'handle 1s ease infinite',
-      },
       keyframes: {
         handle: {
           '0%,30%,100%': { transform: 'scale(1)' },
@@ -31,6 +26,11 @@ export default {
           '0%, 100%': { transform: 'none', 'animation-timing-function': 'cubic-bezier(0,0,0.2,1)' },
           '50%': { transform: 'translateY(-25%)', 'animation-timing-function': 'cubic-bezier(0.8,0,1,1)' },
         },
+      },
+      animation: {
+        'spin-slow': 'spin 4s linear infinite',
+        'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
+        handle: 'handle 1s ease infinite',
       },
     },
   },
