@@ -45,13 +45,9 @@ export default defineConfig(({ command }) => ({
       dirs: ['src/components'],
       extensions: ['vue', 'tsx', 'jsx'],
       include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.tsx/, /\.jsx/],
-      resolvers: [
-        (name) => {
-          return name == 'Icon' ? { name: 'Icon', from: '@iconify/vue' } : null
-        },
-        VantResolver(),
-      ],
+      resolvers: [VantResolver()],
       dts: './typings/components.d.ts',
+      directoryAsNamespace: true,
     }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
