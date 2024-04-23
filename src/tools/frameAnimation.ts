@@ -46,7 +46,7 @@ export default class FrameAnimation {
       if (el instanceof HTMLCanvasElement) {
         this.animationElement = el
       } else {
-        console.error('使用querySelector查询不到canvas元素')
+        throw new Error('使用querySelector查询不到canvas元素')
       }
     } else {
       this.animationElement = option.el
