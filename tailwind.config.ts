@@ -9,10 +9,6 @@ export default {
   theme: {
     spacing: convertUnit(100),
     extend: {
-      width: convertUnit(1000),
-      height: convertUnit(1000),
-      fontSize: convertUnit(100),
-      borderRadius: convertUnit(100),
       colors: {
         primary: '#fff',
         danger: '#ee0a24',
