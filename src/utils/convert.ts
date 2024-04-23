@@ -152,6 +152,6 @@ export const formDataToObj = (formData: FormData) => {
  * @param str - 要处理的字符串。
  * @returns 处理后的字符串。
  */
-export const blobChinese = (str: string): string => {
+export const boldChinese = (str: string): string => {
   return str.replace(/([\u4e00-\u9fa5]+)/g, '<b>$1</b>')
 }
