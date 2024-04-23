@@ -63,7 +63,7 @@ export const randomNum = (m: number, n: number): number => {
  */
 export const dayDiff = (date1: Date, date2: Date) => {
   if (!(date1 instanceof Date) || !(date2 instanceof Date)) {
-    throw new Error('Invalid date')
+    console.error('Invalid date')
   }
   return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
 }
@@ -74,7 +74,7 @@ export const dayDiff = (date1: Date, date2: Date) => {
  */
 export const dayOfYear = (now = new Date()): number => {
   if (!(now instanceof Date)) {
-    throw new Error('Invalid date')
+    console.error('Invalid date')
   }
   const start = new Date(now.getFullYear(), 0, 0)
   const diff = now.getTime() - start.getTime()
@@ -108,7 +108,7 @@ export const isFromData = <T>(formData: T) => {
  */
 export const scrollToTop = (e: Element) => {
   if (!(e instanceof Element)) {
-    throw new Error('Invalid element')
+    console.error('Invalid element')
   }
   e.scrollTo({
     top: 0,
@@ -124,7 +124,7 @@ export const scrollToTop = (e: Element) => {
  */
 export const maskPhone = (phone: string) => {
   if (!/^1[3456789]\d{9}$/.test(phone)) {
-    throw new Error('Invalid phone number')
+    console.error('意外的手机号：', phone)
   }
   return phone.replace(/(\d{3})\d+(\d{4})/u, '$1****$2')
 }

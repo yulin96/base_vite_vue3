@@ -33,7 +33,7 @@ export const uploadFile = async (option: IUploadOption): Promise<[null, string] 
         file: file,
       }),
     )
-    if (res.status != 200) throw new Error('上传失败')
+    if (res.status != 200) console.error('上传失败')
 
     const fileUrl = `https://oss2.eventnet.cn/${key}`
     needLoading && showSuccessToast({ message: '上传成功' })
