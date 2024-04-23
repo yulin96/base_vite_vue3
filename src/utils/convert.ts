@@ -146,3 +146,12 @@ export const convertObjectName = (obj: Record<string, any>, nameKey: Record<stri
 export const formDataToObj = (formData: FormData) => {
   return Object.fromEntries(formData)
 }
+
+/**
+ * 将字符串中的中文部分用 <b> 标签包裹起来。
+ * @param str - 要处理的字符串。
+ * @returns 处理后的字符串。
+ */
+export const blobChinese = (str: string): string => {
+  return str.replace(/([\u4e00-\u9fa5]+)/g, '<b>$1</b>')
+}
