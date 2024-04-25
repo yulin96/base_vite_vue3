@@ -39,7 +39,11 @@ export default defineConfig(({ command }) => ({
     //   extensions: ['.vue', '.tsx'],
     //   importMode: 'sync',
     // }),
-    vue({ script: {} }),
+    vue({
+      script: {
+        propsDestructure: true,
+      },
+    }),
     vueJsx(),
     Components({
       dirs: ['src/components'],
