@@ -9,6 +9,7 @@ import { pcSupport } from '~/tools/pcSupport'
 import { checkWebpFeature } from '~/utils/checkWebpFeature'
 import App from './App.vue'
 import router from './router'
+import gsap from 'gsap'
 // import i18n from '~/lang'
 
 import 'vant/es/dialog/style'
@@ -66,6 +67,11 @@ pinia.use(piniaPluginPersistedstate)
 // app.use(i18n)
 app.use(pinia)
 app.use(router)
+gsap.config({ force3D: true })
+gsap.defaults({
+  duration: 0.36,
+  ease: 'power1.out',
+})
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
