@@ -3,7 +3,7 @@ import path from 'node:path'
 
 import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import legacy from '@vitejs/plugin-legacy'
+// import legacy from '@vitejs/plugin-legacy'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import AutoImport from 'unplugin-auto-import/vite'
@@ -116,10 +116,10 @@ export default defineConfig(({ command }) => ({
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
     }),
-    legacy({
-      targets: ['ios >= 11', 'chrome >= 64'],
-      modernPolyfills: true,
-    }),
+    // legacy({
+    //   targets: ['ios >= 11', 'chrome >= 64'],
+    //   modernPolyfills: true,
+    // }),
     webUpdateNotice({
       hiddenDefaultNotification: true,
       logVersion: (version) => {
