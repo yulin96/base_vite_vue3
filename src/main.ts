@@ -1,15 +1,13 @@
-import '@vant/touch-emulator'
-import { throttle } from 'lodash-es'
+import '~/tools/config/pcSupport'
+import '~/tools/config/vant'
+import '~/tools/config/pcSupport'
+import '~/tools/config/gsap'
+import '~/tools/config/devReload'
+import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
-import { setDialogDefaultOptions, setNotifyDefaultOptions, setToastDefaultOptions } from 'vant'
-import { createApp } from 'vue'
-import '~/tools/checkUpdate'
-import { pcSupport } from '~/tools/pcSupport'
-import { checkWebpFeature } from '~/utils/checkWebpFeature'
 import App from './App.vue'
 import router from './router'
-import gsap from 'gsap'
 // import i18n from '~/lang'
 
 import 'vant/es/dialog/style'
@@ -23,40 +21,6 @@ import '~/assets/css/main.css'
 theWindow.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
 theWindow.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 
-if (devModel) {
-  let lastWidth = theWindow.innerWidth
-  theWindow.addEventListener(
-    'resize',
-    throttle(() => {
-      if (lastWidth !== theWindow.innerWidth) {
-        theWindow.location.reload()
-        lastWidth = theWindow.innerWidth
-      }
-    }, 300),
-  )
-}
-
-if (import.meta.env.VITE_APP_OPENPC == '1') {
-  pcSupport().then(() => {})
-}
-
-checkWebpFeature((_, result) => {
-  if (result) document.documentElement.classList.add('webp')
-}, 'lossless')
-
-setToastDefaultOptions({
-  forbidClick: true,
-  overlay: true,
-  duration: 1200,
-  overlayClass: 'center_toast_overlay',
-  transition: 'center_fromTop_toast',
-  position: 'middle',
-  className: 'center_toast',
-})
-setToastDefaultOptions('loading', { duration: 0 })
-setNotifyDefaultOptions({ type: 'warning' })
-setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button' })
-
 const app = createApp(App)
 
 app.directive('focus', (el: HTMLElement) => el.focus())
@@ -67,11 +31,6 @@ pinia.use(piniaPluginPersistedstate)
 // app.use(i18n)
 app.use(pinia)
 app.use(router)
-gsap.config({ force3D: true })
-gsap.defaults({
-  duration: 0.36,
-  ease: 'power1.out',
-})
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
