@@ -1,7 +1,16 @@
 import { isMobile } from '~/utils/uaParser'
 
 if (isMobile) {
-  location.replace('./index.html')
+  const paramsSearch = new URLSearchParams(window.location.search)
+  const params: { [x: string]: string } = {}
+
+  for (const key of paramsSearch.keys()) {
+    params[key] = paramsSearch.get(key) ?? ''
+  }
+
+  let urlParams = ''
+  for (const key in params) urlParams += (urlParams ? '&' : '?') + `${key}=${params[key]}`
+  location.replace('./index.html' + urlParams)
 }
 
 const scale = 1410 / 750
