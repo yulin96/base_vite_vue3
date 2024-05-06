@@ -55,7 +55,7 @@ watch(
 <template>
   <van-floating-bubble
     v-if="backIns.show"
-    class="size-80"
+    class="size-90"
     @offset-change="offsetChange"
     :offset="backIns.offset"
     :icon="props.icon"
