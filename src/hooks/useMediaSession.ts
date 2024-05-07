@@ -1,5 +1,3 @@
-import { onMounted, onUnmounted } from 'vue'
-
 export const useMediaSession = (ele: Ref<HTMLAudioElement | undefined>, option?: MediaMetadata) => {
   if (!(ele.value instanceof HTMLMediaElement && 'mediaSession' in navigator)) return
 

@@ -1,4 +1,3 @@
-import { showImagePreview } from 'vant'
 import { wxPreviewImage } from '~/tools/wx'
 import { isWeChat } from '~/utils/uaParser'
 

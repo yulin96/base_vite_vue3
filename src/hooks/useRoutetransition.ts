@@ -1,5 +1,3 @@
-import { ref } from 'vue'
-import { useRoute } from 'vue-router'
 import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {

@@ -1,4 +1,3 @@
-import { onMounted, onUnmounted } from 'vue'
 import '~/assets/css/plugin/snow.css'
 import { randomNum } from '~/utils/common'
 

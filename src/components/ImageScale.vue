@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { showDialog } from 'vant'
 import Zoomist from 'zoomist'
 
 const props = withDefaults(defineProps<{ url: string; fillType?: 'cover' | 'contain' | 'none' }>(), {

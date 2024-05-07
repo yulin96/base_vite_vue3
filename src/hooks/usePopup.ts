@@ -1,4 +1,3 @@
-import { ref, toRefs } from 'vue'
 import type { PickerOption } from 'vant'
 
 interface PopupOption {

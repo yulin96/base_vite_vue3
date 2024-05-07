@@ -1,4 +1,4 @@
-import { type ToastOptions, showToast as toast } from 'vant'
+import { showToast as toast, type ToastOptions } from 'vant'
 
 export function showToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
   if (typeof option === 'string') return toast(option)

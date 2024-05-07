@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory, useRoute } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import index from '~/scan/views/index.vue'
 
 const scanRouter = createRouter({
