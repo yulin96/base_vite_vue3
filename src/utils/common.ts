@@ -156,7 +156,8 @@ export const usePromise = (): [Promise<unknown>, (value: unknown) => void, (reas
   return [promise, resolve, reject]
 }
 
-export const userLanguage = () => navigator.language || (Array.isArray(navigator.languages) && navigator.languages[0])
+export const userLanguage = () =>
+  navigator?.language || (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) || 'zh-CN'
 
 export const userLanguageIsChinese = () => userLanguage().includes('zh')
 
