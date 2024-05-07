@@ -7,8 +7,12 @@ const convertUnit = (length = 100, name = 'px') =>
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    spacing: convertUnit(100),
+    spacing: convertUnit(200),
     extend: {
+      width: convertUnit(1000),
+      height: convertUnit(1000),
+      fontSize: convertUnit(100),
+      borderRadius: convertUnit(100),
       colors: {
         primary: '#fff',
         danger: '#ee0a24',
