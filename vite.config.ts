@@ -1,14 +1,14 @@
-import { fileURLToPath, URL } from 'node:url'
 import path from 'node:path'
+import { fileURLToPath, URL } from 'node:url'
 
-import { defineConfig, loadEnv } from 'vite'
 import vue from '@vitejs/plugin-vue'
+import { defineConfig, loadEnv } from 'vite'
 // import legacy from '@vitejs/plugin-legacy'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 
 import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
 import topLevelAwait from 'vite-plugin-top-level-await'
 // import VueRouter from 'unplugin-vue-router/vite'
 // import { VueRouterAutoImports } from 'unplugin-vue-router'
@@ -17,8 +17,8 @@ import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import tailwindcss from 'tailwindcss'
 
-import { visualizer } from 'rollup-plugin-visualizer'
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
