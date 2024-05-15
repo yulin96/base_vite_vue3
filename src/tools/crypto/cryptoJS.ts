@@ -1,22 +1,53 @@
 import cryptoJS from 'crypto-js'
 
-/**
- * 测试加密
- */
+export const dateMd5 = (date?: string) => {
+  return cryptoJS.MD5(date ?? Date()).toString()
+}
 
-const md5 = cryptoJS.MD5(Date()).toString()
-const md52 = md5.slice(8, 24)
-console.log(md5, md52, md52.length)
+export const createAesCrypto = (key?: string, iv?: string) => {
+  const _key = cryptoJS.enc.Utf8.parse(key || '91a48a8af7e580d8401514c01e2dda22')
+  const _iv = cryptoJS.enc.Utf8.parse(iv || 'f7e580d8401514c0')
 
-const key = cryptoJS.enc.Utf8.parse('91a48a8af7e580d8401514c01e2dda22')
+  const encrypt = (text: string | Record<string, any>) => {
+    const textIsString = typeof text === 'string'
+    const encrypted = cryptoJS.AES.encrypt(textIsString ? text : JSON.stringify(text), _key, { iv: _iv }).toString()
 
-const iv = cryptoJS.enc.Utf8.parse('f7e580d8401514c0')
+    return encrypted
+  }
 
-const encrypted = cryptoJS.AES.encrypt(JSON.stringify({ name: 'yuyu', age: '12111' }), key, { iv }).toString()
+  const decrypt = (text: string) => {
+    const decrypted = cryptoJS.AES.decrypt(text, _key, { iv: _iv })
 
-console.log(encrypted)
+    return decrypted.toString(cryptoJS.enc.Utf8)
+  }
 
-const data = cryptoJS.AES.decrypt(encrypted, key, { iv: cryptoJS.enc.Utf8.parse('f7e580d8401614c0') }).toString(
-  cryptoJS.enc.Utf8,
-)
-console.log(data)
+  return { encrypt, decrypt }
+}
+
+export const createIvEncryption = (secretKey?: string) => {
+  const _secretKey = secretKey || cryptoJS.lib.WordArray.random(32).toString()
+
+  const encrypt = (text: string | Record<string, any>) => {
+    const textIsString = typeof text === 'string'
+
+    const iv = cryptoJS.lib.WordArray.random(16)
+    const encrypted = cryptoJS.AES.encrypt(
+      textIsString ? text : JSON.stringify(text),
+      cryptoJS.enc.Utf8.parse(_secretKey),
+      { iv: iv },
+    )
+
+    const result = iv.toString() + encrypted.toString()
+    return result
+  }
+
+  const decrypt = (text: string) => {
+    const iv = cryptoJS.enc.Hex.parse(text.substring(0, 32))
+    const ciphertext = text.substring(32)
+
+    const decrypted = cryptoJS.AES.decrypt(ciphertext, cryptoJS.enc.Utf8.parse(_secretKey), { iv: iv })
+    return decrypted.toString(cryptoJS.enc.Utf8)
+  }
+
+  return { encrypt, decrypt }
+}
