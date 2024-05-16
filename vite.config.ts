@@ -125,7 +125,7 @@ export default defineConfig(({ command }) => ({
       logVersion: (version) => {
         console.log(`🦄 🚧 version: %c${version}`, 'color: #3a4aca;')
       },
-      injectFileBase: './',
+      injectFileBase: getNoticeUrl(),
       versionType: 'build_timestamp',
     }),
     visualizer(),
@@ -222,4 +222,11 @@ function handleCheck() {
     logTips('微信分享链接未定义', '微信分享链接', VITE_APP_SHARE_LINK)
     logTips('微信分享图片未定义', '微信分享图片', VITE_APP_SHARE_IMGURL)
   })
+}
+
+function getNoticeUrl() {
+  const baseURL = env.VITE_APP_SHARE_LINK
+  if (!baseURL) return './'
+  const _url = baseURL.substring(0, baseURL.indexOf('#') === -1 ? baseURL.length : baseURL.indexOf('#'))
+  return _url.substring(0, _url.lastIndexOf('/') + 1)
 }
