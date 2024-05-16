@@ -25,7 +25,7 @@ const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 const env = loadEnv('production', process.cwd())
 
 let propOssPath = './'
-if (env.VITE_OSS_ROOT_DIRNAME && env.VITE_OSS_DIRNAME) {
+if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
   propOssPath = `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIRNAME}/${env.VITE_OSS_DIRNAME}/`
 }
 
