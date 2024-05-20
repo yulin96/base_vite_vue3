@@ -59,7 +59,7 @@ export const axiosPost = (
   const isFromData = dataType === 'FormData'
   const _headers = {
     ...headers,
-    ...(isFromData ? { 'Content-Type': 'multipart/form-data' } : {}),
+    'Content-Type': isFromData ? 'multipart/form-data' : 'application/json',
   }
 
   return new Promise<IRes>((resolve, reject) =>
