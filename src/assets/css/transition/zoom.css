@@ -1,10 +1,19 @@
 .zoom-right-enter-active,
-.zoom-left-enter-active,
+.zoom-left-enter-active {
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
 .zoom-right-leave-active,
 .zoom-left-leave-active {
   transition:
     opacity 0.4s ease,
     transform 0.4s ease;
+  position: absolute;
+  top: 0;
 }
 
 .zoom-right-enter-from,

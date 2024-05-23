@@ -4,11 +4,13 @@
 .slide-right-enter-active {
   opacity: 1;
   transition: transform 0.4s ease;
+  position: absolute;
+  top: 0;
 }
 
 .slide-left-leave-active,
 .slide-right-enter-active {
-  z-index: 500;
+  z-index: 20;
 }
 
 .slide-left-leave-to,
