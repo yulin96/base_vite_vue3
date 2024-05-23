@@ -13,6 +13,9 @@ importers:
 
   .:
     dependencies:
+      '@tsparticles/engine':
+        specifier: ^3.4.0
+        version: 3.4.0
       '@types/canvas-confetti':
         specifier: ^1.6.4
         version: 1.6.4
@@ -1045,6 +1048,9 @@ packages:
 
   '@tsconfig/node20@20.1.4':
     resolution: {integrity: sha512-sqgsT69YFeLWf5NtJ4Xq/xAF8p4ZQHlmGW74Nu2tD4+g5fAsposc4ZfaaPixVu4y01BEiDCWLRDCvDM5JOsRxg==}
+
+  '@tsparticles/engine@3.4.0':
+    resolution: {integrity: sha512-OqoMZYJCoiihNnexnnSmInEMNXr0Z8CmE1HSiFVeifgK1qUlonTFe2G09KdvNT8ZdvmIC513yTpFJNDbnMZYRQ==}
 
   '@types/ali-oss@6.16.11':
     resolution: {integrity: sha512-/AyemPZy93ZXGzEokMsoPFgjH37snpzH4X/fwans/n63HLaCleriCG3PyrkHCPkgHEc9vj9Uo6paqsBN3vJ3OA==}
@@ -4086,6 +4092,8 @@ snapshots:
       '@swc/counter': 0.1.3
 
   '@tsconfig/node20@20.1.4': {}
+
+  '@tsparticles/engine@3.4.0': {}
 
   '@types/ali-oss@6.16.11': {}
 
