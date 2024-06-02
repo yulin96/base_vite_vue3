@@ -34,11 +34,11 @@ onMounted(async () => {
     :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
     class="bg-transparent"
   >
-    <div class="w-600 flex flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
-      <p class="text-32 mb-40">您还没有登录</p>
-      <p class="text-32 mb-40">点击微信一键登录参与活动</p>
+    <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
+      <p class="mb-40 text-32">您还没有登录</p>
+      <p class="mb-40 text-32">点击微信一键登录参与活动</p>
       <button
-        class="w-500 flex h-80 items-center justify-center rounded-[12px] bg-[#12c164] text-white"
+        class="flex h-80 w-500 items-center justify-center rounded-[12px] bg-[#12c164] text-white"
         @click="openLink"
       >
         <svg
