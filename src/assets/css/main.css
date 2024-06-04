@@ -27,6 +27,9 @@ div::-webkit-scrollbar {
 
 .content {
   width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+
   -webkit-overflow-scrolling: touch;
 
   /* overscroll-behavior: none; */
