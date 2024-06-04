@@ -43,5 +43,5 @@ export const useSealTouch = (el: string, requiredTouches = 5) => {
     canBeTouched.value = false
   }
 
-  return { canBeTouched, resume, pause, handleTouch }
+  return { resume, pause, handleTouch }
 }
