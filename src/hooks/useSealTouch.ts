@@ -1,5 +1,5 @@
-export const useSealTouch = (el: string) => {
-  const status = ref(true)
+export const useSealTouch = (el: string, requiredTouches = 5) => {
+  const canBeTouched = ref(true)
   const handleTouch = ref<(val: { x: number; y: number }[]) => any>()
 
   let sealTouches: { x: number; y: number }[] = []
@@ -8,7 +8,7 @@ export const useSealTouch = (el: string) => {
       sealTouches.push({ x: touch.clientX, y: touch.clientY })
     }
 
-    if (sealTouches.length == 5) {
+    if (sealTouches.length === requiredTouches) {
       handleTouch.value?.(sealTouches)
     }
   }
@@ -19,7 +19,7 @@ export const useSealTouch = (el: string) => {
   }
 
   watch(
-    status,
+    canBeTouched,
     async (val) => {
       await nextTick()
       const sealWrapper = document.querySelector(el) as HTMLElement | null
@@ -36,12 +36,12 @@ export const useSealTouch = (el: string) => {
   )
 
   const resume = () => {
-    status.value = true
+    canBeTouched.value = true
   }
 
   const pause = () => {
-    status.value = false
+    canBeTouched.value = false
   }
 
-  return { status, resume, pause, handleTouch }
+  return { canBeTouched, resume, pause, handleTouch }
 }
