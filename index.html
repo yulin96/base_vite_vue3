@@ -43,6 +43,7 @@
 
     <script src="https://oss.eventnet.cn/H5/zz/public/vConsole.js"></script>
     <script>
+      const params = new URLSearchParams(window.location.search)
       if (params.get('dev') !== null) new window.VConsole()
     </script>
   </head>
