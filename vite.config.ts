@@ -9,7 +9,6 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
-import topLevelAwait from 'vite-plugin-top-level-await'
 // import VueRouter from 'unplugin-vue-router/vite'
 // import { VueRouterAutoImports } from 'unplugin-vue-router'
 
@@ -32,7 +31,6 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
-    topLevelAwait(),
     // VueRouter({
     //   dts: 'typings/typed-router.d.ts',
     //   routesFolder: [{ src: 'src/pages' }],
