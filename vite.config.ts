@@ -1,10 +1,10 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
+import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
-import { defineConfig, loadEnv } from 'vite'
-// import legacy from '@vitejs/plugin-legacy'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import { defineConfig, loadEnv } from 'vite'
 
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
@@ -114,10 +114,10 @@ export default defineConfig(({ command }) => ({
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
     }),
-    // legacy({
-    //   targets: ['ios >= 11', 'chrome >= 64'],
-    //   modernPolyfills: true,
-    // }),
+    legacy({
+      targets: ['ios >= 11', 'chrome >= 64'],
+      modernPolyfills: true,
+    }),
     webUpdateNotice({
       hiddenDefaultNotification: true,
       logVersion: (version) => {
