@@ -9,8 +9,6 @@ import { defineConfig, loadEnv } from 'vite'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
-// import VueRouter from 'unplugin-vue-router/vite'
-// import { VueRouterAutoImports } from 'unplugin-vue-router'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
@@ -31,12 +29,6 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
-    // VueRouter({
-    //   dts: 'typings/typed-router.d.ts',
-    //   routesFolder: [{ src: 'src/pages' }],
-    //   extensions: ['.vue', '.tsx'],
-    //   importMode: 'sync',
-    // }),
     vue({
       script: {
         propsDestructure: true,
@@ -54,7 +46,6 @@ export default defineConfig(({ command }) => ({
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
-        // VueRouterAutoImports,
         'vue-router',
         'vue',
         'pinia',
@@ -62,10 +53,6 @@ export default defineConfig(({ command }) => ({
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
           gsap: ['gsap'],
-          // 'vue-router': [
-          //   ['useRoute', 'useRootRoute'],
-          //   ['useRouter', 'useRootRouter'],
-          // ],
           html2canvas: [['default', 'html2canvas']],
           compressorjs: [['default', 'Compressor']],
           dayjs: [['default', 'dayjs']],
