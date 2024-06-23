@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 /// <reference types="@plugin-web-update-notification/vite" />
+/// <reference types="unplugin-vue-router/client" />
 
 type LinkTo = (name: string, props?: { params?: Record<string, string>; query?: Record<string, string> }) => void
 

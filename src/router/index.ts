@@ -1,16 +1,9 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import index from '~/pages/index.vue'
+import { routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
-  routes: [
-    {
-      path: '/',
-      name: 'index',
-      component: index,
-      meta: { index: 10 },
-    },
-  ],
+  routes,
 })
 
 router.addRoute({

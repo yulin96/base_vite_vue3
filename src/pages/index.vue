@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const linkTo = inject('linkTo') as LinkTo
+definePage({ meta: { index: 10 } })
 
 /*  */
 onMounted(() => {
