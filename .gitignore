@@ -30,6 +30,7 @@ coverage
 stats.html
 components.d.ts
 auto-imports.d.ts
+typed-router.d.ts
 .eslintrc-auto-import.json
 tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
