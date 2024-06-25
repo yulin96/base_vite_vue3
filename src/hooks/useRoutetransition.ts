@@ -2,6 +2,7 @@ import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
   if (transitionName === 'slide-page') document.body.classList.add('slide-page')
+  if (transitionName === 'slide-cover') document.documentElement.classList.add('slide-cover')
 
   const name = ref('alpha')
 

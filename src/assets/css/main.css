@@ -16,6 +16,14 @@ div::-webkit-scrollbar {
   white-space: pre-line;
 }
 
+.slide-cover #app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 .wrapper {
   width: 100%;
   min-height: 100vh;
@@ -23,6 +31,14 @@ div::-webkit-scrollbar {
   /* overscroll-behavior: none; */
   font-size: 28px;
   scroll-behavior: smooth;
+}
+
+.slide-cover .wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .content {

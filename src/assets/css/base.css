@@ -33,6 +33,15 @@ body {
   scroll-behavior: smooth;
 }
 
+html.slide-cover,
+.slide-cover body {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
 input,
 select,
 textarea {

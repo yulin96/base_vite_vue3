@@ -1,20 +1,24 @@
 .slide-cover-right-enter-active,
 .slide-cover-left-enter-active {
+  position: absolute;
+  top: 0;
+  left: 0;
   transition:
     transform 0.5s ease,
-    opacity 0.5s ease,
-    border-radius 0.5s ease;
+    opacity 0.5s ease;
 }
 .slide-cover-right-leave-active,
 .slide-cover-left-leave-active {
+  position: absolute;
+  top: 0;
+  left: 0;
   transition:
     transform 0.5s ease,
-    opacity 0.5s ease,
-    border-radius 0.5s ease;
+    opacity 0.5s ease;
 }
 .slide-cover-right-enter-active,
 .slide-cover-left-leave-active {
-  z-index: 999;
+  z-index: 200;
 }
 
 .slide-cover-right-enter-from,
