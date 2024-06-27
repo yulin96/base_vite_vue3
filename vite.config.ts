@@ -31,9 +31,7 @@ export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     VueRouter({
-      /* options */
-      // importMode: 'async',
-      // logs: false,
+      importMode: 'sync',
       dts: 'typings/typed-router.d.ts',
     }),
     vue({

@@ -10,3 +10,7 @@ onMounted(() => {
     <div class="content"></div>
   </div>
 </template>
+
+<route lang="json">
+{ "meta": { "index": 10 } }
+</route>
