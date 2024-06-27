@@ -15,6 +15,16 @@ const { name } = useRouteTransition('slide')
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
+const themeVars = convertVantPx({
+  black: '#1d1d1f',
+  primaryColor: '#344bb6',
+  floatingBubbleBackground: 'transparent',
+
+  toastPositionBottomDistance: '9%',
+  toastLoadingIconColor: '#111',
+  toastFontSize: '30px',
+})
+
 onMounted(() => {})
 </script>
 
@@ -23,7 +33,9 @@ onMounted(() => {})
     <router-view class="wrapper" v-slot="{ Component }">
       <transition :name>
         <keep-alive :exclude="[]">
-          <component :is="Component" />
+          <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+            <component :is="Component" />
+          </van-config-provider>
         </keep-alive>
       </transition>
     </router-view>

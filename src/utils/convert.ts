@@ -1,3 +1,5 @@
+import type { ConfigProviderThemeVars } from 'vant'
+
 /**
  * 将URL转换为Blob对象。
  * @param url - 要转换的URL。
@@ -154,4 +156,20 @@ export const formDataToObj = (formData: FormData) => {
  */
 export const boldChinese = (str: string): string => {
   return str.replace(/([\u4e00-\u9fa5]+)/g, '<b>$1</b>')
+}
+
+export const convertVantPx = (config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars => {
+  if (!config) return {}
+
+  const newConfig = Object.entries(config).reduce((config, [key, value]) => {
+    if (typeof value === 'number' || value.indexOf('px') === -1) {
+      config[key] = value
+      return config
+    }
+    const px = parseFloat(value.replace('px', ''))
+    config[key] = `${((px / screenSize) * 100).toFixed(2)}vw`
+    return config
+  }, {})
+
+  return newConfig
 }

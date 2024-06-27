@@ -1,11 +1,4 @@
 :root:root {
-  --van-primary-color: #344bb6;
-  --van-black: #1d1d1f;
-
-  --van-toast-position-top-distance: 9%;
-  --van-toast-loading-icon-color: #111;
-  --van-floating-bubble-background: transparent;
-
   --van-action-bar-button-danger-color: linear-gradient(to right, #607ffa, #3051db, #607ffa);
 }
 
@@ -20,7 +13,6 @@
 
 .van-toast.center_toast {
   padding: 16px 30px;
-  font-size: 30px;
   color: var(--z-toast-color);
   letter-spacing: 0.2px;
   background: var(--z-toast-background);
