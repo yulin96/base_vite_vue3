@@ -12,4 +12,4 @@ setToastDefaultOptions({
 })
 setToastDefaultOptions('loading', { duration: 0 })
 setNotifyDefaultOptions({ type: 'warning' })
-setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button' })
+setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button', allowHtml: true })

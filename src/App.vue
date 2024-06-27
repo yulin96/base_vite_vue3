@@ -14,6 +14,7 @@ const { name } = useRouteTransition('slide')
 // watch(locale, (newVal) => {
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
+
 onMounted(() => {})
 </script>
 
