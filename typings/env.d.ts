@@ -2,8 +2,6 @@
 /// <reference types="@plugin-web-update-notification/vite" />
 /// <reference types="unplugin-vue-router/client" />
 
-type LinkTo = (name: string, props?: { params?: Record<string, string>; query?: Record<string, string> }) => void
-
 declare const lottie: typeof import('lottie-web').default
 type AnimationItem = import('lottie-web').AnimationItem
 

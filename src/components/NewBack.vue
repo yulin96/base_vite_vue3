@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import type { linkMapType } from '~/utils/typings'
+
 const props = defineProps<{
   icon: string
   axis?: 'x' | 'y' | 'xy'
   magnetic?: 'x' | 'y'
-  linkMap: { [x: string]: string }
+  linkMap: linkMapType
 }>()
 
 const { user } = useStore()
@@ -15,10 +17,10 @@ const router = useRouter()
 
 const backIns = ref({
   show: false,
-  name: undefined as undefined | string,
+  name: '/' as keyof linkMapType,
   offset: { x: 0, y: 0 },
   onClick() {
-    router.replace({ name: this.name || 'index' })
+    router.replace({ name: this.name || '/' })
   },
 })
 

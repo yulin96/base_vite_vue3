@@ -1,8 +1,1 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-echo "Running ESLint..."
-pnpm lint
-
-echo "Running vue-tsc..."
-pnpm type-check
+pnpm lint && pnpm type-check
