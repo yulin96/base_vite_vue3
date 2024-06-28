@@ -158,16 +158,30 @@ export const boldChinese = (str: string): string => {
   return str.replace(/([\u4e00-\u9fa5]+)/g, '<b>$1</b>')
 }
 
+/**
+ * 将像素值转换为vw单位
+ * @param text - 要转换的像素值
+ * @param screenSize - 屏幕宽度，默认为750
+ * @returns 转换后的vw单位值
+ */
+export const toVw = (text: string, screenSize = 750) => {
+  if (!text.endsWith('px')) return text
+
+  const px = parseFloat(text.replace('px', ''))
+  return `${parseFloat(((px / screenSize) * 100).toFixed(5))}vw`
+}
+
+/**
+ * 将 Vant 组件库的样式单位从 px 转换为 vw
+ * @param config - Vant 组件库的主题配置对象
+ * @param screenSize - 屏幕宽度基准值，默认为 750px
+ * @returns 转换后的 Vant 组件库主题配置对象
+ */
 export const convertVantPx = (config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars => {
   if (!config) return {}
 
   const newConfig = Object.entries(config).reduce((config, [key, value]) => {
-    if (typeof value === 'number' || value.indexOf('px') === -1) {
-      config[key] = value
-      return config
-    }
-    const px = parseFloat(value.replace('px', ''))
-    config[key] = `${((px / screenSize) * 100).toFixed(2)}vw`
+    config[key] = typeof value === 'number' ? value : toVw(value, screenSize)
     return config
   }, {})
 
