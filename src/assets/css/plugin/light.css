@@ -1,0 +1,32 @@
+@keyframes shark-text {
+  form {
+    background-position: -100%;
+  }
+  to {
+    background-position: 200%;
+  }
+}
+
+.shark-wrap {
+  overflow: hidden;
+  position: relative;
+}
+
+.shark-wrap::after {
+  content: '';
+  position: absolute;
+  inset: -20%;
+  background: linear-gradient(45deg, #ffffff00 40%, #ffffffb3, #ffffff00 60%);
+  animation: shark-wrap var(--time, 2s) infinite paused;
+  transform: translateX(-100%);
+}
+
+@keyframes shark-wrap {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+.shark-wrap-play::after {
+  animation-play-state: running;
+}

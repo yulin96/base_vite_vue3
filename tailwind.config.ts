@@ -35,7 +35,7 @@ export default {
     },
   },
   plugins: [
-    plugin(({ addUtilities, addComponents }) => {
+    plugin(({ addUtilities, addComponents, matchUtilities }) => {
       addUtilities({
         '.text-security-disc': {
           '-webkit-text-security': 'disc',
@@ -55,8 +55,14 @@ export default {
         '.touch-callout': {
           '-webkit-touch-callout': 'default',
         },
-        '.flash': {} /* 流光动画 */,
-        '.flash-play': {} /* 流光动画播放 */,
+        '.shark-wrap': {} /* 流光动画 */,
+        '.shark-wrap-play': {} /* 流光动画播放 */,
+        '.shark-text': {},
+        '.shark-text-play': {
+          'animation-play-state': 'running !important',
+        } /* 流光文字动画 */,
+        '.mask': {},
+        '.time': {},
         /* vant */
         '.van-hairline--top': {},
         '.van-hairline--bottom': {},
@@ -96,6 +102,21 @@ export default {
             opacity: '.6',
           },
         },
+      })
+      matchUtilities({
+        time: (value) => ({
+          '--time': value,
+        }),
+        'shark-text': (value) => ({
+          color: 'transparent',
+          background: `linear-gradient(45deg, #ffffff00 30%, #ffffffe6, #ffffff00 70%) -100% / 50% no-repeat ${value}`,
+          'background-clip': 'text',
+          animation: `shark-text var(--time, 2s) infinite paused`,
+        }),
+        mask: (value) => ({
+          '-webkit-mask': `${value} 0 0/100%`,
+          mask: `${value} 0 0/100%`,
+        }),
       })
     }),
   ],

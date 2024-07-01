@@ -38,42 +38,6 @@
   }
 }
 
-@keyframes flash-flow {
-  0% {
-    background-position: 150% 0;
-  }
-
-  50%,
-  100% {
-    background-position: -50% 0;
-  }
-}
-
-.flash {
-  position: relative;
-  overflow: hidden;
-}
-
-.flash::after {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150%;
-  height: 120%;
-  content: '';
-  background: linear-gradient(90deg, transparent 0% 45%, #ffffffaa 50%, transparent 55% 100%);
-  background-position: 150% 0;
-  background-size: 200% 120%;
-  transform: skewX(-30deg) translate(-50%, -50%);
-  animation: flash-flow 3s infinite linear;
-  animation-play-state: paused;
-  pointer-events: none;
-}
-
-.flash.flash-play::after {
-  animation-play-state: running;
-}
-
 /*  */
 @keyframes waterfall {
   0% {

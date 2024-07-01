@@ -3,6 +3,7 @@
 @import './plugin/progress.css';
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';
+@import './plugin/light.css';
 
 div::-webkit-scrollbar {
   display: none;
