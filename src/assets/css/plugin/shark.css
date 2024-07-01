@@ -19,6 +19,7 @@
   background: linear-gradient(45deg, #ffffff00 40%, #ffffffb3, #ffffff00 60%);
   animation: shark-wrap var(--time, 2s) infinite paused;
   transform: translateX(-100%);
+  pointer-events: none;
 }
 
 @keyframes shark-wrap {
