@@ -4,7 +4,7 @@
   "bracketSameLine": false,
   "jsxSingleQuote": true,
   "printWidth": 120,
-  "quoteProps": "as-needed",
+  "quoteProps": "consistent",
   "semi": false,
   "singleQuote": true,
   "tabWidth": 2,

@@ -17,7 +17,7 @@ const i18n = createI18n<[MessageSchema], 'zh-CN' | 'en'>({
   locale: localeName.value,
   messages: {
     'zh-CN': zhCN,
-    en: en,
+    'en': en,
   },
 })
 
