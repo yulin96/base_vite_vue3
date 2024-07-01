@@ -28,5 +28,5 @@
 }
 
 .shark-wrap-play::after {
-  animation-play-state: running;
+  animation-play-state: running !important;
 }
