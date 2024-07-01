@@ -1,10 +1,8 @@
-import path from 'path'
-import fs from 'fs'
-import dotenv from 'dotenv'
 import oss from 'ali-oss'
 import chalk from 'chalk'
-import { readdirSync, rmdirSync } from 'fs'
-import { join } from 'path'
+import dotenv from 'dotenv'
+import fs, { readdirSync, rmdirSync } from 'fs'
+import path, { join } from 'path'
 
 dotenv.config()
 
