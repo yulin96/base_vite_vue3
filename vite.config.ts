@@ -31,7 +31,6 @@ export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
     VueRouter({
-      importMode: 'sync',
       dts: 'typings/typed-router.d.ts',
     }),
     vue({
@@ -150,6 +149,7 @@ export default defineConfig(({ command }) => ({
   server: {
     host: '0.0.0.0',
     port: 3010,
+    hmr: true,
   },
   css: {
     postcss: {

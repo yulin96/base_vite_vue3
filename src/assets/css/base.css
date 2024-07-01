@@ -33,11 +33,12 @@ body {
   scroll-behavior: smooth;
 }
 
-html.slide-cover,
-.slide-cover body {
+html.cover,
+.cover body {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   overflow-x: hidden;
   overflow-y: hidden;
 }

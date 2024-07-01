@@ -18,7 +18,7 @@ div::-webkit-scrollbar {
   font-size: 28px;
 }
 
-.slide-cover #app {
+.cover #app {
   position: relative;
   width: 100%;
   height: 100%;
@@ -34,9 +34,10 @@ div::-webkit-scrollbar {
   scroll-behavior: smooth;
 }
 
-.slide-cover .wrapper {
-  width: 100%;
-  height: 100%;
+.cover .wrapper {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   min-height: auto;
   overflow-x: hidden;
   overflow-y: auto;

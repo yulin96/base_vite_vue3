@@ -29,17 +29,17 @@ onMounted(() => {})
 </script>
 
 <template>
-  <suspense>
-    <router-view class="wrapper" v-slot="{ Component }">
-      <transition :name>
-        <keep-alive :exclude="[]">
-          <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+    <suspense>
+      <router-view class="wrapper" v-slot="{ Component }">
+        <transition :name>
+          <keep-alive :exclude="[]">
             <component :is="Component" />
-          </van-config-provider>
-        </keep-alive>
-      </transition>
-    </router-view>
-  </suspense>
+          </keep-alive>
+        </transition>
+      </router-view>
+    </suspense>
+  </van-config-provider>
 </template>
 
 <style>

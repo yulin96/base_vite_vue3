@@ -1,8 +1,7 @@
 import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
-  if (transitionName === 'slide-page') document.body.classList.add('slide-page')
-  if (transitionName === 'slide-cover') document.documentElement.classList.add('slide-cover')
+  document.documentElement.classList.add('cover')
 
   const name = ref('alpha')
 
@@ -10,6 +9,8 @@ export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide'
   watch(
     () => route.meta.index,
     (newIndex, oldIndex) => {
+      console.log(newIndex, oldIndex)
+
       if (!newIndex || !oldIndex) return (name.value = 'alpha')
       if (newIndex === oldIndex) return (name.value = 'alpha')
       name.value = transitionName + (newIndex > oldIndex ? '-right' : '-left')
