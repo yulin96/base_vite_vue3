@@ -7,6 +7,7 @@
   top: 0;
   z-index: 10;
 }
+
 .zoom-right-leave-active,
 .zoom-left-leave-active {
   transition:
@@ -14,6 +15,11 @@
     transform 0.4s ease;
   position: absolute;
   top: 0;
+}
+
+.zoom-left-leave-active,
+.zoom-right-enter-active {
+  z-index: 20;
 }
 
 .zoom-right-enter-from,

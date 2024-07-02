@@ -1,7 +1,10 @@
 import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
-  document.documentElement.classList.add('cover')
+  if (!(['slide'] as RouteTransitionName[]).includes(transitionName)) {
+    // 🤯 全屏组件需要禁止滚动，禁止后也会导致其他问题
+    document.documentElement.classList.add('cover')
+  }
 
   const name = ref('fade')
 

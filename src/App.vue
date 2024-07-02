@@ -33,7 +33,7 @@ onMounted(() => {})
     <suspense>
       <router-view class="wrapper" v-slot="{ Component }">
         <transition :name>
-          <keep-alive :exclude="[]">
+          <keep-alive :include="[]">
             <component :is="Component" />
           </keep-alive>
         </transition>
