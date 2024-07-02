@@ -1,8 +1,8 @@
 @keyframes shark-text {
-  form {
+  0% {
     background-position: -100%;
   }
-  to {
+  100% {
     background-position: 200%;
   }
 }
@@ -23,7 +23,7 @@
 }
 
 @keyframes shark-wrap {
-  to {
+  100% {
     transform: translateX(100%);
   }
 }
