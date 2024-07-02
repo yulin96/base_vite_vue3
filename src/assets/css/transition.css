@@ -5,7 +5,7 @@
   power4: 0.22, 1, 0.36, 1
 */
 
-@import './transition/alpha.css';
+@import './transition/fade.css';
 @import './transition/blur.css';
 @import './transition/zoom.css';
 @import './transition/slide.css';

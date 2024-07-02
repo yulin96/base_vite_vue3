@@ -31,7 +31,7 @@ interface ImportMetaEnv {
 interface Window {}
 
 type RouteTransitionName =
-  | 'alpha'
+  | 'fade'
   | 'blur'
   | 'zoom'
   | 'slide'
