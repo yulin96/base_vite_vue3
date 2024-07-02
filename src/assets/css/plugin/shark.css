@@ -31,3 +31,9 @@
 .shark-wrap-play::after {
   animation-play-state: running !important;
 }
+
+.loquat {
+  mask-image: linear-gradient(to right, black 0% 40%, transparent 50% 100%);
+  mask-size: 250% 100%;
+  mask-position: 90%;
+}

@@ -63,6 +63,7 @@ export default {
         } /* 流光文字动画 */,
         '.mask': {},
         '.time': {},
+        '.loquat': {},
         /* vant */
         '.van-hairline--top': {},
         '.van-hairline--bottom': {},
