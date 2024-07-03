@@ -43,7 +43,12 @@ export const axiosGet = (
 ) => {
   return new Promise<IRes>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
-      .get(url, { ...(params ? { params } : {}), ...(headers ? { headers } : {}), ...config })
+      .get(url, {
+        adapter: ['fetch', 'xhr'],
+        ...(params ? { params } : {}),
+        ...(headers ? { headers } : {}),
+        ...config,
+      })
       .then((response) => resolve(response.data))
       .catch(() => reject())
   })
@@ -64,7 +69,7 @@ export const axiosPost = (
 
   return new Promise<IRes>((resolve, reject) =>
     (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, isFromData ? toFormData(data) : data, { ...config, headers: _headers })
+      .post(url, isFromData ? toFormData(data) : data, { adapter: ['fetch', 'xhr'], ...config, headers: _headers })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error)),
   )
