@@ -34,7 +34,7 @@ export const useLock = (showProgress = true, delay = 500) => {
           resolve(res)
         })
         .catch((err) => {
-          if (err.name !== 'CanceledError') showNotify({ type: 'warning', message: '正在加载中...' })
+          showNotify({ type: 'warning', message: '正在加载中...' })
           reject(err)
         })
         .finally(() => {
@@ -72,7 +72,7 @@ export const useLock = (showProgress = true, delay = 500) => {
           resolve(res)
         })
         .catch((err) => {
-          if (err.name !== 'CanceledError') showNotify({ type: 'warning', message: '正在加载中...' })
+          showNotify({ type: 'warning', message: '正在加载中...' })
           reject(err)
         })
         .finally(() => {
