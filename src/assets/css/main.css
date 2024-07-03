@@ -57,6 +57,10 @@ video {
   max-width: none;
 }
 
+img {
+  object-fit: contain;
+}
+
 code {
   font-family: inherit;
 }
