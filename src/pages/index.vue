@@ -1,7 +1,9 @@
 <script setup lang="ts">
 /*  */
 onMounted(() => {
-  gsap.context(() => {}, '.index')
+  gsap.context(() => {
+    gsap.timeline({ delay: 0.5, onComplete: () => {} })
+  }, '.index')
 })
 </script>
 
