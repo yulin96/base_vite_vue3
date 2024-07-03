@@ -16,6 +16,7 @@ export default {
       colors: {
         primary: '#fff',
         danger: '#ee0a24',
+        placeholder: '#a3a9b5',
       },
       keyframes: {
         handle: {

@@ -66,6 +66,10 @@ code {
   pointer-events: none;
 }
 
+input::placeholder {
+  color: #a3a9b5;
+}
+
 /* @font-face {
   font-family: f-yuan;
   src:
