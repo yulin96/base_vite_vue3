@@ -27,11 +27,16 @@ export default {
           '0%, 100%': { transform: 'none', 'animation-timing-function': 'cubic-bezier(0,0,0.2,1)' },
           '50%': { transform: 'translateY(-25%)', 'animation-timing-function': 'cubic-bezier(0.8,0,1,1)' },
         },
+        'next-page': {
+          '0%': { transform: 'translateY(0)' },
+          '100%': { transform: 'translateY(60%)' },
+        },
       },
       animation: {
         'spin-slow': 'spin 4s linear infinite',
         'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
         handle: 'handle 1s ease infinite',
+        'next-page': 'next-page 0.9s ease infinite alternate',
       },
     },
   },
