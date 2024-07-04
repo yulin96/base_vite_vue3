@@ -1,4 +1,5 @@
 import { throttle } from 'lodash-es'
+import { devModel, theWindow } from '~/utils/global'
 
 if (devModel) {
   let lastWidth = theWindow.innerWidth

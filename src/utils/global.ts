@@ -1,3 +1,11 @@
+export const theWindow = parent || window
+
+export const isSmallMobile = theWindow.innerHeight < 700
+
+export const prodModel = import.meta.env.PROD
+
+export const devModel = import.meta.env.DEV
+
 /**
  * 将电话号码转换为拨号链接并跳转到拨号页面。
  * @param phone - 电话号码

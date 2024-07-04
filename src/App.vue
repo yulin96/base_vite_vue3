@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWxShare } from '~/tools/share'
+import { convertConfigToPx } from '~/utils/convert'
 
 registerWxShare()
 
@@ -15,7 +17,7 @@ const { name } = useRouteTransition('slide')
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
-const themeVars = convertVantPx({
+const themeVars = convertConfigToPx({
   black: '#1d1d1f',
   primaryColor: '#344bb6',
   floatingBubbleBackground: 'transparent',

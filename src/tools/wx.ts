@@ -1,5 +1,6 @@
 import axios, { toFormData } from 'axios'
 import wx from 'weixin-js-sdk'
+import { theWindow } from '~/utils/global'
 import { isWeChat } from '~/utils/uaParser'
 
 const wxConfigReady = Symbol('wxConfigReady')

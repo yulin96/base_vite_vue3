@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { randomString } from '~/utils/common'
+
 const uuid = randomString()
 const uuid2 = randomString()
 

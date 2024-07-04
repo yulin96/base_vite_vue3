@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getOpenId } from '~/tools/getOpenId'
 import { pcSupport } from '~/tools/pcSupport'
+import { theWindow } from '~/utils/global'
 
 const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
 

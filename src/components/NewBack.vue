@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useStore } from '~/stores'
 import type { linkMapType } from '~/utils/typings'
 
 const props = defineProps<{

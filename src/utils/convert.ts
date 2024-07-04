@@ -177,7 +177,7 @@ export const toVw = (text: string, screenSize = 750) => {
  * @param screenSize - 屏幕宽度基准值，默认为 750px
  * @returns 转换后的 Vant 组件库主题配置对象
  */
-export const convertVantPx = (config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars => {
+export const convertConfigToPx = (config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars => {
   if (!config) return {}
 
   const newConfig = Object.entries(config).reduce((config, [key, value]) => {

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { useStore } from '~/stores'
+import { randomNum } from '~/utils/common'
+
 const router = useRouter()
 const toIndex = () => {
   router.replace({ path: '/' })

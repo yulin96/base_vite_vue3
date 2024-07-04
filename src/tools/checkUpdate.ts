@@ -1,3 +1,5 @@
+import { theWindow } from '~/utils/global'
+
 /**
  * @description 检查更新
  */
