@@ -2,13 +2,20 @@ import gsap from 'gsap'
 import { random } from 'gsap/all'
 
 export const createStars = (element: HTMLDivElement) => {
+  const style = window.getComputedStyle(element)
+  const position = style.position
+  if (!position) {
+    element.style.position = 'relative'
+  }
+
+  const visibility = useDocumentVisibility()
+
   const loopCreate = () => {
     setTimeout(
       () => {
-        createStar(element)
         loopCreate()
+        if (visibility.value === 'visible') createStar(element)
       },
-
       element.children.length > 30 ? Math.floor(random(600, 1000)) : Math.floor(random(50, 100)),
     )
   }
