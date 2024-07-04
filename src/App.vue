@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { registerButtonEffect } from '~/tools/effect'
+import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWxShare } from '~/tools/share'
 
 registerWxShare()
