@@ -2,8 +2,6 @@ import gsap from 'gsap'
 import { random } from 'gsap/all'
 
 export const createStars = (element: HTMLDivElement) => {
-  console.log(element)
-
   const loopCreate = () => {
     setTimeout(
       () => {
