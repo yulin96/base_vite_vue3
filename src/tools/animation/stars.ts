@@ -1,11 +1,11 @@
 import gsap from 'gsap'
 import { random } from 'gsap/all'
 
-export const createStars = (element: HTMLDivElement) => {
-  const style = window.getComputedStyle(element)
+export const createStars = (starsBox: HTMLDivElement) => {
+  const style = window.getComputedStyle(starsBox)
   const position = style.position
   if (!position) {
-    element.style.position = 'relative'
+    starsBox.style.position = 'relative'
   }
 
   const visibility = useDocumentVisibility()
@@ -14,15 +14,15 @@ export const createStars = (element: HTMLDivElement) => {
     setTimeout(
       () => {
         loopCreate()
-        if (visibility.value === 'visible') createStar(element)
+        if (visibility.value === 'visible') createStar(starsBox)
       },
-      element.children.length > 30 ? Math.floor(random(600, 1000)) : Math.floor(random(50, 100)),
+      starsBox.children.length > 30 ? Math.floor(random(600, 1000)) : Math.floor(random(50, 100)),
     )
   }
   loopCreate()
 }
 
-function createStar(starsWrapper: HTMLDivElement) {
+function createStar(starsBox: HTMLDivElement) {
   const star = document.createElement('img')
   star.src = 'https://oss.eventnet.cn/H5/zz/public/icon/stars.png'
   const size = Math.floor(random(6, 20))
@@ -31,10 +31,10 @@ function createStar(starsWrapper: HTMLDivElement) {
   star.style.opacity = '0'
   star.style.position = 'absolute'
   star.style.transform = `rotate(${random(0, 360)}deg)`
-  star.style.left = `${Math.floor(random(0, innerWidth - 0))}px`
-  star.style.top = `${Math.floor(random(0, innerHeight - 0))}px`
+  star.style.left = `${Math.floor(random(0, starsBox.clientWidth - 0))}px`
+  star.style.top = `${Math.floor(random(0, starsBox.clientHeight - 0))}px`
 
-  starsWrapper.appendChild(star)
+  starsBox.appendChild(star)
   gsap
     .to(star, {
       duration: random(2, 3),
@@ -45,6 +45,6 @@ function createStar(starsWrapper: HTMLDivElement) {
       repeat: 1,
     })
     .then(() => {
-      starsWrapper.removeChild(star)
+      starsBox.removeChild(star)
     })
 }
