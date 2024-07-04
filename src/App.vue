@@ -30,6 +30,7 @@ onMounted(() => {})
 
 <template>
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+    // TODO: suspense正确处理时会造成transition异常
     <suspense>
       <router-view class="wrapper" v-slot="{ Component }">
         <transition :name>
