@@ -85,7 +85,7 @@
     "eslint-plugin-vue": "^9.27.0",
     "husky": "^9.0.11",
     "jsdom": "^24.1.0",
-    "npm-run-all2": "^6.2.0",
+    "npm-run-all2": "^6.2.2",
     "postcss-preset-env": "^9.5.15",
     "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "prettier": "^3.3.2",
