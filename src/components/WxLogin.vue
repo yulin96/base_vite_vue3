@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { getOpenId } from '~/tools/getOpenId'
 import { pcSupport } from '~/tools/pcSupport'
-import { theWindow } from '~/utils/global'
+import { toUrl } from '~/utils/global'
 
 const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
 
@@ -9,7 +9,7 @@ const show = ref(false)
 
 const openLink = () => {
   const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name)}&state=${props.code}&type=2`
-  theWindow.location.href = url
+  toUrl(url)
 }
 
 const router = useRouter()

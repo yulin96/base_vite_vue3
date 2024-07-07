@@ -1,4 +1,4 @@
-export const theWindow = parent || window
+const theWindow = parent || window
 
 export const isSmallMobile = theWindow.innerHeight < 700
 
@@ -19,5 +19,12 @@ export const toTel = (phone: string) => {
  * @param url - 要跳转的 URL。
  */
 export const toUrl = (url: string) => {
-  window.location.href = url
+  theWindow.location.href = url
+}
+
+/**
+ * 重新加载页面。
+ */
+export const reload = () => {
+  theWindow.location.reload()
 }

@@ -1,3 +1,4 @@
+import { toUrl } from '~/utils/global'
 import { isMobile } from '~/utils/uaParser'
 
 export const pcSupport = () => {
@@ -15,7 +16,7 @@ export const pcSupport = () => {
     for (const key in data) urlParams += (urlParams ? '&' : '?') + `${key}=${data[key]}`
 
     if (!isMobile && !~device.indexOf('PC')) {
-      window.location.href = './pc.html' + urlParams
+      toUrl('./pc.html' + urlParams)
     } else {
       resolve()
     }

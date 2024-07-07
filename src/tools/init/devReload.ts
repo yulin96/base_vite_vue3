@@ -1,15 +1,11 @@
-import { throttle } from 'lodash-es'
-import { devModel, theWindow } from '~/utils/global'
+import { debounce } from 'lodash-es'
+import { devModel, reload } from '~/utils/global'
 
 if (devModel) {
-  let lastWidth = theWindow.innerWidth
-  theWindow.addEventListener(
+  ;(parent || window).addEventListener(
     'resize',
-    throttle(() => {
-      if (lastWidth !== theWindow.innerWidth) {
-        theWindow.location.reload()
-        lastWidth = theWindow.innerWidth
-      }
-    }, 300),
+    debounce(() => {
+      reload()
+    }, 600),
   )
 }

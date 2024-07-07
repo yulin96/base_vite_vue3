@@ -6,7 +6,7 @@ import '~/tools/init/gsap'
 import '~/tools/init/pcSupport'
 import '~/tools/init/vant'
 import { getWxConfig } from '~/tools/wx'
-import { devModel, theWindow } from '~/utils/global'
+import { devModel } from '~/utils/global'
 import App from './App.vue'
 import router from './router'
 // import i18n from '~/lang'
@@ -19,8 +19,10 @@ import '~/assets/css/main.css'
 
 !devModel && getWxConfig()
 
-theWindow.document.body.style.backgroundColor = import.meta.env.VITE_APP_MAIN_COLOR
-theWindow.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
+parent?.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
+window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
+
+console.log(parent, window)
 
 const app = createApp(App)
 

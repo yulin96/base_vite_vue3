@@ -1,6 +1,5 @@
 import axios, { toFormData } from 'axios'
 import wx from 'weixin-js-sdk'
-import { theWindow } from '~/utils/global'
 import { isWeChat } from '~/utils/uaParser'
 
 const wxConfigReady = Symbol('wxConfigReady')
@@ -10,7 +9,7 @@ export const getWxConfig = () => {
   if (window[wxConfigReady]) return Promise.resolve()
 
   return new Promise<void>((resolve, reject) => {
-    const wxLink = theWindow.location.href.split('#')[0]
+    const wxLink = (parent || window).location.href.split('#')[0]
     axios
       .post(
         `https://wechat.event1.cn/api/getJsSdk`,

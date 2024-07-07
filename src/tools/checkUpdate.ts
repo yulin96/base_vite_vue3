@@ -1,4 +1,4 @@
-import { theWindow } from '~/utils/global'
+import { reload } from '~/utils/global'
 
 /**
  * @description 检查更新
@@ -11,5 +11,5 @@ document.body.addEventListener('plugin_web_update_notice', (e) => {
 
   if (oldVersion === version) return
   localStorage.setItem(appVersion, version)
-  theWindow.location.reload()
+  reload()
 })
