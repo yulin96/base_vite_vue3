@@ -9,12 +9,14 @@ export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide'
   }
 
   const { createLoading, clearLoading } = useMaskLoading()
-  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 300)
+  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 300, { immediate: false })
+  const [isFirstLoad, setIsFirstLoad] = useToggle(true)
 
   const name = ref('fade')
 
   router.beforeEach((to, from) => {
-    startTimeout()
+    isFirstLoad.value ? setIsFirstLoad(false) : startTimeout()
+
     const toMetaIndex = to.meta.index || 0
     const fromMetaIndex = from.meta.index || 0
 

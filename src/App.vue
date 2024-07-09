@@ -34,7 +34,7 @@ onMounted(() => {})
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <transition :name @enter="transitionEnter" appear>
+        <transition :name @enter="transitionEnter">
           <keep-alive :include="[]">
             <suspense>
               <component :is="Component" class="wrapper"></component>
