@@ -2,15 +2,15 @@
 /*  */
 onMounted(() => {
   gsap.context(() => {
-    gsap.timeline({ delay: 0.5, onComplete: () => {} })
+    gsap.timeline({ onComplete: () => {} }).delay(0.5)
   }, '.index')
 })
 </script>
 
 <template>
-  <div class="index">
-    <div class="content"></div>
-  </div>
+  <section class="index">
+    <main class="content"></main>
+  </section>
 </template>
 
 <route lang="json">
