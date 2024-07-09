@@ -5,7 +5,7 @@
 @import './plugin/fixPlugin.css';
 @import './plugin/shark.css';
 
-div::-webkit-scrollbar {
+*::-webkit-scrollbar {
   display: none;
 }
 
