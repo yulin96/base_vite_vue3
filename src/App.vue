@@ -9,7 +9,7 @@ registerWxShare()
 registerButtonEffect()
 
 /* 路由动画 */
-const { name } = useRouteTransition('slide')
+const { name, transitionEnter } = useRouteTransition('slide')
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
@@ -34,12 +34,12 @@ onMounted(() => {})
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <transition :name>
+        <transition :name @enter="transitionEnter" appear>
           <keep-alive :include="[]">
             <suspense>
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <div class="half-ring center fixed left-0 top-0 h-[80vh] w-[100vw]"></div>
+                <mask-loading></mask-loading>
               </template>
             </suspense>
           </keep-alive>

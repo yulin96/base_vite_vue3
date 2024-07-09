@@ -1,5 +1,8 @@
+import { useTimeoutFn } from '@vueuse/core'
 import router from '~/router'
 import '../assets/css/transition.css'
+
+const { createLoading, clearLoading } = useMaskLoading()
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
   if (!(['slide'] as RouteTransitionName[]).includes(transitionName)) {
@@ -7,9 +10,12 @@ export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide'
     document.documentElement.classList.add('cover')
   }
 
+  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 300)
+
   const name = ref('fade')
 
   router.beforeEach((to, from) => {
+    startTimeout()
     const toMetaIndex = to.meta.index || 0
     const fromMetaIndex = from.meta.index || 0
 
@@ -20,5 +26,10 @@ export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide'
     }
   })
 
-  return { name }
+  const transitionEnter = () => {
+    stopTimeout()
+    clearLoading()
+  }
+
+  return { name, transitionEnter }
 }
