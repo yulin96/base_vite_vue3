@@ -22,8 +22,6 @@ import '~/assets/css/main.css'
 parent?.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 
-console.log(parent, window)
-
 const app = createApp(App)
 
 app.directive('focus', (el: HTMLElement) => el.focus())
