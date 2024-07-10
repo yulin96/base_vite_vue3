@@ -9,7 +9,7 @@ registerWxShare()
 registerButtonEffect()
 
 /* 路由动画 */
-const { name, transitionEnter } = useRouteTransition('slide')
+const { name, transitionEnter } = useRouteTransition('zoom')
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
