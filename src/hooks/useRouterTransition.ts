@@ -1,4 +1,5 @@
 import { useTimeoutFn } from '@vueuse/core'
+import { useMaskLoading } from '~/hooks/useMaskLoading'
 import router from '~/router'
 import '../assets/css/transition.css'
 
