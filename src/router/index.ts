@@ -25,6 +25,7 @@ router.afterEach((to, from) => {})
 declare module 'vue-router' {
   interface RouteMeta {
     index?: number
+    transitionName?: string
     [x: string]: string | number | boolean | undefined
   }
 }

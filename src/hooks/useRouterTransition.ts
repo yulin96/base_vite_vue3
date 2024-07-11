@@ -18,6 +18,11 @@ export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide'
   router.beforeEach((to, from) => {
     isFirstLoad.value ? setIsFirstLoad(false) : startTimeout()
 
+    if (to.meta.transitionName) {
+      name.value = to.meta.transitionName
+      return
+    }
+
     const toMetaIndex = to.meta.index || 0
     const fromMetaIndex = from.meta.index || 0
 
