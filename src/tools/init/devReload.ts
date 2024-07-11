@@ -1,12 +1,18 @@
 import { debounce } from 'lodash-es'
 import { devModel, reload } from '~/utils/global'
 
-//FIXME: 安卓设备存在频繁刷新
 if (devModel) {
-  ;(parent || window).addEventListener(
+  const _theWindow = parent || window
+
+  let prevWidth = _theWindow.innerWidth
+  _theWindow.addEventListener(
     'resize',
     debounce(() => {
-      reload()
+      const currentWidth = _theWindow.innerWidth
+      if (currentWidth !== prevWidth) {
+        reload()
+      }
+      prevWidth = currentWidth
     }, 600),
   )
 }
