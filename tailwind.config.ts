@@ -61,15 +61,23 @@ export default {
         '.touch-callout': {
           '-webkit-touch-callout': 'default',
         },
+        '.backface-hidden': {
+          'backface-visibility': 'hidden',
+        },
+        '.transform-3d': {
+          'transform-style': 'preserve-3d',
+        },
         '.shark-wrap': {} /* 流光动画 */,
         '.shark-wrap-play': {} /* 流光动画播放 */,
         '.shark-text': {},
         '.shark-text-play': {
           'animation-play-state': 'running !important',
         } /* 流光文字动画 */,
-        '.mask': {},
-        '.time': {},
+        '.mask-': {},
+        '.time-': {},
         '.loquat': {},
+        '.rotate-y-': {},
+        '.perspective-': {},
         /* vant */
         '.van-hairline--top': {},
         '.van-hairline--bottom': {},
@@ -113,6 +121,12 @@ export default {
       matchUtilities({
         time: (value) => ({
           '--time': value,
+        }),
+        'rotate-y': (value) => ({
+          transform: `rotateY(${value}deg)`,
+        }),
+        perspective: (value) => ({
+          perspective: `${value}px`,
         }),
         'shark-text': (value) => ({
           color: 'transparent',
