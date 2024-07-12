@@ -3,7 +3,7 @@ defineProps<{ flip?: boolean; flipDomClass?: string }>()
 </script>
 
 <template>
-  <div class="test perspective-[1200]">
+  <div class="perspective-[1200]">
     <section :class="flipDomClass" class="relative h-full w-full transform-3d">
       <div
         :class="flip ? 'rotate-y-[180]' : 'rotate-y-[0]'"
