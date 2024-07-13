@@ -163,7 +163,7 @@ export default defineConfig(({ command }) => ({
           minPixelValue: 1,
           mediaQuery: false,
           replace: true,
-          exclude: [],
+          exclude: [/pc\.html/],
           landscape: false,
           landscapeUnit: 'vw',
           landscapeWidth: (file) =>
