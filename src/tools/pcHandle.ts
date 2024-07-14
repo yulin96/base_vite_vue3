@@ -46,7 +46,7 @@ iframe.src = `./index.html${urlSearchList}`
 
 const pageURL = location.href.replace('pc.html', 'index.html')
 QRCode.toDataURL(pageURL, { margin: 2, errorCorrectionLevel: 'H', width: 900 }).then((res) => {
-  const left = Math.round(iframe.getBoundingClientRect().right + 60)
+  const left = Math.round(iframe.getBoundingClientRect().right + 30)
 
   const div = document.createElement('div')
   div.style.left = `${left}px`
