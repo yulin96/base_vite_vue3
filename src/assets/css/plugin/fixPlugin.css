@@ -7,6 +7,15 @@
   --z-toast-color: #1d1d1f;
 }
 
+.van-swipe__indicators .van-swipe__indicator {
+  border-radius: 12px;
+  transition: all 0.5s ease;
+}
+
+.van-swipe__indicators .van-swipe__indicator--active {
+  width: 40px;
+}
+
 .van-dialog__header {
   padding-top: 40px;
 }
