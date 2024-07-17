@@ -1,7 +1,6 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
-import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig, loadEnv } from 'vite'
@@ -98,10 +97,10 @@ export default defineConfig(({ command }) => ({
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
     }),
-    legacy({
-      targets: ['ios >= 11', 'chrome >= 64', 'android >= 9'],
-      modernPolyfills: true,
-    }),
+    // legacy({
+    //   targets: ['ios >= 11', 'chrome >= 64', 'android >= 9'],
+    //   modernPolyfills: true,
+    // }),
     webUpdateNotice({
       hiddenDefaultNotification: true,
       logVersion: (version) => {
