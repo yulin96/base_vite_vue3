@@ -15,10 +15,16 @@ watchPostEffect(() => {
 <template>
   <div class="perspective-[1200]">
     <section ref="flipDom" class="relative h-full w-full transform-3d">
-      <div class="absolute left-0 top-0 h-full w-full backface-hidden">
+      <div
+        :class="props.flip === 'front' ? 'pointer-events-auto' : 'pointer-events-none'"
+        class="absolute left-0 top-0 h-full w-full backface-hidden"
+      >
         <slot></slot>
       </div>
-      <div class="absolute left-0 top-0 h-full w-full backface-hidden rotate-y-[180]">
+      <div
+        :class="props.flip === 'back' ? 'pointer-events-auto' : 'pointer-events-none'"
+        class="absolute left-0 top-0 h-full w-full backface-hidden rotate-y-[180]"
+      >
         <slot name="back"> </slot>
       </div>
     </section>
