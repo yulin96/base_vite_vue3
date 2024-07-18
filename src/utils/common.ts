@@ -146,7 +146,12 @@ export const importScript = (url: string) => {
     document.body.appendChild(script)
   })
 }
-export const usePromise = (): [Promise<unknown>, (value: unknown) => void, (reason?: any) => void] => {
+
+/**
+ * 创建一个带有 Promise 的工具函数。
+ * @returns 一个包含 Promise、resolve 和 reject 函数的元组。
+ */
+export const usePromise = (): [Promise<unknown>, (value?: unknown) => void, (reason?: any) => void] => {
   let resolve: (value: unknown) => void = () => {}
   let reject: (reason?: any) => void = () => {}
   const promise = new Promise((res, rej) => {
@@ -154,6 +159,23 @@ export const usePromise = (): [Promise<unknown>, (value: unknown) => void, (reas
     reject = rej
   })
   return [promise, resolve, reject]
+}
+
+/**
+ * 从URL中删除指定的参数。
+ * @param url - 要处理的URL字符串。
+ * @param param - 要删除的参数名称或参数名称数组。
+ * @returns 处理后的URL字符串。
+ */
+export const removeUrlParams = (url: string, param: string | string[]) => {
+  const urlObj = new URL(url)
+  const params = new URLSearchParams(urlObj.search)
+
+  const paramList = Array.isArray(param) ? param : [param]
+  for (const item of paramList) params.delete(item)
+  urlObj.search = params.toString()
+
+  return urlObj.toString()
 }
 
 export const userLanguage = () =>

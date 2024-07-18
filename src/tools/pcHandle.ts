@@ -1,4 +1,5 @@
 import QRCode from 'qrcode'
+import { removeUrlParams } from '~/utils/common'
 import { isMobile } from '~/utils/uaParser'
 
 if (isMobile) {
@@ -45,7 +46,9 @@ urlSearchList += `${urlSearchList ? '&' : '?'}device=PC`
 iframe.src = `./index.html${urlSearchList}`
 
 const pageURL = location.href.replace('pc.html', 'index.html')
-QRCode.toDataURL(pageURL, { margin: 2, errorCorrectionLevel: 'H', width: 900 }).then((res) => {
+const clearedUrl = removeUrlParams(pageURL, 't')
+
+QRCode.toDataURL(clearedUrl, { margin: 2, errorCorrectionLevel: 'H', width: 900 }).then((res) => {
   const left = Math.round(iframe.getBoundingClientRect().right + 30)
 
   const div = document.createElement('div')
