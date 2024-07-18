@@ -58,6 +58,14 @@ QRCode.toDataURL(clearedUrl, { margin: 2, errorCorrectionLevel: 'H', width: 900 
   const image = document.createElement('img')
   image.src = res
   div.appendChild(image)
+  image.onclick = () => {
+    const a = document.createElement('a')
+    a.href = res
+    a.download = `【二维码】${document.title}.png`
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
 
   const p = document.createElement('p')
   p.innerHTML = '手机扫码查看'
