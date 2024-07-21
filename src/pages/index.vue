@@ -1,31 +1,75 @@
 <script setup lang="ts">
-import { useDraggable } from '@vueuse/core'
 import imgBG from '~/assets/imgs/girl.jpg'
-
-const items = ref<HTMLDivElement[]>([])
-const { x, y, style } = useDraggable(items.value[0], {})
 
 const puzzleList = ref([1, 3, 2, 4, 5, 6])
 
+const moveIns = {
+  boundList: [] as DOMRect[],
+  ele: null as null | HTMLDivElement,
+  startIndex: 0,
+  offsetX: 0,
+  offsetY: 0,
+  quickSetterX: null as null | Function,
+  quickSetterY: null as null | Function,
+}
+
 function touchStart(e: TouchEvent) {
-  const touch = e.touches[0]
+  if (!moveIns.boundList) return
+  if (moveIns.ele) return
   const target = e.target as HTMLDivElement
-  console.log(touch.pageX, touch.pageY, target.clientWidth, target.clientHeight)
+  if (!target) return
+
+  const bound = target.getBoundingClientRect()
+
+  moveIns.quickSetterX = gsap.quickTo(target, 'x', { duration: 0.1, ease: 'power3' })
+  moveIns.quickSetterY = gsap.quickTo(target, 'y', { duration: 0.1, ease: 'power3' })
+  moveIns.offsetX = bound.left + bound.width / 2
+  moveIns.offsetY = bound.top + bound.height / 2
+
+  const touch = e.touches[0]
+  const index = moveIns.boundList.findIndex(
+    (item) =>
+      item.left < touch.pageX && touch.pageX < item.right && item.top < touch.pageY && touch.pageY < item.bottom,
+  )
+  if (index === -1) return
+  moveIns.startIndex = index
 }
 
 function touchMove(e: TouchEvent) {
-  const touch = e.touches[0]
-  const target = e.target as HTMLDivElement
-  console.log(touch.pageX, touch.pageY, target.clientWidth, target.clientHeight)
+  const touch = e.changedTouches[0]
+
+  if (moveIns.quickSetterX) {
+    moveIns.quickSetterX(touch.pageX - moveIns.offsetX)
+  }
+  if (moveIns.quickSetterY) {
+    moveIns.quickSetterY(touch.pageY - moveIns.offsetY)
+  }
 }
 
-function getTransform(id: number) {
-  if (id === 1) return { '--x': '0%', '--y': '0%' }
-  if (id === 2) return { '--x': '100%', '--y': '0%' }
-  if (id === 3) return { '--x': '0%', '--y': '100%' }
-  if (id === 4) return { '--x': '100%', '--y': '100%' }
-  if (id === 5) return { '--x': '0%', '--y': '200%' }
-  if (id === 6) return { '--x': '100%', '--y': '200%' }
+function touchEnd(e: TouchEvent) {
+  const touch = e.changedTouches[0]
+  console.log(touch.pageX, touch.pageY)
+
+  const index = moveIns.boundList.findIndex(
+    (item) =>
+      item.left < touch.pageX && touch.pageX < item.right && item.top < touch.pageY && touch.pageY < item.bottom,
+  )
+  console.log(moveIns.startIndex, index)
+
+  const startDom = document.querySelector(`#puzzle-box > div:nth-child(${moveIns.startIndex + 1})`)! as HTMLDivElement
+  const endDom = document.querySelector(`#puzzle-box > div:nth-child(${index + 1})`)! as HTMLDivElement
+
+  // TODO:结束
+}
+
+function getItemBoundList() {
+  const puzzleBox = document.querySelector('#puzzle-box')! as HTMLDivElement
+  const items = puzzleBox.children
+  const boundList: DOMRect[] = []
+  for (let i = 0; i < items.length; i++) {
+    boundList.push(items[i].getBoundingClientRect())
+  }
+  return boundList
 }
 
 const test = () => {
@@ -38,9 +82,12 @@ onMounted(() => {
   const puzzleBoxWidth = puzzleBox.clientWidth
 
   const img = new Image()
-  img.onload = () => {
+  img.onload = async () => {
     const needHeight = (img.height / img.width) * puzzleBoxWidth
     puzzleBox.style.height = `${needHeight}px`
+
+    await nextTick()
+    moveIns.boundList = getItemBoundList()
   }
   img.src = imgBG
 })
@@ -53,11 +100,10 @@ onMounted(() => {
         <div
           @touchstart="touchStart"
           @touchmove="touchMove"
+          @touchend="touchEnd"
           v-for="(item, index) in puzzleList"
           :key="index"
           :class="`item${item}`"
-          ref="items"
-          :style="getTransform(index + 1)"
         ></div>
       </div>
 
@@ -69,7 +115,8 @@ onMounted(() => {
 <style>
 #puzzle-box {
   width: 700px;
-  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 #puzzle-box > div {
@@ -77,12 +124,7 @@ onMounted(() => {
   background-size: 200% 300%;
   width: 50%;
   height: 33.33%;
-  position: absolute;
-  top: 0;
-  left: 0;
   border: 0.5px solid rgb(72, 72, 182);
-  transition: all 10s ease;
-  transform: translate(var(--x), var(--y));
 }
 
 #puzzle-box > .item1 {
