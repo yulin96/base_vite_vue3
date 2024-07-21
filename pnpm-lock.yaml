@@ -110,8 +110,8 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0
       vant:
-        specifier: ^4.9.2
-        version: 4.9.2(vue@3.4.33(typescript@5.4.5))
+        specifier: ^4.9.3
+        version: 4.9.3(vue@3.4.33(typescript@5.4.5))
       vue:
         specifier: ^3.4.33
         version: 3.4.33(typescript@5.4.5)
@@ -3102,8 +3102,8 @@ packages:
     resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
     hasBin: true
 
-  vant@4.9.2:
-    resolution: {integrity: sha512-dBvpFioPpiLtsbW7z4v84lvl/zgaRn3Hwhwg4iBusU7aoQ9rbtbTH38/3FLuB8qqvVt8BOSAi7u/JYMO5wtr9g==}
+  vant@4.9.3:
+    resolution: {integrity: sha512-Z5DPgmB2w1TvzWmEjpw0kiBPSR09JgcTILQJObB603MaSB3+E2aBpeXTneJexIHoZskFxCdZfbMsxCSTEqssTw==}
     peerDependencies:
       vue: ^3.0.0
 
@@ -6223,7 +6223,7 @@ snapshots:
 
   uuid@10.0.0: {}
 
-  vant@4.9.2(vue@3.4.33(typescript@5.4.5)):
+  vant@4.9.3(vue@3.4.33(typescript@5.4.5)):
     dependencies:
       '@vant/popperjs': 1.3.0
       '@vant/use': 1.6.0(vue@3.4.33(typescript@5.4.5))
