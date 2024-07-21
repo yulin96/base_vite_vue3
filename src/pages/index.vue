@@ -36,8 +36,8 @@ function touchStart(e: TouchEvent) {
   moveIns.startX = touch.pageX
   moveIns.startY = touch.pageY
 
-  moveIns.gsapToX = gsap.quickTo(moveIns.ele, 'x', { duration: 0.1, ease: 'power1' })
-  moveIns.gsapToY = gsap.quickTo(moveIns.ele, 'y', { duration: 0.1, ease: 'power1' })
+  moveIns.gsapToX = gsap.quickTo(moveIns.ele, 'x', { duration: 0.01, ease: 'none' })
+  moveIns.gsapToY = gsap.quickTo(moveIns.ele, 'y', { duration: 0.01, ease: 'none' })
 
   const index = moveIns.boundList.findIndex(
     (item) =>
@@ -102,8 +102,6 @@ function touchEnd(e: TouchEvent) {
       },
       '<',
     )
-
-  // TODO:结束
 }
 
 function getItemBoundList() {
@@ -131,6 +129,7 @@ const test = () => {
         ]
       },
     })
+    .set(`#puzzle-box > div:nth-child(${startIndex + 1})`, { position: 'relative', zIndex: 999 })
     .to(`#puzzle-box > div:nth-child(${startIndex + 1})`, {
       x: moveIns.boundList[endIndex].right - moveIns.boundList[startIndex].right,
       y: moveIns.boundList[endIndex].bottom - moveIns.boundList[startIndex].bottom,
