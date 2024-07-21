@@ -1,32 +1,44 @@
 <script setup lang="ts">
+import { shuffle } from 'lodash-es'
 import imgBG from '~/assets/imgs/girl.jpg'
+import { showToast } from '~/tools/toast'
 
-const puzzleList = ref([1, 3, 2, 4, 5, 6])
+const puzzleList = ref(shuffle([1, 2, 3, 4, 5, 6]))
 
 const moveIns = {
   boundList: [] as DOMRect[],
   ele: null as null | HTMLDivElement,
   startIndex: 0,
-  offsetX: 0,
-  offsetY: 0,
-  quickSetterX: null as null | Function,
-  quickSetterY: null as null | Function,
+  startX: 0,
+  startY: 0,
+  gsapToX: null as null | any,
+  gsapToY: null as null | any,
 }
 
 function touchStart(e: TouchEvent) {
-  if (!moveIns.boundList) return
-  if (moveIns.ele) return
+  if (!moveIns.boundList || moveIns.ele) return
   const target = e.target as HTMLDivElement
   if (!target) return
 
-  const bound = target.getBoundingClientRect()
+  moveIns.ele = document.createElement('div')
+  moveIns.ele.classList.add(target.classList[0])
+  moveIns.ele.style.position = 'fixed'
+  moveIns.ele.style.zIndex = '9999'
+  moveIns.ele.style.width = `${target.clientWidth}px`
+  moveIns.ele.style.height = `${target.clientHeight}px`
+  moveIns.ele.style.left = `${target.getBoundingClientRect().left}px`
+  moveIns.ele.style.top = `${target.getBoundingClientRect().top}px`
+  moveIns.ele.style.opacity = '0.9'
 
-  moveIns.quickSetterX = gsap.quickTo(target, 'x', { duration: 0.1, ease: 'power3' })
-  moveIns.quickSetterY = gsap.quickTo(target, 'y', { duration: 0.1, ease: 'power3' })
-  moveIns.offsetX = bound.left + bound.width / 2
-  moveIns.offsetY = bound.top + bound.height / 2
+  document.body.appendChild(moveIns.ele)
 
   const touch = e.touches[0]
+  moveIns.startX = touch.pageX
+  moveIns.startY = touch.pageY
+
+  moveIns.gsapToX = gsap.quickTo(moveIns.ele, 'x', { duration: 0.1, ease: 'power1' })
+  moveIns.gsapToY = gsap.quickTo(moveIns.ele, 'y', { duration: 0.1, ease: 'power1' })
+
   const index = moveIns.boundList.findIndex(
     (item) =>
       item.left < touch.pageX && touch.pageX < item.right && item.top < touch.pageY && touch.pageY < item.bottom,
@@ -36,28 +48,60 @@ function touchStart(e: TouchEvent) {
 }
 
 function touchMove(e: TouchEvent) {
+  if (!moveIns.ele) return
   const touch = e.changedTouches[0]
-
-  if (moveIns.quickSetterX) {
-    moveIns.quickSetterX(touch.pageX - moveIns.offsetX)
-  }
-  if (moveIns.quickSetterY) {
-    moveIns.quickSetterY(touch.pageY - moveIns.offsetY)
-  }
+  moveIns.gsapToX(touch.pageX - moveIns.startX)
+  moveIns.gsapToY(touch.pageY - moveIns.startY)
 }
 
 function touchEnd(e: TouchEvent) {
+  if (!moveIns.ele) return
   const touch = e.changedTouches[0]
-  console.log(touch.pageX, touch.pageY)
-
   const index = moveIns.boundList.findIndex(
     (item) =>
       item.left < touch.pageX && touch.pageX < item.right && item.top < touch.pageY && touch.pageY < item.bottom,
   )
-  console.log(moveIns.startIndex, index)
 
-  const startDom = document.querySelector(`#puzzle-box > div:nth-child(${moveIns.startIndex + 1})`)! as HTMLDivElement
-  const endDom = document.querySelector(`#puzzle-box > div:nth-child(${index + 1})`)! as HTMLDivElement
+  document.body.removeChild(moveIns.ele!)
+
+  if (index == -1 || index == moveIns.startIndex) {
+    moveIns.ele = null
+    return
+  }
+
+  const _gsapFunc = gsap
+    .timeline({
+      onComplete: () => {
+        _gsapFunc.revert()
+        _gsapFunc.kill()
+        ;[puzzleList.value[moveIns.startIndex], puzzleList.value[index]] = [
+          puzzleList.value[index],
+          puzzleList.value[moveIns.startIndex],
+        ]
+        moveIns.ele = null
+
+        const isWin = puzzleList.value.every((item, index) => item === index + 1)
+        if (isWin) {
+          showToast({ message: 'win' })
+        }
+      },
+    })
+    .to(`#puzzle-box > div:nth-child(${moveIns.startIndex + 1})`, {
+      x: moveIns.boundList[index].right - moveIns.boundList[moveIns.startIndex].right,
+      y: moveIns.boundList[index].bottom - moveIns.boundList[moveIns.startIndex].bottom,
+      ease: 'power3',
+      duration: 0.3,
+    })
+    .to(
+      `#puzzle-box > div:nth-child(${index + 1})`,
+      {
+        x: moveIns.boundList[moveIns.startIndex].left - moveIns.boundList[index].left,
+        y: moveIns.boundList[moveIns.startIndex].top - moveIns.boundList[index].top,
+        ease: 'power3',
+        duration: 0.3,
+      },
+      '<',
+    )
 
   // TODO:结束
 }
@@ -73,7 +117,38 @@ function getItemBoundList() {
 }
 
 const test = () => {
-  puzzleList.value = [1, 2, 3, 4, 5, 6]
+  const startIndex = 0
+  const endIndex = 3
+
+  const _gsapFunc = gsap
+    .timeline({
+      onComplete: () => {
+        _gsapFunc.revert()
+        _gsapFunc.kill()
+        ;[puzzleList.value[startIndex], puzzleList.value[endIndex]] = [
+          puzzleList.value[endIndex],
+          puzzleList.value[startIndex],
+        ]
+      },
+    })
+    .to(`#puzzle-box > div:nth-child(${startIndex + 1})`, {
+      x: moveIns.boundList[endIndex].right - moveIns.boundList[startIndex].right,
+      y: moveIns.boundList[endIndex].bottom - moveIns.boundList[startIndex].bottom,
+      ease: 'power2',
+      duration: 0.5,
+    })
+    .to(
+      `#puzzle-box > div:nth-child(${endIndex + 1})`,
+      {
+        x: moveIns.boundList[startIndex].left - moveIns.boundList[endIndex].left,
+        y: moveIns.boundList[startIndex].top - moveIns.boundList[endIndex].top,
+        ease: 'power2',
+        duration: 0.5,
+      },
+      '<',
+    )
+
+  // puzzleList.value = [1, 2, 3, 4, 5, 6]
 }
 
 /*  */
@@ -96,15 +171,8 @@ onMounted(() => {
 <template>
   <section class="index">
     <main class="content pt-90">
-      <div id="puzzle-box">
-        <div
-          @touchstart="touchStart"
-          @touchmove="touchMove"
-          @touchend="touchEnd"
-          v-for="(item, index) in puzzleList"
-          :key="index"
-          :class="`item${item}`"
-        ></div>
+      <div id="puzzle-box" @touchstart="touchStart" @touchmove="touchMove" @touchend="touchEnd">
+        <div v-for="(item, index) in puzzleList" :key="index" :data-id="`${index}`" :class="`item${item}`"></div>
       </div>
 
       <div @click="test" class="mt-30">测试</div>
@@ -119,35 +187,57 @@ onMounted(() => {
   flex-wrap: wrap;
 }
 
-#puzzle-box > div {
+.item1 {
   background-image: url('../assets/imgs/girl.jpg');
   background-size: 200% 300%;
   width: 50%;
   height: 33.33%;
   border: 0.5px solid rgb(72, 72, 182);
-}
-
-#puzzle-box > .item1 {
   background-position: 0% 0%;
 }
 
-#puzzle-box > .item2 {
+.item2 {
+  background-image: url('../assets/imgs/girl.jpg');
+  background-size: 200% 300%;
+  width: 50%;
+  height: 33.33%;
+  border: 0.5px solid rgb(72, 72, 182);
   background-position: 100% 0%;
 }
 
-#puzzle-box > .item3 {
+.item3 {
+  background-image: url('../assets/imgs/girl.jpg');
+  background-size: 200% 300%;
+  width: 50%;
+  height: 33.33%;
+  border: 0.5px solid rgb(72, 72, 182);
   background-position: 0% 50%;
 }
 
-#puzzle-box > .item4 {
+.item4 {
+  background-image: url('../assets/imgs/girl.jpg');
+  background-size: 200% 300%;
+  width: 50%;
+  height: 33.33%;
+  border: 0.5px solid rgb(72, 72, 182);
   background-position: 100% 50%;
 }
 
-#puzzle-box > .item5 {
+.item5 {
+  background-image: url('../assets/imgs/girl.jpg');
+  background-size: 200% 300%;
+  width: 50%;
+  height: 33.33%;
+  border: 0.5px solid rgb(72, 72, 182);
   background-position: 0% 100%;
 }
 
-#puzzle-box > .item6 {
+.item6 {
+  background-image: url('../assets/imgs/girl.jpg');
+  background-size: 200% 300%;
+  width: 50%;
+  height: 33.33%;
+  border: 0.5px solid rgb(72, 72, 182);
   background-position: 100% 100%;
 }
 </style>
