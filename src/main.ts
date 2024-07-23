@@ -2,6 +2,7 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 import '~/tools/init/devReload'
+import { registerDirective } from '~/tools/init/directive'
 import '~/tools/init/gsap'
 import '~/tools/init/pcSupport'
 import '~/tools/init/resetWxFontSize'
@@ -25,7 +26,7 @@ window.document.documentElement.style.setProperty('--main-color', import.meta.en
 
 const app = createApp(App)
 
-app.directive('focus', (el: HTMLElement) => el.focus())
+registerDirective(app)
 
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
