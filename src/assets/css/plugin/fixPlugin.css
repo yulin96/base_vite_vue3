@@ -57,6 +57,10 @@
   transform: translateY(calc(-50% + 150px));
 }
 
+.van-popup {
+  overflow-x: hidden;
+}
+
 .van-popup__close-icon::after {
   content: '';
   position: absolute;
