@@ -34,6 +34,7 @@ export default defineConfig(({ command }) => ({
       importMode: 'sync',
     }),
     vue({
+      features: {},
       script: {},
     }),
     vueJsx(),
