@@ -34,9 +34,7 @@ export default defineConfig(({ command }) => ({
       importMode: 'sync',
     }),
     vue({
-      script: {
-        propsDestructure: true,
-      },
+      script: {},
     }),
     vueJsx(),
     Components({
