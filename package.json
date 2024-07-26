@@ -47,7 +47,7 @@
     "lottie-web": "^5.12.2",
     "lucky-canvas": "^1.7.27",
     "nprogress": "^0.2.0",
-    "pinia": "^2.1.7",
+    "pinia": "^2.2.0",
     "pinia-plugin-persistedstate": "^3.2.1",
     "qrcode": "^1.5.3",
     "typed.js": "^2.1.0",
