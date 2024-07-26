@@ -59,3 +59,20 @@ export const getUserVideo = () => {
     input.click()
   })
 }
+
+export const getPosition = () => {
+  return new Promise<GeolocationCoordinates>((resolve, reject) => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          resolve(position.coords)
+        },
+        (...args) => {
+          reject(args)
+        },
+      )
+    } else {
+      reject('你的浏览器不支持当前地理位置信息获取')
+    }
+  })
+}
