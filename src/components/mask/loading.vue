@@ -1,5 +1,5 @@
 <template>
-  <div class="half-ring center fixed left-0 top-0 h-[80vh] w-[100vw]"></div>
+  <div class="half-ring center fixed left-0 top-0 h-[80vh] w-[100vw] opacity-0"></div>
 </template>
 
 <style>
