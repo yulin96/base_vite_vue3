@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import commonLoading from '~/components/common/loading.vue'
+import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWxShare } from '~/tools/share'
