@@ -14,7 +14,7 @@ const router = createRouter({
 router.addRoute({
   path: '/:pathMatch(.*)*',
   name: '404',
-  component: () => import('~/components/NotFound.vue'),
+  redirect: '/',
   meta: { index: 404 },
 })
 

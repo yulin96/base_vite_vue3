@@ -1,5 +1,5 @@
 import { type App, createApp } from 'vue'
-import maskLoading from '~/components/mask/loading.vue'
+import commonLoading from '~/components/common/loading.vue'
 
 export const useMaskLoading = () => {
   let _loadingApp: App<Element> | null = null
@@ -7,7 +7,7 @@ export const useMaskLoading = () => {
 
   const createLoading = () => {
     if (!_loadingApp) {
-      _loadingApp = createApp(maskLoading)
+      _loadingApp = createApp(commonLoading)
       _maskLoadingDome = document.createElement('div')
       document.body.appendChild(_maskLoadingDome)
       _loadingApp.mount(_maskLoadingDome)

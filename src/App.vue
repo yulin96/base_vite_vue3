@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import commonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWxShare } from '~/tools/share'
@@ -39,7 +40,7 @@ onMounted(() => {})
             <suspense>
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <mask-loading></mask-loading>
+                <common-loading></common-loading>
               </template>
             </suspense>
           </keep-alive>

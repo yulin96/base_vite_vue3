@@ -9,7 +9,7 @@ export const registerButtonEffect = () => {
     ele &&
       gsap
         .timeline()
-        .to(target, { scale: 0.9, duration: 0.18, autoAlpha: 0.8 })
-        .to(target, { scale: 1, duration: 0.18, autoAlpha: 1 })
+        .to(ele, { scale: 0.9, duration: 0.18, autoAlpha: 0.8 })
+        .to(ele, { scale: 1, duration: 0.18, autoAlpha: 1 })
   })
 }
