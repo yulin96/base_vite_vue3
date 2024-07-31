@@ -2,26 +2,27 @@ import { type App, createApp } from 'vue'
 import commonLoading from '~/components/common/loading.vue'
 
 export const useMaskLoading = () => {
-  let _loadingApp: App<Element> | null = null
-  let _maskLoadingDome: HTMLDivElement | null = null
+  let app: App<Element> | null = null
+  let dom: HTMLDivElement | null = null
 
   const createLoading = () => {
-    if (!_loadingApp) {
-      _loadingApp = createApp(commonLoading)
-      _maskLoadingDome = document.createElement('div')
-      document.body.appendChild(_maskLoadingDome)
-      _loadingApp.mount(_maskLoadingDome)
+    if (!app) {
+      dom = document.createElement('div')
+      document.body.appendChild(dom)
+      app = createApp(commonLoading)
+      app.mount(dom)
     }
   }
 
   const clearLoading = () => {
-    if (_loadingApp) {
-      _loadingApp.unmount()
-      _loadingApp = null
+    if (app) {
+      app.unmount()
+      app = null
     }
-    if (_maskLoadingDome) {
-      document.body.removeChild(_maskLoadingDome)
-      _maskLoadingDome = null
+    if (dom) {
+      dom.classList.add('fade-in')
+      document.body.removeChild(dom)
+      dom = null
     }
   }
 

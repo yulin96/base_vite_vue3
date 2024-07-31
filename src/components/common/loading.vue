@@ -1,22 +1,20 @@
 <template>
-  <teleport to="body">
-    <div v-bind="$attrs" class="center fixed left-0 top-0 z-20 h-[100vh] w-[100vw]">
-      <div class="lds-spinner">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+  <div v-bind="$attrs" class="center fixed left-0 top-0 z-20 h-[100vh] w-[100vw]">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
-  </teleport>
+  </div>
 </template>
 
 <style>
