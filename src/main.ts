@@ -7,7 +7,7 @@ import '~/tools/init/gsap'
 import '~/tools/init/pcSupport'
 import '~/tools/init/resetWxFontSize'
 import '~/tools/init/vant'
-import { getWxConfig } from '~/tools/wx'
+import { getWechatConfig } from '~/tools/wx'
 import { devModel } from '~/utils/global'
 import App from './App.vue'
 import router from './router'
@@ -19,7 +19,7 @@ import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/main.css'
 
-!devModel && getWxConfig()
+!devModel && getWechatConfig()
 
 parent?.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)

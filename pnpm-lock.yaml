@@ -64,6 +64,9 @@ importers:
       dayjs:
         specifier: ^1.11.12
         version: 1.11.12
+      dingtalk-jsapi:
+        specifier: ^3.0.36
+        version: 3.0.36
       dotenv:
         specifier: ^16.4.5
         version: 16.4.5
@@ -1605,6 +1608,9 @@ packages:
   dijkstrajs@1.0.3:
     resolution: {integrity: sha512-qiSlmBq9+BCdCA/L46dw8Uy93mloxsPSbwnm5yrKn2vMPiy8KyAskTF6zuV/j5BMsmOGZDPs7KjU+mjb670kfA==}
 
+  dingtalk-jsapi@3.0.36:
+    resolution: {integrity: sha512-oGDNwqpOzRtMifY/POqPvsLRUYpt/csw7mBfczFzRaPHYyezj7JPGkBybCNW/PA/4DvVIAe+RJEkM3cdtVHFtA==}
+
   dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
@@ -2685,6 +2691,9 @@ packages:
 
   process-nextick-args@2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
+
+  promise-polyfill@7.1.2:
+    resolution: {integrity: sha512-FuEc12/eKqqoRYIGBrUptCBRhobL19PS2U31vMNTfyck1FxPyMfgsXyW4Mav85y/ZN1hop3hOwRlUDok23oYfQ==}
 
   proto-list@1.2.4:
     resolution: {integrity: sha512-vtK/94akxsTMhe0/cbfpR+syPuszcuwhqVjJq26CuNDgFGj682oRBXOP5MJpv2r7JtE8MsiepGIqvvOTBwn2vA==}
@@ -4668,6 +4677,10 @@ snapshots:
 
   dijkstrajs@1.0.3: {}
 
+  dingtalk-jsapi@3.0.36:
+    dependencies:
+      promise-polyfill: 7.1.2
+
   dir-glob@3.0.1:
     dependencies:
       path-type: 4.0.0
@@ -5720,6 +5733,8 @@ snapshots:
   prettier@3.3.3: {}
 
   process-nextick-args@2.0.1: {}
+
+  promise-polyfill@7.1.2: {}
 
   proto-list@1.2.4: {}
 

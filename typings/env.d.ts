@@ -7,7 +7,6 @@ type AnimationItem = import('lottie-web').AnimationItem
 
 declare const WeixinJSBridge: any
 declare const VConsole: any
-declare const dd: any
 declare const ROP: any
 
 interface ImportMetaEnv {
