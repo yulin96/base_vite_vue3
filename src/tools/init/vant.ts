@@ -10,6 +10,6 @@ setToastDefaultOptions({
   position: 'middle',
   className: 'center_toast',
 })
-setToastDefaultOptions('loading', { duration: 0 })
+setToastDefaultOptions('loading', { duration: 0, loadingType: 'spinner' })
 setNotifyDefaultOptions({ type: 'warning' })
 setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button', allowHtml: true })

@@ -1,8 +1,5 @@
 :root:root {
   --van-action-bar-button-danger-color: linear-gradient(to right, #607ffa, #3051db, #607ffa);
-}
-
-:root:root {
   --z-toast-background: #f5f5f7c2;
   --z-toast-color: #1d1d1f;
 }
@@ -16,8 +13,8 @@
   width: 40px;
 }
 
-.van-dialog__header {
-  padding-top: 40px;
+.van-popup--center .van-loading__line:before {
+  border-radius: 12px;
 }
 
 .van-toast.center_toast {
@@ -81,6 +78,19 @@
 .popup-down-leave-to {
   opacity: 0 !important;
   transform: translateY(calc(-50% + 120px)) !important;
+}
+
+.popup-top-enter-active,
+.popup-top-leave-active {
+  transition:
+    opacity 0.16s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-top-enter-from,
+.popup-top-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% - 120px)) !important;
 }
 
 .popup-enter-active,
