@@ -2,10 +2,10 @@
 import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
-import { registerWxShare } from '~/tools/userExperience'
+import { registerWechatShare } from '~/tools/userExperience'
 import { convertConfigToPx } from '~/utils/convert'
 
-registerWxShare()
+registerWechatShare()
 
 registerButtonEffect()
 
