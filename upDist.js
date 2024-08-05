@@ -1,8 +1,10 @@
+//@ts-check
 import oss from 'ali-oss'
 import chalk from 'chalk'
 import dotenv from 'dotenv'
 import fs, { readdirSync, rmdirSync } from 'fs'
 import path, { join } from 'path'
+import { exit } from 'process'
 
 dotenv.config()
 
@@ -92,7 +94,7 @@ async function putOSS(local, oss, size, fileType) {
   })
 
   if (result.res.status === 200) {
-    const sizeKb = (size / 1024).toFixed(2)
+    const sizeKb = +(size / 1024).toFixed(2)
     if (sizeKb > 500) isSizeError = true
     const status = sizeKb > 500 ? 'bgRed' : sizeKb > 200 ? 'bgYellow' : 'green'
     console.log(
