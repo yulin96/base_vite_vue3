@@ -23,7 +23,7 @@ export default [
 
   pluginJs.configs.recommended,
   {
-    name: 'js rules',
+    name: 'rules/js',
     rules: {
       'no-debugger': 0,
       'no-empty': 1,
@@ -35,7 +35,7 @@ export default [
 
   ...tseslint.configs.recommended,
   {
-    name: 'ts  rules',
+    name: 'rules/ts',
     rules: {
       '@typescript-eslint/no-empty-function': 0,
       '@typescript-eslint/no-empty-object-type': 0,
@@ -49,7 +49,7 @@ export default [
   ...pluginVue.configs['flat/essential'],
   { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   {
-    name: 'vue rules',
+    name: 'rules/vue',
     rules: {
       'vue/multi-word-component-names': 0,
     },
