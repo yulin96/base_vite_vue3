@@ -1,9 +1,9 @@
-// @ts-nocheck
+//@ts-expect-error 兼容性问题
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext
 
 function webAudio(url) {
   const context = new window.AudioContext()
-  let source = null
+  let source: AudioBufferSourceNode | null = null
   let audioBuffer = null
 
   function initSound(arrayBuffer) {
@@ -19,7 +19,7 @@ function webAudio(url) {
     // 解码失败回调
     console.log('Error decoding file', e)
   }
-  // eslint-disable-next-line no-extra-semi
+
   ;(function loadAudioFile(url) {
     const xhr = new XMLHttpRequest() // 通过XHR下载音频文件
     xhr.open('GET', url, true)

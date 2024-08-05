@@ -1,4 +1,4 @@
-export const useLoading = (imgList: string[], next?: Function, delay: number = 300) => {
+export const useLoading = (imgList: string[], next?: () => void, delay: number = 300) => {
   let sto: NodeJS.Timeout
   const progressValue = ref(0)
 

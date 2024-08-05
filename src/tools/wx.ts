@@ -171,11 +171,11 @@ export const wechatPreventShare = () => {
   if (typeof WeixinJSBridge == 'undefined') {
     if (document.addEventListener) {
       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false)
-      // @ts-ignore
+      // @ts-expect-error 兼容性问题
     } else if (document.attachEvent) {
-      // @ts-ignore
+      // @ts-expect-error 兼容性问题
       document.attachEvent('WeixinJSBridgeReady', onBridgeReady)
-      // @ts-ignore
+      // @ts-expect-error 兼容性问题
       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady)
     }
   } else {
