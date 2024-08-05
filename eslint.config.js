@@ -26,6 +26,7 @@ export default [
   {
     rules: {
       'no-undef': 0,
+      'no-empty': 1,
       'no-debugger': 0,
       'no-extra-semi': 0,
       'no-unused-vars': 0,
