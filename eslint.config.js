@@ -12,7 +12,6 @@ const gitignorePath = path.resolve(__dirname, '.gitignore')
 
 export default [
   includeIgnoreFile(gitignorePath),
-  { files: ['**/*.{js,mjs,cjs,ts,vue}'] },
 
   {
     languageOptions: {
@@ -24,6 +23,7 @@ export default [
 
   pluginJs.configs.recommended,
   {
+    name: 'js rules',
     rules: {
       'no-debugger': 0,
       'no-empty': 1,
@@ -35,6 +35,7 @@ export default [
 
   ...tseslint.configs.recommended,
   {
+    name: 'ts  rules',
     rules: {
       '@typescript-eslint/no-empty-function': 0,
       '@typescript-eslint/no-empty-object-type': 0,
@@ -48,6 +49,7 @@ export default [
   ...pluginVue.configs['flat/essential'],
   { files: ['**/*.vue'], languageOptions: { parserOptions: { parser: tseslint.parser } } },
   {
+    name: 'vue rules',
     rules: {
       'vue/multi-word-component-names': 0,
     },
