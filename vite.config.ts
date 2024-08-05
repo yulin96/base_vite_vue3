@@ -40,8 +40,8 @@ export default defineConfig(({ command }) => ({
     vueJsx(),
     Components({
       dirs: ['src/components'],
-      extensions: ['vue', 'tsx', 'jsx'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/, /\.tsx/, /\.jsx/],
+      extensions: ['vue'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
       resolvers: [VantResolver()],
       dts: './typings/components.d.ts',
       directoryAsNamespace: true,
