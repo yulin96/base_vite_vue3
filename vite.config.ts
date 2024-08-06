@@ -51,7 +51,6 @@ export default defineConfig(({ command }) => ({
       imports: [
         'vue-router',
         'vue',
-        'pinia',
         'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],

@@ -1,3 +1,5 @@
+import { defineStore } from 'pinia'
+
 interface IInfo {
   name: string
   phone: string
