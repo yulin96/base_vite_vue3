@@ -54,10 +54,7 @@ export default defineConfig(({ command }) => ({
         'vue-i18n',
         {
           '@vueuse/integrations/useQRCode': ['useQRCode'],
-          gsap: ['gsap'],
-          html2canvas: [['default', 'html2canvas']],
-          compressorjs: [['default', 'Compressor']],
-          dayjs: [['default', 'dayjs']],
+          gsap: [['default', 'gsap']],
           vant: [
             'showLoadingToast',
             'showDialog',
