@@ -1,6 +1,6 @@
 import gsap from 'gsap'
 
-export const registerButtonEffect = () => {
+export function registerButtonEffect() {
   document.addEventListener('click', (e) => {
     const target = e.target as HTMLDivElement
     const parent = target.parentElement as HTMLDivElement | null

@@ -75,11 +75,12 @@ export const axiosPost = (
   )
 }
 
-export const getLocalJson = (url: string) =>
-  new Promise((resolve, reject) => {
+export function getLocalJson(url: string) {
+  return new Promise((resolve, reject) => {
     fetch('./' + url)
       .then((response) => response.json())
       .then((res) => {
         resolve(res)
       })
   })
+}

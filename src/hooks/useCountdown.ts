@@ -1,4 +1,4 @@
-export const useCountdown = (data: number = 60) => {
+export function useCountdown(data: number = 60) {
   const countdown = reactive({
     timer: data,
     timerId: undefined as NodeJS.Timeout | undefined,

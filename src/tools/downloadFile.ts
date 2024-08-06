@@ -7,7 +7,7 @@ nProgress.configure({
 })
 
 let lock = false
-export const downloadFile = (url: string, filename?: string) => {
+export function downloadFile(url: string, filename?: string) {
   return new Promise<void>((resolve, reject) => {
     if (lock) return
     lock = true

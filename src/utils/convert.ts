@@ -5,7 +5,7 @@ import type { ConfigProviderThemeVars } from 'vant'
  * @param url - 要转换的URL。
  * @returns 一个Promise，当转换完成时，将返回一个Blob对象。
  */
-export const urlToBlob = async (url: string): Promise<Blob> => {
+export async function urlToBlob(url: string): Promise<Blob> {
   return new Promise<Blob>((resolve, reject) => {
     const image = new Image()
     image.crossOrigin = 'anonymous'
@@ -35,7 +35,7 @@ export const urlToBlob = async (url: string): Promise<Blob> => {
  * @throws 如果浏览器不支持 canvas，则会抛出错误
  * @throws 如果无法获取到 Blob 对象，则会抛出错误
  */
-export const changeImageSize = async (originBlob: Blob, width = 600, height = 800): Promise<Blob> => {
+export async function changeImageSize(originBlob: Blob, width = 600, height = 800): Promise<Blob> {
   return new Promise<Blob>((resolve, reject) => {
     const canvas = document.createElement('canvas')
     const ctx = canvas.getContext('2d')
@@ -64,7 +64,7 @@ export const changeImageSize = async (originBlob: Blob, width = 600, height = 80
  * @param blob 要转换的 Blob 对象
  * @returns 返回一个 Promise，解析为转换后的 Base64 字符串
  */
-export const blobToBase64 = async (blob: any): Promise<string> => {
+export async function blobToBase64(blob: any): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const fileReader = new FileReader()
     fileReader.onload = (e) => {
@@ -87,7 +87,7 @@ export const blobToBase64 = async (blob: any): Promise<string> => {
  * @param fileName - 转换后的 File 对象的文件名。
  * @returns 转换后的 File 对象。
  */
-export const blobToFile = (blob: Blob, fileName: string): File => {
+export function blobToFile(blob: Blob, fileName: string): File {
   return new File([blob], fileName, { type: blob.type })
 }
 
@@ -96,7 +96,7 @@ export const blobToFile = (blob: Blob, fileName: string): File => {
  * @param urlData - base64 字符串
  * @returns Blob 对象
  */
-export const base64ToBlob = (urlData: string | any): Blob => {
+export function base64ToBlob(urlData: string | any): Blob {
   const arr = urlData.split(',')
   const _arr = arr[1].substring(0, arr[1].length - 2)
   const mime = arr[0].match(/:(.*?);/)[1]
@@ -117,7 +117,7 @@ export const base64ToBlob = (urlData: string | any): Blob => {
  * @param fileName - 文件名。
  * @returns 转换后的 File 对象。
  */
-export const base64ToFile = (urlData: string | any, fileName: string): File => {
+export function base64ToFile(urlData: string | any, fileName: string): File {
   const blob = base64ToBlob(urlData)
   return new File([blob], fileName, { type: blob.type })
 }
@@ -128,7 +128,7 @@ export const base64ToFile = (urlData: string | any, fileName: string): File => {
  * @param nameKey - 包含属性名映射关系的对象。
  * @returns 转换后的新对象。
  */
-export const convertObjectName = (obj: Record<string, any>, nameKey: Record<string, string>) => {
+export function convertObjectName(obj: Record<string, any>, nameKey: Record<string, string>) {
   const newObj: Record<string, any> = {}
   const keys = Object.keys(nameKey)
   for (const [key, value] of Object.entries(obj)) {
@@ -145,7 +145,7 @@ export const convertObjectName = (obj: Record<string, any>, nameKey: Record<stri
  * @param formData 要转换的 FormData 对象
  * @returns 转换后的对象
  */
-export const formDataToObj = (formData: FormData) => {
+export function formDataToObj(formData: FormData) {
   return Object.fromEntries(formData)
 }
 
@@ -154,7 +154,7 @@ export const formDataToObj = (formData: FormData) => {
  * @param str - 要处理的字符串。
  * @returns 处理后的字符串。
  */
-export const boldChinese = (str: string): string => {
+export function boldChinese(str: string): string {
   return str.replace(/([\u4e00-\u9fa5]+)/g, '<b>$1</b>')
 }
 
@@ -164,7 +164,7 @@ export const boldChinese = (str: string): string => {
  * @param screenSize - 屏幕宽度，默认为750
  * @returns 转换后的vw单位值
  */
-export const toVw = (text: string, screenSize = 750) => {
+export function toVw(text: string, screenSize = 750) {
   if (!text.endsWith('px')) return text
 
   const px = parseFloat(text.replace('px', ''))
@@ -177,7 +177,7 @@ export const toVw = (text: string, screenSize = 750) => {
  * @param screenSize - 屏幕宽度基准值，默认为 750px
  * @returns 转换后的 Vant 组件库主题配置对象
  */
-export const convertConfigToPx = (config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars => {
+export function convertConfigToPx(config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars {
   if (!config) return {}
 
   const newConfig = Object.entries(config).reduce((config, [key, value]) => {

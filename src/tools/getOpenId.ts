@@ -7,7 +7,7 @@ const { get } = useLock()
  * @param name 平台名称
  * @returns 是否获取成功
  */
-export const getOpenId = (name = '互动微平台'): Promise<boolean | void> => {
+export function getOpenId(name = '互动微平台'): Promise<boolean | void> {
   return new Promise<boolean>((resolve) => {
     const { user } = useStore()
     if (user.wxInfo?.openid) return resolve(true)

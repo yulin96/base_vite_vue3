@@ -13,7 +13,7 @@ const registerBody = () => {
   })
 }
 
-export const showLottie = (e: MouseEvent) => {
+export function showLottie(e: MouseEvent) {
   const width = 200
 
   const { clientX, clientY } = e

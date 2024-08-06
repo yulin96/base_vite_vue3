@@ -5,7 +5,7 @@ import { isWeChat } from '~/utils/uaParser'
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false
 
-export const getWechatConfig = () => {
+export function getWechatConfig() {
   if (window[wxConfigReady]) return Promise.resolve()
 
   return new Promise<void>((resolve, reject) => {
@@ -16,7 +16,7 @@ export const getWechatConfig = () => {
         toFormData({
           url: wxLink,
           name: 'hudongweipingtai',
-        }),
+        })
       )
       .then(({ data: { data } }) => {
         wx.config({
@@ -53,7 +53,7 @@ export const getWechatConfig = () => {
 
 export type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
 
-export const wechatShare = (data: IWxShare) => {
+export function wechatShare(data: IWxShare) {
   return new Promise<boolean>((resolve, reject) => {
     const { title, desc, link, imgUrl } = data
     getWechatConfig()
@@ -89,7 +89,7 @@ export const wechatShare = (data: IWxShare) => {
   })
 }
 
-export const wechatScan = (): Promise<string | void> => {
+export function wechatScan(): Promise<string | void> {
   return new Promise((resolve, reject) => {
     getWechatConfig()
       .then(() => {
@@ -123,7 +123,7 @@ let openLocationLock = false
  *  address: '',
  * })
  */
-export const wechatOpenLocation = (data: IWxOpenLocation): void => {
+export function wechatOpenLocation(data: IWxOpenLocation): void {
   if (openLocationLock) return
   openLocationLock = true
   const { latitude, longitude, name, address, scale = 10, infoUrl = '' } = data
@@ -147,7 +147,7 @@ export const wechatOpenLocation = (data: IWxOpenLocation): void => {
     })
 }
 
-export const wechatPreviewImage = (current: string, urls: string[]): void => {
+export function wechatPreviewImage(current: string, urls: string[]): void {
   getWechatConfig()
     .then(() => {
       wx.previewImage({ current, urls })
@@ -157,13 +157,13 @@ export const wechatPreviewImage = (current: string, urls: string[]): void => {
     })
 }
 
-export const wechatHideAllNonBaseMenuItem = () => {
+export function wechatHideAllNonBaseMenuItem() {
   getWechatConfig().then(() => {
     wx.hideAllNonBaseMenuItem()
   })
 }
 
-export const wechatPreventShare = () => {
+export function wechatPreventShare() {
   const onBridgeReady = () => {
     WeixinJSBridge.call('hideOptionMenu')
   }
@@ -183,15 +183,15 @@ export const wechatPreventShare = () => {
   }
 }
 
-export const closeWindow = () => {
+export function closeWindow() {
   isWeChat
     ? getWechatConfig().then(() => {
-        wx.closeWindow()
-      })
+      wx.closeWindow()
+    })
     : window.close()
 }
 
-export const wechatDisableTimeline = () => {
+export function wechatDisableTimeline() {
   if (isWeChat) {
     wx.hideMenuItems({
       menuList: ['menuItem:share:QZone', 'menuItem:share:timeline'],

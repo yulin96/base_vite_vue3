@@ -1,10 +1,10 @@
 import cryptoJS from 'crypto-js'
 
-export const dateMd5 = (date?: string) => {
+export function dateMd5(date?: string) {
   return cryptoJS.MD5(date ?? Date()).toString()
 }
 
-export const createAesCrypto = (key?: string, iv?: string) => {
+export function createAesCrypto(key?: string, iv?: string) {
   const _key = cryptoJS.enc.Utf8.parse(key || '91a48a8af7e580d8401514c01e2dda22')
   const _iv = cryptoJS.enc.Utf8.parse(iv || 'f7e580d8401514c0')
 
@@ -24,7 +24,7 @@ export const createAesCrypto = (key?: string, iv?: string) => {
   return { encrypt, decrypt }
 }
 
-export const createIvEncryption = (secretKey?: string) => {
+export function createIvEncryption(secretKey?: string) {
   const _secretKey = secretKey || cryptoJS.lib.WordArray.random(32).toString()
 
   const encrypt = (text: string | Record<string, any>) => {
@@ -34,7 +34,7 @@ export const createIvEncryption = (secretKey?: string) => {
     const encrypted = cryptoJS.AES.encrypt(
       textIsString ? text : JSON.stringify(text),
       cryptoJS.enc.Utf8.parse(_secretKey),
-      { iv: iv },
+      { iv: iv }
     )
 
     const result = iv.toString() + encrypted.toString()

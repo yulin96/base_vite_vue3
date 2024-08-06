@@ -11,7 +11,7 @@ interface PopupOption {
   }) => void
 }
 
-export const usePopup = (options: PopupOption[]) => {
+export function usePopup(options: PopupOption[]) {
   const popupIns = ref({
     show: false,
 

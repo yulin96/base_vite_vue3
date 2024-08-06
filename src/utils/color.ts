@@ -5,7 +5,7 @@ type RGBColor = [number, number, number]
  * @param hex - 十六进制颜色值，可以包含 # 前缀。
  * @returns RGB 颜色值，以数组形式返回。
  */
-export const hexToRgb = (hex: string): RGBColor => {
+export function hexToRgb(hex: string): RGBColor {
   hex = hex.replace(/^#/, '')
 
   if (hex.length === 3) {
@@ -28,7 +28,7 @@ export const hexToRgb = (hex: string): RGBColor => {
  * @param rgb - 包含颜色的红色、绿色和蓝色值的数组。
  * @returns RGB颜色的十六进制表示。
  */
-export const rgbToHex = ([r, g, b]: RGBColor): string => {
+export function rgbToHex([r, g, b]: RGBColor): string {
   const toHex = (n: number) => {
     const hex = n.toString(16)
     return hex.length === 1 ? '0' + hex : hex
@@ -42,7 +42,7 @@ export const rgbToHex = ([r, g, b]: RGBColor): string => {
  * @param rgbColor - RGB颜色值数组，包含红、绿、蓝三个通道的值
  * @returns 颜色的亮度值 (0-255)
  */
-export const getBrightness = ([r, g, b]: RGBColor) => {
+export function getBrightness([r, g, b]: RGBColor) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
 
@@ -52,7 +52,7 @@ export const getBrightness = ([r, g, b]: RGBColor) => {
  * @param percent - 调整的百分比
  * @returns 调整后的颜色值
  */
-export const adjustBrightness = (hex: string, percent: number) => {
+export function adjustBrightness(hex: string, percent: number) {
   const [r, g, b] = hexToRgb(hex)
 
   /**
@@ -61,7 +61,7 @@ export const adjustBrightness = (hex: string, percent: number) => {
    * @param percent - 调整的百分比
    * @returns 调整后的颜色通道值
    */
-  const adjust = (value: number, percent: number) => {
+  function adjust(value: number, percent: number) {
     const newValue = Math.round(value * (1 + percent / 100))
     return Math.min(255, Math.max(0, newValue))
   }

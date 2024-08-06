@@ -1,6 +1,6 @@
 import confetti from 'canvas-confetti'
 
-export const showConfetti = () => {
+export function showConfetti() {
   confetti({
     particleCount: 120,
     spread: 70,

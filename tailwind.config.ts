@@ -1,8 +1,9 @@
 import type { Config } from 'tailwindcss'
 import plugin from 'tailwindcss/plugin'
 
-const convertUnit = (length = 100, name = 'px') =>
-  Object.fromEntries(Array.from({ length: length + 1 }, (_, i) => [i, `${i}${name}`]))
+function convertUnit(length = 100, name = 'px') {
+  return Object.fromEntries(Array.from({ length: length + 1 }, (_, i) => [i, `${i}${name}`]))
+}
 
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],

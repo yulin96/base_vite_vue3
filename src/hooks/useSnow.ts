@@ -1,7 +1,7 @@
 import '~/assets/css/plugin/snow.css'
 import { randomNum } from '~/utils/common'
 
-export const useSnow = (el: string) => {
+export function useSnow(el: string) {
   onMounted(() => {
     autoCreateSnow(document.getElementById(el) as HTMLDivElement)
   })
@@ -29,7 +29,7 @@ export const useSnow = (el: string) => {
       () => {
         autoCreateSnow(wrapper)
       },
-      randomNum(800, 1600),
+      randomNum(800, 1600)
     )
   }
 }

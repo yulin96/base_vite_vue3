@@ -5,10 +5,10 @@ type WebpFeature = 'lossy' | 'lossless' | 'alpha' | 'animation'
  * @param callback - 回调函数
  * @param feature - WebP 特性
  */
-export const checkWebpFeature = (
-  callback: (feature: WebpFeature, result: boolean) => any,
+export function checkWebpFeature(
+  callback: (feature: WebpFeature, result: boolean) => void,
   feature: WebpFeature = 'lossless',
-) => {
+) {
   const kTestImages = {
     lossy: 'UklGRiIAAABXRUJQVlA4IBYAAAAwAQCdASoBAAEADsD+JaQAA3AAAAAA',
     lossless: 'UklGRhoAAABXRUJQVlA4TA0AAAAvAAAAEAcQERGIiP4HAA==',

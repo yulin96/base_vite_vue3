@@ -9,7 +9,7 @@ nprogress.configure({
   trickleSpeed: 120,
 })
 
-export const useLock = (showProgress = true, delay = 500) => {
+export function useLock(showProgress = true, delay = 500) {
   const lock = ref(false)
 
   const post = (
@@ -17,7 +17,7 @@ export const useLock = (showProgress = true, delay = 500) => {
     data?: Record<string, any>,
     dataType?: 'FormData' | 'JSON',
     headers?: Record<string, any>,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
@@ -44,8 +44,8 @@ export const useLock = (showProgress = true, delay = 500) => {
           showProgress && nprogress?.done()
           delay
             ? setTimeout(() => {
-                lock.value = false
-              }, delay)
+              lock.value = false
+            }, delay)
             : (lock.value = false)
         })
     })
@@ -55,7 +55,7 @@ export const useLock = (showProgress = true, delay = 500) => {
     url: string,
     data?: Record<string, any>,
     headers?: Record<string, any>,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
@@ -82,8 +82,8 @@ export const useLock = (showProgress = true, delay = 500) => {
           showProgress && nprogress?.done()
           delay
             ? setTimeout(() => {
-                lock.value = false
-              }, delay)
+              lock.value = false
+            }, delay)
             : (lock.value = false)
         })
     })

@@ -1,7 +1,7 @@
 import { type App, createApp } from 'vue'
 import commonLoading from '~/components/common/loading.vue'
 
-export const useMaskLoading = () => {
+export function useMaskLoading() {
   let app: App<Element> | null = null
   let dom: HTMLDivElement | null = null
 

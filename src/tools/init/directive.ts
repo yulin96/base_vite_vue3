@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 
-export const registerDirective = (app: App<Element>) => {
+export function registerDirective(app: App<Element>) {
   app.directive('focus', (el: HTMLElement) => el.focus())
 
   app.directive('long-press', (el: HTMLElement, binding) => {
@@ -10,7 +10,7 @@ export const registerDirective = (app: App<Element>) => {
         () => {
           binding.value?.()
         },
-        +(binding?.arg || 1000),
+        +(binding?.arg || 1000)
       )
     })
 

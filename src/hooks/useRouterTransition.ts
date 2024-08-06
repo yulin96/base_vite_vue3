@@ -3,7 +3,7 @@ import { useMaskLoading } from '~/hooks/useMaskLoading'
 import router from '~/router'
 import '../assets/css/transition.css'
 
-export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
+export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {
   const { createLoading, clearLoading } = useMaskLoading()
   const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 600, { immediate: false })
   const [isFirstLoad, setIsFirstLoad] = useToggle(true)

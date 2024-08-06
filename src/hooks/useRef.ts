@@ -1,4 +1,4 @@
-export const useRef = () => {
+export function useRef() {
   type EleType = Element | ComponentPublicInstance | null
 
   const refList = ref<Record<string, EleType>>({})

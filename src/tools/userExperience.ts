@@ -12,7 +12,7 @@ import { isDingDing, isWeChat } from '~/utils/uaParser'
  * @param option 压缩选项
  * @returns 返回一个 Promise，该 Promise 在用户选择图片后解析为 File 对象
  */
-export const getUserImage = (option?: Compressor.Options) => {
+export function getUserImage(option?: Compressor.Options) {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
     document.body.appendChild(input)
@@ -43,7 +43,7 @@ export const getUserImage = (option?: Compressor.Options) => {
   })
 }
 
-export const getUserVideo = () => {
+export function getUserVideo() {
   return new Promise<File>((resolve, reject) => {
     const input = document.createElement('input')
     document.body.appendChild(input)
@@ -65,7 +65,7 @@ export const getUserVideo = () => {
   })
 }
 
-export const getPosition = () => {
+export function getPosition() {
   return new Promise<GeolocationCoordinates>((resolve, reject) => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -74,7 +74,7 @@ export const getPosition = () => {
         },
         (...args) => {
           reject(args)
-        },
+        }
       )
     } else {
       reject('你的浏览器不支持当前地理位置信息获取')
@@ -82,7 +82,7 @@ export const getPosition = () => {
   })
 }
 
-export const registerWechatShare = () => {
+export function registerWechatShare() {
   const title = import.meta.env.VITE_APP_SHARE_TITLE
   const desc = import.meta.env.VITE_APP_SHARE_DESC
   const link = import.meta.env.VITE_APP_SHARE_LINK
@@ -94,7 +94,7 @@ export const registerWechatShare = () => {
 }
 
 let isScanning = false
-export const openScanQrCode = () => {
+export function openScanQrCode() {
   return new Promise<string>((resolve, reject) => {
     if (isScanning) return reject('扫码功能正在运行中')
     isScanning = true
@@ -104,7 +104,7 @@ export const openScanQrCode = () => {
         .then((resultStr) => {
           if (resultStr) resolve(resultStr)
         })
-        .catch(() => {})
+        .catch(() => { })
         .finally(() => {
           isScanning = false
         })
@@ -114,7 +114,7 @@ export const openScanQrCode = () => {
         .then((res) => {
           if (res.text) resolve(res.text)
         })
-        .catch(() => {})
+        .catch(() => { })
         .finally(() => {
           isScanning = false
         })

@@ -25,7 +25,7 @@ dayjs.locale('zh')
 //   },
 // })
 
-export const timeAgo = (time: string | number | Date | dayjs.Dayjs) => {
+export function timeAgo(time: string | number | Date | dayjs.Dayjs) {
   const a = dayjs()
   const b = dayjs(time)
   return a.to(b)

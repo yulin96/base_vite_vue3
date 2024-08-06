@@ -1,8 +1,8 @@
-export const useSealTouch = (el: string) => {
+export function useSealTouch(el: string) {
   const status = ref(true)
-  const handleTouch = ref<(val: { x: number; y: number }[]) => any>()
+  const handleTouch = ref<(val: { x: number; y: number} []) => any>()
 
-  let sealTouches: { x: number; y: number }[] = []
+  let sealTouches: { x: number; y: number} [] = []
   const touchStart = (e: TouchEvent) => {
     for (const touch of e.changedTouches) {
       sealTouches.push({ x: touch.clientX, y: touch.clientY })
@@ -32,7 +32,7 @@ export const useSealTouch = (el: string) => {
         sealWrapper?.removeEventListener('touchend', touchEnd, false)
       }
     },
-    { immediate: true, flush: 'post' },
+    { immediate: true, flush: 'post' }
   )
 
   const resume = () => {

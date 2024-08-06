@@ -1,9 +1,8 @@
-export const useLoading = (imgList: string[], next?: () => void, delay: number = 300) => {
+export function useLoading(imgList: string[], next?: () => void, delay: number = 300) {
   let sto: NodeJS.Timeout
   const progressValue = ref(0)
 
-  const count = computed(() =>
-    (progressValue.value / imgList.length) * 100 >= 100 ? 100 : (progressValue.value / imgList.length) * 100,
+  const count = computed(() => (progressValue.value / imgList.length) * 100 >= 100 ? 100 : (progressValue.value / imgList.length) * 100
   )
 
   const start = () => {
@@ -36,7 +35,7 @@ export const useLoading = (imgList: string[], next?: () => void, delay: number =
 }
 
 // 假的loading效果
-export const useFixLoading = (speed: number = 20) => {
+export function useFixLoading(speed: number = 20) {
   const count = ref(0)
 
   const IntervalFun = setInterval(() => {

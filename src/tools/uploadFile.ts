@@ -10,7 +10,7 @@ interface IUploadOption {
   needLoading?: boolean
 }
 
-export const uploadFile = async (option: IUploadOption): Promise<[null, string] | [unknown, null]> => {
+export async function uploadFile(option: IUploadOption): Promise<[null, string] | [unknown, null]> {
   const { projectID, file, filetype = 'png', filenameStart = 'zh', needLoading = true } = option
 
   needLoading && showLoadingToast({ message: '上传中...' })
@@ -31,7 +31,7 @@ export const uploadFile = async (option: IUploadOption): Promise<[null, string] 
         expire: 1446727949,
         success_action_status: 200,
         file: file,
-      }),
+      })
     )
     if (res.status != 200) console.error('上传失败')
 

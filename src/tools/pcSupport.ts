@@ -1,10 +1,10 @@
 import { toUrl } from '~/utils/global'
 import { isMobile } from '~/utils/uaParser'
 
-export const pcSupport = () => {
+export function pcSupport() {
   return new Promise<void>((resolve, _) => {
     const paramsSearch = new URLSearchParams(window.location.search)
-    const params: { [x: string]: string } = {}
+    const params: { [x: string]: string}  = {}
 
     for (const key of paramsSearch.keys()) {
       params[key] = paramsSearch.get(key) ?? ''

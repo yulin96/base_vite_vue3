@@ -1,13 +1,13 @@
 import CryptoJS from 'crypto-js'
 
-export const encrypt = (text: string, keyStr: string, ivStr: string) => {
+export function encrypt(text: string, keyStr: string, ivStr: string) {
   const key = CryptoJS.enc.Utf8.parse(keyStr)
   const iv = CryptoJS.enc.Utf8.parse(ivStr)
   const encrypted = CryptoJS.AES.encrypt(text, key, { iv }).toString()
   return encrypted
 }
 
-export const decrypt = (text: string, keyStr: string, ivStr: string) => {
+export function decrypt(text: string, keyStr: string, ivStr: string) {
   const key = CryptoJS.enc.Utf8.parse(keyStr)
   const iv = CryptoJS.enc.Utf8.parse(ivStr)
   try {

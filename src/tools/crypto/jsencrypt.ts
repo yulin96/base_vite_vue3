@@ -6,7 +6,7 @@ import JSEncrypt from 'jsencrypt'
  * const encrypt = createEncryptIns('<publicKey>');
  * encrypt.encrypt('1231');
  */
-export function createEncryptIns(publicKey: string): { encrypt: (str: string) => string | false }
+export default function createEncryptIns(publicKey: string): { encrypt: (str: string) => string | false }
 /**
  * @example
  * // 使用公钥和私钥创建加密解密实例

@@ -1,7 +1,7 @@
 //@ts-expect-error 兼容性问题
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext
 
-function webAudio(url) {
+export function webAudio(url: string) {
   const context = new window.AudioContext()
   let source: AudioBufferSourceNode | null = null
   let audioBuffer = null
@@ -53,5 +53,3 @@ function webAudio(url) {
     playInit: playEffectInit,
   }
 }
-
-export { webAudio }
