@@ -4,11 +4,6 @@ import router from '~/router'
 import '../assets/css/transition.css'
 
 export const useRouteTransition = (transitionName: RouteTransitionName = 'Slide') => {
-  if (!(['slide'] as RouteTransitionName[]).includes(transitionName)) {
-    // 🤯 全屏组件需要禁止滚动，禁止后可能会导致其他问题
-    document.documentElement.classList.add('cover')
-  }
-
   const { createLoading, clearLoading } = useMaskLoading()
   const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 600, { immediate: false })
   const [isFirstLoad, setIsFirstLoad] = useToggle(true)
