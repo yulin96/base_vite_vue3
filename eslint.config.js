@@ -1,5 +1,6 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import pluginJs from '@eslint/js'
+import prettier from 'eslint-plugin-prettier/recommended'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 import path from 'node:path'
@@ -53,6 +54,14 @@ export default [
     name: 'rules/vue',
     rules: {
       'vue/multi-word-component-names': 0,
+    },
+  },
+
+  prettier,
+  {
+    name: 'rules/prettier',
+    rules: {
+      'prettier/prettier': 0,
     },
   },
 ]
