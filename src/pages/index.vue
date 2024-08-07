@@ -4,7 +4,7 @@ const itemRefs = ref<HTMLDivElement[]>([])
 const test = () => {
   console.log(itemRefs.value[5])
 
-  itemRefs.value[5]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'start' })
+  itemRefs.value[5]?.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' })
 }
 /*  */
 onMounted(() => {
