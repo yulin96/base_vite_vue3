@@ -32,9 +32,12 @@ export default defineConfig(({ command }) => ({
     ViteImageOptimizer({
       jpg: {
         quality: 90,
+        progressive: true,
       },
       png: {
         quality: 90,
+        compressionLevel: 9,
+        adaptiveFiltering: true,
       },
     }),
     VueRouter({
