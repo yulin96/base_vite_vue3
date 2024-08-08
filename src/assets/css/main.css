@@ -4,7 +4,7 @@
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';
 @import './plugin/shark.css';
-@import './tips.css';
+@import './snippet.css';
 
 *::-webkit-scrollbar {
   display: none;
