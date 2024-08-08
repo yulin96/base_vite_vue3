@@ -5,17 +5,17 @@ import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig, loadEnv } from 'vite'
 
+import { webUpdateNotice } from '@plugin-web-update-notification/vite'
+import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import { VantResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import tailwindcss from 'tailwindcss'
-
-import { webUpdateNotice } from '@plugin-web-update-notification/vite'
-import { visualizer } from 'rollup-plugin-visualizer'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
 
@@ -29,6 +29,14 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 export default defineConfig(({ command }) => ({
   plugins: [
     command === 'build' ? handleCheck() : undefined,
+    ViteImageOptimizer({
+      jpg: {
+        quality: 90,
+      },
+      png: {
+        quality: 90,
+      },
+    }),
     VueRouter({
       dts: 'typings/typed-router.d.ts',
       importMode: 'sync',
@@ -116,6 +124,7 @@ export default defineConfig(({ command }) => ({
     drop: command === 'serve' ? [] : env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
   },
   build: {
+    assetsInlineLimit: 10240,
     assetsDir: 'assets',
     reportCompressedSize: false,
     chunkSizeWarningLimit: 1000,
