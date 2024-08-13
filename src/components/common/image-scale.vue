@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Zoomist from 'zoomist'
+import Zoomist from '~/tools/zoomist'
 
 const props = withDefaults(defineProps<{ url: string; fillType?: 'cover' | 'contain' | 'none' }>(), {
   fillType: 'cover',

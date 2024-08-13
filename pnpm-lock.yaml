@@ -133,9 +133,6 @@ importers:
       weixin-js-sdk:
         specifier: ^1.6.5
         version: 1.6.5
-      zoomist:
-        specifier: ^1.1.1
-        version: 1.1.1
     devDependencies:
       '@eslint/compat':
         specifier: ^1.1.1
@@ -3461,9 +3458,6 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  zoomist@1.1.1:
-    resolution: {integrity: sha512-lJvn/vJ+FwUhd76CmmVBaB3mX7jKQz0i5L5GwG90haJtyucNbAkBZuN9YhymWgMcav2vns88efFg0TDC3HKscA==}
-
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
@@ -6607,5 +6601,3 @@ snapshots:
       yargs-parser: 21.1.1
 
   yocto-queue@0.1.0: {}
-
-  zoomist@1.1.1: {}
