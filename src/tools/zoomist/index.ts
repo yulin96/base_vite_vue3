@@ -1,5 +1,5 @@
 import './zoomist.min.css'
-import './zoomist_min.js'
+import './zoomist_min.skip.js'
 
 /**
  * zoomist v1 版本

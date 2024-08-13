@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  html2canvas@1.0.0-rc.4:
-    hash: rvxr5pigab2r57sw5os3vvlayu
-    path: patches/html2canvas@1.0.0-rc.4.patch
-
 importers:
 
   .:
@@ -76,9 +71,6 @@ importers:
       gsap:
         specifier: ^3.12.5
         version: 3.12.5
-      html2canvas:
-        specifier: 1.0.0-rc.4
-        version: 1.0.0-rc.4(patch_hash=rvxr5pigab2r57sw5os3vvlayu)
       jsencrypt:
         specifier: ^3.3.2
         version: 3.3.2
@@ -1467,10 +1459,6 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
-  base64-arraybuffer@0.2.0:
-    resolution: {integrity: sha512-7emyCsu1/xiBXgQZrscw/8KPRT44I4Yq9Pe6EGs3aPRTsWuggML1/1DTuZUuIaJPIm1FTDUVXl4x/yW8s0kQDQ==}
-    engines: {node: '>= 0.6.0'}
-
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
@@ -1637,9 +1625,6 @@ packages:
     engines: {node: '>=18'}
     peerDependencies:
       postcss: ^8.4
-
-  css-line-break@1.1.1:
-    resolution: {integrity: sha512-1feNVaM4Fyzdj4mKPIQNL2n70MmuYzAXZ1aytlROFX1JsOo070OsugwGjj7nl6jnDJWHDM8zRZswkmeYVWZJQA==}
 
   css-prefers-color-scheme@10.0.0:
     resolution: {integrity: sha512-VCtXZAWivRglTZditUfB4StnsWr6YVZ2PRtuxQLKTNRdtAf8tpzaVPE9zXIF3VaSc7O70iK/j1+NXxyQCqdPjQ==}
@@ -2069,10 +2054,6 @@ packages:
   html-tags@3.3.1:
     resolution: {integrity: sha512-ztqyC3kLto0e9WbNp0aeP+M3kTt+nbaIveGmUxAtZa+8iFgKLUOD4YKM5j+f3QD89bra7UeumolZHKuOXnTmeQ==}
     engines: {node: '>=8'}
-
-  html2canvas@1.0.0-rc.4:
-    resolution: {integrity: sha512-5sJ+oM3FfNFpGVbMQkJFDl1WH5Sa293l2koMEZWbaehJ3dWHty4mSrmZtfWlWDoLckfGojZS9aZ7Zk3uFouyPw==}
-    engines: {node: '>=8.0.0'}
 
   http-proxy-agent@7.0.2:
     resolution: {integrity: sha512-T1gkAiYYDWYx3V5Bmyu7HcfcvL7mUrTWiM6yOfa3PIphViJ/gFPbvidQ+veqSOHci/PxBcDabeUNCzpOODJZig==}
@@ -4636,8 +4617,6 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
-  base64-arraybuffer@0.2.0: {}
-
   binary-extensions@2.3.0: {}
 
   blueimp-canvas-to-blob@3.29.0: {}
@@ -4806,10 +4785,6 @@ snapshots:
       postcss: 8.4.41
       postcss-selector-parser: 6.1.2
       postcss-value-parser: 4.2.0
-
-  css-line-break@1.1.1:
-    dependencies:
-      base64-arraybuffer: 0.2.0
 
   css-prefers-color-scheme@10.0.0(postcss@8.4.41):
     dependencies:
@@ -5226,10 +5201,6 @@ snapshots:
       whatwg-encoding: 3.1.1
 
   html-tags@3.3.1: {}
-
-  html2canvas@1.0.0-rc.4(patch_hash=rvxr5pigab2r57sw5os3vvlayu):
-    dependencies:
-      css-line-break: 1.1.1
 
   http-proxy-agent@7.0.2:
     dependencies:

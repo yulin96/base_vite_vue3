@@ -27,7 +27,9 @@ interface ImportMetaEnv {
   readonly VITE_APP_COMPANY_LINK: string
 }
 
-interface Window {}
+interface Window {
+  html2canvas: any
+}
 
 type RouteTransitionName =
   | 'fade'

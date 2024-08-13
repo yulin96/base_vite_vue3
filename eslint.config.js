@@ -15,6 +15,10 @@ export default [
   includeIgnoreFile(gitignorePath),
 
   {
+    ignores: ['**/*skip*.js'],
+  },
+
+  {
     languageOptions: {
       globals: {
         ...globals.node,
