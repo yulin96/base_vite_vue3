@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
-import { routes } from 'vue-router/auto-routes'
+import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -10,6 +10,10 @@ const router = createRouter({
     }
   },
 })
+
+if (import.meta.hot) {
+  handleHotUpdate(router)
+}
 
 router.addRoute({
   path: '/:pathMatch(.*)*',
