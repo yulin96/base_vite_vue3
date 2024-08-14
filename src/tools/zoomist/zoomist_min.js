@@ -1,3 +1,4 @@
+console.log('12312312');
 /*!
  * zoomist.js v1.0.2
  * https://github.com/cotton123236/zoomist#readme

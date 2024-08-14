@@ -7,14 +7,14 @@ const props = withDefaults(defineProps<{ url: string; fillType?: 'cover' | 'cont
 
 const uuid = 'zoomist_' + +new Date()
 
-let zoomist: Zoomist | null = null
+let zoom: any = null
 
 watchPostEffect(() => {
   if (props.url) {
     const zoomEle = document.querySelector(`.zoomist.${uuid}`)
     if (zoomEle) {
-      if (zoomist) zoomist.update()
-      else zoomist = new Zoomist(zoomEle, { height: false, fill: props.fillType })
+      if (zoom) zoom?.update()
+      else zoom = new Zoomist(zoomEle, { height: false, fill: props.fillType })
     } else showDialog({ message: 'NOT_HAVE_DOM' })
   }
 })

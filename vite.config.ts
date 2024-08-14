@@ -17,7 +17,7 @@ import postcssPresetEnv from 'postcss-preset-env'
 import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
 import tailwindcss from 'tailwindcss'
 
-const splitDependencies = ['gsap', 'html2canvas', 'lottie-web']
+const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'zoomist']
 
 const env = loadEnv('production', process.cwd())
 
