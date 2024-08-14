@@ -2,9 +2,6 @@
 /// <reference types="@plugin-web-update-notification/vite" />
 /// <reference types="unplugin-vue-router/client" />
 
-declare const lottie: typeof import('lottie-web').default
-type AnimationItem = import('lottie-web').AnimationItem
-
 declare const WeixinJSBridge: any
 declare const VConsole: any
 declare const ROP: any

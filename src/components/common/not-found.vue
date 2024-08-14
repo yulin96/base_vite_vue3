@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import Lottie from 'lottie-web'
 import { useStore } from '~/stores'
 import { randomNum } from '~/utils/common'
 
@@ -17,7 +18,7 @@ const errorEle = ref<HTMLDivElement | null>(null)
 onMounted(() => {
   if (!errorEle.value) return console.error('errorEle is null')
   errorEle &&
-    lottie?.loadAnimation({
+    Lottie?.loadAnimation({
       path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
       container: errorEle.value,
       loop: true,

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import Lottie, { type AnimationItem } from 'lottie-web'
+
 const props = defineProps<{ like: boolean; json: any }>()
 
 // fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
@@ -9,7 +11,7 @@ const props = defineProps<{ like: boolean; json: any }>()
 
 const likeEle = ref<HTMLDivElement | null>(null)
 
-let lottieLike: AnimationItem
+let lottieLike: AnimationItem | null = null
 
 watchPostEffect(() => {
   if (props.like) {
@@ -22,7 +24,7 @@ watchPostEffect(() => {
 /*  */
 onMounted(() => {
   if (!likeEle.value) return console.error('likeEle is null')
-  lottieLike = lottie.loadAnimation({
+  lottieLike = Lottie.loadAnimation({
     container: likeEle.value,
     loop: false,
     autoplay: false,
@@ -31,7 +33,7 @@ onMounted(() => {
   })
 
   lottieLike.addEventListener('config_ready', () => {
-    lottieLike.goToAndStop(props.like ? lottieLike.totalFrames - 1 : 0, true)
+    lottieLike?.goToAndStop(props.like ? lottieLike.totalFrames - 1 : 0, true)
   })
 })
 
