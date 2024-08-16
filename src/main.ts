@@ -1,7 +1,6 @@
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
-import '~/tools/init/devReload'
 import { registerDirective } from '~/tools/init/directive'
 import '~/tools/init/gsap'
 import '~/tools/init/pcSupport'
