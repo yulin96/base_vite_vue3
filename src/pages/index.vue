@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { showToast } from '~/tools/userExperience'
+
+showToast({ message: '你好世界', duration: 0 })
 /*  */
 onMounted(() => {
   gsap.context(() => {
@@ -9,7 +12,9 @@ onMounted(() => {
 
 <template>
   <section class="index">
-    <main class="content"></main>
+    <main class="content">
+      <div class="w-750 border text-30">你好世界</div>
+    </main>
   </section>
 </template>
 

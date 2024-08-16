@@ -36,7 +36,8 @@ body {
 html.cover,
 .cover body {
   position: relative;
-  width: 100vw;
+  width: 750px;
+  margin: auto;
   height: 100vh;
   height: 100dvh;
   overflow-x: hidden;

@@ -153,6 +153,9 @@ importers:
       '@types/nprogress':
         specifier: ^0.2.3
         version: 0.2.3
+      '@types/postcss-pxtorem':
+        specifier: ^6.0.3
+        version: 6.0.3
       '@types/qrcode':
         specifier: ^1.5.5
         version: 1.5.5
@@ -201,9 +204,9 @@ importers:
       postcss-preset-env:
         specifier: ^10.0.1
         version: 10.0.1(postcss@8.4.41)
-      postcss-px-to-viewport-8-plugin:
-        specifier: ^1.2.5
-        version: 1.2.5
+      postcss-pxtorem:
+        specifier: ^6.1.0
+        version: 6.1.0(postcss@8.4.41)
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
@@ -1118,6 +1121,9 @@ packages:
 
   '@types/nprogress@0.2.3':
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
+
+  '@types/postcss-pxtorem@6.0.3':
+    resolution: {integrity: sha512-G3nPvxYvDc3xrBn+frsMCTeHqz77grbpUXkCJpkoLXO09LjvTznoiZBWGPmTYB2w2JXutRTkQtlJx2JNEYbMMg==}
 
   '@types/qrcode@1.5.5':
     resolution: {integrity: sha512-CdfBi/e3Qk+3Z/fXYShipBT13OJ2fDO2Q2w5CIP5anLTLIndQG9z6P1cnm+8zCWSpm5dnxMFd/uREtb0EXuQzg==}
@@ -2705,8 +2711,10 @@ packages:
     peerDependencies:
       postcss: ^8.4
 
-  postcss-px-to-viewport-8-plugin@1.2.5:
-    resolution: {integrity: sha512-+yc69+q/euV7iKh5fGXY6C/lpepmVx2DGFHeYj5BpzIFyBBpdACDjZyrZ8AV0kCg+J0bplBv4ZA1QTzgaK0rGg==}
+  postcss-pxtorem@6.1.0:
+    resolution: {integrity: sha512-ROODSNci9ADal3zUcPHOF/K83TiCgNSPXQFSbwyPHNV8ioHIE4SaC+FPOufd8jsr5jV2uIz29v1Uqy1c4ov42g==}
+    peerDependencies:
+      postcss: ^8.0.0
 
   postcss-replace-overflow-wrap@4.0.0:
     resolution: {integrity: sha512-KmF7SBPphT4gPPcKZc7aDkweHiKEEO8cla/GjcBK+ckKxiZslIu3C4GCRW3DNfL0o7yW7kMQu9xlZ1kXRXLXtw==}
@@ -4198,6 +4206,10 @@ snapshots:
       undici-types: 6.18.2
 
   '@types/nprogress@0.2.3': {}
+
+  '@types/postcss-pxtorem@6.0.3':
+    dependencies:
+      postcss: 8.4.41
 
   '@types/qrcode@1.5.5':
     dependencies:
@@ -5839,9 +5851,9 @@ snapshots:
       postcss: 8.4.41
       postcss-selector-parser: 6.1.2
 
-  postcss-px-to-viewport-8-plugin@1.2.5:
+  postcss-pxtorem@6.1.0(postcss@8.4.41):
     dependencies:
-      object-assign: 4.1.1
+      postcss: 8.4.41
 
   postcss-replace-overflow-wrap@4.0.0(postcss@8.4.41):
     dependencies:

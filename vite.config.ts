@@ -14,7 +14,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 import postcssPresetEnv from 'postcss-preset-env'
-import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import postCssPxToRem from 'postcss-pxtorem'
 import tailwindcss from 'tailwindcss'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'zoomist']
@@ -156,24 +156,34 @@ export default defineConfig(({ command }) => ({
         postcssPresetEnv({
           browsers: ['ios >= 11', 'chrome >= 64'],
         }),
-        postcsspxtoviewport8plugin({
-          unitToConvert: 'px',
-          viewportWidth: (file) =>
-            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
-          unitPrecision: 5,
-          propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
-          viewportUnit: 'vw',
-          fontViewportUnit: 'vw',
-          selectorBlackList: ['FIX_', 'nprogress'],
-          minPixelValue: 1,
-          mediaQuery: false,
-          replace: true,
-          exclude: [/pc\.html/],
-          landscape: false,
-          landscapeUnit: 'vw',
-          landscapeWidth: (file) =>
-            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
+        postCssPxToRem({
+          rootValue: (e: any) => {
+            console.log(e.file)
+
+            return ~e.file.indexOf('node_modules/vant') ? 50 : 100
+          },
+          propList: ['*'],
+          selectorBlackList: [],
+          exclude: '',
         }),
+        // postcsspxtoviewport8plugin({
+        //   unitToConvert: 'px',
+        //   viewportWidth: (file) =>
+        //     ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
+        //   unitPrecision: 5,
+        //   propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
+        //   viewportUnit: 'vw',
+        //   fontViewportUnit: 'vw',
+        //   selectorBlackList: ['FIX_', 'nprogress'],
+        //   minPixelValue: 1,
+        //   mediaQuery: false,
+        //   replace: true,
+        //   exclude: [/pc\.html/],
+        //   landscape: false,
+        //   landscapeUnit: 'vw',
+        //   landscapeWidth: (file) =>
+        //     ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
+        // }),
       ],
     },
   },
