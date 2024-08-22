@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { Toaster } from 'vue-sonner'
 import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
@@ -32,6 +33,8 @@ onMounted(() => {})
 </script>
 
 <template>
+  <Toaster richColors position="top-center" :duration="1600" />
+
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">
       <template v-if="Component">
