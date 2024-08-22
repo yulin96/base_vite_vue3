@@ -57,8 +57,8 @@ importers:
         specifier: ^4.2.0
         version: 4.2.0
       dayjs:
-        specifier: ^1.11.12
-        version: 1.11.12
+        specifier: ^1.11.13
+        version: 1.11.13
       dingtalk-jsapi:
         specifier: ^3.0.38
         version: 3.0.38
@@ -134,7 +134,7 @@ importers:
         version: 9.9.0
       '@plugin-web-update-notification/vite':
         specifier: ^1.7.1
-        version: 1.7.1(vite@5.4.1(@types/node@22.4.1))
+        version: 1.7.1(vite@5.4.2(@types/node@22.5.0))
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
@@ -148,8 +148,8 @@ importers:
         specifier: ^21.1.7
         version: 21.1.7
       '@types/node':
-        specifier: ^22.4.1
-        version: 22.4.1
+        specifier: ^22.5.0
+        version: 22.5.0
       '@types/nprogress':
         specifier: ^0.2.3
         version: 0.2.3
@@ -158,10 +158,10 @@ importers:
         version: 1.5.5
       '@vitejs/plugin-vue':
         specifier: ^5.1.2
-        version: 5.1.2(vite@5.4.1(@types/node@22.4.1))(vue@3.4.38(typescript@5.5.4))
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.0.1
-        version: 4.0.1(vite@5.4.1(@types/node@22.4.1))(vue@3.4.38(typescript@5.5.4))
+        version: 4.0.1(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -190,8 +190,8 @@ importers:
         specifier: ^15.9.0
         version: 15.9.0
       husky:
-        specifier: ^9.1.4
-        version: 9.1.4
+        specifier: ^9.1.5
+        version: 9.1.5
       jsdom:
         specifier: ^24.1.1
         version: 24.1.1
@@ -232,11 +232,11 @@ importers:
         specifier: ^0.10.7
         version: 0.10.7(rollup@4.21.0)(vue-router@4.4.3(vue@3.4.38(typescript@5.5.4)))(vue@3.4.38(typescript@5.5.4))
       vite:
-        specifier: ^5.4.1
-        version: 5.4.1(@types/node@22.4.1)
+        specifier: ^5.4.2
+        version: 5.4.2(@types/node@22.5.0)
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
-        version: 1.1.8(vite@5.4.1(@types/node@22.4.1))
+        version: 1.1.8(vite@5.4.2(@types/node@22.5.0))
       vue-tsc:
         specifier: ^2.0.29
         version: 2.0.29(typescript@5.5.4)
@@ -1105,8 +1105,8 @@ packages:
   '@types/lodash@4.17.7':
     resolution: {integrity: sha512-8wTvZawATi/lsmNu10/j2hk1KEP0IvjubqPE3cu1Xz7xfXXt5oCq3SNUz4fMIP4XGF9Ky+Ue2tBA3hcS7LSBlA==}
 
-  '@types/node@22.4.1':
-    resolution: {integrity: sha512-1tbpb9325+gPnKK0dMm+/LMriX0vKxf6RnB0SZUqfyVkQ4fMgUSySqhxE/y8Jvs4NyF1yHzTfG9KlnkIODxPKg==}
+  '@types/node@22.5.0':
+    resolution: {integrity: sha512-DkFrJOe+rfdHTqqMg0bSNlGlQ85hSoh2TPzZyhHsXnMtligRWpxUySiyw8FY14ITt24HVCiQPWxS3KO/QlGmWg==}
 
   '@types/nprogress@0.2.3':
     resolution: {integrity: sha512-k7kRA033QNtC+gLc4VPlfnue58CM1iQLgn1IMAU8VPHGOj7oIHPp9UlhedEnD/Gl8evoCjwkZjlBORtZ3JByUA==}
@@ -1640,8 +1640,8 @@ packages:
   dateformat@2.2.0:
     resolution: {integrity: sha512-GODcnWq3YGoTnygPfi02ygEiRxqUxpJwuRHjdhJYuxpcZmDq4rjBiXYmbCCzStxo176ixfLT6i4NPwQooRySnw==}
 
-  dayjs@1.11.12:
-    resolution: {integrity: sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==}
+  dayjs@1.11.13:
+    resolution: {integrity: sha512-oaMBel6gjolK862uaPQOVTA7q3TZhuSvuMQAAglQDOWYO9A91IrAOUJEyKVlqJlHE0vq5p5UXxzdPfMH/x6xNg==}
 
   de-indent@1.0.2:
     resolution: {integrity: sha512-e/1zu3xH5MQryN2zdVaF0OrdNLUbvWxzMbi+iNA6Bky7l1RoP8a2fIbRocyHclXt/arDrrR6lL3TqFD9pMQTsg==}
@@ -1727,8 +1727,8 @@ packages:
   ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  electron-to-chromium@1.5.12:
-    resolution: {integrity: sha512-tIhPkdlEoCL1Y+PToq3zRNehUaKp3wBX/sr7aclAWdIWjvqAe/Im/H0SiCM4c1Q8BLPHCdoJTol+ZblflydehA==}
+  electron-to-chromium@1.5.13:
+    resolution: {integrity: sha512-lbBcvtIJ4J6sS4tb5TLp1b4LyfCdMkwStzXPyAgVgTRAsep4bvrAGaBOP7ZJtQMNJpSQ9SqG4brWOroNaQtm7Q==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -2040,8 +2040,8 @@ packages:
   humanize-ms@1.2.1:
     resolution: {integrity: sha512-Fl70vYtsAFb/C06PTS9dZBo7ihau+Tu/DNCk/OyHhea07S+aeMWpFFkUaXRa8fI+ScZbEI8dfSxwY7gxZ9SAVQ==}
 
-  husky@9.1.4:
-    resolution: {integrity: sha512-bho94YyReb4JV7LYWRWxZ/xr6TtOTt8cMfmQ39MQYJ7f/YE268s3GdghGwi+y4zAeqewE5zYLvuhV0M0ijsDEA==}
+  husky@9.1.5:
+    resolution: {integrity: sha512-rowAVRUBfI0b4+niA4SJMhfQwc107VLkBUgEYYAOQAbqDCnra1nYh83hF/MDmhYs9t9n1E3DuKOrs2LYNC+0Ag==}
     engines: {node: '>=18'}
     hasBin: true
 
@@ -2081,8 +2081,8 @@ packages:
   is-class-hotfix@0.0.6:
     resolution: {integrity: sha512-0n+pzCC6ICtVr/WXnN2f03TK/3BfXY7me4cjCAqT8TYXEl0+JBRoqBo94JJHXcyDSLUeWbNX8Fvy5g5RJdAstQ==}
 
-  is-core-module@2.15.0:
-    resolution: {integrity: sha512-Dd+Lb2/zvk9SKy1TGCt1wFJFo/MWBPMX5x7KcvLajWTGuomczdQX61PvY5yK6SVACwpoexWo81IfFyoKY2QnTA==}
+  is-core-module@2.15.1:
+    resolution: {integrity: sha512-z0vtXSwucUJtANQWldhbtbt7BnL0vxiFjIdDLAatwhDYty2bad6s+rijD6Ri4YuYJubLzIJLUidCh09e1djEVQ==}
     engines: {node: '>= 0.4'}
 
   is-docker@2.2.1:
@@ -3103,8 +3103,8 @@ packages:
     resolution: {integrity: sha512-O0+af1Gs50lyH1nUu3ZyYS1cRh01Q/kUKatTOkSs7jukXE6/NebucDVxyiDsA9AQ4JC1V1jUH9EO8JX2nMDgGQ==}
     engines: {node: '>=0.10.0'}
 
-  unimport@3.10.0:
-    resolution: {integrity: sha512-/UvKRfWx3mNDWwWQhR62HsoM3wxHwYdTq8ellZzMOHnnw4Dp8tovgthyW7DjTrbjDL+i4idOp06voz2VKlvrLw==}
+  unimport@3.11.0:
+    resolution: {integrity: sha512-mPrvWwy+li8TLUeglC7CIREFAbeEMkJ8X2Bhxg4iLdh+HraxjFyxqWv8V+4lzekoGHChx9ofv1qGOfvHBJBl0A==}
 
   universalify@0.2.0:
     resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
@@ -3190,8 +3190,8 @@ packages:
     peerDependencies:
       vite: '>=3'
 
-  vite@5.4.1:
-    resolution: {integrity: sha512-1oE6yuNXssjrZdblI9AfBbHCC41nnyoVoEZxQnID6yvQZAFBzxxkqoFLtHUMkYunL8hwOLEjgTuxpkRxvba3kA==}
+  vite@5.4.2:
+    resolution: {integrity: sha512-dDrQTRHp5C1fTFzcSaMxjk6vdpKvT+2/mIdE07Gw2ykehT49O0z/VHS3zZ8iV/Gh8BJJKHWOe5RjaNrW5xf/GA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -4082,10 +4082,10 @@ snapshots:
 
   '@plugin-web-update-notification/core@1.7.1': {}
 
-  '@plugin-web-update-notification/vite@1.7.1(vite@5.4.1(@types/node@22.4.1))':
+  '@plugin-web-update-notification/vite@1.7.1(vite@5.4.2(@types/node@22.5.0))':
     dependencies:
       '@plugin-web-update-notification/core': 1.7.1
-      vite: 5.4.1(@types/node@22.4.1)
+      vite: 5.4.2(@types/node@22.5.0)
 
   '@rollup/pluginutils@5.1.0(rollup@4.21.0)':
     dependencies:
@@ -4157,7 +4157,7 @@ snapshots:
 
   '@types/jsdom@21.1.7':
     dependencies:
-      '@types/node': 22.4.1
+      '@types/node': 22.5.0
       '@types/tough-cookie': 4.0.5
       parse5: 7.1.2
 
@@ -4167,7 +4167,7 @@ snapshots:
 
   '@types/lodash@4.17.7': {}
 
-  '@types/node@22.4.1':
+  '@types/node@22.5.0':
     dependencies:
       undici-types: 6.19.8
 
@@ -4175,7 +4175,7 @@ snapshots:
 
   '@types/qrcode@1.5.5':
     dependencies:
-      '@types/node': 22.4.1
+      '@types/node': 22.5.0
 
   '@types/tough-cookie@4.0.5': {}
 
@@ -4276,19 +4276,19 @@ snapshots:
     dependencies:
       vue: 3.4.38(typescript@5.5.4)
 
-  '@vitejs/plugin-vue-jsx@4.0.1(vite@5.4.1(@types/node@22.4.1))(vue@3.4.38(typescript@5.5.4))':
+  '@vitejs/plugin-vue-jsx@4.0.1(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))':
     dependencies:
       '@babel/core': 7.25.2
       '@babel/plugin-transform-typescript': 7.25.2(@babel/core@7.25.2)
       '@vue/babel-plugin-jsx': 1.2.2(@babel/core@7.25.2)
-      vite: 5.4.1(@types/node@22.4.1)
+      vite: 5.4.2(@types/node@22.5.0)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - supports-color
 
-  '@vitejs/plugin-vue@5.1.2(vite@5.4.1(@types/node@22.4.1))(vue@3.4.38(typescript@5.5.4))':
+  '@vitejs/plugin-vue@5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))':
     dependencies:
-      vite: 5.4.1(@types/node@22.4.1)
+      vite: 5.4.2(@types/node@22.5.0)
       vue: 3.4.38(typescript@5.5.4)
 
   '@volar/language-core@2.4.0':
@@ -4603,7 +4603,7 @@ snapshots:
   browserslist@4.23.3:
     dependencies:
       caniuse-lite: 1.0.30001651
-      electron-to-chromium: 1.5.12
+      electron-to-chromium: 1.5.13
       node-releases: 2.0.18
       update-browserslist-db: 1.1.0(browserslist@4.23.3)
 
@@ -4769,7 +4769,7 @@ snapshots:
 
   dateformat@2.2.0: {}
 
-  dayjs@1.11.12: {}
+  dayjs@1.11.13: {}
 
   de-indent@1.0.2: {}
 
@@ -4832,7 +4832,7 @@ snapshots:
 
   ee-first@1.1.1: {}
 
-  electron-to-chromium@1.5.12: {}
+  electron-to-chromium@1.5.13: {}
 
   emoji-regex@8.0.0: {}
 
@@ -5176,7 +5176,7 @@ snapshots:
     dependencies:
       ms: 2.1.3
 
-  husky@9.1.4: {}
+  husky@9.1.5: {}
 
   iconv-lite@0.6.3:
     dependencies:
@@ -5205,7 +5205,7 @@ snapshots:
 
   is-class-hotfix@0.0.6: {}
 
-  is-core-module@2.15.0:
+  is-core-module@2.15.1:
     dependencies:
       hasown: 2.0.2
 
@@ -5903,7 +5903,7 @@ snapshots:
 
   resolve@1.22.8:
     dependencies:
-      is-core-module: 2.15.0
+      is-core-module: 2.15.1
       path-parse: 1.0.7
       supports-preserve-symlinks-flag: 1.0.0
 
@@ -6206,7 +6206,7 @@ snapshots:
     dependencies:
       extend-shallow: 2.0.1
 
-  unimport@3.10.0(rollup@4.21.0):
+  unimport@3.11.0(rollup@4.21.0):
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.21.0)
       acorn: 8.12.1
@@ -6234,7 +6234,7 @@ snapshots:
       local-pkg: 0.5.0
       magic-string: 0.30.11
       minimatch: 9.0.5
-      unimport: 3.10.0(rollup@4.21.0)
+      unimport: 3.11.0(rollup@4.21.0)
       unplugin: 1.12.2
     optionalDependencies:
       '@vueuse/core': 11.0.1(vue@3.4.38(typescript@5.5.4))
@@ -6338,19 +6338,19 @@ snapshots:
       '@vue/shared': 3.4.38
       vue: 3.4.38(typescript@5.5.4)
 
-  vite-plugin-image-optimizer@1.1.8(vite@5.4.1(@types/node@22.4.1)):
+  vite-plugin-image-optimizer@1.1.8(vite@5.4.2(@types/node@22.5.0)):
     dependencies:
       ansi-colors: 4.1.3
       pathe: 1.1.2
-      vite: 5.4.1(@types/node@22.4.1)
+      vite: 5.4.2(@types/node@22.5.0)
 
-  vite@5.4.1(@types/node@22.4.1):
+  vite@5.4.2(@types/node@22.5.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.41
       rollup: 4.21.0
     optionalDependencies:
-      '@types/node': 22.4.1
+      '@types/node': 22.5.0
       fsevents: 2.3.3
 
   vscode-uri@3.0.8: {}
