@@ -4,9 +4,13 @@ import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'
+import { getWechatConfig } from '~/tools/wx'
 import { convertConfigToPx } from '~/utils/convert'
+import { isWeChat } from '~/utils/uaParser'
 
-registerWechatShare()
+if (isWeChat) {
+  registerWechatShare() ?? getWechatConfig()
+}
 
 registerButtonEffect()
 

@@ -1,6 +1,6 @@
-import { wechatShare } from "~/tools/wx"
-import { isHttps } from "~/utils/check"
-import { isWeChat } from "~/utils/uaParser"
+import { wechatShare } from '~/tools/wx'
+import { isHttps } from '~/utils/check'
+import { isWeChat } from '~/utils/uaParser'
 
 export function registerWechatShare() {
   const title = import.meta.env.VITE_APP_SHARE_TITLE
@@ -10,5 +10,8 @@ export function registerWechatShare() {
 
   if (isHttps() && isWeChat) {
     wechatShare({ title, desc, link, imgUrl })
+    return true
+  } else {
+    return false
   }
 }
