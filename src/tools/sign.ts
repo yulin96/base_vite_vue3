@@ -1,4 +1,4 @@
-import { showToast } from 'vant'
+import { toast } from 'vue-sonner'
 
 export default class LineCanvas {
   private el: HTMLElement
@@ -82,7 +82,7 @@ export default class LineCanvas {
   // 保存为图片
   public save = () => {
     if (!this.signing) {
-      showToast('请先签名')
+      toast.info('请先签名')
       return ''
     } else {
       return this.canvas.toDataURL('image/png', 0.8)

@@ -74,7 +74,7 @@ export function getPosition() {
         },
         (...args) => {
           reject(args)
-        }
+        },
       )
     } else {
       reject('你的浏览器不支持当前地理位置信息获取')
@@ -104,7 +104,7 @@ export function openScanQrCode() {
         .then((resultStr) => {
           if (resultStr) resolve(resultStr)
         })
-        .catch(() => { })
+        .catch(() => {})
         .finally(() => {
           isScanning = false
         })
@@ -114,7 +114,7 @@ export function openScanQrCode() {
         .then((res) => {
           if (res.text) resolve(res.text)
         })
-        .catch(() => { })
+        .catch(() => {})
         .finally(() => {
           isScanning = false
         })
@@ -133,4 +133,12 @@ export function showToast(option: (ToastOptions & { status?: 'success' | 'info' 
     : option?.message || ''
 
   return toast({ ...option, message: _message, type: 'html' })
+}
+
+export function setMark(name: string) {
+  const dom = document.querySelector(name) as HTMLElement | null
+  if (!dom) return
+
+  dom.style.outline = '1px solid #C7253E'
+  dom.addEventListener('focusin', () => dom.style.removeProperty('outline'), { once: true })
 }

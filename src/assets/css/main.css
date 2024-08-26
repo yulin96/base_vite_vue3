@@ -4,6 +4,7 @@
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';
 @import './plugin/shark.css';
+@import './plugin/sonner.css';
 @import './snippet.css';
 
 *::-webkit-scrollbar {
