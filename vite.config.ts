@@ -96,6 +96,7 @@ export default defineConfig(({ command }) => ({
             'onClickOutside',
             'useMagicKeys',
           ],
+          'vue-sonner': ['toast'],
         },
       ],
       dirs: ['./src/hooks/**', './src/router/**', './src/stores/**'],

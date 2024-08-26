@@ -1,13 +1,13 @@
 import nProgress from 'nprogress'
 
-nProgress.configure({
-  showSpinner: false,
-  minimum: 0.3,
-  trickleSpeed: 120,
-})
-
 let lock = false
 export function downloadFile(url: string, filename?: string) {
+  nProgress.configure({
+    showSpinner: false,
+    minimum: 0.3,
+    trickleSpeed: 120,
+  })
+
   return new Promise<void>((resolve, reject) => {
     if (lock) return
     lock = true
