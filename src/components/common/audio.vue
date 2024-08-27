@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <teleport to="body">
+  <Teleport to="body">
     <div
       class="absolute right-[50px] top-[50px] z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="['invert']"
@@ -67,5 +67,5 @@ onMounted(() => {
         @click="togglePlayStatus"
       />
     </div>
-  </teleport>
+  </Teleport>
 </template>

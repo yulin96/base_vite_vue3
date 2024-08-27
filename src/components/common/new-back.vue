@@ -56,7 +56,7 @@ watch(
 </script>
 
 <template>
-  <van-floating-bubble
+  <VanFloatingBubble
     v-if="backIns.show"
     class="size-90"
     @offset-change="offsetChange"
@@ -67,7 +67,7 @@ watch(
     :gap="10"
     @click="backIns.onClick()"
   >
-  </van-floating-bubble>
+  </VanFloatingBubble>
 </template>
 
 <style>
