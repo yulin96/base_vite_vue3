@@ -111,7 +111,26 @@ export default defineConfig(({ command }) => ({
     webUpdateNotice({
       hiddenDefaultNotification: true,
       logVersion: (version) => {
-        console.log(`🦄 🚧 version: %c${version}`, 'color: #3a4aca;')
+        const randomColor =
+          'rgb(' +
+          Math.floor(Math.random() * 256) +
+          ',' +
+          Math.floor(Math.random() * 256) +
+          ',' +
+          Math.floor(Math.random() * 256) +
+          ')'
+
+        console.log(
+          `🦄 ☕ %c version: ${version}
+%c        \\   ^__^
+         \\  (oo)\\_______
+            (__)\\       )\\/\\
+                ||----w |
+                ||     ||
+`,
+          `color:${randomColor};font-weight:600`,
+          `color:${randomColor}`,
+        )
       },
       injectFileBase: getNoticeUrl(),
       versionType: 'build_timestamp',

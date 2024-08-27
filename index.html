@@ -34,10 +34,6 @@
     <title>%VITE_APP_TITLE%</title>
 
     <script>
-      if ('%PROD%' === 'true') window.niu_production = true
-    </script>
-
-    <script>
       const params = new URLSearchParams(window.location.search)
       if (params.get('dev') !== null) {
         setTimeout(() => {
@@ -64,5 +60,4 @@
       })()
     }
   </script>
-  <script src="https://oss.eventnet.cn/H5/zz/public/mou~.js"></script>
 </html>
