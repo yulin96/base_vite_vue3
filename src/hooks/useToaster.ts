@@ -1,25 +1,21 @@
 import { toast } from 'vue-sonner'
 import { usePromise } from '../utils/common'
 
-export function useToaster(loadingInfo: string, successInfo: string, errorInfo?: string) {
-  const [promise, resolve, reject] = usePromise()
+export function useToaster(loadingInfo: string) {
+  const [promise, resolve, reject] = usePromise<string>()
 
-  const _timer = setTimeout(() => {
+  const toastTimeout = setTimeout(() => {
     reject()
   }, 30000)
 
   toast.promise(promise, {
     loading: loadingInfo,
     finally: () => {
-      clearTimeout(_timer)
+      clearTimeout(toastTimeout)
     },
-    success: () => successInfo,
-    ...(errorInfo
-      ? {
-          error: () => errorInfo,
-        }
-      : {}),
+    success: (e) => e,
+    error: (e) => e,
   })
 
-  return [resolve, reject]
+  return [resolve, reject as (value: string) => void] as const
 }

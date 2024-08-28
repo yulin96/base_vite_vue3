@@ -152,14 +152,14 @@ export function importScript(url: string) {
  * 创建一个带有 Promise 的工具函数。
  * @returns 一个包含 Promise、resolve 和 reject 函数的元组。
  */
-export function usePromise(): [Promise<unknown>, (value?: unknown) => void, (reason?: any) => void] {
-  let resolve: (value: unknown) => void = () => { }
-  let reject: (reason?: any) => void = () => { }
-  const promise = new Promise((res, rej) => {
+export function usePromise<T>() {
+  let resolve: (value: T) => void = () => {}
+  let reject: (err?: any) => void = () => {}
+  const promise = new Promise<T>((res, rej) => {
     resolve = res
     reject = rej
   })
-  return [promise, resolve, reject]
+  return [promise, resolve, reject] as const
 }
 
 /**
