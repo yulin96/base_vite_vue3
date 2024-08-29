@@ -2,20 +2,32 @@ import { toast } from 'vue-sonner'
 import { usePromise } from '../utils/common'
 
 export function useToaster(loadingInfo: string) {
-  const [promise, resolve, reject] = usePromise<string>()
+  const isProcessing = ref(false)
 
-  const toastTimeout = setTimeout(() => {
-    reject()
-  }, 30000)
+  function createToast(delay = 500) {
+    const [promise, resolve, reject] = usePromise<string>()
+    let toastTimeout: NodeJS.Timeout | undefined = undefined
 
-  toast.promise(promise, {
-    loading: loadingInfo,
-    finally: () => {
-      clearTimeout(toastTimeout)
-    },
-    success: (e) => e,
-    error: (e) => e,
-  })
+    isProcessing.value = true
+    const toastId = toast.promise(promise, {
+      loading: loadingInfo,
+      finally: () => {
+        clearTimeout(toastTimeout)
 
-  return [resolve, reject as (value: string) => void] as const
+        setTimeout(() => {
+          isProcessing.value = false
+        }, delay)
+      },
+      success: (e) => e,
+      error: (e) => e,
+    })
+
+    toastTimeout = setTimeout(() => {
+      toast.dismiss(toastId)
+    }, 30000)
+
+    return [resolve, reject] as const
+  }
+
+  return [isProcessing, createToast] as const
 }
