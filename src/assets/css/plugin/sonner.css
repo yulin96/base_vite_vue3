@@ -16,6 +16,25 @@
   --error-text: #e60000;
 }
 
+/* 白色背景 */
+:root [data-sonner-toaster][data-theme='light'] {
+  --normal-bg: #fffe;
+  --normal-border: var(--gray4);
+  --normal-text: var(--gray12);
+  --success-bg: #fffe;
+  --success-border: #fffe;
+  --success-text: #008a2e;
+  --info-bg: #fffe;
+  --info-border: #fffe;
+  --info-text: #0973dc;
+  --warning-bg: #fffe;
+  --warning-border: #fffe;
+  --warning-text: #dc7609;
+  --error-bg: #fffe;
+  --error-border: #fffe;
+  --error-text: #e60000;
+}
+
 #app [data-sonner-toaster][data-theme='light'] li {
   border-radius: 6px;
   backdrop-filter: blur(12px);
