@@ -9,6 +9,10 @@
   text-size-adjust: 100%;
 }
 
+*::-webkit-scrollbar {
+  display: none;
+}
+
 *::after,
 *::before {
   box-sizing: border-box;
@@ -43,9 +47,32 @@ html.cover,
   overflow-y: hidden;
 }
 
-input,
-select,
-textarea {
+code {
+  font-family: inherit;
+}
+
+[code] {
+  pointer-events: none;
+}
+
+img {
+  display: block;
+  max-width: none;
+  object-fit: contain;
+}
+
+img,
+video {
+  max-width: none;
+}
+
+canvas {
+  display: block;
+}
+
+#app input,
+#app select,
+#app textarea {
   appearance: none;
   user-select: text;
   background: transparent;
@@ -55,17 +82,25 @@ textarea {
   min-width: 0;
 }
 
-input:focus {
+#app input:focus {
   appearance: none;
   background: none;
   border: none;
 }
 
-img {
-  display: block;
-  max-width: none;
+#app input {
+  caret-color: currentColor;
 }
 
-canvas {
-  display: block;
+#app input::placeholder {
+  color: #a3a9b5;
+  transition: padding 0.2s ease;
+}
+
+#app input:focus::placeholder {
+  padding-left: 6px;
+}
+
+#app select[content=''] {
+  color: #a3a9b5;
 }

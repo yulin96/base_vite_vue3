@@ -7,10 +7,6 @@
 @import './plugin/sonner.css';
 @import './snippet.css';
 
-*::-webkit-scrollbar {
-  display: none;
-}
-
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -56,31 +52,6 @@
   /* overscroll-behavior: none; */
 }
 
-img,
-video {
-  max-width: none;
-}
-
-img {
-  object-fit: contain;
-}
-
-code {
-  font-family: inherit;
-}
-
-[code] {
-  pointer-events: none;
-}
-
-input {
-  caret-color: currentColor;
-}
-
-input::placeholder {
-  color: #a3a9b5;
-}
-
 /* @font-face {
   font-family: f-yuan;
   src:
@@ -88,9 +59,8 @@ input::placeholder {
     url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
     url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
   font-display: swap;
-} */
+}
 
-/*
 *,
 input {
   font-family:
