@@ -16,12 +16,20 @@
   --error-text: #e60000;
 }
 
-[data-sonner-toaster][data-theme='light'] li {
+#app [data-sonner-toaster][data-theme='light'] li {
   border-radius: 6px;
   backdrop-filter: blur(12px);
   pointer-events: none;
 }
 
-[data-sonner-toast] [data-description] {
-  font-size: 22px;
+#app [data-sonner-toast] [data-title] {
+  font-size: 28px;
+}
+
+#app [data-sonner-toast][data-styled='true'] {
+  padding: 36px 32px;
+}
+
+#app [data-sonner-toast] [data-description] {
+  font-size: 26px;
 }
