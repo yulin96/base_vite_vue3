@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { redirectIfPc } from '~/tools/redirectIfPc'
 import { getOpenId } from '~/tools/user/getOpenId'
-import { pcSupport } from '~/tools/init/pcSupport'
 import { toUrl } from '~/utils/global'
 
 const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
@@ -21,7 +21,7 @@ router.beforeEach((to) => {
 
 onMounted(async () => {
   if (import.meta.env.VITE_APP_OPENPC == '1') {
-    await pcSupport()
+    await redirectIfPc()
   }
   if (!(await getOpenId())) show.value = true
 })
