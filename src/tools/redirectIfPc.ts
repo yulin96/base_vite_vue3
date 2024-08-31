@@ -1,7 +1,7 @@
 import { toUrl } from '~/utils/global'
 import { isMobile } from '~/utils/uaParser'
 
-export function pcSupport() {
+export function redirectIfPc() {
   return new Promise<void>((resolve, _) => {
     const paramsSearch = new URLSearchParams(window.location.search)
     const params: { [x: string]: string}  = {}

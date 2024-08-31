@@ -1,5 +1,5 @@
-import { pcSupport } from '~/tools/init/pcSupport'
+import { redirectIfPc } from '~/tools/redirectIfPc'
 
 if (import.meta.env.VITE_APP_OPENPC == '1') {
-  pcSupport().then(() => {})
+  redirectIfPc().then(() => {})
 }
