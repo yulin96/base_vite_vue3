@@ -157,9 +157,9 @@ export default defineConfig(({ command }) => ({
         pc: path.resolve(__dirname, 'pc.html'),
       },
       output: {
-        chunkFileNames: 'assets/static/[name]-[hash].js',
         manualChunks(id) {
           for (const dependency of splitDependencies) if (id.includes(dependency)) return dependency
+          return 'index'
         },
       },
     },
