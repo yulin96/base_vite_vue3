@@ -159,7 +159,7 @@ export default defineConfig(({ command }) => ({
       output: {
         manualChunks(id) {
           for (const dependency of splitDependencies) if (id.includes(dependency)) return dependency
-          return 'index'
+          return
         },
       },
     },
