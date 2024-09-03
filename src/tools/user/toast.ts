@@ -1,7 +1,15 @@
 import type { ToastOptions } from 'vant'
 import { showToast as toast } from 'vant'
 
-export function showToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
+const { start } = useLoading([
+  'https://oss.eventnet.cn/H5/zz/public/svg/success.svg',
+  'https://oss.eventnet.cn/H5/zz/public/svg/info.svg',
+  'https://oss.eventnet.cn/H5/zz/public/svg/fail.svg',
+])
+
+start()
+
+export function showStatusToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
   if (typeof option === 'string') return toast(option)
 
   const _message = option?.status
