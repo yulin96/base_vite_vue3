@@ -26,4 +26,4 @@ export const useMediaSession = (ele: Ref<HTMLAudioElement | undefined>, option?:
     navigator.mediaSession.setActionHandler('play', null)
     navigator.mediaSession.setActionHandler('pause', null)
   })
-};
+}

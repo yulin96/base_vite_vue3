@@ -1,7 +1,7 @@
-import { biz } from "dingtalk-jsapi"
-import { showDialog } from "vant"
-import { wechatScan } from "~/tools/wx"
-import { isDingDing, isWeChat } from "~/utils/uaParser"
+import { biz } from 'dingtalk-jsapi'
+import { showDialog } from 'vant'
+import { wechatScan } from '~/tools/wx'
+import { isDingDing, isWeChat } from '~/utils/uaParser'
 
 let isScanning = false
 export function openScanQrCode() {

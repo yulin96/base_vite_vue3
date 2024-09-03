@@ -42,7 +42,7 @@ export function useSlide({ ele, prev, next, prevScroll, nextScroll, slideNumber 
     },
     {
       flush: 'pre',
-    }
+    },
   )
 
   const onMove = (t: TouchEvent) => {
@@ -86,8 +86,10 @@ export function useSlide({ ele, prev, next, prevScroll, nextScroll, slideNumber 
       prev?.()
     }
 
-    if (t.deltaY > -60 &&
-      Math.ceil(ele.value.scrollTop) + Math.ceil(ele.value.clientHeight) + 2 >= ele.value.scrollHeight) {
+    if (
+      t.deltaY > -60 &&
+      Math.ceil(ele.value.scrollTop) + Math.ceil(ele.value.clientHeight) + 2 >= ele.value.scrollHeight
+    ) {
       next?.()
     }
   }

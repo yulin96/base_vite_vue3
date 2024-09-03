@@ -2,7 +2,8 @@ export function useLoading(imgList: string[], next?: () => void, delay: number =
   let sto: NodeJS.Timeout
   const progressValue = ref(0)
 
-  const count = computed(() => (progressValue.value / imgList.length) * 100 >= 100 ? 100 : (progressValue.value / imgList.length) * 100
+  const count = computed(() =>
+    (progressValue.value / imgList.length) * 100 >= 100 ? 100 : (progressValue.value / imgList.length) * 100,
   )
 
   const start = () => {
