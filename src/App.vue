@@ -37,24 +37,24 @@ onMounted(() => {})
 </script>
 
 <template>
-  <Toaster :rich-colors="true" :expand="false" position="top-center" :duration="2000" />
+  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="2000" />
 
-  <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
-    <RouterView v-slot="{ Component }">
+  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+    <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <Transition :name>
-          <KeepAlive :include="[]">
-            <Suspense @resolve="isReady">
+        <transition :name>
+          <keep-alive :include="[]">
+            <suspense @resolve="isReady">
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <CommonLoading></CommonLoading>
+                <common-loading></common-loading>
               </template>
-            </Suspense>
-          </KeepAlive>
-        </Transition>
+            </suspense>
+          </keep-alive>
+        </transition>
       </template>
-    </RouterView>
-  </VanConfigProvider>
+    </router-view>
+  </van-config-provider>
 </template>
 
 <style>
