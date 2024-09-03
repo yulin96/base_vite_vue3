@@ -31,10 +31,18 @@
     <link rel="apple-touch-icon" href="%VITE_APP_SHARE_IMGURL%" />
     <link rel="dns-prefetch" href="%VITE_APP_API_URL%" />
 
-    <title>%VITE_APP_TITLE%</title>
-
     <script>
+      function _isMobileDevice() {
+        return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
+      }
+
       const params = new URLSearchParams(window.location.search)
+
+      if (!_isMobileDevice() && params.get('device') !== 'PC') {
+        params.delete('device')
+        window.location.href = './pc.html?' + params.toString()
+      }
+
       if (params.get('dev') !== null) {
         setTimeout(() => {
           const vConsole = document.createElement('script')
@@ -44,6 +52,8 @@
         }, 0)
       }
     </script>
+
+    <title>%VITE_APP_TITLE%</title>
   </head>
   <body>
     <div id="app"></div>
