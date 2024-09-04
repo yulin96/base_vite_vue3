@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { maxLength = 4 } = defineProps<{ maxLength?: number }>()
 
-const emits = defineEmits<{ close: [string] }>()
+const emits = defineEmits<{ next: [string] }>()
 
 const showKeyboard = defineModel<boolean>({ required: true })
 const password = ref('')
@@ -11,7 +11,7 @@ const onPopupClose = () => {
 }
 
 const onKeyboardClose = () => {
-  emits('close', password.value)
+  emits('next', password.value)
 }
 </script>
 
