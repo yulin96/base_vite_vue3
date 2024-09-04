@@ -9,7 +9,7 @@ const { like, json } = defineProps<{ like: boolean; json: any }>()
 //     window['lottieJson-like'] = res
 //   })
 
-const likeEle = ref<HTMLDivElement | null>(null)
+const likeRef = ref<HTMLDivElement>()
 
 let lottieLike: AnimationItem | null = null
 
@@ -23,9 +23,9 @@ watchPostEffect(() => {
 
 /*  */
 onMounted(() => {
-  if (!likeEle.value) return console.error('likeEle is null')
+  if (!likeRef.value) return console.error('likeEle is null')
   lottieLike = Lottie.loadAnimation({
-    container: likeEle.value,
+    container: likeRef.value,
     loop: false,
     autoplay: false,
     renderer: 'canvas',
@@ -44,6 +44,6 @@ onUnmounted(() => {
 
 <template>
   <div class="h-100 w-100">
-    <div class="h-full w-full scale-[1.2]" ref="likeEle"></div>
+    <div class="h-full w-full scale-[1.2]" ref="likeRef"></div>
   </div>
 </template>

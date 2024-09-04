@@ -27,8 +27,8 @@ const choose = (item: string) => {
 }
 
 onMounted(() => {
-  const el = document.querySelector('[data-search-select]')!
-  const parent = el.parentElement!
+  const searchDom = document.querySelector('[data-search-select]')!
+  const parent = searchDom.parentElement!
 
   parent.addEventListener('click', (e) => {
     searchIns.value.show = !searchIns.value.show
@@ -44,7 +44,6 @@ onMounted(() => {
   <Transition name="slide-down">
     <div
       data-search-select
-      ref="el"
       v-show="searchIns.show"
       class="absolute top-[100%] flex h-600 w-full flex-col overflow-hidden rounded-6 bg-white shadow-lg"
     >

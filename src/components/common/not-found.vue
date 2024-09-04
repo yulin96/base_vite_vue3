@@ -12,15 +12,15 @@ const { user } = useStore()
 const id = String(user.info.errId || randomNum(1, 10))
 user.info.errId = id
 
-const errorEle = ref<HTMLDivElement | null>(null)
+const errorRef = ref<HTMLDivElement>()
 
 /*  */
 onMounted(() => {
-  if (!errorEle.value) return console.error('errorEle is null')
-  errorEle &&
+  if (!errorRef.value) return console.error('errorEle is null')
+  errorRef &&
     Lottie?.loadAnimation({
       path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
-      container: errorEle.value,
+      container: errorRef.value,
       loop: true,
       autoplay: true,
     })
@@ -30,7 +30,7 @@ onMounted(() => {
 <template>
   <div class="wrapperErr">
     <div class="error">ERROR 404</div>
-    <div ref="errorEle"></div>
+    <div ref="errorRef"></div>
     <div @click="toIndex" class="back">回首页</div>
   </div>
 </template>
