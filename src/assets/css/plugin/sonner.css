@@ -8,30 +8,11 @@
   --info-bg: #f0f8ffee;
   --info-border: #d3e0fd;
   --info-text: #0973dc;
-  --warning-bg: #fffcf0ee;
+  --warning-bg: #fffcf000;
   --warning-border: #fdf5d3;
   --warning-text: #dc7609;
   --error-bg: #fff0f0ee;
   --error-border: #ffe0e1;
-  --error-text: #e60000;
-}
-
-/* 白色背景 */
-:root [data-sonner-toaster][data-theme='light'] {
-  --normal-bg: #fffe;
-  --normal-border: var(--gray4);
-  --normal-text: var(--gray12);
-  --success-bg: #fffe;
-  --success-border: #fffe;
-  --success-text: #008a2e;
-  --info-bg: #fffe;
-  --info-border: #fffe;
-  --info-text: #0973dc;
-  --warning-bg: #fffe;
-  --warning-border: #fffe;
-  --warning-text: #dc7609;
-  --error-bg: #fffe;
-  --error-border: #fffe;
   --error-text: #e60000;
 }
 

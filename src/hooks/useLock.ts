@@ -34,7 +34,7 @@ export function useLock(showProgress = true, delay = 500) {
           resolve(res)
         })
         .catch((err) => {
-          toast.warning('正在加载中....')
+          toast.error('正在加载中....', { duration: 3600 })
           reject(err)
         })
         .finally(() => {
@@ -72,7 +72,7 @@ export function useLock(showProgress = true, delay = 500) {
           resolve(res)
         })
         .catch((err) => {
-          toast.warning('正在加载中....')
+          toast.error('正在加载中....', { duration: 3600 })
           reject(err)
         })
         .finally(() => {
