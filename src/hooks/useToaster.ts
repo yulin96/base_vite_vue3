@@ -1,5 +1,5 @@
 import { toast } from 'vue-sonner'
-import { usePromise } from '../utils/common'
+import { usePromise } from '~/hooks/usePromise'
 
 export function useToaster(loadingInfo: string) {
   const isProcessing = ref(false)

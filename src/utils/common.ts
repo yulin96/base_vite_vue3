@@ -149,20 +149,6 @@ export function importScript(url: string) {
 }
 
 /**
- * 创建一个带有 Promise 的工具函数。
- * @returns 一个包含 Promise、resolve 和 reject 函数的元组。
- */
-export function usePromise<T>() {
-  let resolve: (value: T) => void = () => {}
-  let reject: (err?: any) => void = () => {}
-  const promise = new Promise<T>((res, rej) => {
-    resolve = res
-    reject = rej
-  })
-  return [promise, resolve, reject] as const
-}
-
-/**
  * 从URL中删除指定的参数。
  * @param url - 要处理的URL字符串。
  * @param param - 要删除的参数名称或参数名称数组。
