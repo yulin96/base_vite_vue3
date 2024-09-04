@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { useEventListener, useToggle } from '@vueuse/core'
 
-withDefaults(defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>(), {
-  playIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
-  pausedIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
-})
+const {
+  playIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
+  pausedIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
+} = defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>()
 
 const audio = ref<HTMLAudioElement>()
 const playImg = ref<HTMLImageElement>()
@@ -45,7 +45,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <teleport to="body">
+  <Teleport to="body">
     <div
       class="absolute right-[50px] top-[50px] z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="['invert']"
@@ -67,5 +67,5 @@ onMounted(() => {
         @click="togglePlayStatus"
       />
     </div>
-  </teleport>
+  </Teleport>
 </template>

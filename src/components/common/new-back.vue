@@ -2,7 +2,7 @@
 import { useStore } from '~/stores'
 import type { linkMapType } from '~/utils/typings'
 
-const props = defineProps<{
+const { icon, axis, magnetic, linkMap } = defineProps<{
   icon: string
   axis?: 'x' | 'y' | 'xy'
   magnetic?: 'x' | 'y'
@@ -44,8 +44,8 @@ watch(
   () => route.name,
   (newVal) => {
     const name = newVal as string
-    if (name && props.linkMap?.[name]) {
-      backIns.value.name = props.linkMap[name]
+    if (name && linkMap?.[name]) {
+      backIns.value.name = linkMap[name]
       backIns.value.show = true
     } else {
       backIns.value.show = false
@@ -56,18 +56,18 @@ watch(
 </script>
 
 <template>
-  <van-floating-bubble
+  <VanFloatingBubble
     v-if="backIns.show"
-    class="size-90"
     @offset-change="offsetChange"
-    :offset="backIns.offset"
-    :icon="props.icon"
-    :axis="props.axis ?? 'xy'"
-    :magnetic="props.magnetic ?? 'x'"
-    :gap="10"
     @click="backIns.onClick()"
+    class="size-90"
+    :offset="backIns.offset"
+    :icon="icon"
+    :axis="axis ?? 'xy'"
+    :magnetic="magnetic ?? 'x'"
+    :gap="10"
   >
-  </van-floating-bubble>
+  </VanFloatingBubble>
 </template>
 
 <style>

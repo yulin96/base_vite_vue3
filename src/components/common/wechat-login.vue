@@ -3,12 +3,12 @@ import { redirectIfPc } from '~/tools/redirectIfPc'
 import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 
-const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
+const { name = '互动微平台', code } = defineProps<{ code: string; name?: string }>()
 
 const show = ref(false)
 
 const openLink = () => {
-  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name)}&state=${props.code}&type=2`
+  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(name)}&state=${code}&type=2`
   toUrl(url)
 }
 
@@ -28,7 +28,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <van-popup
+  <VanPopup
     data-z-wx-login
     :show="show"
     :close-on-click-overlay="false"
@@ -63,5 +63,5 @@ onMounted(async () => {
         <p class="text-30">微信一键登录</p>
       </button>
     </div>
-  </van-popup>
+  </VanPopup>
 </template>

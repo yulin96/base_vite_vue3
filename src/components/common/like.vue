@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Lottie, { type AnimationItem } from 'lottie-web'
 
-const props = defineProps<{ like: boolean; json: any }>()
+const { like, json } = defineProps<{ like: boolean; json: any }>()
 
 // fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
 //   .then((res) => res.json())
@@ -14,7 +14,7 @@ const likeEle = ref<HTMLDivElement | null>(null)
 let lottieLike: AnimationItem | null = null
 
 watchPostEffect(() => {
-  if (props.like) {
+  if (like) {
     lottieLike?.goToAndPlay(0, true)
   } else {
     lottieLike?.goToAndStop(0, true)
@@ -29,11 +29,11 @@ onMounted(() => {
     loop: false,
     autoplay: false,
     renderer: 'canvas',
-    animationData: props.json,
+    animationData: json,
   })
 
   lottieLike.addEventListener('config_ready', () => {
-    lottieLike?.goToAndStop(props.like ? lottieLike.totalFrames - 1 : 0, true)
+    lottieLike?.goToAndStop(like ? lottieLike.totalFrames - 1 : 0, true)
   })
 })
 

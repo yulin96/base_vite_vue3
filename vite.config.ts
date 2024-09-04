@@ -44,10 +44,7 @@ export default defineConfig(({ command }) => ({
       dts: 'typings/typed-router.d.ts',
       importMode: 'sync',
     }),
-    vue({
-      features: {},
-      script: {},
-    }),
+    vue({}),
     vueJsx(),
     Components({
       dirs: ['src/components'],

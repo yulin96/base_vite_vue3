@@ -1,5 +1,6 @@
 <script setup lang="ts">
-withDefaults(defineProps<{ maxLength?: number }>(), { maxLength: 4 })
+const { maxLength = 4 } = defineProps<{ maxLength?: number }>()
+
 const emits = defineEmits<{ close: [string] }>()
 
 const showKeyboard = defineModel<boolean>({ required: true })
@@ -15,15 +16,15 @@ const onKeyboardClose = () => {
 </script>
 
 <template>
-  <van-popup v-model:show="showKeyboard" position="bottom" class="bg-[#f2f3f5]" @closed="onPopupClose">
-    <van-password-input
+  <VanPopup v-model:show="showKeyboard" position="bottom" class="bg-[#f2f3f5]" @closed="onPopupClose">
+    <VanPasswordInput
       class="mx-12 pb-[520px] pt-50 [&_li]:rounded-8"
       :value="password"
       :length="maxLength"
       :gutter="6"
       :focused="true"
     />
-    <van-number-keyboard
+    <VanNumberKeyboard
       v-model="password"
       :maxlength="maxLength"
       :show="true"
@@ -33,5 +34,5 @@ const onKeyboardClose = () => {
       :hide-on-click-outside="false"
       @close="onKeyboardClose"
     />
-  </van-popup>
+  </VanPopup>
 </template>
