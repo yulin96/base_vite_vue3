@@ -48,7 +48,7 @@
     "lucky-canvas": "^1.7.27",
     "nprogress": "^0.2.0",
     "pinia": "^2.2.2",
-    "pinia-plugin-persistedstate": "^3.2.3",
+    "pinia-plugin-persistedstate": "^4.0.0",
     "qrcode": "^1.5.4",
     "rough-notation": "^0.5.1",
     "typed.js": "^2.1.0",

@@ -16,27 +16,22 @@ interface IWxInfo {
 interface IUserStore {
   info: Partial<IInfo>
   wxInfo: Partial<IWxInfo>
+  ignore: Record<string, any>
   [x: string]: any
 }
 
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive<IUserStore>({ info: {}, wxInfo: {} })
+    const user = reactive<IUserStore>({ info: {}, wxInfo: {}, ignore: {} })
 
-    const clearUser = () => {
-      user.info = {}
-      user.wxInfo = {}
-    }
-
-    return { user, clearUser }
+    return { user }
   },
   {
     persist: {
       key: import.meta.env.VITE_APP_LOCALSTORAGE_NAME || 'test',
-      paths: undefined,
-      beforeRestore: () => {},
-      debug: true,
+      pick: undefined,
+      omit: ['user.ignore'],
     },
   },
 )
