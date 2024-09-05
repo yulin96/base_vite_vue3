@@ -13,7 +13,7 @@
     "build": "run-p type-check \"build-only {@}\" -- && pnpm upDist",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "vite build",
+    "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint --fix .",
     "format": "prettier --write .",

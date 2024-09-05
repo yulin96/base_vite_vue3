@@ -13,6 +13,18 @@
 ```bash
 pnpm install
 pnpm dev
+
+# build 打包会自动上传到oss 需要在环境变量配置 zAccessKeyId zAccessKeySecret zBucket
+# 配置方式
+# windows下配置 setx zAccessKeyId "xxx"
+# mac下配置 export zAccessKeyId="xxx"
+# 上传路径位于.env中的VITE_OSS_ROOT_DIRNAME/VITE_OSS_DIRNAME
+pnpm build
+
+# 只打包不上传
+pnpm build-only
+
+
 ```
 
 ## 项目结构
