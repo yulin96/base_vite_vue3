@@ -1,7 +1,9 @@
 <script setup lang="ts">
+import { useTemplateRef } from 'vue'
+
 const { flip } = defineProps<{ flip?: 'front' | 'back' }>()
 
-const flipRef = ref<HTMLDivElement>()
+const flipRef = useTemplateRef('flipRef')
 
 watchPostEffect(() => {
   if (flip === 'front') {

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Lottie, { type AnimationItem } from 'lottie-web'
+import { useTemplateRef } from 'vue'
 
 const { like, json } = defineProps<{ like: boolean; json: any }>()
 
@@ -9,7 +10,7 @@ const { like, json } = defineProps<{ like: boolean; json: any }>()
 //     window['lottieJson-like'] = res
 //   })
 
-const likeRef = ref<HTMLDivElement>()
+const likeRef = useTemplateRef('likeRef')
 
 let lottieLike: AnimationItem | null = null
 

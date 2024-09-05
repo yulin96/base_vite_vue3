@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Lottie from 'lottie-web'
+import { useTemplateRef } from 'vue'
 import { useStore } from '~/stores'
 import { randomNum } from '~/utils/common'
 
@@ -12,7 +13,7 @@ const { user } = useStore()
 const id = String(user.info.errId || randomNum(1, 10))
 user.info.errId = id
 
-const errorRef = ref<HTMLDivElement>()
+const errorRef = useTemplateRef('errorRef')
 
 /*  */
 onMounted(() => {

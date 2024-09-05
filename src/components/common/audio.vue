@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { useEventListener, useToggle } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
 const {
   playIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
   pausedIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
 } = defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>()
 
-const audioRef = ref<HTMLAudioElement>()
-const playIconRef = ref<HTMLImageElement>()
+const audioRef = useTemplateRef('audioRef')
+const playIconRef = useTemplateRef('playIconRef')
 
 const [isPlay, toggleIsPlay] = useToggle(false)
 
