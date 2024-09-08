@@ -56,7 +56,7 @@ watch(
 </script>
 
 <template>
-  <VanFloatingBubble
+  <van-floating-bubble
     v-if="backIns.show"
     @offset-change="offsetChange"
     @click="backIns.onClick()"
@@ -67,7 +67,7 @@ watch(
     :magnetic="magnetic ?? 'x'"
     :gap="10"
   >
-  </VanFloatingBubble>
+  </van-floating-bubble>
 </template>
 
 <style>
