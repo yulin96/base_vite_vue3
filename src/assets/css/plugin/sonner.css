@@ -8,10 +8,28 @@
   --info-bg: #f0f8ffee;
   --info-border: #d3e0fd;
   --info-text: #0973dc;
-  --warning-bg: #fffcf000;
+  --warning-bg: #fffcf0ee;
   --warning-border: #fdf5d3;
   --warning-text: #dc7609;
   --error-bg: #fff0f0ee;
+  --error-border: #ffe0e1;
+  --error-text: #e60000;
+}
+
+:root [data-sonner-toaster][data-theme='light'] {
+  --normal-bg: #fff;
+  --normal-border: var(--gray4);
+  --normal-text: var(--gray12);
+  --success-bg: #fff;
+  --success-border: #d3fde5;
+  --success-text: #008a2e;
+  --info-bg: #fff;
+  --info-border: #d3e0fd;
+  --info-text: #0973dc;
+  --warning-bg: #fff;
+  --warning-border: #fdf5d3;
+  --warning-text: #dc7609;
+  --error-bg: #fff;
   --error-border: #ffe0e1;
   --error-text: #e60000;
 }
