@@ -17,7 +17,7 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "upDist": "node ./upDist.js",
+    "upDist": "node ./ossDeploy.js",
     "prepare": "husky"
   },
   "dependencies": {
