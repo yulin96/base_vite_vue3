@@ -13,6 +13,18 @@ const interceptor = (instance: AxiosInstance) => {
       baseUrl: response.config?.baseURL ?? '',
     }
 
+    function nullToEmpty(obj: any) {
+      if (typeof obj === 'object' && obj !== null)
+        for (const key in obj) {
+          if (obj[key] === null) {
+            obj[key] = ''
+          } else if (typeof obj[key] === 'object') {
+            nullToEmpty(obj[key])
+          }
+        }
+    }
+    nullToEmpty(response.data)
+
     const method = response.config.method?.toLowerCase()
     const data = method === 'post' ? response.config?.data : response.config?.params
     requestBody.data = isFromData(data) ? formDataToObj(data) : data
