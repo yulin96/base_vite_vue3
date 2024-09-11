@@ -187,3 +187,18 @@ export function convertConfigToPx(config?: ConfigProviderThemeVars, screenSize =
 
   return newConfig
 }
+
+/**
+ * 将空值转换为空字符串
+ * @param obj - 需要转换的对象
+ */
+export function convertNullToEmpty(obj: any) {
+  if (typeof obj === 'object' && obj !== null)
+    for (const key in obj) {
+      if (obj[key] === null) {
+        obj[key] = ''
+      } else if (typeof obj[key] === 'object') {
+        convertNullToEmpty(obj[key])
+      }
+    }
+}
