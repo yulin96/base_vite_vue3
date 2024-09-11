@@ -38,7 +38,10 @@ const ossDirName = `${rootName}/${uploadDirName}`
 const imgs = []
 const upFileList = []
 putDir(localDirName, ossDirName)
-fs.writeFileSync('./dist/imgResources.js', `window.IMG_RESOURCES = ['${imgs.join("','")}']`)
+fs.writeFileSync(
+  './dist/imgResources.js',
+  imgs.length ? `window.IMG_RESOURCES = ['${imgs.join("','")}']` : 'window.IMG_RESOURCES = []',
+)
 
 if (upFileList.length === 0) {
   console.log('没有需要上传的文件')
