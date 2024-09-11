@@ -1,6 +1,6 @@
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import { isFromData } from '~/utils/common'
-import { convertNullToEmpty, formDataToObj } from '~/utils/convert'
+import { formDataToObj } from '~/utils/convert'
 
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)
@@ -12,8 +12,6 @@ const interceptor = (instance: AxiosInstance) => {
       method: response.config?.method,
       baseUrl: response.config?.baseURL ?? '',
     }
-
-    convertNullToEmpty(response.data)
 
     const method = response.config.method?.toLowerCase()
     const data = method === 'post' ? response.config?.data : response.config?.params
