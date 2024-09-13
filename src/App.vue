@@ -5,7 +5,6 @@ import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'
 import { getWechatConfig } from '~/tools/wx'
-import { convertConfigToPx } from '~/utils/convert'
 import { isWeChat } from '~/utils/uaParser'
 
 if (isWeChat) {
@@ -15,7 +14,7 @@ if (isWeChat) {
 registerButtonEffect()
 
 /* 路由动画 */
-const { name, isReady } = useRouteTransition('zoom')
+const { name, isReady } = useRouteTransition('slide')
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
@@ -23,21 +22,20 @@ const { name, isReady } = useRouteTransition('zoom')
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
-const themeVars = convertConfigToPx({
+const themeVars = {
   black: '#1d1d1f',
   primaryColor: '#344bb6',
   floatingBubbleBackground: 'transparent',
 
   toastPositionBottomDistance: '9%',
   toastLoadingIconColor: '#111',
-  toastFontSize: '30px',
-})
+}
 
 onMounted(() => {})
 </script>
 
 <template>
-  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="2000" />
+  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
 
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">

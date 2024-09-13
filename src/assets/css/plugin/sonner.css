@@ -38,6 +38,7 @@
   border-radius: 6px;
   backdrop-filter: blur(12px);
   pointer-events: none;
+  border-radius: 12px;
 }
 
 #app [data-sonner-toast] [data-title] {

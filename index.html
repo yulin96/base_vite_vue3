@@ -34,16 +34,7 @@
     <link rel="dns-prefetch" href="%VITE_APP_API_URL%" />
 
     <script>
-      function _isMobileDevice() {
-        return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)
-      }
-
       const params = new URLSearchParams(window.location.search)
-
-      if (!_isMobileDevice() && params.get('device') !== 'PC') {
-        params.delete('device')
-        window.location.href = './pc.html' + (params.toString() ? '?' + params.toString() : '')
-      }
 
       if (params.get('dev') !== null) {
         setTimeout(() => {

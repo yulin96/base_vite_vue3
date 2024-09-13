@@ -14,7 +14,7 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 import postcssPresetEnv from 'postcss-preset-env'
-import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin'
+import pxtorem from 'postcss-pxtorem'
 import tailwindcss from 'tailwindcss'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'zoomist']
@@ -151,7 +151,6 @@ export default defineConfig(({ command }) => ({
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
-        pc: path.resolve(__dirname, 'pc.html'),
       },
       output: {
         manualChunks(id) {
@@ -173,23 +172,15 @@ export default defineConfig(({ command }) => ({
         postcssPresetEnv({
           browsers: ['ios >= 11', 'chrome >= 64'],
         }),
-        postcsspxtoviewport8plugin({
-          unitToConvert: 'px',
-          viewportWidth: (file) =>
-            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 375 : 750,
-          unitPrecision: 5,
-          propList: ['*', '!backdrop-filter', '!border-radius', '!box-shadow'],
-          viewportUnit: 'vw',
-          fontViewportUnit: 'vw',
-          selectorBlackList: ['FIX_', 'nprogress'],
-          minPixelValue: 1,
-          mediaQuery: false,
-          replace: true,
-          exclude: [/pc\.html/],
-          landscape: false,
-          landscapeUnit: 'vw',
-          landscapeWidth: (file) =>
-            ~file.indexOf('node_modules/vant') || ~file.indexOf('node_modules/driver.js') ? 720 : 1440,
+        pxtorem({
+          rootValue({ file }: any) {
+            return file.indexOf('vant') !== -1 ? 5 : 10
+          }, // 基准值，可以根据设计稿设置
+          propList: ['*'], // 哪些属性需要转换，['*'] 表示所有属性
+          selectorBlackList: ['.ignore', 'pc'], // 忽略转换的选择器
+          replace: true, // 是否替换属性中的 px
+          mediaQuery: false, // 是否允许在媒体查询中转换 px
+          minPixelValue: 1, // 最小像素值，小于该值的不会被转换
         }),
       ],
     },
