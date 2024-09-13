@@ -1,8 +1,12 @@
-export function generateCaptcha(divId: string) {
-  // 获取目标div
-  const captchaDiv = document.getElementById(divId)
+/**
+ * 生成图像验证码并将其绘制在指定的 div 元素中。
+ *
+ * @param captchaDiv - 用于绘制验证码的 div 元素。
+ * @returns 生成的验证码内容。
+ */
+export function generateCaptcha(captchaDiv: HTMLDivElement | null) {
   if (!captchaDiv) {
-    console.error(`Element with id "${divId}" not found`)
+    console.error(`Element not found`)
     return
   }
 
@@ -35,7 +39,7 @@ export function generateCaptcha(divId: string) {
   ctx.scale(dpr, dpr)
 
   // 生成随机验证码内容
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const captchaLength = 5
   let captchaText = ''
 
