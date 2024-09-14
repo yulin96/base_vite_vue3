@@ -10,14 +10,14 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" -- && pnpm upDist",
+    "build": "run-p type-check \"build-only {@}\" -- && bun run upDist",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "upDist": "node ./ossDeploy.js",
+    "upDist": "bun ./ossDeploy.js",
     "prepare": "husky"
   },
   "dependencies": {
