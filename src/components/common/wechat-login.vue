@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { redirectIfPc } from '~/tools/redirectIfPc'
 import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 
@@ -20,9 +19,6 @@ router.beforeEach((to) => {
 })
 
 onMounted(async () => {
-  if (import.meta.env.VITE_APP_OPENPC == '1') {
-    await redirectIfPc()
-  }
   if (!(await getOpenId())) show.value = true
 })
 </script>
