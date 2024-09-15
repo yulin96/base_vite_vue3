@@ -189,6 +189,6 @@
   max-width: 100%;
 }
 
-.van-popup--center:not(.van-dialog) {
+.van-popup--center:not(.van-dialog):not(.van-toast) {
   width: 100%;
 }
