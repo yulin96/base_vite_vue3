@@ -15,6 +15,42 @@
   word-wrap: break-word;
   white-space: pre-line;
   line-height: 1.5;
+  /* perspective: 1200px; */
+}
+
+input,
+select,
+textarea {
+  appearance: none;
+  user-select: text;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+  min-width: 0;
+}
+
+input:focus {
+  appearance: none;
+  background: none;
+  border: none;
+}
+
+input {
+  caret-color: currentColor;
+}
+
+input::placeholder {
+  color: #a3a9b5;
+  transition: padding 0.2s ease;
+}
+
+input:focus::placeholder {
+  padding-left: 6px;
+}
+
+select[content=''] {
+  color: #a3a9b5;
 }
 
 .cover #app {

@@ -179,3 +179,16 @@
   border-radius: 9999px;
   background: transparent;
 }
+
+.van-overlay,
+.van-popup {
+  position: absolute;
+}
+
+.van-popup--center {
+  max-width: 100%;
+}
+
+.van-popup--center:not(.van-dialog) {
+  width: 100%;
+}

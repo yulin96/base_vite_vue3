@@ -6,5 +6,5 @@ export function showImage(url: string[] | string, index: number = 0) {
   const imageUrls = Array.isArray(url) ? url : [url]
 
   if (isWeChat && isHttps()) wechatPreviewImage(imageUrls[index], imageUrls)
-  else showImagePreview({ images: imageUrls, startPosition: index })
+  else showImagePreview({ images: imageUrls, startPosition: index, teleport: '#app' })
 }

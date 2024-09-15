@@ -68,38 +68,3 @@ video {
 canvas {
   display: block;
 }
-
-#app input,
-#app select,
-#app textarea {
-  appearance: none;
-  user-select: text;
-  background: transparent;
-  border: none;
-  outline: none;
-  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
-  min-width: 0;
-}
-
-#app input:focus {
-  appearance: none;
-  background: none;
-  border: none;
-}
-
-#app input {
-  caret-color: currentColor;
-}
-
-#app input::placeholder {
-  color: #a3a9b5;
-  transition: padding 0.2s ease;
-}
-
-#app input:focus::placeholder {
-  padding-left: 6px;
-}
-
-#app select[content=''] {
-  color: #a3a9b5;
-}

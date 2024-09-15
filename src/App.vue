@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ConfigProviderThemeVars } from 'vant'
 import { Toaster } from 'vue-sonner'
 import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
@@ -29,7 +30,7 @@ const themeVars = {
 
   toastPositionBottomDistance: '9%',
   toastLoadingIconColor: '#111',
-}
+} satisfies ConfigProviderThemeVars
 
 onMounted(() => {})
 </script>
