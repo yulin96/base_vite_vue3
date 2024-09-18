@@ -25,6 +25,11 @@ function setRem() {
 
 setRem()
 
+let prevWidth = window.innerWidth
 window.onresize = debounce(() => {
-  window.location.reload()
+  const currentWidth = window.innerWidth
+  if (currentWidth !== prevWidth) {
+    window.location.reload()
+  }
+  prevWidth = currentWidth
 }, 500)
