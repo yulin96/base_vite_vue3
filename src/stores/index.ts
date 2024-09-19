@@ -43,6 +43,7 @@ export const useStore = defineStore(
         })
       },
 
+      other: {} as Partial<{ [key: string]: any }>,
       ignore: {} as Partial<IIgnore>,
     })
 

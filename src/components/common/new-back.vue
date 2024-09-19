@@ -11,32 +11,23 @@ const { icon, axis, magnetic, linkMap } = defineProps<{
 
 const { user } = useStore()
 
-const offsetX = computed(() => user.offsetX)
-const offsetY = computed(() => user.offsetY)
-
 const router = useRouter()
 
 const backIns = ref({
   show: false,
   name: '/' as keyof linkMapType,
-  offset: { x: 0, y: 0 },
+  offset: {
+    x: user.other?.offsetX ?? innerWidth - 60,
+    y: user.other?.offsetY ?? innerHeight - 200,
+  },
   onClick() {
     router.replace({ name: this.name || '/' })
   },
 })
 
-watch(
-  [offsetX, offsetY],
-  () => {
-    backIns.value.offset.x = offsetX.value ?? innerWidth - 60
-    backIns.value.offset.y = offsetY.value ?? innerHeight - 200
-  },
-  { immediate: true },
-)
-
 const offsetChange = ({ x, y }: Record<'x' | 'y', number>) => {
-  user.offsetX = ~~x
-  user.offsetY = ~~y
+  user.other.offsetX = ~~x
+  user.other.offsetY = ~~y
 }
 
 const route = useRoute()
@@ -57,16 +48,19 @@ watch(
 
 <template>
   <van-floating-bubble
-    v-if="backIns.show"
     @offset-change="offsetChange"
     @click="backIns.onClick()"
-    class="size-90"
+    :class="!backIns.show ? 'pointer-events-none' : ''"
+    class="p-0"
     :offset="backIns.offset"
     :icon="icon"
     :axis="axis ?? 'xy'"
     :magnetic="magnetic ?? 'x'"
     :gap="10"
   >
+    <transition name="scale">
+      <img v-if="backIns.show" class="w-full" :src="icon" />
+    </transition>
   </van-floating-bubble>
 </template>
 

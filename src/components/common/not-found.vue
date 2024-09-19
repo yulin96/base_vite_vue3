@@ -10,8 +10,8 @@ const toIndex = () => {
 }
 
 const { user } = useStore()
-const id = String(user.errId || randomNum(1, 10))
-user.errId = id
+const id = String(user.other?.errId || randomNum(1, 10))
+user.other.errId = id
 
 const errorRef = useTemplateRef('errorRef')
 

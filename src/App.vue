@@ -32,7 +32,14 @@ const themeVars = {
   toastLoadingIconColor: '#111',
 } satisfies ConfigProviderThemeVars
 
-onMounted(() => {})
+const { start } = useLoading(window.IMG_RESOURCES ?? [])
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      start()
+    }, 500)
+  })
+})
 </script>
 
 <template>
