@@ -10,7 +10,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" -- && pnpm upDist",
+    "build": "run-p type-check \"build-only {@}\" --",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",

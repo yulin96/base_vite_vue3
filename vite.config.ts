@@ -1,3 +1,4 @@
+import { exec } from 'child_process'
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -28,7 +29,25 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 
 export default defineConfig(({ command }) => ({
   plugins: [
-    command === 'build' ? handleCheck() : undefined,
+    {
+      apply: 'build',
+      buildStart() {
+        handleCheck()
+      },
+      buildEnd() {
+        if (propOssPath === './') return
+        exec('node ossDeploy.js', (error, stdout, stderr) => {
+          if (error) {
+            console.error(`执行错误: ${error}`)
+            return
+          }
+          if (stderr) {
+            console.error(`stderr: ${stderr}`)
+          }
+          console.log(`stdout: ${stdout}`)
+        })
+      },
+    },
     ViteImageOptimizer({
       jpg: {
         quality: 90,
