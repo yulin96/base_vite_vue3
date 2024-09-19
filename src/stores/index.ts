@@ -1,29 +1,50 @@
 import { defineStore } from 'pinia'
 
-interface IInfo {
-  name: string
-  phone: string
-  code: string
-  [x: string]: any
+interface IIgnore {
+  [key: string]: any
 }
-
+interface IInfo {
+  [key: string]: any
+}
 interface IWxInfo {
   openid: string
   nickname: string
   portrait: string
 }
 
-interface IUserStore {
-  info: Partial<IInfo>
-  wxInfo: Partial<IWxInfo>
-  ignore: Record<string, any>
-  [x: string]: any
-}
-
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive<IUserStore>({ info: {}, wxInfo: {}, ignore: {} })
+    const user = reactive({
+      code: '',
+
+      info: {} as Partial<IInfo>,
+      wxInfo: {} as Partial<IWxInfo>,
+
+      clear() {
+        Object.keys(this).forEach((key) => {
+          const element = this[key]
+
+          if (element == null) {
+            this[key] = null
+            return
+          }
+          switch (typeof element) {
+            case 'string':
+              this[key] = ''
+              break
+            case 'number':
+              this[key] = 0
+              break
+            case 'object':
+              this[key] = Array.isArray(element) ? [] : {}
+              break
+          }
+        })
+      },
+
+      ignore: {} as Partial<IIgnore>,
+    })
 
     return { user }
   },
