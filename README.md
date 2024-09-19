@@ -4,6 +4,13 @@
 
 本项目是一个基于vue的移动端项目基础库，包含了一些常用的组件和工具函数，方便快速开发移动端项目。
 
+- pc端自动添加右侧二维码，点击可以下载
+- 自动注册路由
+- 路由都有完善的类型提示
+- 自动同步store到本地存储
+- 自动上传oss（需要配置zAccessKeyId,zAccessKeySecret,zBucket）
+- <b>All is automatic, enjoy!</b>
+
 ## 使用
 
 > [!TIP]
