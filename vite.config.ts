@@ -34,7 +34,7 @@ export default defineConfig(({ command }) => ({
       buildStart() {
         handleCheck()
       },
-      buildEnd() {
+      closeBundle() {
         if (propOssPath === './') return
         exec('node ossDeploy.js', (error, stdout, stderr) => {
           if (error) {
@@ -44,7 +44,7 @@ export default defineConfig(({ command }) => ({
           if (stderr) {
             console.error(`stderr: ${stderr}`)
           }
-          console.log(`stdout: ${stdout}`)
+          console.log(`${stdout}`)
         })
       },
     },
