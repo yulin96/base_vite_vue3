@@ -8,6 +8,7 @@
 - 自动注册路由
 - 路由都有完善的类型提示
 - 自动同步store到本地存储
+- 打包后自动压缩图片（依赖sharp,node需求^18.17.0||^20.3.0||>=21.0.0）
 - 自动上传oss（需要配置zAccessKeyId,zAccessKeySecret,zBucket）
 - <b>All is automatic, enjoy!</b>
 
