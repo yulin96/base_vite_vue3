@@ -7,9 +7,9 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { defineConfig, loadEnv } from 'vite'
 
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
+import { VantResolver } from '@vant/auto-import-resolver'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
-import { VantResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
@@ -65,14 +65,6 @@ export default defineConfig(({ command }) => ({
     }),
     vue({}),
     vueJsx(),
-    Components({
-      dirs: ['src/components'],
-      extensions: ['vue'],
-      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
-      resolvers: [VantResolver()],
-      dts: './typings/components.d.ts',
-      directoryAsNamespace: true,
-    }),
     AutoImport({
       include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
       imports: [
@@ -119,6 +111,14 @@ export default defineConfig(({ command }) => ({
       dts: './typings/auto-imports.d.ts',
       vueTemplate: true,
       ignore: ['reactify', 'reactifyObject', 'router'],
+    }),
+    Components({
+      dirs: ['src/components'],
+      extensions: ['vue'],
+      include: [/\.vue$/, /\.vue\?vue/, /\.md$/],
+      resolvers: [VantResolver()],
+      dts: './typings/components.d.ts',
+      directoryAsNamespace: true,
     }),
     // legacy({
     //   targets: ['ios >= 11', 'chrome >= 64', 'android >= 9'],

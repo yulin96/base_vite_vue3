@@ -27,6 +27,7 @@
     "@types/ua-parser-js": "^0.7.39",
     "@types/uuid": "^10.0.0",
     "@vant/area-data": "^1.5.2",
+    "@vant/auto-import-resolver": "^1.2.1",
     "@vant/touch-emulator": "^1.4.0",
     "@vueuse/core": "^11.1.0",
     "@vueuse/integrations": "^11.1.0",
