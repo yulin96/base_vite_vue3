@@ -14,7 +14,7 @@ export function createToaster(loadingInfo: string) {
   })
 
   toastTimeout = setTimeout(() => {
-    toastId && toast.dismiss(toastId)
+    toastId && toast.dismiss()
   }, 30000)
 
   return [resolve, reject, promise] as const
