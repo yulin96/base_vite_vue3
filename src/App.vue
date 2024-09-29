@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
+  <toaster :rich-colors="true" :expand="false" position="bottom-center" :duration="3000" />
 
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">

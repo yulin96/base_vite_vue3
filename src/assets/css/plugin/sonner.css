@@ -46,7 +46,7 @@
 }
 
 #app [data-sonner-toast][data-styled='true'] {
-  padding: 36px 32px;
+  /* padding: 36px 32px; */
 }
 
 #app [data-sonner-toast] [data-description] {

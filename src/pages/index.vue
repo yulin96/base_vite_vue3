@@ -50,8 +50,17 @@ function checkList(type: direction) {
   const firstChild = box.querySelector('[data-id]') as HTMLImageElement | null
   if (firstChild) {
     const top = firstChild.getBoundingClientRect().top
-    if (top < successList[0][1]) {
+
+    const typeIndex = ['left', 'up', 'down', 'right'].indexOf(type)
+    const successNum = successList[typeIndex][1]
+    if (top < successNum) {
       if (firstChild.dataset.id) {
+        if (successNum - top > 50) {
+          toast.success('完美')
+        } else {
+          toast.success('及格')
+        }
+
         if (goodList.includes(firstChild.dataset.id)) return
         goodList.push(firstChild.dataset.id)
       }
@@ -100,8 +109,9 @@ function createRun(type: direction, duration = 5) {
         box.appendChild(imgGood)
         gsap.to(imgGood, {
           scale: 2,
-          autoAlpha: 0,
+          opacity: 0,
           duration: 0.6,
+          ease: 'back.out',
           onComplete: () => {
             box.removeChild(imgGood)
           },
