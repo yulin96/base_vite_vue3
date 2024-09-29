@@ -1,45 +1,41 @@
-import nProgress from 'nprogress'
+import { createToaster } from '~/tools/user/createToaster'
+import { toUrl } from '~/utils/global'
 
 let lock = false
 export function downloadFile(url: string, filename?: string) {
-  nProgress.configure({
-    showSpinner: false,
-    minimum: 0.3,
-    trickleSpeed: 120,
-  })
-
   return new Promise<void>((resolve, reject) => {
     if (lock) return
     lock = true
-    nProgress.start()
-    const xhr = new XMLHttpRequest()
-    xhr.open('GET', url, true)
-    xhr.responseType = 'blob'
-    xhr.onload = () => {
-      if (xhr.status === 200) {
-        const blob = new Blob([xhr.response], { type: 'application/octet-stream' })
-        const a = document.createElement('a')
-        a.href = window.URL.createObjectURL(blob)
-        a.download = filename
-          ? filename.includes('.')
-            ? filename
-            : filename + '.' + url.split('.').pop()
-          : 'download.' + url.split('.').pop()
-        a.click()
+    const [done, err] = createToaster('下载中...')
+    if (typeof fetch === 'function') {
+      fetch(url)
+        .then((response) => response.blob())
+        .then((blob) => {
+          const url = URL.createObjectURL(blob)
+          const a = document.createElement('a')
+          a.href = url
+          a.download = filename ?? url.split('/')?.pop() ?? 'download'
+          a.click()
+          URL.revokeObjectURL(url)
+
+          setTimeout(() => {
+            done('下载完成')
+          }, 500)
+        })
+        .catch(() => {
+          err('下载失败')
+        })
+        .finally(() => {
+          setTimeout(() => {
+            lock = false
+          }, 500)
+        })
+    } else {
+      toUrl(url)
+      setTimeout(() => {
+        done('下载完成')
         lock = false
-        nProgress.done()
-        resolve()
-      } else {
-        lock = false
-        nProgress.done()
-        reject('下载失败')
-      }
+      }, 500)
     }
-    xhr.onerror = () => {
-      lock = false
-      nProgress.done()
-      reject('下载失败')
-    }
-    xhr.send()
   })
 }
