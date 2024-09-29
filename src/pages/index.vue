@@ -55,7 +55,7 @@ function checkList(type: direction) {
     const successNum = successList[typeIndex][1]
     if (top < successNum) {
       if (firstChild.dataset.id) {
-        if (successNum - top > 50) {
+        if (successNum - top > 70) {
           console.log('完美')
         } else {
           console.log('及格')
@@ -91,6 +91,7 @@ function createRun(type: direction, duration = 5) {
   image.style.width = '100px'
   image.style.position = 'absolute'
   image.style.top = '100%'
+  image.style.left = '0'
   image.dataset.id = v4()
   box.appendChild(image)
 
@@ -98,6 +99,7 @@ function createRun(type: direction, duration = 5) {
     y: -innerHeight,
     duration,
     ease: 'none',
+    z: 0,
     onComplete: () => {
       if (image.dataset.id && goodList.includes(image.dataset.id)) {
         goodList.splice(goodList.indexOf(image.dataset.id), 1)
@@ -127,16 +129,16 @@ function createRun(type: direction, duration = 5) {
 <template>
   <section class="index">
     <main class="content flex items-center justify-evenly">
-      <div id="box_left" class="relative h-[100vh] w-100 bg-blue-600/20">
+      <div id="box_left" class="relative h-[100vh] w-100 border">
         <img id="base_left" class="size-100" src="../assets/imgs/runleft.png" />
       </div>
-      <div id="box_up" class="relative h-[100vh] w-100 bg-blue-600/20">
+      <div id="box_up" class="relative h-[100vh] w-100 border">
         <img id="base_up" class="size-100" src="../assets/imgs/runup.png" />
       </div>
-      <div id="box_down" class="relative h-[100vh] w-100 bg-blue-600/20">
+      <div id="box_down" class="relative h-[100vh] w-100 border">
         <img id="base_down" class="size-100" src="../assets/imgs/rundown.png" />
       </div>
-      <div id="box_right" class="relative h-[100vh] w-100 bg-blue-600/20">
+      <div id="box_right" class="relative h-[100vh] w-100 border">
         <img id="base_right" class="size-100" src="../assets/imgs/runright.png" />
       </div>
     </main>
