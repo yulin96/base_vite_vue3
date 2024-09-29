@@ -21,7 +21,7 @@ function startGame() {
       createRun(type)
       startGame()
     },
-    randomNum(600, 1000),
+    randomNum(500, 1000),
   )
 }
 
@@ -87,11 +87,8 @@ function createRun(type: direction, duration = 5) {
   const box = document.getElementById(`box_${type}`)!
 
   const image = document.createElement('img')
-  image.src = type == 'left' ? left : type == 'up' ? up : type == 'down' ? down : right
-  image.style.width = '100px'
-  image.style.position = 'absolute'
-  image.style.top = '100%'
-  image.style.left = '0'
+  image.src = `https://oss.eventnet.cn/H5/zz/auto/1/1/${type}.png`
+  image.classList.add('wait')
   image.dataset.id = v4()
   box.appendChild(image)
 
@@ -128,23 +125,36 @@ function createRun(type: direction, duration = 5) {
 
 <template>
   <section class="index">
-    <main class="content flex items-center justify-evenly">
-      <div id="box_left" class="relative h-[100vh] w-100 border">
-        <img id="base_left" class="size-100" src="../assets/imgs/runleft.png" />
+    <main
+      class="content flex h-[100vh] items-center justify-evenly overflow-hidden bg-[url(~/assets/imgs/macos-sequoia-1.jpg)] bg-cover"
+    >
+      <div id="box_left" class="relative h-full w-100">
+        <img id="base_left" class="absolute left-0 top-0 size-100" src="../assets/imgs/runleft.png" />
       </div>
-      <div id="box_up" class="relative h-[100vh] w-100 border">
-        <img id="base_up" class="size-100" src="../assets/imgs/runup.png" />
+      <div id="box_up" class="relative h-full w-100">
+        <img id="base_up" class="absolute left-0 top-0 size-100" src="../assets/imgs/runup.png" />
       </div>
-      <div id="box_down" class="relative h-[100vh] w-100 border">
-        <img id="base_down" class="size-100" src="../assets/imgs/rundown.png" />
+      <div id="box_down" class="relative h-full w-100">
+        <img id="base_down" class="absolute left-0 top-0 size-100" src="../assets/imgs/rundown.png" />
       </div>
-      <div id="box_right" class="relative h-[100vh] w-100 border">
-        <img id="base_right" class="size-100" src="../assets/imgs/runright.png" />
+      <div id="box_right" class="relative h-full w-100">
+        <img id="base_right" class="absolute left-0 top-0 size-100" src="../assets/imgs/runright.png" />
       </div>
     </main>
     <!-- <div class="fix">开始游戏</div> -->
   </section>
 </template>
+
+<style>
+.wait {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  will-change: transform;
+}
+</style>
 
 <route lang="json">
 { "meta": { "index": 10 } }
