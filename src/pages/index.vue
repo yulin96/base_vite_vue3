@@ -47,7 +47,7 @@ onKeyStroke('ArrowRight', (e) => {
 
 function checkList(type: direction) {
   const box = document.getElementById(`box_${type}`)!
-  const firstChild = box.querySelectorAll('img')[1]
+  const firstChild = box.querySelector('[data-id]') as HTMLImageElement | null
   if (firstChild) {
     const top = firstChild.getBoundingClientRect().top
     if (top < successList[0][1]) {
