@@ -56,9 +56,9 @@ function checkList(type: direction) {
     if (top < successNum) {
       if (firstChild.dataset.id) {
         if (successNum - top > 50) {
-          toast.success('完美')
+          console.log('完美')
         } else {
-          toast.success('及格')
+          console.log('及格')
         }
 
         if (goodList.includes(firstChild.dataset.id)) return
