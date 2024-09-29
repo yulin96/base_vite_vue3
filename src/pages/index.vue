@@ -1,7 +1,11 @@
 <script setup lang="ts">
 import { onKeyStroke } from '@vueuse/core'
 import { v4 } from 'uuid'
+import down from '~/assets/imgs/down.png'
 import left from '~/assets/imgs/left.png'
+import right from '~/assets/imgs/right.png'
+import up from '~/assets/imgs/up.png'
+
 import { randomNum } from '~/utils/common'
 
 const successList: [number, number][] = []
@@ -23,43 +27,37 @@ function startGame() {
 
 onKeyStroke('ArrowLeft', (e) => {
   e.preventDefault()
-  console.log('ArrowLeft')
-
-  const box = document.getElementById(`box_left`)!
-  const firstChild = box.querySelectorAll('img')[1]
-  if (firstChild) {
-    const top = firstChild.getBoundingClientRect().top
-    const bottom = firstChild.getBoundingClientRect().bottom
-    console.log(top, bottom)
-
-    if (top < successList[0][1]) {
-      console.log('success')
-      console.log(firstChild.dataset.id)
-      if (firstChild.dataset.id) {
-        if (goodList.includes(firstChild.dataset.id)) return
-        goodList.push(firstChild.dataset.id)
-      }
-      console.log(goodList)
-    } else {
-      console.log('fail')
-    }
-  }
+  checkList('left')
 })
 
 onKeyStroke('ArrowUp', (e) => {
   e.preventDefault()
-  console.log('ArrowUp')
+  checkList('up')
 })
 
 onKeyStroke('ArrowDown', (e) => {
   e.preventDefault()
-  console.log('ArrowDown')
+  checkList('down')
 })
 
 onKeyStroke('ArrowRight', (e) => {
   e.preventDefault()
-  console.log('ArrowRight')
+  checkList('right')
 })
+
+function checkList(type: direction) {
+  const box = document.getElementById(`box_${type}`)!
+  const firstChild = box.querySelectorAll('img')[1]
+  if (firstChild) {
+    const top = firstChild.getBoundingClientRect().top
+    if (top < successList[0][1]) {
+      if (firstChild.dataset.id) {
+        if (goodList.includes(firstChild.dataset.id)) return
+        goodList.push(firstChild.dataset.id)
+      }
+    }
+  }
+}
 
 /*  */
 onMounted(() => {
@@ -80,7 +78,7 @@ function createRun(type: direction, duration = 5) {
   const box = document.getElementById(`box_${type}`)!
 
   const image = document.createElement('img')
-  image.src = left
+  image.src = type == 'left' ? left : type == 'up' ? up : type == 'down' ? down : right
   image.style.width = '100px'
   image.style.position = 'absolute'
   image.style.top = '100%'
@@ -92,6 +90,23 @@ function createRun(type: direction, duration = 5) {
     duration,
     ease: 'none',
     onComplete: () => {
+      if (image.dataset.id && goodList.includes(image.dataset.id)) {
+        goodList.splice(goodList.indexOf(image.dataset.id), 1)
+        const imgGood = document.createElement('img')
+        imgGood.src = type == 'left' ? left : type == 'up' ? up : type == 'down' ? down : right
+        imgGood.style.width = '100px'
+        imgGood.style.position = 'absolute'
+        imgGood.style.top = '0'
+        box.appendChild(imgGood)
+        gsap.to(imgGood, {
+          scale: 2,
+          autoAlpha: 0,
+          duration: 0.6,
+          onComplete: () => {
+            box.removeChild(imgGood)
+          },
+        })
+      }
       ani.kill()
       box.removeChild(image)
     },
