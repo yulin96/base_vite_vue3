@@ -93,25 +93,27 @@ function createRun(type: direction, duration = 3) {
   const items = box.querySelectorAll('[data-id]')!
   const ar = items[items.length - 1]
 
+  let top: number
   if (ar) {
     const bottom = ar.getBoundingClientRect().bottom + 20
-    image.style.top = `${bottom < innerHeight ? innerHeight : bottom}px`
+    top = bottom < innerHeight ? innerHeight : bottom
   } else {
-    image.style.top = `${innerHeight}px`
+    top = innerHeight
   }
 
   image.style.width = '100px'
   image.style.height = '100px'
   image.style.position = 'absolute'
   image.style.left = '0'
+  image.style.top = top + 'px'
   image.style.willChange = 'transform'
 
   image.dataset.id = v4()
   box.appendChild(image)
 
   const ani = gsap.to(image, {
-    y: -innerHeight,
-    duration,
+    y: -top,
+    duration: duration * (top / innerHeight),
     ease: 'none',
     z: 0,
     onComplete: () => {
