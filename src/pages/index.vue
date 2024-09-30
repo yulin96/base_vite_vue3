@@ -18,7 +18,8 @@ function startGame() {
     () => {
       const randomNumber = Math.floor(Math.random() * 4)
       const type = ['left', 'up', 'down', 'right'][randomNumber] as direction
-      createRun(type)
+      createRun(type, 5)
+      createRun(type, 5)
       startGame()
     },
     randomNum(500, 1000),
@@ -83,12 +84,28 @@ onMounted(() => {
   startGame()
 })
 
-function createRun(type: direction, duration = 5) {
+function createRun(type: direction, duration = 3) {
   const box = document.getElementById(`box_${type}`)!
 
   const image = document.createElement('img')
   image.src = `https://oss.eventnet.cn/H5/zz/auto/1/1/${type}.png`
-  image.classList.add('wait')
+
+  const items = box.querySelectorAll('[data-id]')!
+  const ar = items[items.length - 1]
+
+  if (ar) {
+    const bottom = ar.getBoundingClientRect().bottom + 20
+    image.style.top = `${bottom < innerHeight ? innerHeight : bottom}px`
+  } else {
+    image.style.top = `${innerHeight}px`
+  }
+
+  image.style.width = '100px'
+  image.style.height = '100px'
+  image.style.position = 'absolute'
+  image.style.left = '0'
+  image.style.willChange = 'transform'
+
   image.dataset.id = v4()
   box.appendChild(image)
 
