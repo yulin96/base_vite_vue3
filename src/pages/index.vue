@@ -18,14 +18,14 @@ const test2 = () => {
 
 /*  */
 onMounted(() => {
-  // const live1 = document.querySelector('#live1') as HTMLElement
+  const live1 = document.querySelector('#live1') as HTMLElement
 
-  // const image = new Image()
-  // image.onload = () => {
-  //   const ratio = image.width / image.height
-  //   live1.style.height = `${Math.floor(live1.clientWidth / ratio)}px`
-  // }
-  // image.src = 'https://oss.eventnet.cn/H5/zz/auto/1/3/IMG_0047.jpeg'
+  const image = new Image()
+  image.onload = () => {
+    const ratio = image.width / image.height
+    live1.style.height = `${Math.floor(live1.clientWidth / ratio)}px`
+  }
+  image.src = 'https://oss.eventnet.cn/H5/zz/auto/1/3/IMG_0047.jpeg'
 
   const live2 = document.querySelector('#live2') as HTMLElement
 
@@ -41,7 +41,7 @@ onMounted(() => {
 <template>
   <section class="index">
     <main class="content">
-      <!-- <div class="text-center">苹果 jpeg mov</div>
+      <div class="text-center">苹果 jpeg mov</div>
       <div
         id="live1"
         data-live-photo
@@ -52,7 +52,7 @@ onMounted(() => {
 
       <div @click="test" class="center m-auto mt-60 h-100 w-300 cursor-pointer rounded-full bg-cyan-600 text-white">
         预览
-      </div> -->
+      </div>
 
       <hr class="my-20" />
       <div class="text-center">小米 jpg mp4</div>
