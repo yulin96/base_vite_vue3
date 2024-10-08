@@ -27,14 +27,14 @@ onMounted(() => {
   }
   image.src = 'https://oss.eventnet.cn/H5/zz/auto/1/3/IMG_0047.jpeg'
 
-  const live2 = document.querySelector('#live2') as HTMLElement
+//   const live2 = document.querySelector('#live2') as HTMLElement
 
-  const image2 = new Image()
-  image2.onload = () => {
-    const ratio = image2.width / image2.height
-    live2.style.height = `${Math.floor(live2.clientWidth / ratio)}px`
-  }
-  image2.src = 'https://oss.eventnet.cn/H5/zz/auto/1/3/1.jpg'
+//   const image2 = new Image()
+//   image2.onload = () => {
+//     const ratio = image2.width / image2.height
+//     live2.style.height = `${Math.floor(live2.clientWidth / ratio)}px`
+//   }
+//   image2.src = 'https://oss.eventnet.cn/H5/zz/auto/1/3/1.jpg'
 })
 </script>
 
@@ -54,7 +54,7 @@ onMounted(() => {
         预览
       </div>
 
-      <hr class="my-20" />
+      <!-- <hr class="my-20" />
       <div class="text-center">小米 jpg mp4</div>
       <div
         id="live2"
@@ -66,7 +66,7 @@ onMounted(() => {
 
       <div @click="test2" class="center m-auto mt-60 h-100 w-300 cursor-pointer rounded-full bg-cyan-600 text-white">
         预览
-      </div>
+      </div> -->
     </main>
   </section>
 </template>
