@@ -31,6 +31,7 @@
     "@vant/touch-emulator": "^1.4.0",
     "@vueuse/core": "^11.1.0",
     "@vueuse/integrations": "^11.1.0",
+    "@vueuse/sound": "^2.0.1",
     "animate.css": "^4.1.1",
     "axios": "^1.7.7",
     "canvas-confetti": "^1.9.3",
@@ -103,5 +104,10 @@
     "vite": "^5.4.8",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vue-tsc": "^2.1.6"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@vueuse/sound@2.0.1": "patches/@vueuse__sound@2.0.1.patch"
+    }
   }
 }

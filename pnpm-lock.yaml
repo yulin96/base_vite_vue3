@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@vueuse/sound@2.0.1':
+    hash: 3qbkgz373vo6hzt4u4xawlivam
+    path: patches/@vueuse__sound@2.0.1.patch
+
 importers:
 
   .:
@@ -38,6 +43,9 @@ importers:
       '@vueuse/integrations':
         specifier: ^11.1.0
         version: 11.1.0(axios@1.7.7)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.5.11(typescript@5.6.2))
+      '@vueuse/sound':
+        specifier: ^2.0.1
+        version: 2.0.1(patch_hash=3qbkgz373vo6hzt4u4xawlivam)(vue@3.5.11(typescript@5.6.2))
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
@@ -1395,6 +1403,15 @@ packages:
   '@vueuse/shared@11.1.0':
     resolution: {integrity: sha512-YUtIpY122q7osj+zsNMFAfMTubGz0sn5QzE5gPzAIiCmtt2ha3uQUY1+JPyL4gRCTsLPX82Y9brNbo/aqlA91w==}
 
+  '@vueuse/sound@2.0.1':
+    resolution: {integrity: sha512-7Fbp9lQkuUnpTXS9vPbvT2FDYHuwJbvKPivOYETaVVSmcZKoczw6zcsebsARkH5Ged0f045YUOZnV/RuCzyLXQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -2112,6 +2129,9 @@ packages:
 
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
+
+  howler@2.2.4:
+    resolution: {integrity: sha512-iARIBPgcQrwtEr+tALF+rapJ8qSc+Set2GJQl7xT1MQzWaVkFebdJhR3alVlSiUf5U7nAANKuj3aWpwerocD5w==}
 
   html-encoding-sniffer@4.0.0:
     resolution: {integrity: sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==}
@@ -4723,6 +4743,12 @@ snapshots:
       - '@vue/composition-api'
       - vue
 
+  '@vueuse/sound@2.0.1(patch_hash=3qbkgz373vo6hzt4u4xawlivam)(vue@3.5.11(typescript@5.6.2))':
+    dependencies:
+      howler: 2.2.4
+      vue: 3.5.11(typescript@5.6.2)
+      vue-demi: 0.14.10(vue@3.5.11(typescript@5.6.2))
+
   abbrev@2.0.0: {}
 
   acorn-jsx@5.3.2(acorn@8.12.1):
@@ -5473,6 +5499,8 @@ snapshots:
   he@1.2.0: {}
 
   hookable@5.5.3: {}
+
+  howler@2.2.4: {}
 
   html-encoding-sniffer@4.0.0:
     dependencies:
