@@ -54,7 +54,7 @@ onMounted(() => {
       </div>
 
       <hr class="my-20" />
-      <div class="text-center">安卓 jpg mp4</div>
+      <div class="text-center">小米 jpg mp4</div>
       <div
         id="live2"
         data-live-photo
