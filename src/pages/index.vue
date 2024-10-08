@@ -8,6 +8,7 @@ const test = () => {
   const player = LivePhotosKit.Player(live1)
   player.play()
 }
+
 /*  */
 onMounted(() => {
   const live1 = document.querySelector('#live1') as HTMLElement
@@ -46,7 +47,7 @@ onMounted(() => {
 
 <style>
 [data-live-photo] .lpk-badge {
-  opacity: 0;
+  /* opacity: 0; */
   pointer-events: none;
 }
 </style>
