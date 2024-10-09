@@ -4,11 +4,9 @@
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';
 @import './plugin/shark.css';
+@import './plugin/sonner.css';
 @import './snippet.css';
-
-*::-webkit-scrollbar {
-  display: none;
-}
+@import './pc.css';
 
 #app {
   -webkit-font-smoothing: antialiased;
@@ -16,60 +14,26 @@
   /* word-break: break-all; */
   word-wrap: break-word;
   white-space: pre-line;
-  line-height: 1.1;
-  font-size: 28px;
+  line-height: 1.5;
+  /* perspective: 1200px; */
 }
 
-.cover #app {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
+input,
+select,
+textarea {
+  appearance: none;
+  user-select: text;
+  background: transparent;
+  border: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+  min-width: 0;
 }
 
-.wrapper {
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  /* overscroll-behavior: none; */
-}
-
-.cover .wrapper {
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
-  min-height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.content {
-  width: 100%;
-  min-height: 100vh;
-  min-height: 100dvh;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  z-index: 0;
-
-  /* overscroll-behavior: none; */
-}
-
-img,
-video {
-  max-width: none;
-}
-
-img {
-  object-fit: contain;
-}
-
-code {
-  font-family: inherit;
-}
-
-[code] {
-  pointer-events: none;
+input:focus {
+  appearance: none;
+  background: none;
+  border: none;
 }
 
 input {
@@ -78,6 +42,47 @@ input {
 
 input::placeholder {
   color: #a3a9b5;
+  transition: padding 0.2s ease;
+}
+
+input:focus::placeholder {
+  padding-left: 6px;
+}
+
+select[content=''] {
+  color: #a3a9b5;
+}
+
+.cover #app {
+  position: relative;
+  width: 750px;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.wrapper {
+  width: 750px;
+  height: 100%;
+  /* overscroll-behavior: none; */
+}
+
+.cover .wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.content {
+  width: 100%;
+  min-height: 100%;
+  -webkit-overflow-scrolling: touch;
+  position: relative;
+  z-index: 0;
+
+  /* overscroll-behavior: none; */
 }
 
 /* @font-face {
@@ -87,9 +92,8 @@ input::placeholder {
     url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
     url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
   font-display: swap;
-} */
+}
 
-/*
 *,
 input {
   font-family:

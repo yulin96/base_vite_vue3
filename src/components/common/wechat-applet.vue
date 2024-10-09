@@ -1,8 +1,5 @@
 <script setup lang="ts">
-defineProps<{
-  appid: string
-  path: string
-}>()
+const { appid, path } = defineProps<{ appid: string; path: string }>()
 </script>
 
 <template>

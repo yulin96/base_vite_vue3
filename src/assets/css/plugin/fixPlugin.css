@@ -4,6 +4,10 @@
   --z-toast-color: #1d1d1f;
 }
 
+.van-config-provider {
+  height: 100%;
+}
+
 .van-swipe__indicators .van-swipe__indicator {
   border-radius: 12px;
   transition: all 0.5s ease;
@@ -174,4 +178,17 @@
 .van-dialog--round-button .van-dialog__footer .van-dialog__cancel {
   border-radius: 9999px;
   background: transparent;
+}
+
+.van-overlay,
+.van-popup {
+  position: absolute;
+}
+
+.van-popup--center {
+  max-width: 100%;
+}
+
+.van-popup--center:not(.van-dialog):not(.van-toast) {
+  width: 100%;
 }

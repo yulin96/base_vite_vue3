@@ -29,7 +29,7 @@ export function useSnow(el: string) {
       () => {
         autoCreateSnow(wrapper)
       },
-      randomNum(800, 1600)
+      randomNum(800, 1600),
     )
   }
 }

@@ -1,15 +1,16 @@
 <script setup lang="ts">
+const { list } = defineProps<{ list: { key: string | number; value: string }[] }>()
+
 const selectValue = defineModel()
-const props = defineProps<{ list: { key: string | number; value: string }[] }>()
 
 const searchIns = ref({
   value: '',
   show: false,
   list: computed(() => {
     if (searchIns.value.value) {
-      return props.list.filter((item) => item.value.includes(searchIns.value.value))
+      return list.filter((item) => item.value.includes(searchIns.value.value))
     } else {
-      return props.list
+      return list
     }
   }),
 })
@@ -26,8 +27,8 @@ const choose = (item: string) => {
 }
 
 onMounted(() => {
-  const el = document.querySelector('[data-search-select]')!
-  const parent = el.parentElement!
+  const searchDom = document.querySelector('[data-search-select]')!
+  const parent = searchDom.parentElement!
 
   parent.addEventListener('click', (e) => {
     searchIns.value.show = !searchIns.value.show
@@ -43,7 +44,6 @@ onMounted(() => {
   <transition name="slide-down">
     <div
       data-search-select
-      ref="el"
       v-show="searchIns.show"
       class="absolute top-[100%] flex h-600 w-full flex-col overflow-hidden rounded-6 bg-white shadow-lg"
     >

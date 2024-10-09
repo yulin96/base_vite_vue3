@@ -1,4 +1,4 @@
-export const useMediaSession = (ele: Ref<HTMLAudioElement | undefined>, option?: MediaMetadata) => {
+export const useMediaSession = (ele: Ref<HTMLAudioElement | null>, option?: MediaMetadata) => {
   if (!(ele.value instanceof HTMLMediaElement && 'mediaSession' in navigator)) return
 
   onMounted(() => {
@@ -26,4 +26,4 @@ export const useMediaSession = (ele: Ref<HTMLAudioElement | undefined>, option?:
     navigator.mediaSession.setActionHandler('play', null)
     navigator.mediaSession.setActionHandler('pause', null)
   })
-};
+}

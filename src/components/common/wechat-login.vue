@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { getOpenId } from '~/tools/getOpenId'
-import { pcSupport } from '~/tools/pcSupport'
+import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 
-const props = withDefaults(defineProps<{ code: string; name?: string }>(), { name: '互动微平台' })
+const { name = '互动微平台', code } = defineProps<{ code: string; name?: string }>()
 
 const show = ref(false)
 
 const openLink = () => {
-  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(props.name)}&state=${props.code}&type=2`
+  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(name)}&state=${code}&type=2`
   toUrl(url)
 }
 
@@ -20,9 +19,6 @@ router.beforeEach((to) => {
 })
 
 onMounted(async () => {
-  if (import.meta.env.VITE_APP_OPENPC == '1') {
-    await pcSupport()
-  }
   if (!(await getOpenId())) show.value = true
 })
 </script>

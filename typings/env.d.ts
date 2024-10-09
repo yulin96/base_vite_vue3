@@ -27,6 +27,7 @@ interface ImportMetaEnv {
 interface Window {
   html2canvas: any
   Zoomist: any
+  IMG_RESOURCES: string[]
 }
 
 type RouteTransitionName =

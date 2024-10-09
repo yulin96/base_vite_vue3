@@ -15,6 +15,7 @@ export default {
       fontSize: convertUnit(100),
       borderRadius: convertUnit(100),
       colors: {
+        loading: '#000',
         primary: '#fff',
         danger: '#ee0a24',
         placeholder: '#a3a9b5',

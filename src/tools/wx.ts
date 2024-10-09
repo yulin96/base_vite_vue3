@@ -16,7 +16,7 @@ export function getWechatConfig() {
         toFormData({
           url: wxLink,
           name: 'hudongweipingtai',
-        })
+        }),
       )
       .then(({ data: { data } }) => {
         wx.config({
@@ -186,8 +186,8 @@ export function wechatPreventShare() {
 export function closeWindow() {
   isWeChat
     ? getWechatConfig().then(() => {
-      wx.closeWindow()
-    })
+        wx.closeWindow()
+      })
     : window.close()
 }
 

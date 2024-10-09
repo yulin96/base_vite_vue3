@@ -4,10 +4,7 @@ import { randomString } from '~/utils/common'
 const uuid = randomString()
 const uuid2 = randomString()
 
-const props = withDefaults(defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>(), {
-  gap: 20,
-  speed: 50,
-})
+const { gap = 20, speed = 50, barrageList } = defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>()
 
 const currentId = defineModel<number>({ required: true })
 
@@ -22,7 +19,7 @@ onMounted(() => {
   const parents = document.querySelectorAll(`.${uuid2}`) as NodeListOf<HTMLDivElement>
 
   const autoCreateBarrage = () => {
-    createBarrage({ params: props.barrageList[currentId.value], gap: props.gap, speed: props.speed, parents })
+    createBarrage({ params: barrageList[currentId.value], gap, speed, parents })
     requestAnimationFrame(autoCreateBarrage)
   }
   autoCreateBarrage()
@@ -47,7 +44,7 @@ function createBarrage({
 
   if (index === -1) return
 
-  currentId.value = (currentId.value + 1) % props.barrageList.length
+  currentId.value = (currentId.value + 1) % barrageList.length
 
   const barrage = document.createElement('div')
   barrage.classList.add('barrage')

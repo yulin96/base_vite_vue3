@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import Lottie, { type AnimationItem } from 'lottie-web'
+import { useTemplateRef } from 'vue'
 
-const props = defineProps<{ like: boolean; json: any }>()
+const { like, json } = defineProps<{ like: boolean; json: any }>()
 
 // fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
 //   .then((res) => res.json())
@@ -9,12 +10,12 @@ const props = defineProps<{ like: boolean; json: any }>()
 //     window['lottieJson-like'] = res
 //   })
 
-const likeEle = ref<HTMLDivElement | null>(null)
+const likeRef = useTemplateRef('likeRef')
 
 let lottieLike: AnimationItem | null = null
 
 watchPostEffect(() => {
-  if (props.like) {
+  if (like) {
     lottieLike?.goToAndPlay(0, true)
   } else {
     lottieLike?.goToAndStop(0, true)
@@ -23,17 +24,17 @@ watchPostEffect(() => {
 
 /*  */
 onMounted(() => {
-  if (!likeEle.value) return console.error('likeEle is null')
+  if (!likeRef.value) return console.error('likeEle is null')
   lottieLike = Lottie.loadAnimation({
-    container: likeEle.value,
+    container: likeRef.value,
     loop: false,
     autoplay: false,
     renderer: 'canvas',
-    animationData: props.json,
+    animationData: json,
   })
 
   lottieLike.addEventListener('config_ready', () => {
-    lottieLike?.goToAndStop(props.like ? lottieLike.totalFrames - 1 : 0, true)
+    lottieLike?.goToAndStop(like ? lottieLike.totalFrames - 1 : 0, true)
   })
 })
 
@@ -44,6 +45,6 @@ onUnmounted(() => {
 
 <template>
   <div class="h-100 w-100">
-    <div class="h-full w-full scale-[1.2]" ref="likeEle"></div>
+    <div class="h-full w-full scale-[1.2]" ref="likeRef"></div>
   </div>
 </template>

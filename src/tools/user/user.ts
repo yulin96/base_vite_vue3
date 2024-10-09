@@ -1,11 +1,6 @@
-import { biz } from 'dingtalk-jsapi'
 import { v1 } from 'uuid'
-import { showToast as toast, type ToastOptions } from 'vant'
-import { compressImage } from '~/tools/compressImage'
-import { wechatScan, wechatShare } from '~/tools/wx'
-import { isHttps } from '~/utils/check'
+import { compressImage } from '~/tools/user/compressImage'
 import { blobToFile } from '~/utils/convert'
-import { isDingDing, isWeChat } from '~/utils/uaParser'
 
 /**
  * 获取用户图片
@@ -74,63 +69,10 @@ export function getPosition() {
         },
         (...args) => {
           reject(args)
-        }
+        },
       )
     } else {
       reject('你的浏览器不支持当前地理位置信息获取')
     }
   })
-}
-
-export function registerWechatShare() {
-  const title = import.meta.env.VITE_APP_SHARE_TITLE
-  const desc = import.meta.env.VITE_APP_SHARE_DESC
-  const link = import.meta.env.VITE_APP_SHARE_LINK
-  const imgUrl = import.meta.env.VITE_APP_SHARE_IMGURL
-
-  if (isHttps() && isWeChat) {
-    wechatShare({ title, desc, link, imgUrl })
-  }
-}
-
-let isScanning = false
-export function openScanQrCode() {
-  return new Promise<string>((resolve, reject) => {
-    if (isScanning) return reject('扫码功能正在运行中')
-    isScanning = true
-
-    if (isWeChat) {
-      wechatScan()
-        .then((resultStr) => {
-          if (resultStr) resolve(resultStr)
-        })
-        .catch(() => { })
-        .finally(() => {
-          isScanning = false
-        })
-    } else if (isDingDing()) {
-      biz.util
-        .scan({ type: 'qrCode' })
-        .then((res) => {
-          if (res.text) resolve(res.text)
-        })
-        .catch(() => { })
-        .finally(() => {
-          isScanning = false
-        })
-    } else {
-      isScanning = false
-      showDialog({ message: '请在微信或钉钉中使用扫码功能' })
-    }
-  })
-}
-
-export function showToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
-  if (typeof option === 'string') return toast(option)
-
-  const _message = option?.status
-    ? `<img style="height: 20px;margin-right:6px;" src="https://oss.eventnet.cn/H5/zz/public/svg/${option.status}.svg" /><p>${option?.message || ''}</p>`
-    : option?.message || ''
-
-  return toast({ ...option, message: _message, type: 'html' })
 }

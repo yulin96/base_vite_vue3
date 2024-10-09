@@ -1,6 +1,5 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import pluginJs from '@eslint/js'
-import prettier from 'eslint-plugin-prettier/recommended'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 import path from 'node:path'
@@ -21,7 +20,6 @@ export default [
   {
     languageOptions: {
       globals: {
-        ...globals.node,
         ...globals.browser,
       },
     },
@@ -61,11 +59,11 @@ export default [
     },
   },
 
-  prettier,
-  {
-    name: 'rules/prettier',
-    rules: {
-      'prettier/prettier': 0,
-    },
-  },
+  // prettier,
+  // {
+  //   name: 'rules/prettier',
+  //   rules: {
+  //     'prettier/prettier': 0,
+  //   },
+  // },
 ]

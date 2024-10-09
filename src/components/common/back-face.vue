@@ -1,28 +1,30 @@
 <script setup lang="ts">
-const props = defineProps<{ flip?: 'front' | 'back' }>()
+import { useTemplateRef } from 'vue'
 
-const flipDom = ref()
+const { flip } = defineProps<{ flip?: 'front' | 'back' }>()
+
+const flipRef = useTemplateRef('flipRef')
 
 watchPostEffect(() => {
-  if (props.flip === 'front') {
-    gsap.to(flipDom.value, { rotateY: 0, ease: 'power2', duration: 0.5 })
-  } else if (props.flip === 'back') {
-    gsap.to(flipDom.value, { rotateY: 180, ease: 'power2', duration: 0.5 })
+  if (flip === 'front') {
+    gsap.to(flipRef.value!, { rotateY: 0, ease: 'power2', duration: 0.5 })
+  } else if (flip === 'back') {
+    gsap.to(flipRef.value!, { rotateY: 180, ease: 'power2', duration: 0.5 })
   }
 })
 </script>
 
 <template>
   <div class="perspective-[1200]">
-    <section ref="flipDom" class="relative h-full w-full transform-3d">
+    <section ref="flipRef" class="relative h-full w-full transform-3d">
       <div
-        :class="props.flip === 'front' ? 'pointer-events-auto' : 'pointer-events-none'"
+        :class="flip === 'front' ? 'pointer-events-auto' : 'pointer-events-none'"
         class="absolute left-0 top-0 h-full w-full backface-hidden"
       >
         <slot></slot>
       </div>
       <div
-        :class="props.flip === 'back' ? 'pointer-events-auto' : 'pointer-events-none'"
+        :class="flip === 'back' ? 'pointer-events-auto' : 'pointer-events-none'"
         class="absolute left-0 top-0 h-full w-full backface-hidden rotate-y-[180]"
       >
         <slot name="back"> </slot>

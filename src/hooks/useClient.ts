@@ -1,8 +1,4 @@
-export const useClient = (
-  subScribes: Array<string> | string,
-  pub = 'pub_3dc08e65ff36ed08185a82db5091922c',
-  sub = 'sub_1717bad8d0d7e9716e992f816f563898',
-) => {
+export const useClient = (subScribes: Array<string> | string, pub: string, sub: string) => {
   const subIsString = typeof subScribes === 'string'
 
   const data = ref()
@@ -99,15 +95,3 @@ export const useClient = (
 
   return { data }
 }
-
-// 使用方法
-
-// const { data } = useClient(
-//   ['cde_yulin0116'],
-//   'pub_3dc08e65ff36ed08185a82db5091922c',
-//   'sub_1717bad8d0d7e9716e992f816f563898',
-// )
-
-// watch(data, (newVal) => {
-//   console.log('newVal', newVal);
-// })

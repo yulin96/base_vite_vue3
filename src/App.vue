@@ -1,17 +1,21 @@
 <script setup lang="ts">
+import type { ConfigProviderThemeVars } from 'vant'
 import { Toaster } from 'vue-sonner'
 import CommonLoading from '~/components/common/loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
-import { registerWechatShare } from '~/tools/userExperience'
-import { convertConfigToPx } from '~/utils/convert'
+import { registerWechatShare } from '~/tools/user/share'
+import { getWechatConfig } from '~/tools/wx'
+import { isWeChat } from '~/utils/uaParser'
 
-registerWechatShare()
+if (isWeChat) {
+  registerWechatShare() ?? getWechatConfig()
+}
 
 registerButtonEffect()
 
 /* 路由动画 */
-const { name, isReady } = useRouteTransition('zoom')
+const { name, isReady } = useRouteTransition('slide')
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
@@ -19,21 +23,27 @@ const { name, isReady } = useRouteTransition('zoom')
 //   localStorage.setItem(`${(localName || 'test')}-local`, newVal)
 // })
 
-const themeVars = convertConfigToPx({
+const themeVars = {
   black: '#1d1d1f',
   primaryColor: '#344bb6',
   floatingBubbleBackground: 'transparent',
 
   toastPositionBottomDistance: '9%',
   toastLoadingIconColor: '#111',
-  toastFontSize: '30px',
-})
+} satisfies ConfigProviderThemeVars
 
-onMounted(() => {})
+const { start } = useLoading(window.IMG_RESOURCES ?? [])
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      start()
+    }, 500)
+  })
+})
 </script>
 
 <template>
-  <Toaster richColors position="top-center" :duration="1600" />
+  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
 
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
     <router-view v-slot="{ Component }">

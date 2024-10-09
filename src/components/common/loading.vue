@@ -1,6 +1,6 @@
 <template>
-  <div v-bind="$attrs" class="center fixed left-0 top-0 z-20 h-[100vh] w-[100vw]">
-    <div class="lds-spinner">
+  <div v-bind="$attrs" class="center fixed left-0 top-0 z-20 h-[100vh] w-[100vw] text-loading">
+    <div class="lds-spinner open">
       <div></div>
       <div></div>
       <div></div>
@@ -17,7 +17,36 @@
   </div>
 </template>
 
-<style>
+<style scoped>
+@keyframes fade-zoom-in {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.open {
+  animation: fade-zoom-in 0.3s forwards;
+}
+
+@keyframes fade-zoom-out {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+.close {
+  animation: fade-zoom-out 0.3s forwards;
+}
+
 .lds-spinner,
 .lds-spinner div,
 .lds-spinner div:after {

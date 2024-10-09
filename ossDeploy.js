@@ -2,8 +2,8 @@
 import oss from 'ali-oss'
 import chalk from 'chalk'
 import dotenv from 'dotenv'
-import fs, { readdirSync, rmdirSync } from 'fs'
-import path, { join } from 'path'
+import fs from 'fs'
+import path from 'path'
 import { exit } from 'process'
 
 dotenv.config()
@@ -35,8 +35,14 @@ const client = new oss({ region: 'oss-cn-beijing', accessKeyId, accessKeySecret,
 const localDirName = 'dist'
 const ossDirName = `${rootName}/${uploadDirName}`
 
+const imgs = []
 const upFileList = []
 putDir(localDirName, ossDirName)
+fs.writeFileSync(
+  './dist/imgResources.js',
+  imgs.length ? `window.IMG_RESOURCES = ['${imgs.join("','")}']` : 'window.IMG_RESOURCES = []',
+)
+
 if (upFileList.length === 0) {
   console.log('没有需要上传的文件')
   exit()
@@ -50,7 +56,7 @@ for (const item of upFileList) {
 }
 console.log(isSizeError ? '🎲 : 存在大于500k文件，建议缩小' : '✅')
 
-removeEmptyDirectories('./dist')
+removeEmptyDirs('./dist')
 
 function putDir(localDir, ossDir) {
   try {
@@ -62,6 +68,11 @@ function putDir(localDir, ossDir) {
       const _dist = `${ossDir}/${doc}`
       const st = fs.statSync(_src)
       if (st.isFile() && doc !== '.DS_Store') {
+        const fileType = path.extname(_src).replace('.', '')
+        if (['jpg', 'jpeg', 'png', 'webp'].includes(fileType)) {
+          imgs.push(`https://oss.eventnet.cn/${_dist}`)
+        }
+
         if (!skipFileName.includes(doc)) {
           upFileList.push([_src, _dist, st.size, path.extname(_src)])
         }
@@ -108,13 +119,17 @@ async function putOSS(local, oss, size, fileType) {
   }
 }
 
-function removeEmptyDirectories(directory) {
-  readdirSync(directory, { withFileTypes: true }).forEach((dirent) => {
-    const absolutePath = join(directory, dirent.name)
-    if (dirent.isDirectory()) {
-      removeEmptyDirectories(absolutePath)
-      if (readdirSync(absolutePath).length === 0) {
-        rmdirSync(absolutePath)
+function removeEmptyDirs(dir) {
+  const files = fs.readdirSync(dir)
+
+  files.forEach((file) => {
+    const fullPath = path.join(dir, file)
+    const stat = fs.statSync(fullPath)
+
+    if (stat.isDirectory()) {
+      removeEmptyDirs(fullPath)
+      if (fs.readdirSync(fullPath).length === 0) {
+        fs.rmdirSync(fullPath)
       }
     }
   })

@@ -34,7 +34,7 @@ export function createIvEncryption(secretKey?: string) {
     const encrypted = cryptoJS.AES.encrypt(
       textIsString ? text : JSON.stringify(text),
       cryptoJS.enc.Utf8.parse(_secretKey),
-      { iv: iv }
+      { iv: iv },
     )
 
     const result = iv.toString() + encrypted.toString()

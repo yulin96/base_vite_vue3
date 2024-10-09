@@ -1,7 +1,8 @@
 import { useTimeoutFn } from '@vueuse/core'
 import { useMaskLoading } from '~/hooks/useMaskLoading'
 import router from '~/router'
-import '../assets/css/transition.css'
+
+import '~/assets/css/transition.css'
 
 export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {
   const { createLoading, clearLoading } = useMaskLoading()

@@ -31,7 +31,8 @@ export function isPhone(phone: string): boolean {
  * @returns {boolean | void} - 如果是身份证号则返回 true，否则返回 false
  */
 export function isIdCard(idCard: string): boolean | void {
-  const regIdCard = /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
+  const regIdCard =
+    /^(^[1-9]\d{7}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])\d{3}$)|(^[1-9]\d{5}[1-9]\d{3}((0\d)|(1[0-2]))(([0|1|2]\d)|3[0-1])((\d{4})|\d{3}[Xx])$)$/
   // 如果通过该验证，说明身份证格式正确，但准确性还需计算
   if (regIdCard.test(idCard)) {
     if (idCard.length == 18) {

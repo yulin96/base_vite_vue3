@@ -1,37 +1,39 @@
 <script setup lang="ts">
 import { useEventListener, useToggle } from '@vueuse/core'
+import { useTemplateRef } from 'vue'
 
-withDefaults(defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>(), {
-  playIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
-  pausedIcon: 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
-})
+const {
+  playIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',
+  pausedIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_pause.svg',
+} = defineProps<{ src: string; playIcon?: string; pausedIcon?: string }>()
 
-const audio = ref<HTMLAudioElement>()
-const playImg = ref<HTMLImageElement>()
+const audioRef = useTemplateRef('audioRef')
+const playIconRef = useTemplateRef('playIconRef')
+
 const [isPlay, toggleIsPlay] = useToggle(false)
 
 const togglePlayStatus = () => {
-  if (!audio.value) return console.error('audio is not ready!')
-  if (audio.value.paused) audio.value.play().catch(() => {})
-  else audio.value.pause()
+  if (!audioRef.value) return console.error('audio is not ready!')
+  if (audioRef.value.paused) audioRef.value.play().catch(() => {})
+  else audioRef.value.pause()
 }
 
 const clickPlay = (ele: MouseEvent) => {
-  if (!audio.value) return console.error('audio is not ready!')
-  if (ele.target !== playImg.value && audio.value.paused) audio.value?.play().catch((e) => console.error(e))
+  if (!audioRef.value) return console.error('audio is not ready!')
+  if (ele.target !== playIconRef.value && audioRef.value.paused) audioRef.value?.play().catch((e) => console.error(e))
 }
 
 const cleanupClick = useEventListener(document, 'click', clickPlay, { once: true })
 const cleanupTouchend = useEventListener(document, 'touchend', clickPlay, { once: true })
 
-useMediaSession(audio)
+useMediaSession(audioRef)
 
 /*  */
 onMounted(() => {
   document.addEventListener(
     'WeixinJSBridgeReady',
     () => {
-      audio.value
+      audioRef.value
         ?.play()
         .then(() => {
           cleanupClick()
@@ -53,7 +55,7 @@ onMounted(() => {
       <audio
         class="hidden"
         :src="src"
-        ref="audio"
+        ref="audioRef"
         loop
         autoplay
         @play="toggleIsPlay(true)"
@@ -62,7 +64,7 @@ onMounted(() => {
       <img
         class="h-40 w-40 animate-spin-slow"
         :class="[isPlay ? 'running' : 'paused']"
-        ref="playImg"
+        ref="playIconRef"
         :src="isPlay ? playIcon : pausedIcon"
         @click="togglePlayStatus"
       />

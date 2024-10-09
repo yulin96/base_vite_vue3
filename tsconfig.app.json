@@ -4,7 +4,6 @@
   "exclude": ["src/**/__tests__/*", "dist"],
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "types": [],
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "baseUrl": "./",

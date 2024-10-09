@@ -16,7 +16,7 @@ export function createStars(starsBox: HTMLDivElement) {
         loopCreate()
         if (visibility.value === 'visible') createStar(starsBox)
       },
-      starsBox.children.length > 30 ? Math.floor(random(600, 1000)) : Math.floor(random(50, 100))
+      starsBox.children.length > 30 ? Math.floor(random(600, 1000)) : Math.floor(random(50, 100)),
     )
   }
   loopCreate()

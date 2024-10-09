@@ -1,42 +1,59 @@
 import { defineStore } from 'pinia'
 
-interface IInfo {
-  name: string
-  phone: string
-  code: string
-  [x: string]: any
+interface IIgnore {
+  [key: string]: any
 }
-
+interface IInfo {
+  [key: string]: any
+}
 interface IWxInfo {
   openid: string
   nickname: string
   portrait: string
 }
 
-interface IUserStore {
-  info: Partial<IInfo>
-  wxInfo: Partial<IWxInfo>
-  [x: string]: any
-}
-
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive<IUserStore>({ info: {}, wxInfo: {} })
+    const user = reactive({
+      code: '',
 
-    const clearUser = () => {
-      user.info = {}
-      user.wxInfo = {}
-    }
+      info: {} as Partial<IInfo>,
+      wxInfo: {} as Partial<IWxInfo>,
 
-    return { user, clearUser }
+      clear() {
+        Object.keys(this).forEach((key) => {
+          const element = this[key]
+
+          if (element == null) {
+            this[key] = null
+            return
+          }
+          switch (typeof element) {
+            case 'string':
+              this[key] = ''
+              break
+            case 'number':
+              this[key] = 0
+              break
+            case 'object':
+              this[key] = Array.isArray(element) ? [] : {}
+              break
+          }
+        })
+      },
+
+      other: {} as Partial<{ [key: string]: any }>,
+      ignore: {} as Partial<IIgnore>,
+    })
+
+    return { user }
   },
   {
     persist: {
       key: import.meta.env.VITE_APP_LOCALSTORAGE_NAME || 'test',
-      paths: undefined,
-      beforeRestore: () => {},
-      debug: true,
+      pick: undefined,
+      omit: ['user.ignore'],
     },
   },
 )

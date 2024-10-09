@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Lottie from 'lottie-web'
+import { useTemplateRef } from 'vue'
 import { useStore } from '~/stores'
 import { randomNum } from '~/utils/common'
 
@@ -9,18 +10,18 @@ const toIndex = () => {
 }
 
 const { user } = useStore()
-const id = String(user.info.errId || randomNum(1, 10))
-user.info.errId = id
+const id = String(user.other?.errId || randomNum(1, 10))
+user.other.errId = id
 
-const errorEle = ref<HTMLDivElement | null>(null)
+const errorRef = useTemplateRef('errorRef')
 
 /*  */
 onMounted(() => {
-  if (!errorEle.value) return console.error('errorEle is null')
-  errorEle &&
+  if (!errorRef.value) return console.error('errorEle is null')
+  errorRef &&
     Lottie?.loadAnimation({
       path: `https://oss.eventnet.cn/H5/zz/public/lotties/404/${id}.json`,
-      container: errorEle.value,
+      container: errorRef.value,
       loop: true,
       autoplay: true,
     })
@@ -30,7 +31,7 @@ onMounted(() => {
 <template>
   <div class="wrapperErr">
     <div class="error">ERROR 404</div>
-    <div ref="errorEle"></div>
+    <div ref="errorRef"></div>
     <div @click="toIndex" class="back">回首页</div>
   </div>
 </template>
@@ -41,8 +42,8 @@ onMounted(() => {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background-color: white;
 }

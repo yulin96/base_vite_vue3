@@ -10,7 +10,7 @@ export function registerDirective(app: App<Element>) {
         () => {
           binding.value?.()
         },
-        +(binding?.arg || 1000)
+        +(binding?.arg || 1000),
       )
     })
 

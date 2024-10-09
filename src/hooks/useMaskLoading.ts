@@ -1,5 +1,6 @@
 import { type App, createApp } from 'vue'
 import commonLoading from '~/components/common/loading.vue'
+import { sleep } from '~/utils/common'
 
 export function useMaskLoading() {
   let app: App<Element> | null = null
@@ -14,13 +15,15 @@ export function useMaskLoading() {
     }
   }
 
-  const clearLoading = () => {
-    if (app) {
-      app.unmount()
-      app = null
-    }
+  const clearLoading = async () => {
     if (dom) {
-      dom.classList.add('fade-in')
+      const loading = dom.querySelector('.lds-spinner') as HTMLDivElement | null
+      loading?.classList.add('close')
+
+      await sleep(300)
+
+      app?.unmount()
+      app = null
       document.body.removeChild(dom)
       dom = null
     }
