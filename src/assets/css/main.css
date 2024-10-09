@@ -8,16 +8,6 @@
 @import './snippet.css';
 @import './pc.css';
 
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* word-break: break-all; */
-  word-wrap: break-word;
-  white-space: pre-line;
-  line-height: 1.5;
-  /* perspective: 1200px; */
-}
-
 input,
 select,
 textarea {
@@ -51,38 +41,6 @@ input:focus::placeholder {
 
 select[content=''] {
   color: #a3a9b5;
-}
-
-.cover #app {
-  position: relative;
-  width: 750px;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
-
-.wrapper {
-  width: 750px;
-  height: 100%;
-  /* overscroll-behavior: none; */
-}
-
-.cover .wrapper {
-  width: 100%;
-  height: 100%;
-  min-height: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-}
-
-.content {
-  width: 100%;
-  min-height: 100%;
-  -webkit-overflow-scrolling: touch;
-  position: relative;
-  z-index: 0;
-
-  /* overscroll-behavior: none; */
 }
 
 /* @font-face {
