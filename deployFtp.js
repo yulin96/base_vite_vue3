@@ -1,3 +1,4 @@
+import { input } from '@inquirer/prompts'
 import { Client } from 'basic-ftp'
 import { exit } from 'process'
 
@@ -26,4 +27,6 @@ async function clientAndUpload() {
   exit()
 }
 
+const answer = await input({ message: 'Enter your name' })
+console.log(answer)
 clientAndUpload()
