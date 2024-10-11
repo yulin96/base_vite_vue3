@@ -1,4 +1,4 @@
-type ResData<T> = IRes & { data: T }
+type ResData<T> = IRes & { data: (T & { [x: string]: any }) | null }
 
 interface IRes {
   code: number
