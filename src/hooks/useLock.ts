@@ -15,27 +15,30 @@ export function useLock(showProgress = true, delay = 500) {
   const post = (
     url: string,
     data?: Record<string, any>,
-    dataType?: 'FormData' | 'JSON',
-    headers?: Record<string, any>,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig<any>,
+    dataType?: IFormDataOrJSON,
   ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
     showProgress && nprogress?.start()
     lock.value = true
+
+    if (config?.signal) lock.value = false
+
     return new Promise((resolve, reject) => {
       let toastId: string | number | null = null
       const requestTimer = setTimeout(() => {
         toastId = toast.loading('加载中...')
       }, 5000)
 
-      axiosPost(url, data, dataType, headers, config)
+      axiosPost(url, data, config, dataType)
         .then((res) => {
           resolve(res)
         })
         .catch((err) => {
+          if (err.name == 'CanceledError') return
           toast.error('正在加载中....', { duration: 3600 })
-          reject(err)
+          return
         })
         .finally(() => {
           clearTimeout(requestTimer)
@@ -53,27 +56,31 @@ export function useLock(showProgress = true, delay = 500) {
 
   const get = (
     url: string,
+    params?: Record<string, any>,
+    config?: AxiosRequestConfig<any>,
     data?: Record<string, any>,
-    headers?: Record<string, any>,
-    config?: AxiosRequestConfig,
   ): Promise<IRes> => {
     if (lock.value) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
     showProgress && nprogress?.start()
     lock.value = true
+
+    if (config?.signal) lock.value = false
+
     return new Promise((resolve, reject) => {
       let toastId: string | number | null = null
       const requestTimer = setTimeout(() => {
         toastId = toast.loading('加载中...')
       }, 5000)
 
-      axiosGet(url, data, headers, config)
+      axiosGet(url, params, config, data)
         .then((res) => {
           resolve(res)
         })
         .catch((err) => {
+          if (err.name == 'CanceledError') return
           toast.error('正在加载中....', { duration: 3600 })
-          reject(err)
+          return
         })
         .finally(() => {
           clearTimeout(requestTimer)

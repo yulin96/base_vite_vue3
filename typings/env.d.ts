@@ -42,3 +42,5 @@ type RouteTransitionName =
   | 'slide-page'
   | 'slide-cover'
   | (string & {})
+
+type IFormDataOrJSON = 'FormData' | 'JSON'

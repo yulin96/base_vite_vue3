@@ -35,41 +35,37 @@ interceptor(instanceHttp)
 export const axiosGet = (
   url: string,
   params?: Record<string, any>,
-  headers?: Record<string, any>,
-  config: AxiosRequestConfig = {},
+  config?: AxiosRequestConfig<any>,
+  data?: Record<string, any>,
 ) => {
   return new Promise<IRes>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .get(url, {
+        params,
+        ...(data ? { data } : {}),
         adapter: ['fetch', 'xhr'],
-        ...(params ? { params } : {}),
-        ...(headers ? { headers } : {}),
-        ...config,
+        ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
-      .catch(() => reject())
+      .catch((error) => reject(error))
   })
 }
 
 export const axiosPost = (
   url: string,
-  data: Record<string, any> = {},
-  dataType: 'FormData' | 'JSON' = 'FormData',
-  headers: Record<string, any> | undefined,
-  config: AxiosRequestConfig = {},
+  data?: Record<string, any>,
+  config?: AxiosRequestConfig<any>,
+  dataType: IFormDataOrJSON = 'FormData',
 ) => {
-  const isFromData = dataType === 'FormData'
-  const _headers = {
-    ...headers,
-    'Content-Type': isFromData ? 'multipart/form-data' : 'application/json',
-  }
-
-  return new Promise<IRes>((resolve, reject) =>
-    (url.startsWith('http') ? instanceHttp : instance)
-      .post(url, isFromData ? toFormData(data) : data, { adapter: ['fetch', 'xhr'], ...config, headers: _headers })
+  return new Promise<IRes>((resolve, reject) => {
+    ;(url.startsWith('http') ? instanceHttp : instance)
+      .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
+        adapter: ['fetch', 'xhr'],
+        ...(config ?? {}),
+      })
       .then((response) => resolve(response.data))
-      .catch((error) => reject(error)),
-  )
+      .catch((error) => reject(error))
+  })
 }
 
 export function getLocalJson(url: string) {
