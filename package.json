@@ -10,14 +10,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- && pnpm upOSS && pnpm upFTP",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "upDist": "node ./ossDeploy.js",
+    "upOSS": "node ./deployOSS.js",
+    "upFTP": "node ./deployFTP.js",
     "prepare": "husky"
   },
   "dependencies": {
@@ -67,6 +68,7 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.0",
     "@eslint/js": "^9.12.0",
+    "@inquirer/prompts": "^7.0.0",
     "@plugin-web-update-notification/vite": "^1.7.1",
     "@tsconfig/node20": "^20.1.4",
     "@types/ali-oss": "^6.16.11",
@@ -81,6 +83,8 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
     "ali-oss": "^6.21.0",
+    "archiver": "^7.0.1",
+    "basic-ftp": "^5.0.5",
     "cross-env": "^7.0.3",
     "eslint": "^9.12.0",
     "eslint-config-prettier": "^9.1.0",
@@ -90,6 +94,7 @@
     "husky": "^9.1.6",
     "jsdom": "^25.0.1",
     "npm-run-all2": "^6.2.3",
+    "ora": "^8.1.0",
     "postcss-preset-env": "^10.0.6",
     "postcss-pxtorem": "^6.1.0",
     "prettier": "^3.3.3",
