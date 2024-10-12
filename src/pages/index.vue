@@ -9,7 +9,7 @@ onMounted(() => {
 
 <template>
   <section class="index">
-    <main class="content"></main>
+    <main class="content">Index</main>
   </section>
 </template>
 
