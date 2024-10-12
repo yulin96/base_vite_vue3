@@ -43,6 +43,7 @@ async function clientAndUpload() {
       secure: true,
       secureOptions: {
         rejectUnauthorized: false,
+        timeout: 60000,
       },
     })
 
@@ -59,13 +60,6 @@ async function clientAndUpload() {
     spinner.succeed(`已连接 ${green(`==> 目录：${remoteDir}`)}`)
 
     if (fileList.length) {
-      const answer = await select({
-        message: '上传目录非空目录，是否继续上传',
-        choices: ['是', '否'],
-        default: '否',
-      })
-      if (answer === '否') exit()
-
       const zipSpinner = ora(`创建备份文件中 ${yellow(`==> 目录：${remoteDir}`)}`).start()
       const zipName = `backup_${dayjs().format('YYYYMMDD_HHmmss')}.zip`
 
