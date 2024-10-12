@@ -10,7 +10,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" --",
+    "build": "run-p type-check \"build-only {@}\" -- && pnpm upDist && pnpm upFTP",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
@@ -18,6 +18,7 @@
     "lint": "eslint --fix .",
     "format": "prettier --write .",
     "upDist": "node ./ossDeploy.js",
+    "upFTP": "node ./deployFtp.js",
     "prepare": "husky"
   },
   "dependencies": {

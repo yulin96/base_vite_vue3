@@ -1,4 +1,3 @@
-import { exec } from 'child_process'
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 
@@ -35,17 +34,17 @@ export default defineConfig(({ command }) => ({
         handleCheck()
       },
       closeBundle() {
-        if (propOssPath === './') return
-        exec('node ossDeploy.js', (error, stdout, stderr) => {
-          if (error) {
-            console.error(`执行错误: ${error}`)
-            return
-          }
-          if (stderr) {
-            console.error(`stderr: ${stderr}`)
-          }
-          console.log(`${stdout}`)
-        })
+        // if (propOssPath === './') return
+        // exec('node ossDeploy.js', (error, stdout, stderr) => {
+        //   if (error) {
+        //     console.error(`执行错误: ${error}`)
+        //     return
+        //   }
+        //   if (stderr) {
+        //     console.error(`stderr: ${stderr}`)
+        //   }
+        //   console.log(`${stdout}`)
+        // })
       },
     },
     ViteImageOptimizer({

@@ -1,20 +1,25 @@
 //@ts-check
 import { select } from '@inquirer/prompts'
+import archiver from 'archiver'
 import { Client } from 'basic-ftp'
 import chalk from 'chalk'
+import dayjs from 'dayjs'
 import dotenv from 'dotenv'
+import fs from 'fs'
 import ora from 'ora'
 import path from 'path'
 import { env, exit } from 'process'
-import { PassThrough } from 'stream'
 
 dotenv.config()
 
-const { green, red } = chalk
+const { green, red, yellow } = chalk
 
-const remoteDir = '/t/5'
+const remoteDir = env.VITE_FTP_DIRNAME
 
-const spinner = ora('创建连接中...').start()
+const answer = await select({ message: '是否上传FTP', choices: ['是', '否'], default: '是' })
+if (answer === '否') exit()
+
+const spinner = ora('准备自动上传，创建连接中...').start()
 async function clientAndUpload() {
   try {
     const zH5FtpHost = env.zH5FtpHost
@@ -60,6 +65,48 @@ async function clientAndUpload() {
         default: '否',
       })
       if (answer === '否') exit()
+
+      const zipSpinner = ora(`创建备份文件中 ${yellow(`==> 目录：${remoteDir}`)}`).start()
+      const zipName = `backup_${dayjs().format('YYYYMMDD_HHmmss')}.zip`
+
+      const localDir = `./__temp/zip`
+      const zipFilePath = `./__temp/${zipName}`
+
+      if (!fs.existsSync(localDir)) {
+        fs.mkdirSync(localDir, { recursive: true })
+      }
+      await client.downloadToDir(localDir, remoteDir)
+      zipSpinner.text = `下载远程文件成功 ${yellow(`==> 目录：${remoteDir}`)}`
+
+      fs.readdirSync(localDir).forEach((i) => {
+        if (i.startsWith('backup_') && i.endsWith('.zip')) {
+          fs.rmSync(path.join(localDir, i))
+        }
+      })
+
+      const output = fs.createWriteStream(zipFilePath)
+      const archive = archiver('zip', {
+        zlib: { level: 9 },
+      })
+
+      output.on('close', function () {
+        // console.log(`压缩文件已创建，总共压缩了 ${archive.pointer()} 字节.`)
+      })
+
+      archive.on('error', function (err) {
+        zipSpinner.fail('压缩失败')
+        throw err
+      })
+
+      archive.pipe(output)
+      archive.directory(localDir, false)
+      await archive.finalize()
+      zipSpinner.text = `压缩完成, 准备上传 ${yellow(`==> 目录：${remoteDir}/${zipName}`)}`
+
+      await client.uploadFrom(zipFilePath, `${remoteDir}/${zipName}`)
+      zipSpinner.succeed(`备份成功 ${green(`==> 目录：${remoteDir}/${zipName}`)}`)
+
+      fs.rmSync(`./__temp`, { recursive: true })
     }
     const upSpinner = ora('上传中...').start()
     await client.uploadFromDir('dist', remoteDir)
@@ -70,38 +117,6 @@ async function clientAndUpload() {
     spinner.fail('上传失败')
     exit()
   }
-}
-
-// 递归遍历远程目录并将文件和文件夹添加到压缩包中
-/**
- *
- * @param {*} client
- * @param {*} archive
- * @param {*} currentRemoteDir
- * @param {*} currentLocalDir
- */
-async function appendRemoteDirectoryToArchive(client, archive, currentRemoteDir, currentLocalDir) {
-  const fileList = await client.list()
-
-  for (const file of fileList) {
-    const remoteFilePath = path.join(currentRemoteDir, file.name)
-    const localFilePath = path.join(currentLocalDir, file.name)
-
-    if (file.isDirectory) {
-      await appendRemoteDirectoryToArchive(client, archive, remoteFilePath, localFilePath)
-    } else if (file.isFile) {
-      const passThrough = new PassThrough()
-
-      const downloadPromise = client.downloadTo(passThrough, remoteFilePath)
-
-      archive.append(passThrough, { name: localFilePath })
-
-      await downloadPromise
-    }
-  }
-
-  // 返回上级目录
-  await client.cdup()
 }
 
 clientAndUpload()
