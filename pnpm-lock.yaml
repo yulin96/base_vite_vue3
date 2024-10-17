@@ -143,9 +143,6 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.0
         version: 1.2.0(eslint@9.12.0(jiti@2.3.3))
-      '@eslint/js':
-        specifier: ^9.12.0
-        version: 9.12.0
       '@inquirer/prompts':
         specifier: ^7.0.0
         version: 7.0.0(@types/node@22.7.6)
@@ -182,6 +179,12 @@ importers:
       '@vitejs/plugin-vue-jsx':
         specifier: ^4.0.1
         version: 4.0.1(vite@5.4.9(@types/node@22.7.6))(vue@3.5.12(typescript@5.6.2))
+      '@vue/eslint-config-prettier':
+        specifier: ^10.0.0
+        version: 10.0.0(eslint@9.12.0(jiti@2.3.3))(prettier@3.3.3)
+      '@vue/eslint-config-typescript':
+        specifier: ^14.1.1
+        version: 14.1.1(@typescript-eslint/parser@8.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2))(eslint-plugin-vue@9.29.0(eslint@9.12.0(jiti@2.3.3)))(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2)
       '@vue/test-utils':
         specifier: ^2.4.6
         version: 2.4.6
@@ -203,18 +206,9 @@ importers:
       eslint:
         specifier: ^9.12.0
         version: 9.12.0(jiti@2.3.3)
-      eslint-config-prettier:
-        specifier: ^9.1.0
-        version: 9.1.0(eslint@9.12.0(jiti@2.3.3))
-      eslint-plugin-prettier:
-        specifier: ^5.2.1
-        version: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.12.0(jiti@2.3.3)))(eslint@9.12.0(jiti@2.3.3))(prettier@3.3.3)
       eslint-plugin-vue:
         specifier: ^9.29.0
         version: 9.29.0(eslint@9.12.0(jiti@2.3.3))
-      globals:
-        specifier: ^15.11.0
-        version: 15.11.0
       husky:
         specifier: ^9.1.6
         version: 9.1.6
@@ -248,9 +242,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.14
         version: 3.4.14
-      typescript-eslint:
-        specifier: ^8.9.0
-        version: 8.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2)
       unplugin-auto-import:
         specifier: ^0.18.3
         version: 0.18.3(@nuxt/kit@3.13.2(rollup@4.24.0)(webpack-sources@3.2.3))(@vueuse/core@11.1.0(vue@3.5.12(typescript@5.6.2)))(rollup@4.24.0)(webpack-sources@3.2.3)
@@ -1392,6 +1383,23 @@ packages:
   '@vue/devtools-api@6.6.4':
     resolution: {integrity: sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g==}
 
+  '@vue/eslint-config-prettier@10.0.0':
+    resolution: {integrity: sha512-iDEjsfT+UXQTJfe+4mstb/B5BSZ5RpL6FO3F97XxElIXdD04gkH+F7PR4fBMEVyJi4892G4LQVPQ8oXxVyp8Dw==}
+    peerDependencies:
+      eslint: '>= 8.21.0'
+      prettier: '>= 3.0.0'
+
+  '@vue/eslint-config-typescript@14.1.1':
+    resolution: {integrity: sha512-zw6q8pXUuFHfdZsdKYr344giBRhnq6WmWSO2abFHajxR8wDX2p2hkj0/Mf6W2phTkerU4b8WF2jgq2Z/c+PdMA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      eslint: ^9.10.0
+      eslint-plugin-vue: ^9.28.0
+      typescript: '>=4.8.4'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   '@vue/language-core@2.1.6':
     resolution: {integrity: sha512-MW569cSky9R/ooKMh6xa2g1D0AtRKbL56k83dzus/bx//RDJk24RHWkMzbAlXjMdDNyxAaagKPRquBIxkxlCkg==}
     peerDependencies:
@@ -2237,10 +2245,6 @@ packages:
 
   globals@14.0.0:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
-    engines: {node: '>=18'}
-
-  globals@15.11.0:
-    resolution: {integrity: sha512-yeyNSjdbyVaWurlwCpcA6XNBrHTMIeDdj0/hnvX/OLJ9ekOXYbLsLinH/MucQyGvNnXhidTdNhTtJaffL2sMfw==}
     engines: {node: '>=18'}
 
   globby@14.0.2:
@@ -5058,6 +5062,29 @@ snapshots:
 
   '@vue/devtools-api@6.6.4': {}
 
+  '@vue/eslint-config-prettier@10.0.0(eslint@9.12.0(jiti@2.3.3))(prettier@3.3.3)':
+    dependencies:
+      eslint: 9.12.0(jiti@2.3.3)
+      eslint-config-prettier: 9.1.0(eslint@9.12.0(jiti@2.3.3))
+      eslint-plugin-prettier: 5.2.1(eslint-config-prettier@9.1.0(eslint@9.12.0(jiti@2.3.3)))(eslint@9.12.0(jiti@2.3.3))(prettier@3.3.3)
+      prettier: 3.3.3
+    transitivePeerDependencies:
+      - '@types/eslint'
+
+  '@vue/eslint-config-typescript@14.1.1(@typescript-eslint/parser@8.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2))(eslint-plugin-vue@9.29.0(eslint@9.12.0(jiti@2.3.3)))(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2)':
+    dependencies:
+      '@typescript-eslint/eslint-plugin': 8.9.0(@typescript-eslint/parser@8.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2))(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2)
+      eslint: 9.12.0(jiti@2.3.3)
+      eslint-plugin-vue: 9.29.0(eslint@9.12.0(jiti@2.3.3))
+      fast-glob: 3.3.2
+      typescript-eslint: 8.9.0(eslint@9.12.0(jiti@2.3.3))(typescript@5.6.2)
+      vue-eslint-parser: 9.4.3(eslint@9.12.0(jiti@2.3.3))
+    optionalDependencies:
+      typescript: 5.6.2
+    transitivePeerDependencies:
+      - '@typescript-eslint/parser'
+      - supports-color
+
   '@vue/language-core@2.1.6(typescript@5.6.2)':
     dependencies:
       '@volar/language-core': 2.4.6
@@ -5936,8 +5963,6 @@ snapshots:
       type-fest: 0.20.2
 
   globals@14.0.0: {}
-
-  globals@15.11.0: {}
 
   globby@14.0.2:
     dependencies:
