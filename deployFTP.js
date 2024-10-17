@@ -16,6 +16,11 @@ const { green, red, yellow } = chalk
 
 const remoteDir = env.VITE_FTP_DIRNAME
 
+if (!remoteDir || remoteDir === '/') {
+  console.log(red('请在.env文件中配置VITE_FTP_DIRNAME后自动上传'))
+  exit()
+}
+
 const answer = await select({ message: '是否上传FTP', choices: ['是', '否'], default: '是' })
 if (answer === '否') exit()
 
