@@ -47,7 +47,7 @@ watch(
 </script>
 
 <template>
-  <van-floating-bubble
+  <VanFloatingBubble
     @offset-change="offsetChange"
     @click="backIns.onClick()"
     :class="!backIns.show ? 'pointer-events-none' : ''"
@@ -58,10 +58,10 @@ watch(
     :magnetic="magnetic ?? 'x'"
     :gap="10"
   >
-    <transition name="scale">
+    <Transition name="scale">
       <img v-if="backIns.show" class="w-full" :src="icon" />
-    </transition>
-  </van-floating-bubble>
+    </Transition>
+  </VanFloatingBubble>
 </template>
 
 <style>

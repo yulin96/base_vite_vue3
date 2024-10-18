@@ -1,5 +1,5 @@
 import { type App, createApp } from 'vue'
-import commonLoading from '~/components/common/loading.vue'
+import commonLoading from '~/components/common/Loading.vue'
 import { sleep } from '~/utils/common'
 
 export function useMaskLoading() {

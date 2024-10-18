@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ConfigProviderThemeVars } from 'vant'
 import { Toaster } from 'vue-sonner'
-import CommonLoading from '~/components/common/loading.vue'
+import CommonLoading from '~/components/common/Loading.vue'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'
@@ -43,24 +43,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
+  <Toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
 
-  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
-    <router-view v-slot="{ Component }">
+  <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
+    <RouterView v-slot="{ Component }">
       <template v-if="Component">
-        <transition :name>
-          <keep-alive :include="[]">
-            <suspense @resolve="isReady">
+        <Transition :name>
+          <KeepAlive :include="[]">
+            <Suspense @resolve="isReady">
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <common-loading></common-loading>
+                <CommonLoading></CommonLoading>
               </template>
-            </suspense>
-          </keep-alive>
-        </transition>
+            </Suspense>
+          </KeepAlive>
+        </Transition>
       </template>
-    </router-view>
-  </van-config-provider>
+    </RouterView>
+  </VanConfigProvider>
 </template>
 
 <style>
