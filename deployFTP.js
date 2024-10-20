@@ -58,14 +58,14 @@ async function clientAndUpload() {
     await client.ensureDir(remoteDir)
 
     spinner.color = 'magenta'
-    spinner.text = `打开目录成功 ==> 目录：${remoteDir}`
+    spinner.text = `打开目录成功 目录: ==> ${remoteDir}`
 
     const fileList = await client.list(remoteDir)
 
-    spinner.succeed(`已连接 ${green(`==> 目录：${remoteDir}`)}`)
+    spinner.succeed(`已连接 ${green(`目录: ==> ${remoteDir}`)}`)
 
     if (fileList.length) {
-      const zipSpinner = ora(`创建备份文件中 ${yellow(`==> 目录：${remoteDir}`)}`).start()
+      const zipSpinner = ora(`创建备份文件中 ${yellow(`目录: ==> ${remoteDir}`)}`).start()
       const zipName = `backup_${dayjs().format('YYYYMMDD_HHmmss')}.zip`
 
       const localDir = `./__temp/zip`
@@ -75,7 +75,7 @@ async function clientAndUpload() {
         fs.mkdirSync(localDir, { recursive: true })
       }
       await client.downloadToDir(localDir, remoteDir)
-      zipSpinner.text = `下载远程文件成功 ${yellow(`==> 目录：${remoteDir}`)}`
+      zipSpinner.text = `下载远程文件成功 ${yellow(`目录: ==> ${remoteDir}`)}`
 
       fs.readdirSync(localDir).forEach((i) => {
         if (i.startsWith('backup_') && i.endsWith('.zip')) {
@@ -100,16 +100,16 @@ async function clientAndUpload() {
       archive.pipe(output)
       archive.directory(localDir, false)
       await archive.finalize()
-      zipSpinner.text = `压缩完成, 准备上传 ${yellow(`==> 目录：${remoteDir}/${zipName}`)}`
+      zipSpinner.text = `压缩完成, 准备上传 ${yellow(`目录: ==> ${remoteDir}/${zipName}`)}`
 
       await client.uploadFrom(zipFilePath, `${remoteDir}/${zipName}`)
-      zipSpinner.succeed(`备份成功 ${green(`==> 目录：${remoteDir}/${zipName}`)}`)
+      zipSpinner.succeed(`备份成功 ${green(`目录: ==> ${remoteDir}/${zipName}`)}`)
 
       fs.rmSync(`./__temp`, { recursive: true })
     }
     const upSpinner = ora('上传中...').start()
     await client.uploadFromDir('dist', remoteDir)
-    upSpinner.succeed('上传成功')
+    upSpinner.succeed('上传成功 url:' + green(`https://h5.eventnet.cn${remoteDir}/`))
     exit()
   } catch (error) {
     console.log(red(error.toString()))
