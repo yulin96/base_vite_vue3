@@ -62,7 +62,7 @@ onMounted(() => {
         @pause="toggleIsPlay(false)"
       ></audio>
       <img
-        class="h-40 w-40 animate-spin-slow"
+        class="size-[40px] animate-spin-slow"
         :class="[isPlay ? 'running' : 'paused']"
         ref="playIconRef"
         :src="isPlay ? playIcon : pausedIcon"

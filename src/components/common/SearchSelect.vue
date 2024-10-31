@@ -45,11 +45,11 @@ onMounted(() => {
     <div
       data-search-select
       v-show="searchIns.show"
-      class="absolute top-[100%] flex h-600 w-full flex-col overflow-hidden rounded-6 bg-white shadow-lg"
+      class="absolute top-[100%] flex h-[600px] w-full flex-col overflow-hidden rounded-[6px] bg-white shadow-lg"
     >
       <VanSearch @click.stop v-model="searchIns.value" placeholder="请输入搜索关键词" />
       <div class="w-full flex-1 overflow-auto">
-        <div @click="choose(item.value)" v-for="item in searchIns.list" :key="item.key" class="px-30 py-15">
+        <div @click="choose(item.value)" v-for="item in searchIns.list" :key="item.key" class="px-[30px] py-[15px]">
           {{ item.value }}
         </div>
       </div>

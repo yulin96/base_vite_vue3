@@ -44,7 +44,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="h-100 w-100">
+  <div class="size-[100px]">
     <div class="h-full w-full scale-[1.2]" ref="likeRef"></div>
   </div>
 </template>

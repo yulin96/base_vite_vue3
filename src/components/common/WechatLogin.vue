@@ -31,15 +31,15 @@ onMounted(async () => {
     :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
     class="bg-transparent"
   >
-    <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white p-[60px_0]">
-      <p class="mb-40 text-32">您还没有登录</p>
-      <p class="mb-40 text-32">点击微信一键登录参与活动</p>
+    <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white py-[60px]">
+      <p class="mb-[40px] text-[32px]">您还没有登录</p>
+      <p class="mb-[40px] text-[32px]">点击微信一键登录参与活动</p>
       <button
-        class="flex h-80 w-500 items-center justify-center rounded-[12px] bg-[#12c164] text-white"
+        class="flex h-[80px] w-[500px] items-center justify-center rounded-[12px] bg-[#12c164] text-white"
         @click="openLink"
       >
         <svg
-          class="icon mr-10 w-60"
+          class="icon mr-[10px] w-[60px]"
           viewBox="0 0 1024 1024"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
@@ -56,7 +56,7 @@ onMounted(async () => {
             fill="#ffffff"
           ></path>
         </svg>
-        <p class="text-30">微信一键登录</p>
+        <p class="text-[30px]">微信一键登录</p>
       </button>
     </div>
   </VanPopup>
