@@ -22,6 +22,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@number-flow/vue": "^0.2.0",
     "@tsparticles/engine": "^3.5.0",
     "@types/canvas-confetti": "^1.6.4",
     "@types/lodash-es": "^4.17.12",
