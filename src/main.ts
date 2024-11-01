@@ -1,3 +1,4 @@
+import { MotionPlugin } from '@vueuse/motion'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
@@ -33,6 +34,7 @@ pinia.use(piniaPluginPersistedstate)
 // app.use(i18n)
 app.use(pinia)
 app.use(router)
+app.use(MotionPlugin)
 
 const meta = document.createElement('meta')
 meta.name = 'naive-ui-style'
