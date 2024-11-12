@@ -29,7 +29,10 @@ export function trimAll(str: string): string {
 export function randomString(prefix: string = 'z', len: number = 16): string {
   const seed = 'abcdefghijklmnopqrstuvwxyz1234567890'
   const timestamp = new Date().getTime()
-  const createStr = Array.from({ length: len }, () => seed[Math.floor(Math.random() * seed.length)]).join('')
+  const createStr = Array.from(
+    { length: len },
+    () => seed[Math.floor(Math.random() * seed.length)],
+  ).join('')
   return `${prefix}_${timestamp}_${createStr}`
 }
 
@@ -166,7 +169,11 @@ export function removeUrlParams(url: string, param: string | string[]) {
 }
 
 export function userLanguage() {
-  return navigator?.language || (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) || 'zh-CN'
+  return (
+    navigator?.language ||
+    (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) ||
+    'zh-CN'
+  )
 }
 
 export function userLanguageIsChinese() {

@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import Zoomist from '~/tools/zoomist'
 
-const { fillType = 'cover', url } = defineProps<{ url: string; fillType?: 'cover' | 'contain' | 'none' }>()
+const { fillType = 'cover', url } = defineProps<{
+  url: string
+  fillType?: 'cover' | 'contain' | 'none'
+}>()
 
 const uuid = 'zoomist_' + +new Date()
 

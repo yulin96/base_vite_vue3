@@ -3,7 +3,7 @@
   "arrowParens": "always",
   "bracketSameLine": false,
   "jsxSingleQuote": true,
-  "printWidth": 120,
+  "printWidth": 100,
   "quoteProps": "as-needed",
   "semi": false,
   "singleQuote": true,

@@ -30,7 +30,13 @@ if (!accessKeyId || !accessKeySecret || !bucket) {
   exit()
 }
 
-const client = new oss({ region: 'oss-cn-beijing', accessKeyId, accessKeySecret, secure: true, bucket })
+const client = new oss({
+  region: 'oss-cn-beijing',
+  accessKeyId,
+  accessKeySecret,
+  secure: true,
+  bucket,
+})
 
 const localDirName = 'dist'
 const ossDirName = `${rootName}/${uploadDirName}`

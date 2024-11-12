@@ -4,7 +4,11 @@ import { randomString } from '~/utils/common'
 const uuid = randomString()
 const uuid2 = randomString()
 
-const { gap = 20, speed = 50, barrageList } = defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>()
+const {
+  gap = 20,
+  speed = 50,
+  barrageList,
+} = defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>()
 
 const currentId = defineModel<number>({ required: true })
 
@@ -39,7 +43,9 @@ function createBarrage({
   if (!params) return
 
   const index = Array.from(parents).findIndex(
-    (item) => item.lastChild === null || (item.lastChild as HTMLDivElement).getBoundingClientRect().right < innerWidth,
+    (item) =>
+      item.lastChild === null ||
+      (item.lastChild as HTMLDivElement).getBoundingClientRect().right < innerWidth,
   )
 
   if (index === -1) return

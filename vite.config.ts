@@ -227,6 +227,9 @@ function handleCheck() {
 function getNoticeUrl() {
   const baseURL = env.VITE_APP_SHARE_LINK
   if (!baseURL) return './'
-  const _url = baseURL.substring(0, baseURL.indexOf('#') === -1 ? baseURL.length : baseURL.indexOf('#'))
+  const _url = baseURL.substring(
+    0,
+    baseURL.indexOf('#') === -1 ? baseURL.length : baseURL.indexOf('#'),
+  )
   return _url.substring(0, _url.lastIndexOf('/') + 1)
 }

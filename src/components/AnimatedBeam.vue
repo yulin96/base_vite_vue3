@@ -105,7 +105,13 @@ onBeforeUnmount(() => {
       :stroke-opacity="pathOpacity"
       stroke-linecap="round"
     />
-    <path :d="pathD" :stroke-width="pathWidth" :stroke="`url(#${id})`" stroke-opacity="1" stroke-linecap="round" />
+    <path
+      :d="pathD"
+      :stroke-width="pathWidth"
+      :stroke="`url(#${id})`"
+      stroke-opacity="1"
+      stroke-linecap="round"
+    />
     <defs>
       <linearGradient :id="id" gradientUnits="userSpaceOnUse" x1="0%" x2="0%" y1="0%" y2="0%">
         <stop :stop-color="gradientStartColor" stop-opacity="0" />

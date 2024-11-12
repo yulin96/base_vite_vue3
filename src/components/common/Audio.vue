@@ -20,7 +20,8 @@ const togglePlayStatus = () => {
 
 const clickPlay = (ele: MouseEvent) => {
   if (!audioRef.value) return console.error('audio is not ready!')
-  if (ele.target !== playIconRef.value && audioRef.value.paused) audioRef.value?.play().catch((e) => console.error(e))
+  if (ele.target !== playIconRef.value && audioRef.value.paused)
+    audioRef.value?.play().catch((e) => console.error(e))
 }
 
 const cleanupClick = useEventListener(document, 'click', clickPlay, { once: true })

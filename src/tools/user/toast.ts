@@ -9,7 +9,9 @@ const { start } = useLoading([
 
 start()
 
-export function showStatusToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
+export function showStatusToast(
+  option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string,
+) {
   if (typeof option === 'string') return toast(option)
 
   const _message = option?.status

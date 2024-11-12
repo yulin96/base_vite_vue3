@@ -6,7 +6,9 @@ import '~/assets/css/transition.css'
 
 export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {
   const { createLoading, clearLoading } = useMaskLoading()
-  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 600, { immediate: false })
+  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 600, {
+    immediate: false,
+  })
   const [isFirstLoad, setIsFirstLoad] = useToggle(true)
 
   const name = ref('fade')

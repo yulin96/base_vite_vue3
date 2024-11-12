@@ -10,7 +10,9 @@ export function createAesCrypto(key?: string, iv?: string) {
 
   const encrypt = (text: string | Record<string, any>) => {
     const textIsString = typeof text === 'string'
-    const encrypted = cryptoJS.AES.encrypt(textIsString ? text : JSON.stringify(text), _key, { iv: _iv }).toString()
+    const encrypted = cryptoJS.AES.encrypt(textIsString ? text : JSON.stringify(text), _key, {
+      iv: _iv,
+    }).toString()
 
     return encrypted
   }
@@ -45,7 +47,9 @@ export function createIvEncryption(secretKey?: string) {
     const iv = cryptoJS.enc.Hex.parse(text.substring(0, 32))
     const ciphertext = text.substring(32)
 
-    const decrypted = cryptoJS.AES.decrypt(ciphertext, cryptoJS.enc.Utf8.parse(_secretKey), { iv: iv })
+    const decrypted = cryptoJS.AES.decrypt(ciphertext, cryptoJS.enc.Utf8.parse(_secretKey), {
+      iv: iv,
+    })
     return decrypted.toString(cryptoJS.enc.Utf8)
   }
 

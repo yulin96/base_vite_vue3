@@ -28,7 +28,11 @@ onMounted(async () => {
     data-z-wx-login
     :show="show"
     :close-on-click-overlay="false"
-    :overlay-style="{ background: '#0003', WebkitBackdropFilter: 'blur(20px)', backdropFilter: 'blur(20px)' }"
+    :overlay-style="{
+      background: '#0003',
+      WebkitBackdropFilter: 'blur(20px)',
+      backdropFilter: 'blur(20px)',
+    }"
     class="bg-transparent"
   >
     <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white py-[60px]">

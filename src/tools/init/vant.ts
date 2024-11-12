@@ -13,4 +13,9 @@ setToastDefaultOptions({
 })
 setToastDefaultOptions('loading', { duration: 0, loadingType: 'spinner' })
 setNotifyDefaultOptions({ type: 'warning', teleport: '#app' })
-setDialogDefaultOptions({ title: '温馨提示', theme: 'round-button', allowHtml: true, teleport: '#app' })
+setDialogDefaultOptions({
+  title: '温馨提示',
+  theme: 'round-button',
+  allowHtml: true,
+  teleport: '#app',
+})

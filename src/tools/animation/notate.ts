@@ -10,7 +10,11 @@ export const notate = (name: string, config: RoughAnnotationConfig) => {
   return _notate
 }
 
-export async function notateAuto(name: string, config: RoughAnnotationConfig, removeTime: number = 600) {
+export async function notateAuto(
+  name: string,
+  config: RoughAnnotationConfig,
+  removeTime: number = 600,
+) {
   const _notate = notate(name, config)
   if (!_notate) return
 

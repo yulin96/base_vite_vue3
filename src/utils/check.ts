@@ -78,4 +78,5 @@ export function isHttps(): boolean {
  * 判断当前系统是否开启了深色模式
  * @type {boolean} - 如果开启了深色模式则为 true，否则为 false
  */
-export const isDarkMode: boolean = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+export const isDarkMode: boolean =
+  window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches

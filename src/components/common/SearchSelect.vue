@@ -49,7 +49,12 @@ onMounted(() => {
     >
       <VanSearch @click.stop v-model="searchIns.value" placeholder="请输入搜索关键词" />
       <div class="w-full flex-1 overflow-auto">
-        <div @click="choose(item.value)" v-for="item in searchIns.list" :key="item.key" class="px-[30px] py-[15px]">
+        <div
+          @click="choose(item.value)"
+          v-for="item in searchIns.list"
+          :key="item.key"
+          class="px-[30px] py-[15px]"
+        >
           {{ item.value }}
         </div>
       </div>

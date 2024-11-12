@@ -27,7 +27,8 @@ export const isIE = uaParser.getBrowser().name === 'IE'
 
 export const isMobile = uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
 
-export const isMobileFun = () => uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
+export const isMobileFun = () =>
+  uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
 
 export function isDingDing() {
   return env.platform !== 'notInDingTalk'

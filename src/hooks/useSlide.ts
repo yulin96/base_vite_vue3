@@ -23,7 +23,14 @@ interface ISlideOptions {
  * @param options.nextScroll - 向下滑动的回调函数
  * @param options.slideNumber - 滑动距离的阈值，默认为100
  */
-export function useSlide({ ele, prev, next, prevScroll, nextScroll, slideNumber = 100 }: ISlideOptions) {
+export function useSlide({
+  ele,
+  prev,
+  next,
+  prevScroll,
+  nextScroll,
+  slideNumber = 100,
+}: ISlideOptions) {
   const startMove = ref({ pageY: 0, once: true })
 
   const { arrivedState } = useScroll(ele, { offset: { bottom: 0 } })
@@ -88,7 +95,8 @@ export function useSlide({ ele, prev, next, prevScroll, nextScroll, slideNumber 
 
     if (
       t.deltaY > -60 &&
-      Math.ceil(ele.value.scrollTop) + Math.ceil(ele.value.clientHeight) + 2 >= ele.value.scrollHeight
+      Math.ceil(ele.value.scrollTop) + Math.ceil(ele.value.clientHeight) + 2 >=
+        ele.value.scrollHeight
     ) {
       next?.()
     }
