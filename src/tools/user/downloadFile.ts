@@ -11,7 +11,7 @@ export function downloadFile(url: string, filename?: string) {
       fetch(url)
         .then((response) => response.blob())
         .then((blob) => {
-          const url = URL.createObjectURL(blob)
+          const url = URL.createObjectURL(new Blob([blob]))
           const a = document.createElement('a')
           a.href = url
           a.download = filename ?? url.split('/')?.pop() ?? 'download'
