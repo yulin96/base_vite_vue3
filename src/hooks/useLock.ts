@@ -9,7 +9,7 @@ nprogress.configure({
   trickleSpeed: 120,
 })
 
-export function useLock(showProgress = true, delay = 500) {
+export function useLock(showProgress = false, delay = 500) {
   const lock = ref(false)
 
   const post = (
