@@ -36,7 +36,8 @@ input:focus {
   border: none;
 }
 
-input {
+input,
+textarea {
   caret-color: currentColor;
 }
 
