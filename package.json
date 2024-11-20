@@ -45,6 +45,7 @@
     "dotenv": "^16.4.5",
     "driver.js": "^1.3.1",
     "gsap": "^3.12.5",
+    "html2canvas": "1.0.0-rc.4",
     "jsencrypt": "^3.3.2",
     "lodash-es": "^4.17.21",
     "lottie-web": "^5.12.2",
@@ -114,7 +115,8 @@
   },
   "pnpm": {
     "patchedDependencies": {
-      "@vueuse/sound@2.0.1": "patches/@vueuse__sound@2.0.1.patch"
+      "@vueuse/sound@2.0.1": "patches/@vueuse__sound@2.0.1.patch",
+      "html2canvas@1.0.0-rc.4": "patches/html2canvas@1.0.0-rc.4.patch"
     }
   }
 }
