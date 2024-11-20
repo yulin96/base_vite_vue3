@@ -51,10 +51,6 @@ code {
   font-family: inherit;
 }
 
-[code] {
-  pointer-events: none;
-}
-
 img {
   display: block;
   max-width: none;
