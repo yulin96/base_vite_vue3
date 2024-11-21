@@ -1,5 +1,5 @@
-@import './base.css';
 @import './plugin/tailwind.css';
+@import './base.css';
 @import './plugin/progress.css';
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';

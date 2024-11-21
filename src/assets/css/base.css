@@ -52,14 +52,19 @@ code {
 }
 
 img {
-  display: block;
-  max-width: none;
   object-fit: contain;
 }
 
 img,
-video {
+svg,
+video,
+canvas,
+audio,
+iframe,
+embed,
+object {
   max-width: none;
+  display: unset;
 }
 
 canvas {
