@@ -15,7 +15,7 @@ const test = () => {
   const in_title = '标题'
   const in_content = '内容'
   const in_cardid = 'AAqj6VyQoXwCF'
-  const in_url = 'https://aloha-qa.cn.walmartmobile.cn/aloha-notice-service/notice/send'
+  const in_url = 'https://aloha-qa.walmartmobile.cn/aloha-notice-service/notice/send'
   const content = {
     user_ids: ['C0C04NC'],
     msg_type: 'interactive',
