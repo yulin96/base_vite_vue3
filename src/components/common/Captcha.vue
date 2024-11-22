@@ -2,10 +2,11 @@
 import { onMounted, ref, useTemplateRef } from 'vue'
 import { generateCaptcha } from '~/tools/generateCaptcha'
 
-const { captchaLength = 5, padding = 10 } = defineProps<{
-  captchaLength?: number
-  padding?: number
-}>()
+const {
+  captchaLength = 5,
+  padding = 10,
+  fontSize = 20,
+} = defineProps<{ captchaLength?: number; padding?: number; fontSize?: number }>()
 
 const captchaRef = useTemplateRef('captchaRef')
 
@@ -16,7 +17,12 @@ const checkCaptcha = (input: string) => {
 }
 
 const refreshCaptcha = () => {
-  const captcha = generateCaptcha(captchaRef.value, captchaLength, padding)
+  const captcha = generateCaptcha({
+    captchaDiv: captchaRef.value,
+    captchaLength,
+    padding,
+    fontSize,
+  })
   if (!captcha) return console.error('captchaRef is not a valid element')
   captchaString.value = captcha
 }
@@ -34,5 +40,5 @@ defineExpose({
 </script>
 
 <template>
-  <div ref="captchaRef"></div>
+  <div ref="captchaRef" @click="refreshCaptcha"></div>
 </template>

@@ -4,11 +4,17 @@
  * @param captchaDiv - 用于绘制验证码的 div 元素。
  * @returns 生成的验证码内容。
  */
-export function generateCaptcha(
-  captchaDiv: HTMLDivElement | null,
-  captchaLength = 5,
-  padding = 10,
-) {
+
+interface GenerateCaptchaOptions {
+  captchaDiv?: HTMLDivElement | null
+  captchaLength?: number
+  padding?: number
+  fontSize?: number
+}
+
+export function generateCaptcha(option: GenerateCaptchaOptions) {
+  const { captchaDiv, captchaLength = 5, padding = 10, fontSize = 20 } = option
+
   if (!captchaDiv) {
     console.error(`Element not found`)
     return
@@ -51,7 +57,7 @@ export function generateCaptcha(
   }
 
   // 绘制干扰线条
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 6; i++) {
     ctx.strokeStyle = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},${Math.random()})`
     ctx.lineWidth = Math.random() * 2
     ctx.beginPath()
@@ -61,7 +67,6 @@ export function generateCaptcha(
   }
 
   // 设置字体
-  const fontSize = Math.min(width, height) / 2 // 根据容器大小自适应字体
   ctx.font = `${fontSize}px Arial`
   ctx.fillStyle = '#000'
   ctx.textBaseline = 'middle'
