@@ -13,9 +13,8 @@ import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
-import postcssPresetEnv from 'postcss-preset-env'
+import tailwindcss from '@tailwindcss/vite'
 import pxtorem from 'postcss-pxtorem'
-import tailwindcss from 'tailwindcss'
 
 const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'zoomist']
 
@@ -139,6 +138,7 @@ export default defineConfig(({ command }) => ({
       versionType: 'build_timestamp',
     }),
     visualizer(),
+    tailwindcss(),
   ],
   resolve: {
     alias: {
@@ -174,10 +174,6 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
-        tailwindcss,
-        postcssPresetEnv({
-          browsers: ['ios >= 11', 'chrome >= 64'],
-        }),
         pxtorem({
           rootValue({ file }: any) {
             return file.indexOf('vant') !== -1 ? 5 : 10
