@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import axios from 'axios'
 import CryptoJS from 'crypto-js'
 import gsap from 'gsap'
 import { onMounted } from 'vue'
 
 const test = () => {
-  const t = Math.floor(Date.now())
+  const t = 1732271025278
   const in_format = 'json'
   const in_appName = 'lcap-ybm'
   const in_appSecret = 'F98C962A50C1CAEBD605FFBE0D270841'
@@ -57,22 +56,25 @@ const test = () => {
   const headers = {
     'Content-Type': 'application/json; charset=utf-8',
   }
+  console.log(requestBody)
 
   // 发送POST请求，上传文件
-  axios
-    .post(in_url, JSON.parse(requestBody), {
-      headers,
-    })
-    .then((response) => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.error(error)
-    })
+  // axios
+  //   .post(in_url, JSON.parse(requestBody), {
+  //     headers,
+  //   })
+  //   .then((response) => {
+  //     console.log(response.data)
+  //   })
+  //   .catch((error) => {
+  //     console.error(error)
+  //   })
 }
 
 // 字符串排序
 function jsonSort(params: any) {
+  console.log(params)
+
   if (params.length === 0) return {}
   if (Array.isArray(params)) {
     let arr: any[] = []
@@ -124,10 +126,42 @@ function middleSign(appName, appSecret, format, version, source, params, syncTim
   if (!appName || !appSecret || !format || !version || !source || !params) return ''
   const t = syncTime
   params = jsonSort(params)
+  console.log(params)
+
   const signStr = appSecret + appName + source + t + format + version + params + appSecret
   const sign = CryptoJS.SHA512(signStr).toString(CryptoJS.enc.Hex).toUpperCase()
   return { sign, signStr }
 }
+
+console.log(
+  middleSign(
+    'lcap-ybm',
+    'F98C962A50C1CAEBD605FFBE0D270841',
+    'json',
+    '1.0.0',
+    'lcap-ybm',
+    {
+      type: 'feishumsg',
+      appName: 'lcap-ybm',
+      businessSubject: '数创飞书通知',
+      contentBody: {
+        content: {
+          user_ids: ['C0C04NC'],
+          msg_type: 'interactive',
+          card: {
+            type: 'template',
+            data: {
+              template_id: 'AAqj6VyQoXwCF',
+              template_variable: { content: '标题', title: '内容' },
+            },
+          },
+        },
+      },
+      addressList: ['必须存在，无需赋值'],
+    },
+    1732271025278,
+  ),
+)
 
 // 生成请求体
 function getRequestBody(appName, params, format, sign, source, timestamp, version) {
