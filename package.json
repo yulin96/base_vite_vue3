@@ -39,6 +39,8 @@
     "chalk": "^5.3.0",
     "compressorjs": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
+    "crypto": "^1.0.1",
+    "crypto-browserify": "^3.12.1",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.13",
     "dingtalk-jsapi": "^3.0.41",
