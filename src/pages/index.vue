@@ -62,10 +62,6 @@ const test = () => {
   axios
     .post(in_url, JSON.parse(requestBody), {
       headers,
-      proxy: {
-        host: 'http://proxy-m.cn.wal-mart.com',
-        port: 8080,
-      },
     })
     .then((response) => {
       console.log(response.data)
