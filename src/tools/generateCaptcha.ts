@@ -4,7 +4,11 @@
  * @param captchaDiv - 用于绘制验证码的 div 元素。
  * @returns 生成的验证码内容。
  */
-export function generateCaptcha(captchaDiv: HTMLDivElement | null) {
+export function generateCaptcha(
+  captchaDiv: HTMLDivElement | null,
+  captchaLength = 5,
+  padding = 10,
+) {
   if (!captchaDiv) {
     console.error(`Element not found`)
     return
@@ -39,8 +43,7 @@ export function generateCaptcha(captchaDiv: HTMLDivElement | null) {
   ctx.scale(dpr, dpr)
 
   // 生成随机验证码内容
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-  const captchaLength = 5
+  const characters = 'ABCDEFGHJKLMNOPQRSTUVWXYZ23456789'
   let captchaText = ''
 
   for (let i = 0; i < captchaLength; i++) {
@@ -48,7 +51,7 @@ export function generateCaptcha(captchaDiv: HTMLDivElement | null) {
   }
 
   // 绘制干扰线条
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 10; i++) {
     ctx.strokeStyle = `rgba(${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)}, ${Math.floor(Math.random() * 255)},${Math.random()})`
     ctx.lineWidth = Math.random() * 2
     ctx.beginPath()
@@ -65,8 +68,7 @@ export function generateCaptcha(captchaDiv: HTMLDivElement | null) {
   ctx.textAlign = 'center'
 
   // 每个字符独立绘制，并添加随机倾斜
-  const padding = 20 // 左右边距
-  const charSpacing = (width - 40) / captchaLength // 每个字符之间的间距
+  const charSpacing = (width - padding * 2) / captchaLength // 每个字符之间的间距
   for (let i = 0; i < captchaText.length; i++) {
     const char = captchaText[i]
     const x = padding + charSpacing * (i + 0.5)
