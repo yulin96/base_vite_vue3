@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Lottie, { type AnimationItem } from 'lottie-web'
-import { useTemplateRef } from 'vue'
+import { onMounted, onUnmounted, useTemplateRef, watchPostEffect } from 'vue'
 
 const { like, json } = defineProps<{ like: boolean; json: any }>()
 

@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { ConfigProviderThemeVars } from 'vant'
+import { nextTick, onMounted } from 'vue'
 import { Toaster } from 'vue-sonner'
 import CommonLoading from '~/components/common/Loading.vue'
+import { useLoading } from '~/hooks/useLoading'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'

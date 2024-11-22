@@ -1,5 +1,6 @@
 import type { ToastOptions } from 'vant'
 import { showToast as toast } from 'vant'
+import { useLoading } from '~/hooks/useLoading'
 
 const { start } = useLoading([
   'https://oss.eventnet.cn/H5/zz/public/svg/success.svg',

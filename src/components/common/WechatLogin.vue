@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { useStore } from '~/stores'
 import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 

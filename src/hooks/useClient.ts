@@ -1,3 +1,6 @@
+import { useDocumentVisibility } from '@vueuse/core'
+import { ref, watch } from 'vue'
+
 export const useClient = (subScribes: Array<string> | string, pub: string, sub: string) => {
   const subIsString = typeof subScribes === 'string'
 

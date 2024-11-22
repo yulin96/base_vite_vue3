@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { v4 } from 'uuid'
+import { onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
 import '~/assets/css/plugin/snow.css'
 import { randomNum } from '~/utils/common'
 

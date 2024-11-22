@@ -1,4 +1,6 @@
 import { useUrlSearchParams } from '@vueuse/core'
+import { useLock } from '~/hooks/useLock'
+import { useStore } from '~/stores'
 
 const { get } = useLock()
 

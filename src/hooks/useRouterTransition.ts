@@ -1,7 +1,8 @@
-import { useTimeoutFn } from '@vueuse/core'
+import { useTimeoutFn, useToggle } from '@vueuse/core'
 import { useMaskLoading } from '~/hooks/useMaskLoading'
 import router from '~/router'
 
+import { ref } from 'vue'
 import '~/assets/css/transition.css'
 
 export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {

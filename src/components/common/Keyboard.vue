@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 const { maxLength = 4 } = defineProps<{ maxLength?: number }>()
 
 const emits = defineEmits<{ next: [string] }>()

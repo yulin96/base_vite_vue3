@@ -1,3 +1,5 @@
+import { computed, onDeactivated, onUnmounted, ref } from 'vue'
+
 export function useLoading(imgList: string[], next?: () => void, delay: number = 300) {
   let sto: NodeJS.Timeout
   const progressValue = ref(0)

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Lottie from 'lottie-web'
-import { useTemplateRef } from 'vue'
+import { onMounted, useTemplateRef } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from '~/stores'
 import { randomNum } from '~/utils/common'
 

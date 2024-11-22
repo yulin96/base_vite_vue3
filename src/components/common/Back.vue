@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
 import { useStore } from '~/stores'
 import type { linkMapType } from '~/utils/typings'
 

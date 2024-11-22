@@ -1,4 +1,5 @@
 import { useDocumentVisibility } from '@vueuse/core'
+import { watch } from 'vue'
 
 export function useFixInput(el: HTMLElement): void {
   const visibility = useDocumentVisibility()

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onClickOutside } from '@vueuse/core'
+import { computed, onMounted, ref, watch } from 'vue'
+
 const { list } = defineProps<{ list: { key: string | number; value: string }[] }>()
 
 const selectValue = defineModel()

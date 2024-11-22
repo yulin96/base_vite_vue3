@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { useTemplateRef } from 'vue'
+import gsap from 'gsap'
+import { useTemplateRef, watchPostEffect } from 'vue'
 
 const { flip } = defineProps<{ flip?: 'front' | 'back' }>()
 

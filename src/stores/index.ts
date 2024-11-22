@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { reactive } from 'vue'
 
 interface IIgnore {
   [key: string]: any

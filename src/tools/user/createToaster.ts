@@ -1,4 +1,5 @@
 import { toast } from 'vue-sonner'
+import { usePromise } from '~/hooks/usePromise'
 
 export function createToaster(loadingInfo: string) {
   const [promise, resolve, reject] = usePromise<string>()

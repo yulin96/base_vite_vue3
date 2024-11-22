@@ -1,5 +1,5 @@
 import { useScroll } from '@vueuse/core'
-import { type Ref } from 'vue'
+import { onActivated, onBeforeUnmount, onDeactivated, onMounted, ref, watch, type Ref } from 'vue'
 
 interface ISlideOptions {
   /** ### 传入元素名称的引用 ref() 不要.value */

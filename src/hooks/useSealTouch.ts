@@ -1,3 +1,5 @@
+import { nextTick, ref, watch } from 'vue'
+
 export function useSealTouch(el: string) {
   const status = ref(true)
   const handleTouch = ref<(val: { x: number; y: number }[]) => any>()

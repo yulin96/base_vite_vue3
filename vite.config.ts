@@ -8,7 +8,6 @@ import { defineConfig, loadEnv } from 'vite'
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 import { VantResolver } from '@vant/auto-import-resolver'
 import { visualizer } from 'rollup-plugin-visualizer'
-import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
@@ -29,6 +28,7 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 export default defineConfig(({ command }) => ({
   plugins: [
     {
+      name: 'build-check',
       apply: 'build',
       buildStart() {
         handleCheck()
@@ -52,53 +52,6 @@ export default defineConfig(({ command }) => ({
     }),
     vue({}),
     vueJsx(),
-    AutoImport({
-      include: [/\.[tj]sx?$/, /\.vue$/, /\.vue\?vue/, /\.md$/],
-      imports: [
-        'vue-router',
-        'vue',
-        'vue-i18n',
-        {
-          '@vueuse/integrations/useQRCode': ['useQRCode'],
-          gsap: [['default', 'gsap']],
-          vant: [
-            'showLoadingToast',
-            'showDialog',
-            'showFailToast',
-            'showNotify',
-            'showConfirmDialog',
-            'showImagePreview',
-            'showSuccessToast',
-          ],
-          '@vueuse/core': [
-            'useToggle',
-            'useLocalStorage',
-            'useDocumentVisibility',
-            'useElementVisibility',
-            'useUserMedia',
-            'useMediaControls',
-            'useWebSocket',
-            'useVirtualList',
-            'watchDebounced',
-            'watchThrottled',
-            'whenever',
-            'useArrayDifference',
-            'useDateFormat',
-            'useNow',
-            'useTimeoutPoll',
-            'useOffsetPagination',
-            'createReusableTemplate',
-            'onClickOutside',
-            'useMagicKeys',
-          ],
-          'vue-sonner': ['toast'],
-        },
-      ],
-      dirs: ['./src/hooks/**', './src/router/**', './src/stores/**'],
-      dts: './typings/auto-imports.d.ts',
-      vueTemplate: true,
-      ignore: ['reactify', 'reactifyObject', 'router'],
-    }),
     Components({
       dirs: ['src/components'],
       extensions: ['vue'],

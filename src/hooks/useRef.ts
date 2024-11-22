@@ -1,3 +1,5 @@
+import { type ComponentPublicInstance, ref } from 'vue'
+
 export function useRef() {
   type EleType = Element | ComponentPublicInstance | null
 
