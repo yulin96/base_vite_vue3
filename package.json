@@ -22,7 +22,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@number-flow/vue": "^0.2.7",
+    "@number-flow/vue": "^0.3.0",
     "@tsparticles/engine": "^3.6.0",
     "@types/canvas-confetti": "^1.6.4",
     "@types/lodash-es": "^4.17.12",
@@ -75,7 +75,7 @@
     "@types/ali-oss": "^6.16.11",
     "@types/crypto-js": "^4.2.2",
     "@types/jsdom": "^21.1.7",
-    "@types/node": "^22.9.1",
+    "@types/node": "^22.9.3",
     "@types/nprogress": "^0.2.3",
     "@types/postcss-pxtorem": "^6.1.0",
     "@types/qrcode": "^1.5.5",
