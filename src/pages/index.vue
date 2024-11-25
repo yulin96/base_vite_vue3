@@ -72,44 +72,44 @@ const test = () => {
 }
 
 // 字符串排序
-function jsonSort(params: any) {
-  console.log(params)
+function jsonSort(params) {
+  const sortedDict = {}
+  let sortedJsonStr = ''
 
-  if (params.length === 0) return {}
+  if (!params || params.length === 0) {
+    return {}
+  }
+
   if (Array.isArray(params)) {
-    let arr: any[] = []
+    const allParams = [...params]
+    const arr: any[] = []
+
     for (const res of params) {
-      if (typeof res !== 'object') {
-        arr = params.sort()
-        break
+      if (typeof res !== 'object' || res === null) {
+        allParams.sort()
+        return JSON.stringify(allParams)
       } else {
-        const sorted_dict = {}
-        let sorted_json_str = ''
-        params = getParams(res)
-        params = JSON.parse(params)
-        Object.keys(params)
-          .sort()
-          .forEach((key) => {
-            sorted_dict[key] = params[key]
-          })
-        sorted_json_str = JSON.stringify(sorted_dict).replace(/: /g, ':').replace(/, /g, ',')
-        arr.push(JSON.parse(sorted_json_str))
+        const sortedObj = {}
+        const paramKeys = Object.keys(res).sort()
+        paramKeys.forEach((key) => {
+          sortedObj[key] = res[key]
+        })
+
+        sortedJsonStr = JSON.stringify(sortedObj)
+        arr.push(JSON.parse(sortedJsonStr))
       }
     }
-    return JSON.stringify(arr).replace(/: /g, ':').replace(/, /g, ',')
+    return JSON.stringify(arr)
   } else {
-    const sorted_dict = {}
-    let sorted_json_str = ''
-    params = getParams(params)
-    params = JSON.parse(params)
-    Object.keys(params)
-      .sort()
-      .forEach((key) => {
-        sorted_dict[key] = params[key]
-      })
-    sorted_json_str = JSON.stringify(sorted_dict).replace(/: /g, ':')
-    return sorted_json_str.replace(/: /g, ':').replace(/, /g, ',')
+    const paramKeys = Object.keys(params).sort()
+    paramKeys.forEach((key) => {
+      sortedDict[key] = params[key]
+    })
+
+    sortedJsonStr = JSON.stringify(sortedDict)
   }
+
+  return sortedJsonStr
 }
 
 // 去除空字符
@@ -126,41 +126,45 @@ function middleSign(appName, appSecret, format, version, source, params, syncTim
   if (!appName || !appSecret || !format || !version || !source || !params) return ''
   const t = syncTime
   params = jsonSort(params)
-  console.log(params)
 
-  const signStr = appSecret + appName + source + t + format + version + params + appSecret
+  const newParams = params.replace(/"contentBody":{"content":(.*)},"type"/, (match, p) => {
+    return '"contentBody":{"content":"' + p.replace(/"/g, "'") + '"},"type"'
+  })
+
+  const signStr = appSecret + appName + source + t + format + version + newParams + appSecret
+  console.log(signStr, 'signStr')
+
   const sign = CryptoJS.SHA512(signStr).toString(CryptoJS.enc.Hex).toUpperCase()
+  console.log(sign, 'sign')
   return { sign, signStr }
 }
 
-console.log(
-  middleSign(
-    'lcap-ybm',
-    'F98C962A50C1CAEBD605FFBE0D270841',
-    'json',
-    '1.0.0',
-    'lcap-ybm',
-    {
-      type: 'feishumsg',
-      appName: 'lcap-ybm',
-      businessSubject: '数创飞书通知',
-      contentBody: {
-        content: {
-          user_ids: ['C0C04NC'],
-          msg_type: 'interactive',
-          card: {
-            type: 'template',
-            data: {
-              template_id: 'AAqj6VyQoXwCF',
-              template_variable: { content: '标题', title: '内容' },
-            },
+middleSign(
+  'lcap-ybm',
+  'F98C962A50C1CAEBD605FFBE0D270841',
+  'json',
+  '1.0.0',
+  'lcap-ybm',
+  {
+    type: 'feishumsg',
+    appName: 'lcap-ybm',
+    businessSubject: '数创飞书通知',
+    contentBody: {
+      content: {
+        user_ids: ['C0C04NC'],
+        msg_type: 'interactive',
+        card: {
+          type: 'template',
+          data: {
+            template_id: 'AAqj6VyQoXwCF',
+            template_variable: { content: '标题', title: '内容' },
           },
         },
       },
-      addressList: ['必须存在，无需赋值'],
     },
-    1732271025278,
-  ),
+    addressList: ['必须存在，无需赋值'],
+  },
+  1732271025278,
 )
 
 // 生成请求体
