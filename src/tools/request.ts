@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/vue'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 import { isFromData } from '~/utils/common'
 import { formDataToObj } from '~/utils/convert'
@@ -47,7 +48,10 @@ export const axiosGet = (
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
-      .catch((error) => reject(error))
+      .catch((error) => {
+        Sentry.captureException(error)
+        reject(error)
+      })
   })
 }
 
@@ -64,7 +68,10 @@ export const axiosPost = (
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
-      .catch((error) => reject(error))
+      .catch((error) => {
+        Sentry.captureException(error)
+        reject(error)
+      })
   })
 }
 
