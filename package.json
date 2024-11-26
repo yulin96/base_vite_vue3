@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@number-flow/vue": "^0.3.0",
+    "@sentry/vue": "^8.40.0",
     "@tsparticles/engine": "^3.7.1",
     "@types/canvas-confetti": "^1.6.4",
     "@types/lodash-es": "^4.17.12",

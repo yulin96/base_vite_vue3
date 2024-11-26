@@ -36,3 +36,6 @@ tsconfig.app.tsbuildinfo
 tsconfig.node.tsbuildinfo
 
 vite.config.ts.timestamp-*.mjs
+
+# Sentry Config File
+.env.sentry-build-plugin

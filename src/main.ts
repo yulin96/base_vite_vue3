@@ -11,13 +11,15 @@ import { getWechatConfig } from '~/tools/wx'
 import { devModel } from '~/utils/global'
 import App from './App.vue'
 import router from './router'
-// import i18n from '~/lang'
+// 从 '~/lang' 导入 i18n
 
 import 'vant/es/dialog/style'
 import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/main.css'
+
+import * as Sentry from '@sentry/vue'
 
 !devModel && getWechatConfig()
 
@@ -37,7 +39,18 @@ registerDirective(app)
 const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 
-// app.use(i18n)
+Sentry.init({
+  app,
+  enabled: !devModel,
+  dsn: 'https://5f007f03176727466f42b46c433c17b9@o4508361918840832.ingest.us.sentry.io/4508361921331200',
+  integrations: [Sentry.browserTracingIntegration({ router }), Sentry.replayIntegration()],
+  tracesSampleRate: 1.0,
+  tracePropagationTargets: ['localhost', '192.168.1.2', /^https:\/\/h5.eventnet\.cn/],
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+})
+
+// App.use(i18n)
 app.use(pinia)
 app.use(router)
 app.use(MotionPlugin)
