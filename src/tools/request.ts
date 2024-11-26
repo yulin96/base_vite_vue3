@@ -1,5 +1,5 @@
-import * as Sentry from '@sentry/vue'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
+import Sentry from '~/tools/sentry'
 import { isFromData } from '~/utils/common'
 import { formDataToObj } from '~/utils/convert'
 

@@ -18,8 +18,7 @@ import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/main.css'
-
-import * as Sentry from '@sentry/vue'
+import Sentry from '~/tools/sentry'
 
 !devModel && getWechatConfig()
 
