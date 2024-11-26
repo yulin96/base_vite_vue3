@@ -6,22 +6,58 @@ import { formDataToObj } from '~/utils/convert'
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)
 
-  instance.interceptors.response.use((response) => {
-    const requestBody = {
-      data: null as null | object,
-      url: response.config?.url,
-      method: response.config?.method,
-      baseUrl: response.config?.baseURL ?? '',
-    }
+  instance.interceptors.response.use(
+    (response) => {
+      const requestBody = {
+        data: null as null | object,
+        url: response.config?.url,
+        method: response.config?.method,
+        baseUrl: response.config?.baseURL ?? '',
+      }
 
-    const method = response.config.method?.toLowerCase()
-    const data = method === 'post' ? response.config?.data : response.config?.params
-    requestBody.data = isFromData(data) ? formDataToObj(data) : data
+      const method = response.config.method?.toLowerCase()
+      const data = method === 'post' ? response.config?.data : response.config?.params
+      requestBody.data = isFromData(data) ? formDataToObj(data) : data
 
-    response.data._request = requestBody
+      response.data._request = requestBody
 
-    return response
-  })
+      return response
+    },
+    (error) => {
+      if (error.response) {
+        console.log('error.response', error.response)
+
+        try {
+          const { status, data, config } = error.response
+
+          const errorMessage = `HTTP ${status} Error on ${config.url}`
+          const customError = new Error(
+            `${errorMessage}: ${data?.message || 'No error message provided'}`,
+          )
+          customError.stack = error?.stack
+
+          customError.name = `AxiosError__${import.meta.env.VITE_APP_SHARE_TITLE}__${config.method}__${config.baseURL}${config?.url}`
+
+          Sentry.captureException(customError, {
+            tags: {
+              url: config.url || 'unknown',
+              method: config.method || 'unknown',
+              status: String(status),
+            },
+            extra: {
+              requestHeaders: config.headers,
+              requestData: isFromData(config.data) ? formDataToObj(config.data) : config.data,
+              responseData: data,
+            },
+          })
+        } catch (error) {
+          console.error('Failed to send error to Sentry', error)
+        }
+      }
+
+      return Promise.reject(error)
+    },
+  )
 }
 
 const instance = axios.create({
@@ -48,10 +84,7 @@ export const axiosGet = (
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
-      .catch((error) => {
-        Sentry.captureException(error)
-        reject(error)
-      })
+      .catch((error) => reject(error))
   })
 }
 
@@ -68,10 +101,7 @@ export const axiosPost = (
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
-      .catch((error) => {
-        Sentry.captureException(error)
-        reject(error)
-      })
+      .catch((error) => reject(error))
   })
 }
 
