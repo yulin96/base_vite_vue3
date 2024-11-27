@@ -37,6 +37,9 @@ export const useStore = defineStore(
             case 'number':
               this[key] = 0
               break
+            case 'boolean':
+              this[key] = false
+              break
             case 'object':
               this[key] = Array.isArray(element) ? [] : {}
               break
