@@ -1,4 +1,3 @@
-import { env } from 'dingtalk-jsapi'
 import { UAParser } from 'ua-parser-js'
 
 const uaParser = new UAParser()
@@ -29,7 +28,3 @@ export const isMobile = uaParser.getDevice().type === 'mobile' || window.screen.
 
 export const isMobileFun = () =>
   uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
-
-export function isDingDing() {
-  return env.platform !== 'notInDingTalk'
-}

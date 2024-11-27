@@ -13,7 +13,14 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
-const splitDependencies = ['gsap', 'html2canvas', 'lottie-web', 'zoomist']
+const splitDependencies: Record<string, string> = {
+  vueuse: '@vueuse/core',
+  gsap: 'gsap',
+  html2canvas: 'html2canvas',
+  lottie: 'lottie-web',
+  zoomist: 'zoomist',
+  sentry: '@sentry',
+}
 
 const env = loadEnv('production', process.cwd())
 
@@ -110,8 +117,11 @@ export default defineConfig(({ command }) => ({
       },
       output: {
         manualChunks(id) {
-          for (const dependency of splitDependencies) if (id.includes(dependency)) return dependency
-          return
+          if (id.includes('node_modules')) {
+            for (const key in splitDependencies) {
+              if (id.includes(splitDependencies[key])) return `chunks/${key}`
+            }
+          }
         },
       },
     },

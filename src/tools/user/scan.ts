@@ -1,10 +1,11 @@
 import { biz } from 'dingtalk-jsapi'
 import { showDialog } from 'vant'
 import { wechatScan } from '~/tools/wx'
-import { isDingDing, isWeChat } from '~/utils/uaParser'
+import { isDingDing } from '~/utils/dingtalk'
+import { isWeChat } from '~/utils/uaParser'
 
 let isScanning = false
-export function openScanQrCode() {
+export function showScanQRCode() {
   return new Promise<string>((resolve, reject) => {
     if (isScanning) return reject('扫码功能正在运行中')
     isScanning = true
