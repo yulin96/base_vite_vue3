@@ -19,6 +19,7 @@ const splitDependencies: Record<string, string> = {
   html2canvas: 'html2canvas',
   lottie: 'lottie-web',
   zoomist: 'zoomist',
+  dingtalk: 'dingtalk-jsapi',
   sentry: '@sentry',
 }
 
