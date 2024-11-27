@@ -7,6 +7,7 @@ import '~/tools/init/gsap'
 import '~/tools/init/resetWxFontSize'
 import '~/tools/init/setRem'
 import '~/tools/init/vant'
+import Sentry from '~/tools/sentry'
 import { getWechatConfig } from '~/tools/wx'
 import { devModel } from '~/utils/global'
 import App from './App.vue'
@@ -18,7 +19,6 @@ import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/main.css'
-import Sentry from '~/tools/sentry'
 
 !devModel && getWechatConfig()
 
