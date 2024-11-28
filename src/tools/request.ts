@@ -25,8 +25,6 @@ const interceptor = (instance: AxiosInstance) => {
     },
     (error) => {
       if (error.response) {
-        console.log('error.response', error.response)
-
         try {
           const { status, data, config } = error.response
 
