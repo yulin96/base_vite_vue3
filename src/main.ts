@@ -1,4 +1,5 @@
 import { MotionPlugin } from '@vueuse/motion'
+import sentryIgnore from 'https://oss.eventnet.cn/H5/zz/public/js/sentry-ignore.js'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
@@ -47,6 +48,21 @@ Sentry.init({
   tracePropagationTargets: ['localhost', '192.168.1.2', /^https:\/\/h5.eventnet\.cn/],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
+  beforeSend(event) {
+    const errorStack = event.exception?.values?.[0]?.stacktrace?.frames
+    if (errorStack) {
+      const ignoreFiles = Array.isArray(sentryIgnore) ? sentryIgnore : []
+      for (const ignoreFile of ignoreFiles) {
+        const isIgnoredFile = errorStack.some(
+          (frame) => frame.filename && frame.filename.includes(ignoreFile),
+        )
+        if (isIgnoredFile) {
+          return null
+        }
+      }
+    }
+    return event
+  },
 })
 
 // App.use(i18n)

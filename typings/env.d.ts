@@ -6,6 +6,10 @@ declare const WeixinJSBridge: any
 declare const VConsole: any
 declare const ROP: any
 
+declare module 'https://oss.eventnet.cn/H5/zz/public/js/sentry-ignore.js' {
+  export default [] as string[]
+}
+
 interface ImportMetaEnv {
   readonly VITE_APP_API_URL: string
   readonly VITE_APP_LOCALSTORAGE_NAME: string
