@@ -14,7 +14,10 @@ export function getUserImage(option?: Compressor.Options) {
     input.type = 'file'
     input.accept = 'image/*'
     input.multiple = false
-    input.style.display = 'none'
+    input.style.position = 'fixed'
+    input.style.top = '0'
+    input.style.left = '2000px'
+    input.style.opacity = '0'
 
     input.onchange = (e) => {
       const file = (e.target as HTMLInputElement).files?.[0]
