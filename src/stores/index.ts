@@ -10,7 +10,7 @@ interface IInfo {
 interface IWxInfo {
   openid: string
   nickname: string
-  portrait: string
+  avatar: string
 }
 
 export const useStore = defineStore(

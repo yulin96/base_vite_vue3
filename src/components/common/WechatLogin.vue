@@ -5,13 +5,18 @@ import { useStore } from '~/stores'
 import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 
-const { name = '互动微平台', code } = defineProps<{ code: string; name?: string }>()
+const shareLink = import.meta.env.VITE_APP_SHARE_LINK
+
+const { url = shareLink, auto = false } = defineProps<{ url?: string; auto?: false }>()
 
 const show = ref(false)
 
 const openLink = () => {
-  const url = `https://wechat-oauth.event1.cn/wechat/code?name=${encodeURI(name)}&state=${code}&type=2`
-  toUrl(url)
+  if (!url) return console.error('url is required')
+
+  toUrl(
+    `https://wechat.event1.cn/api/getCode?name=hudongweipingtai&action=${auto ? 2 : 1}&cUrl=${url}`,
+  )
 }
 
 const router = useRouter()
@@ -22,7 +27,12 @@ router.beforeEach((to) => {
 })
 
 onMounted(async () => {
-  if (!(await getOpenId())) show.value = true
+  if (auto) {
+    const body = document.querySelector('body')
+    body && (body.style.display = 'none')
+
+    openLink()
+  } else if (!(await getOpenId())) show.value = true
 })
 </script>
 
