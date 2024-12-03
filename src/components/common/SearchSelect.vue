@@ -4,7 +4,7 @@ import { computed, onMounted, ref, watch } from 'vue'
 
 const { list } = defineProps<{ list: { key: string | number; value: string }[] }>()
 
-const selectValue = defineModel()
+const selectValue = defineModel<string>()
 
 const searchIns = ref({
   value: '',
