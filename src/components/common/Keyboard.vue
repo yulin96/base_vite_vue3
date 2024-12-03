@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-
 const { maxLength = 4 } = defineProps<{ maxLength?: number }>()
 
 const emits = defineEmits<{ next: [string] }>()
 
 const showKeyboard = defineModel<boolean>({ required: true })
-const password = ref('')
+const password = defineModel<string>('password', { required: true })
 
 const onPopupClose = () => {
   password.value = ''

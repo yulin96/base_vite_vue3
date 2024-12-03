@@ -6,3 +6,5 @@ interface IRes {
   message?: string
   [x: string]: any
 }
+
+type FStamp = (type: 'password' | 'stamp', content: string) => any
