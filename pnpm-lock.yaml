@@ -14,8 +14,8 @@ importers:
   .:
     dependencies:
       '@number-flow/vue':
-        specifier: ^0.3.1
-        version: 0.3.1(vue@3.5.13(typescript@5.6.2))
+        specifier: ^0.3.2
+        version: 0.3.2(vue@3.5.13(typescript@5.6.2))
       '@sentry/vue':
         specifier: ^8.42.0
         version: 8.42.0(pinia@2.2.8(typescript@5.6.2)(vue@3.5.13(typescript@5.6.2)))(vue@3.5.13(typescript@5.6.2))
@@ -1108,8 +1108,8 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@number-flow/vue@0.3.1':
-    resolution: {integrity: sha512-ZXyHHaRMzrKqodivT8oLvQZQnVHn2QXTTkLvHKDWBzPpstAcUkDU7GyTwRU4WqC/urQPXP29kLc65EF6r1zoMA==}
+  '@number-flow/vue@0.3.2':
+    resolution: {integrity: sha512-sJ41RqLKA00yRQCysca0XFaYTjU5blCrgNVNsiiJylJJkOREwIg9w8bCWNy7OJfnzI9bHRyaG7NKJ5TEJzAbmQ==}
     peerDependencies:
       vue: ^3
 
@@ -1793,8 +1793,8 @@ packages:
     resolution: {integrity: sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001685:
-    resolution: {integrity: sha512-e/kJN1EMyHQzgcMEEgoo+YTCO1NGCmIYHk5Qk8jT6AazWemS5QFKJ5ShCJlH3GZrNIdZofcNCEwZqbMjjKzmnA==}
+  caniuse-lite@1.0.30001686:
+    resolution: {integrity: sha512-Y7deg0Aergpa24M3qLC5xjNklnKnhsmSyR/V89dLZ1n0ucJIFNs7PgR2Yfa/Zf6W79SbBicgtGxZr2juHkEUIA==}
 
   canvas-confetti@1.9.3:
     resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==}
@@ -2879,8 +2879,8 @@ packages:
   nth-check@2.1.1:
     resolution: {integrity: sha512-lqjrjmaOoAnWfMmBPL+XNnynZh2+swxiX3WUE0s4yEHI6m+AwrK2UZOimIRl3X/4QctVqS8AiZjFqyOGrMXb/w==}
 
-  number-flow@0.4.0:
-    resolution: {integrity: sha512-sG2ngZe0y3M8DSa9VQfMA5J9Yi1i4RYaaZ/lgawTJpICftFAGaFgTUydaavZmUbOZcBnjDqNizcsyb1MDhrGaw==}
+  number-flow@0.4.1:
+    resolution: {integrity: sha512-d39o1tWL7mMMBLuOfHswtQ8r0fj9eUcatb4G1Spdv0ZO/I30kg9DBdSzSPjNG6hrj1slQ6KA3TQXk1RmOq4qOA==}
 
   nwsapi@2.2.16:
     resolution: {integrity: sha512-F1I/bimDpj3ncaNDhfyMWuFqmQDBwDB0Fogc2qpL3BWvkQteFD/8BzWuIRl83rq0DXfm8SGt/HFhLXZyljTXcQ==}
@@ -4879,10 +4879,10 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.17.1
 
-  '@number-flow/vue@0.3.1(vue@3.5.13(typescript@5.6.2))':
+  '@number-flow/vue@0.3.2(vue@3.5.13(typescript@5.6.2))':
     dependencies:
       esm-env: 1.2.1
-      number-flow: 0.4.0
+      number-flow: 0.4.1
       vue: 3.5.13(typescript@5.6.2)
 
   '@nuxt/kit@3.14.1592(rollup@4.28.0)':
@@ -5562,7 +5562,7 @@ snapshots:
   autoprefixer@10.4.20(postcss@8.4.49):
     dependencies:
       browserslist: 4.24.2
-      caniuse-lite: 1.0.30001685
+      caniuse-lite: 1.0.30001686
       fraction.js: 4.3.7
       normalize-range: 0.1.2
       picocolors: 1.1.1
@@ -5613,7 +5613,7 @@ snapshots:
 
   browserslist@4.24.2:
     dependencies:
-      caniuse-lite: 1.0.30001685
+      caniuse-lite: 1.0.30001686
       electron-to-chromium: 1.5.68
       node-releases: 2.0.18
       update-browserslist-db: 1.1.1(browserslist@4.24.2)
@@ -5656,7 +5656,7 @@ snapshots:
 
   camelcase@5.3.1: {}
 
-  caniuse-lite@1.0.30001685: {}
+  caniuse-lite@1.0.30001686: {}
 
   canvas-confetti@1.9.3: {}
 
@@ -6667,7 +6667,7 @@ snapshots:
     dependencies:
       boolbase: 1.0.0
 
-  number-flow@0.4.0:
+  number-flow@0.4.1:
     dependencies:
       esm-env: 1.2.1
 
