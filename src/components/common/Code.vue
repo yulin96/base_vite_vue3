@@ -15,8 +15,8 @@ const toggleCode = (dispatch?: boolean) => {
 </script>
 
 <template>
-  <div code @click="toggleCode()" class="relative z-20" v-bind="$attrs">
+  <div code class="relative z-20" v-bind="$attrs" @click="toggleCode()">
     <img class="h-full w-full" :src="code" />
   </div>
-  <VanOverlay :show="isBig" @click="toggleCode(false)" class="z-10"></VanOverlay>
+  <VanOverlay :show="isBig" class="z-10" @click="toggleCode(false)"></VanOverlay>
 </template>

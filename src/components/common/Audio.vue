@@ -55,18 +55,18 @@ onMounted(() => {
       :class="['invert']"
     >
       <audio
+        ref="audioRef"
         class="hidden"
         :src="src"
-        ref="audioRef"
         loop
         autoplay
         @play="toggleIsPlay(true)"
         @pause="toggleIsPlay(false)"
       ></audio>
       <img
+        ref="playIconRef"
         class="size-[40px] animate-spin-slow"
         :class="[isPlay ? 'running' : 'paused']"
-        ref="playIconRef"
         :src="isPlay ? playIcon : pausedIcon"
         @click="togglePlayStatus"
       />

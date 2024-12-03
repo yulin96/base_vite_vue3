@@ -51,8 +51,6 @@ watch(
 
 <template>
   <VanFloatingBubble
-    @offset-change="offsetChange"
-    @click="backIns.onClick()"
     :class="!backIns.show ? 'pointer-events-none' : ''"
     class="p-0"
     :offset="backIns.offset"
@@ -60,6 +58,8 @@ watch(
     :axis="axis ?? 'xy'"
     :magnetic="magnetic ?? 'x'"
     :gap="10"
+    @offset-change="offsetChange"
+    @click="backIns.onClick()"
   >
     <Transition name="scale">
       <img v-if="backIns.show" class="w-full" :src="icon" />

@@ -33,7 +33,7 @@ onMounted(() => {
   <div class="wrapperErr">
     <div class="error">ERROR 404</div>
     <div ref="errorRef"></div>
-    <div @click="toIndex" class="back">回首页</div>
+    <div class="back" @click="toIndex">回首页</div>
   </div>
 </template>
 
