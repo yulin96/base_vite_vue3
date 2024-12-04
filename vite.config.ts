@@ -41,6 +41,7 @@ export default defineConfig(({ command }) => ({
       closeBundle() {},
     },
     ViteImageOptimizer({
+      exclude: /\.(webp|svg)$/i,
       jpg: {
         quality: 90,
         progressive: true,
