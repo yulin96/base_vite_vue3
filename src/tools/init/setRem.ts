@@ -8,8 +8,15 @@ function setRem() {
   let clientWidth = document.documentElement.clientWidth
 
   if (!isMobileFun()) {
-    clientWidth = 375
+    const height = innerHeight
+    const width = (375 / 720) * height
+
     const app = document.querySelector('#app') as HTMLDivElement
+    app.style.width = `${width}px`
+    app.style.height = `${height}px`
+
+    clientWidth = width
+
     if (app) {
       app.classList.add('pc')
       createQRCode(app)
