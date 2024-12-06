@@ -1,1 +1,0 @@
-window.IMG_RESOURCES = []

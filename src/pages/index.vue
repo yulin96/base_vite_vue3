@@ -12,7 +12,11 @@ onMounted(() => {
 
 <template>
   <section class="index">
-    <main class="content"></main>
+    <main class="content">
+      <img class="w-100" src="../assets/imgs/back.svg" />
+      <img class="w-100" src="../assets/imgs/index.png" />
+      <img class="w-100" src="../assets/imgs/i2.jpg" />
+    </main>
   </section>
 </template>
 
