@@ -2,6 +2,7 @@
 
 import fs from 'fs'
 import path from 'path'
+import { normalizePath } from 'vite'
 
 let outDir = 'dist'
 let base = './'
@@ -15,7 +16,7 @@ function readImgs(dir) {
     const filePath = path.join(dir, file.name)
     if (file.isDirectory()) return readImgs(filePath)
     if (imageExtensions.includes(path.extname(file.name))) {
-      imgResources.push(base + filePath.replace(path.resolve(outDir), ''))
+      imgResources.push(normalizePath(base + filePath.replace(path.resolve(outDir), '')))
     }
   })
 }
@@ -35,7 +36,7 @@ export default function resourceOrganization() {
     closeBundle() {
       readImgs(path.resolve(outDir))
 
-      const htmlImgResources = `[${imgResources.map((i) => `"${i.replace(/\\/g, '/').replace(/\/\//, '/')}"`)}]`
+      const htmlImgResources = `[${imgResources.map((i) => `"${i}"`)}];`
 
       const indexHtml = path.resolve(outDir, 'index.html')
       let html = fs.readFileSync(indexHtml, 'utf-8')
