@@ -110,6 +110,7 @@ export default defineConfig(({ command }) => ({
       bucket: process.env.zBucket,
       region: 'oss-cn-beijing',
       uploadDir: `${env.VITE_OSS_ROOT_DIRNAME}${env.VITE_OSS_DIRNAME}`,
+      alias: 'https://oss.eventnet.cn/',
     }),
     visualizer(),
   ],

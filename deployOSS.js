@@ -58,7 +58,8 @@ console.log(`${chalk.bgRed(localDirName)}  >>>  ${chalk.bgGreen(ossDirName)}`)
 
 let isSizeError = false
 for (const item of upFileList) {
-  await putOSS(...item)
+  // await putOSS(...item)
+  console.log(item)
 }
 console.log(isSizeError ? '🎲 : 存在大于500k文件，建议缩小' : '✅')
 

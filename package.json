@@ -92,6 +92,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
+    "delete-empty": "^3.0.0",
     "eslint": "^9.16.0",
     "eslint-plugin-vue": "^9.32.0",
     "glob": "^11.0.0",
