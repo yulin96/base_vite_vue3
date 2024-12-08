@@ -11,7 +11,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import tailwindcss from 'tailwindcss'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, normalizePath } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 // @ts-expect-error 本地插件
@@ -40,6 +40,13 @@ if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
 
 export default defineConfig(({ command }) => ({
   plugins: [
+    {
+      name: 'vite-plugin-checker',
+      apply: 'build',
+      configResolved(config) {
+        console.log(normalizePath('https://h5.eventnet.cn/yulin/test1//backup_20241208_162034.zip'))
+      },
+    },
     {
       name: 'build-check',
       apply: 'build',

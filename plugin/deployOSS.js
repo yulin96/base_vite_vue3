@@ -44,35 +44,39 @@ export default function resourceOrganization(option = {}) {
       outDir = config.build?.outDir || 'dist'
       return config
     },
-    async closeBundle() {
-      console.log(chalk.green('开始上传OSS >>> '))
-      const client = new oss({ region, accessKeyId, accessKeySecret, secure: true, bucket })
+    closeBundle: {
+      sequential: true,
+      order: 'post',
+      async handler() {
+        console.log(chalk.green('开始上传OSS >>> '))
+        const client = new oss({ region, accessKeyId, accessKeySecret, secure: true, bucket })
 
-      const files = globSync(outDir + '/**/*', {
-        nodir: true,
-        ignore: [...skipDir.map((i) => `**/${i}/**`), ...skipFileName.map((i) => `**/${i}`)],
-      })
-
-      for (const file of files) {
-        const filePath = normalizePath(file)
-        const remoteURL = filePath.replace('dist', `${uploadDir}`)
-
-        const result = await client.put(remoteURL, filePath, {
-          timeout: 600000,
-          headers: {
-            'x-oss-storage-class': 'Standard',
-            'x-oss-object-acl': 'default',
-            'Cache-Control': 'no-cache',
-            'x-oss-forbid-overwrite': overwrite ? 'true' : 'false',
-          },
+        const files = globSync(outDir + '/**/*', {
+          nodir: true,
+          ignore: [...skipDir.map((i) => `**/${i}/**`), ...skipFileName.map((i) => `**/${i}`)],
         })
-        if (result.res.status === 200) {
-          console.log(chalk.green('上传成功 >>> '), alias ? alias + remoteURL : result.url)
-          unlinkSync(filePath)
-        }
-      }
 
-      deleteEmpty(path.resolve(outDir))
+        for (const file of files) {
+          const filePath = normalizePath(file)
+          const remoteURL = filePath.replace('dist', `${uploadDir}`)
+
+          const result = await client.put(remoteURL, filePath, {
+            timeout: 600000,
+            headers: {
+              'x-oss-storage-class': 'Standard',
+              'x-oss-object-acl': 'default',
+              'Cache-Control': 'no-cache',
+              'x-oss-forbid-overwrite': overwrite ? 'true' : 'false',
+            },
+          })
+          if (result.res.status === 200) {
+            console.log(chalk.green('上传成功 >>> '), alias ? alias + remoteURL : result.url)
+            unlinkSync(filePath)
+          }
+        }
+
+        deleteEmpty(path.resolve(outDir))
+      },
     },
   }
 }

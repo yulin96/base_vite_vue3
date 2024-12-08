@@ -32,18 +32,22 @@ export default function resourceOrganization() {
       outDir = config.build.outDir
       base = config.base
     },
-    closeBundle() {
-      readImgs(path.resolve(outDir))
+    closeBundle: {
+      sequential: true,
+      order: 'post',
+      handler() {
+        readImgs(path.resolve(outDir))
 
-      const htmlImgResources = `[${imgResources.map((i) => `"${i}"`)}];`
+        const htmlImgResources = `[${imgResources.map((i) => `"${i}"`)}];`
 
-      const indexHtml = path.resolve(outDir, 'index.html')
-      let html = fs.readFileSync(indexHtml, 'utf-8')
-      html = html.replace(
-        '<head>',
-        `<head>\n\n    <script>\n    window.IMG_RESOURCES=${htmlImgResources}\n    </script>\n`,
-      )
-      fs.writeFileSync(indexHtml, html)
+        const indexHtml = path.resolve(outDir, 'index.html')
+        let html = fs.readFileSync(indexHtml, 'utf-8')
+        html = html.replace(
+          '<head>',
+          `<head>\n\n    <script>\n    window.IMG_RESOURCES=${htmlImgResources}\n    </script>\n`,
+        )
+        fs.writeFileSync(indexHtml, html)
+      },
     },
   }
 }

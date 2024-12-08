@@ -7,6 +7,7 @@ import dayjs from 'dayjs'
 import fs from 'node:fs'
 import path from 'node:path'
 import ora from 'ora'
+import { normalizePath } from 'vite'
 
 /**
  *
@@ -14,6 +15,8 @@ import ora from 'ora'
  */
 export default function deployFTP(option = {}) {
   const { host, port, user, password, dir, alias = '' } = option
+
+  const originURL = `${alias}/${dir}`.replace(/\/\//g, '/')
 
   let outDir = 'dist'
 
@@ -25,35 +28,40 @@ export default function deployFTP(option = {}) {
       outDir = config.build?.outDir || 'dist'
       return config
     },
-    async closeBundle() {
-      if (!host || !port || !user || !password || !dir) return
-      const ftpUploadChoice = await select({
-        message: '是否上传FTP',
-        choices: ['是', '否'],
-        default: '是',
-      })
-      if (ftpUploadChoice === '否') return
-      const uploadSpinner = ora('准备自动上传，创建连接中...').start()
-      const client = new Client()
-      client.ftp.verbose = false
-      await client.access({
-        host,
-        port,
-        user,
-        password,
-        secure: true,
-        secureOptions: { rejectUnauthorized: false, timeout: 60000 },
-      })
-      uploadSpinner.color = 'blue'
-      uploadSpinner.text = '连接成功'
-      const fileList = await client.list(dir)
-      uploadSpinner.succeed(`已连接 ${chalk.green(`目录: ==> ${alias}${dir}`)}`)
-      if (fileList.length) {
-        await createBackupFile(client, dir, alias)
-      }
-      const uploadFileSpinner = ora('上传中...').start()
-      await client.uploadFromDir('dist', dir)
-      uploadFileSpinner.succeed('上传成功 url:' + chalk.green(`${alias}${dir}/`))
+    closeBundle: {
+      sequential: true,
+      order: 'post',
+      async handler() {
+        if (!host || !port || !user || !password || !dir) return
+        const ftpUploadChoice = await select({
+          message: '是否上传FTP',
+          choices: ['是', '否'],
+          default: '是',
+        })
+        if (ftpUploadChoice === '否') return
+        const uploadSpinner = ora('准备自动上传，创建连接中...').start()
+        const client = new Client()
+        client.ftp.verbose = false
+        await client.access({
+          host,
+          port,
+          user,
+          password,
+          secure: true,
+          secureOptions: { rejectUnauthorized: false, timeout: 60000 },
+        })
+        uploadSpinner.color = 'blue'
+        uploadSpinner.text = '连接成功'
+        const fileList = await client.list(dir)
+        uploadSpinner.succeed(`已连接 ${chalk.green(`目录: ==> ${alias}${dir}`)}`)
+        if (fileList.length) {
+          await createBackupFile(client, dir, alias)
+        }
+        const uploadFileSpinner = ora('上传中...').start()
+        await client.uploadFromDir(outDir, dir)
+        uploadFileSpinner.succeed('上传成功 url:' + chalk.green(`${alias}${dir}/`))
+        client.close()
+      },
     },
   }
 }
@@ -95,10 +103,12 @@ async function createBackupFile(client, dir, alias) {
   archive.pipe(output)
   archive.directory(localDir, false)
   await archive.finalize()
-  backupSpinner.text = `压缩完成, 准备上传 ${chalk.yellow(`目录: ==> ${alias}${dir}/${fileName}`)}`
+  backupSpinner.text = `压缩完成, 准备上传 ${chalk.yellow(`目录: ==> ${normalizePath(`${alias}${dir}/${fileName}`)}`)}`
 
-  await client.uploadFrom(zipFilePath, `${alias}${dir}/${fileName}`)
-  backupSpinner.succeed(`备份成功 ${chalk.green(`目录: ==> ${alias}${dir}/${fileName}`)}`)
+  await client.uploadFrom(zipFilePath, normalizePath(`${dir}/${fileName}`))
+  backupSpinner.succeed(
+    `备份成功 ${chalk.green(`目录: ==> ${normalizePath(`${alias}${dir}/${fileName}`)}`)}`,
+  )
 
   fs.rmSync(`./__temp`, { recursive: true })
 }
