@@ -18,6 +18,8 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import resourceOrganization from './plugin/resourceOrganization.js'
 // @ts-expect-error 本地插件
 import deployOSS from './plugin/deployOSS.js'
+// @ts-expect-error 本地插件
+import deployFTP from './plugin/deployFTP.js'
 
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
@@ -111,6 +113,14 @@ export default defineConfig(({ command }) => ({
       region: 'oss-cn-beijing',
       uploadDir: `${env.VITE_OSS_ROOT_DIRNAME}${env.VITE_OSS_DIRNAME}`,
       alias: 'https://oss.eventnet.cn/',
+    }),
+    deployFTP({
+      host: process.env.zH5FtpHost,
+      port: process.env.zH5FtpPort,
+      user: process.env.zH5FtpUser,
+      password: process.env.zH5FtpPassword,
+      dir: `${env.VITE_FTP_DIRNAME}`,
+      alias: 'https://h5.eventnet.cn',
     }),
     visualizer(),
   ],

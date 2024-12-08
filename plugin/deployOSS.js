@@ -7,9 +7,6 @@ import { unlinkSync } from 'node:fs'
 import path from 'node:path'
 import { normalizePath } from 'vite'
 
-const skipDir = ['pluginWebUpdateNotice']
-const skipFileName = ['index.html', 'clear.html', 'pc.html', 'scan.html']
-
 /**
  *
  * @returns {import('vite').Plugin}
@@ -20,8 +17,8 @@ export default function resourceOrganization(option = {}) {
     accessKeyId,
     accessKeySecret,
     bucket,
-    skipDir,
-    skipFileName,
+    skipDir = ['pluginWebUpdateNotice'],
+    skipFileName = ['index.html', 'clear.html', 'pc.html', 'scan.html'],
     uploadDir = '/',
     overwrite = false,
     alias,
@@ -53,13 +50,7 @@ export default function resourceOrganization(option = {}) {
 
       const files = globSync(outDir + '/**/*', {
         nodir: true,
-        ignore: [
-          '**/pluginWebUpdateNotice/**',
-          '**/index.html',
-          '**/clear.html',
-          '**/pc.html',
-          '**/scan.html',
-        ],
+        ignore: [...skipDir.map((i) => `**/${i}/**`), ...skipFileName.map((i) => `**/${i}`)],
       })
 
       for (const file of files) {
