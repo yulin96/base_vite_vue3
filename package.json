@@ -10,7 +10,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "run-p type-check \"build-only {@}\" -- && pnpm upOSS && pnpm upFTP",
+    "build": "run-p type-check \"build-only {@}\" --",
     "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
     "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
@@ -111,6 +111,7 @@
     "unplugin-vue-components": "^0.27.5",
     "unplugin-vue-router": "^0.10.9",
     "vite": "^6.0.3",
+    "vite-plugin-deploy-oss": "^0.0.3",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vue-tsc": "^2.1.10"
   },

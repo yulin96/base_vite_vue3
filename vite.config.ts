@@ -13,6 +13,8 @@ import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
+import vitePluginDeployOss from 'vite-plugin-deploy-oss'
+
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
   gsap: 'gsap',
@@ -96,6 +98,19 @@ export default defineConfig(({ command }) => ({
       },
       injectFileBase: getNoticeUrl(),
       versionType: 'build_timestamp',
+    }),
+    vitePluginDeployOss({
+      open: true,
+      accessKeyId: process.env.zAccessKeyId || '',
+      accessKeySecret: process.env.zAccessKeySecret || '',
+      bucket: process.env.zBucket,
+      region: 'oss-cn-beijing',
+      uploadDir: `${env.VITE_OSS_ROOT_DIR}`,
+      skip: ['**/index.html', '**/pluginWebUpdateNotice/**'],
+
+      alias: `https://oss.eventnet.cn/`,
+      // 修改打包后的资源路径
+      configBase: `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIR}/`,
     }),
     visualizer(),
   ],
