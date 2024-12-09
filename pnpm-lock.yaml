@@ -261,8 +261,8 @@ importers:
         specifier: ^0.0.3
         version: 0.0.3(@types/node@22.10.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
       vite-plugin-deploy-oss:
-        specifier: ^0.0.5
-        version: 0.0.5(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
+        specifier: ^0.0.6
+        version: 0.0.6(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
         version: 1.1.8(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
@@ -3896,8 +3896,8 @@ packages:
     peerDependencies:
       vite: ^6.0.3
 
-  vite-plugin-deploy-oss@0.0.5:
-    resolution: {integrity: sha512-0Y/1ceQopURcYjO9yEFaPATd/6d0HgI/lB0EeN8flxeftQWSxmeRahOHRSWL97dy1jtwdUauUvuSUWb2ptgpVg==}
+  vite-plugin-deploy-oss@0.0.6:
+    resolution: {integrity: sha512-gpZHF2BC9jHGUgOtxnY4f2I0+r51KG9FXED3yBmJTZwH+k+fDrSOO5Bn3ug24FHK5pLbTXQmiOhKM8hX9g45hQ==}
     peerDependencies:
       vite: ^6.0.3
 
@@ -7882,7 +7882,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  vite-plugin-deploy-oss@0.0.5(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
+  vite-plugin-deploy-oss@0.0.6(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
     dependencies:
       '@types/ali-oss': 6.16.11
       '@types/delete-empty': 3.0.5
