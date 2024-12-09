@@ -149,9 +149,6 @@ importers:
       '@eslint/compat':
         specifier: ^1.2.4
         version: 1.2.4(eslint@9.16.0(jiti@2.4.1))
-      '@inquirer/prompts':
-        specifier: ^7.2.0
-        version: 7.2.0(@types/node@22.10.1)
       '@inspira-ui/plugins':
         specifier: ^0.0.1
         version: 0.0.1
@@ -161,9 +158,6 @@ importers:
       '@tsconfig/node20':
         specifier: ^20.1.4
         version: 20.1.4
-      '@types/ali-oss':
-        specifier: ^6.16.11
-        version: 6.16.11
       '@types/crypto-js':
         specifier: ^4.2.2
         version: 4.2.2
@@ -200,15 +194,6 @@ importers:
       '@vue/tsconfig':
         specifier: ^0.7.0
         version: 0.7.0(typescript@5.6.2)(vue@3.5.13(typescript@5.6.2))
-      ali-oss:
-        specifier: ^6.22.0
-        version: 6.22.0
-      archiver:
-        specifier: ^7.0.1
-        version: 7.0.1
-      basic-ftp:
-        specifier: ^5.0.5
-        version: 5.0.5
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -233,9 +218,6 @@ importers:
       npm-run-all2:
         specifier: ^7.0.1
         version: 7.0.1
-      ora:
-        specifier: ^8.1.1
-        version: 8.1.1
       postcss-preset-env:
         specifier: ^10.1.1
         version: 10.1.1(postcss@8.4.49)
