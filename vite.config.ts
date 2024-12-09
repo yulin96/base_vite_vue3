@@ -11,9 +11,9 @@ import tailwindcss from 'tailwindcss'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
-import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
-
+import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
@@ -26,11 +26,6 @@ const splitDependencies: Record<string, string> = {
 }
 
 const env = loadEnv('production', process.cwd())
-
-let propOssPath = './'
-if (env.VITE_OSS_ROOT_DIRNAME !== '' && env.VITE_OSS_DIRNAME !== '') {
-  propOssPath = `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIRNAME}/${env.VITE_OSS_DIRNAME}/`
-}
 
 export default defineConfig(({ command }) => ({
   plugins: [
@@ -114,6 +109,15 @@ export default defineConfig(({ command }) => ({
       // 修改打包后的资源路径
       configBase: `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIR}/`,
     }),
+    vitePluginDeployFtp({
+      open: true,
+      host: process.env.zH5FtpHost as string,
+      port: +(process.env.zH5FtpPort || 21),
+      user: process.env.zH5FtpUser as string,
+      password: process.env.zH5FtpPassword as string,
+      uploadPath: `${env.VITE_FTP_DIRNAME}`,
+      alias: `https://h5.eventnet.cn/`,
+    }),
     visualizer(),
   ],
   resolve: {
@@ -121,7 +125,7 @@ export default defineConfig(({ command }) => ({
       '~': fileURLToPath(new URL('./src', import.meta.url)),
     },
   },
-  base: command === 'serve' ? './' : propOssPath,
+  base: './',
   esbuild: {
     drop: command === 'serve' ? [] : env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
   },
