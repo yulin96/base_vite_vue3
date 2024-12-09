@@ -60,6 +60,7 @@
     "ua-parser-js": "^2.0.0",
     "uuid": "^11.0.3",
     "vant": "^4.9.9",
+    "vite-plugin-organize": "file:vite-plugin-organize-0.0.1.tgz",
     "vue": "^3.5.13",
     "vue-cropper": "^1.1.4",
     "vue-i18n": "^10.0.5",

@@ -7,19 +7,19 @@ import { fileURLToPath, URL } from 'node:url'
 import postcssPresetEnv from 'postcss-preset-env'
 import pxtorem from 'postcss-pxtorem'
 import process from 'process'
-import { visualizer } from 'rollup-plugin-visualizer'
+import visualizer from 'rollup-plugin-visualizer'
 import tailwindcss from 'tailwindcss'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv, normalizePath } from 'vite'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 
-// @ts-expect-error 本地插件
-import resourceOrganization from './plugin/resourceOrganization.js'
-// @ts-expect-error 本地插件
-import deployOSS from './plugin/deployOSS.js'
-// @ts-expect-error 本地插件
-import deployFTP from './plugin/deployFTP.js'
+// // @ts-expect-error 本地插件
+// import resourceOrganization from './plugin/resourceOrganization.js'
+// // @ts-expect-error 本地插件
+// import deployOSS from './plugin/deployOSS.js'
+// // @ts-expect-error 本地插件
+// import deployFTP from './plugin/deployFTP.js'
 
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
@@ -112,23 +112,28 @@ export default defineConfig(({ command }) => ({
       injectFileBase: getNoticeUrl(),
       versionType: 'build_timestamp',
     }),
-    resourceOrganization(),
-    deployOSS({
-      accessKeyId: process.env.zAccessKeyId,
-      accessKeySecret: process.env.zAccessKeySecret,
-      bucket: process.env.zBucket,
-      region: 'oss-cn-beijing',
-      uploadDir: `${env.VITE_OSS_ROOT_DIRNAME}${env.VITE_OSS_DIRNAME}`,
-      alias: 'https://oss.eventnet.cn/',
-    }),
-    deployFTP({
-      host: process.env.zH5FtpHost,
-      port: process.env.zH5FtpPort,
-      user: process.env.zH5FtpUser,
-      password: process.env.zH5FtpPassword,
-      dir: `${env.VITE_FTP_DIRNAME}`,
-      alias: 'https://h5.eventnet.cn',
-    }),
+    // vitePluginOrganize({
+    //   config: {
+    //     IMG_RESOURCES123: ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'],
+    //   },
+    // }),
+    // resourceOrganization(),
+    // deployOSS({
+    //   accessKeyId: process.env.zAccessKeyId,
+    //   accessKeySecret: process.env.zAccessKeySecret,
+    //   bucket: process.env.zBucket,
+    //   region: 'oss-cn-beijing',
+    //   uploadDir: `${env.VITE_OSS_ROOT_DIRNAME}${env.VITE_OSS_DIRNAME}`,
+    //   alias: 'https://oss.eventnet.cn/',
+    // }),
+    // deployFTP({
+    //   host: process.env.zH5FtpHost,
+    //   port: process.env.zH5FtpPort,
+    //   user: process.env.zH5FtpUser,
+    //   password: process.env.zH5FtpPassword,
+    //   dir: `${env.VITE_FTP_DIRNAME}`,
+    //   alias: 'https://h5.eventnet.cn',
+    // }),
     visualizer(),
   ],
   resolve: {

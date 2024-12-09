@@ -127,6 +127,9 @@ importers:
       vant:
         specifier: ^4.9.9
         version: 4.9.9(vue@3.5.13(typescript@5.6.2))
+      vite-plugin-organize:
+        specifier: file:vite-plugin-organize-0.0.1.tgz
+        version: file:vite-plugin-organize-0.0.1.tgz(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
       vue:
         specifier: ^3.5.13
         version: 3.5.13(typescript@5.6.2)
@@ -3896,6 +3899,12 @@ packages:
     engines: {node: '>=14'}
     peerDependencies:
       vite: '>=3'
+
+  vite-plugin-organize@file:vite-plugin-organize-0.0.1.tgz:
+    resolution: {integrity: sha512-DT67nUwRl4wydKtBBvShTUeKaXxyBCwldAlKuF6bHStoBRpD+Zls4R/ByCD0bedlPhbXd07kUoerbO1d1A4q8g==, tarball: file:vite-plugin-organize-0.0.1.tgz}
+    version: 0.0.1
+    peerDependencies:
+      vite: ^6.0.3
 
   vite@6.0.3:
     resolution: {integrity: sha512-Cmuo5P0ENTN6HxLSo6IHsjCLn/81Vgrp81oaiFFMRa8gGDj5xEjIcEpf2ZymZtZR8oU0P2JX5WuUp/rlXcHkAw==}
@@ -7844,6 +7853,10 @@ snapshots:
     dependencies:
       ansi-colors: 4.1.3
       pathe: 1.1.2
+      vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)
+
+  vite-plugin-organize@file:vite-plugin-organize-0.0.1.tgz(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
+    dependencies:
       vite: 6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)
 
   vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1):
