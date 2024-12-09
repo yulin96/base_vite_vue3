@@ -105,7 +105,7 @@
     "unplugin-vue-components": "^0.27.5",
     "unplugin-vue-router": "^0.10.9",
     "vite": "^6.0.3",
-    "vite-plugin-deploy-ftp": "^0.0.3",
+    "vite-plugin-deploy-ftp": "^0.0.4",
     "vite-plugin-deploy-oss": "^0.0.6",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vue-tsc": "^2.1.10"

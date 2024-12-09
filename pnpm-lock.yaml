@@ -258,8 +258,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)
       vite-plugin-deploy-ftp:
-        specifier: ^0.0.3
-        version: 0.0.3(@types/node@22.10.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
+        specifier: ^0.0.4
+        version: 0.0.4(@types/node@22.10.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
       vite-plugin-deploy-oss:
         specifier: ^0.0.6
         version: 0.0.6(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
@@ -3891,8 +3891,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vite-plugin-deploy-ftp@0.0.3:
-    resolution: {integrity: sha512-BgzXa7v8o0JJU9pLOs3gUxOGttlNHp4zDm+judAzAGgZcG2Na/TAIzlSRtRbNekomIrv9wqp/Cy6WRURrlnGvw==}
+  vite-plugin-deploy-ftp@0.0.4:
+    resolution: {integrity: sha512-Hj5qG6KFdRzpTvakkxiYhUAgXyQq3WtPC22TW8vbarkSgIGvEHlpL/9jmxFvehviGZ9fK8b6KaloP6VXiPtopQ==}
     peerDependencies:
       vite: ^6.0.3
 
@@ -7869,7 +7869,7 @@ snapshots:
       '@vue/shared': 3.5.13
       vue: 3.5.13(typescript@5.6.2)
 
-  vite-plugin-deploy-ftp@0.0.3(@types/node@22.10.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
+  vite-plugin-deploy-ftp@0.0.4(@types/node@22.10.1)(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
     dependencies:
       '@inquirer/prompts': 7.2.0(@types/node@22.10.1)
       '@types/archiver': 6.0.3
