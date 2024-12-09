@@ -1,19 +1,22 @@
-import { webUpdateNotice } from '@plugin-web-update-notification/vite'
-import { VantResolver } from '@vant/auto-import-resolver'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-import postcssPresetEnv from 'postcss-preset-env'
-import pxtorem from 'postcss-pxtorem'
-import { visualizer } from 'rollup-plugin-visualizer'
-import tailwindcss from 'tailwindcss'
-import Components from 'unplugin-vue-components/vite'
-import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig, loadEnv } from 'vite'
+
+import { webUpdateNotice } from '@plugin-web-update-notification/vite'
+import vue from '@vitejs/plugin-vue'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+
+import { VantResolver } from '@vant/auto-import-resolver'
+import Components from 'unplugin-vue-components/vite'
+import VueRouter from 'unplugin-vue-router/vite'
+
+import postcssPresetEnv from 'postcss-preset-env'
+import pxtorem from 'postcss-pxtorem'
+import tailwindcss from 'tailwindcss'
 
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
