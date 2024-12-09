@@ -276,8 +276,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)
       vite-plugin-deploy-oss:
-        specifier: ^0.0.3
-        version: 0.0.3(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
+        specifier: ^0.0.4
+        version: 0.0.4(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
         version: 1.1.8(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1))
@@ -3891,8 +3891,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vite-plugin-deploy-oss@0.0.3:
-    resolution: {integrity: sha512-s+nG9+oRm6zIGjpzdKxHoIt1VoXClyoKBftz5saTk+jdv76BC3p+V/tMUacuAshc5ApAQLXXSi82lnlSibVi1Q==}
+  vite-plugin-deploy-oss@0.0.4:
+    resolution: {integrity: sha512-4Ti3xr7SV3GrnNQo7mjCJs9xNh51471Yi47mjNjCcSWcMn/uCauZgc0v5yMwxaPb7HRa5hHkohZF6PRTp8GgRw==}
     peerDependencies:
       vite: ^6.0.3
 
@@ -7847,7 +7847,7 @@ snapshots:
       '@vue/shared': 3.5.13
       vue: 3.5.13(typescript@5.6.2)
 
-  vite-plugin-deploy-oss@0.0.3(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
+  vite-plugin-deploy-oss@0.0.4(vite@6.0.3(@types/node@22.10.1)(jiti@2.4.1)(yaml@2.6.1)):
     dependencies:
       '@types/ali-oss': 6.16.11
       '@types/delete-empty': 3.0.5

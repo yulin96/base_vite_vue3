@@ -107,6 +107,8 @@ export default defineConfig(({ command }) => ({
       region: 'oss-cn-beijing',
       uploadDir: `${env.VITE_OSS_ROOT_DIR}`,
       skip: ['**/index.html', '**/pluginWebUpdateNotice/**'],
+      overwrite: true,
+      autoDelete: true,
 
       alias: `https://oss.eventnet.cn/`,
       // 修改打包后的资源路径
