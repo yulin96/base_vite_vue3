@@ -47,7 +47,7 @@ Sentry.init({
   tracesSampleRate: 1.0,
   tracePropagationTargets: ['localhost', '192.168.1.2', /^https:\/\/h5.eventnet\.cn/],
   replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
+  replaysOnErrorSampleRate: 0.5,
   beforeSend(event) {
     const errorStack = event.exception?.values?.[0]?.stacktrace?.frames
     if (errorStack) {
