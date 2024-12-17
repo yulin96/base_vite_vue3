@@ -9,7 +9,7 @@ export function getWechatConfig() {
   if (window[wxConfigReady]) return Promise.resolve()
 
   return new Promise<void>((resolve, reject) => {
-    const wxLink = (parent || window).location.href.split('#')[0]
+    const wxLink = location.href.split('#')[0]
     axios
       .post(
         `https://wechat.event1.cn/api/getJsSdk`,

@@ -1,4 +1,4 @@
-const theWindow = parent || window
+const theWindow = window
 
 export const isSmallMobile = theWindow.innerHeight < 700
 

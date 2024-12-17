@@ -23,10 +23,6 @@ import '~/assets/css/main.css'
 
 !devModel && getWechatConfig()
 
-parent?.document.documentElement.style.setProperty(
-  '--main-color',
-  import.meta.env.VITE_APP_MAIN_COLOR,
-)
 window.document.documentElement.style.setProperty(
   '--main-color',
   import.meta.env.VITE_APP_MAIN_COLOR,
