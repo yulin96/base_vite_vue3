@@ -17,8 +17,6 @@
     "type-check": "vue-tsc --build --force",
     "lint": "eslint --fix .",
     "format": "prettier --write .",
-    "upOSS": "node ./deployOSS.js",
-    "upFTP": "node ./deployFTP.js",
     "prepare": "husky"
   },
   "dependencies": {
