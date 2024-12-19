@@ -9,6 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import vitePluginOrganize from 'vite-plugin-organize-resource'
 
 import { VantResolver } from '@vant/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
