@@ -112,6 +112,11 @@ export default defineConfig(({ command }) => ({
       // 修改打包后的资源路径
       configBase: `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIR}/`,
     }),
+    vitePluginOrganize({
+      config: {
+        IMG_RESOURCES: ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'],
+      },
+    }),
     vitePluginDeployFtp({
       open: true,
       host: process.env.zH5FtpHost as string,
