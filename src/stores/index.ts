@@ -19,6 +19,11 @@ export const useStore = defineStore(
     const user = reactive({
       code: '',
 
+      backXY: {
+        x: -12,
+        y: innerHeight - 200,
+      },
+
       info: {} as Partial<IInfo>,
       wxInfo: {} as Partial<IWxInfo>,
 
