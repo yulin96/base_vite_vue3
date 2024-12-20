@@ -79,12 +79,17 @@ export default {
           '0%': { transform: 'translateY(0)' },
           '100%': { transform: 'translateY(60%)' },
         },
+        pulse: {
+          '0%, 100%': { opacity: '.9' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         'spin-slow': 'spin 4s linear infinite',
         'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
         handle: 'handle 1s ease infinite',
         'next-page': 'next-page 0.9s ease infinite alternate',
+        pulse: 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
