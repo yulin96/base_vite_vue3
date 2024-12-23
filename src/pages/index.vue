@@ -32,17 +32,17 @@ onMounted(() => {
       </div> -->
       <img
         v-if="show"
-        class="absolute bottom-[232px] left-[46px] w-[150px]"
-        :class="[isDone ? 'animate-pulse' : '']"
-        src="../assets/imgs/l.png"
+        class="absolute bottom-[216px] left-[44px] w-[150px]"
+        :class="{ 'animate-pulse': isDone }"
+        src="../assets/imgs/5.png"
       />
       <img
         v-if="show"
-        class="absolute bottom-[230px] left-[560px] w-[140px]"
-        :class="[isDone ? 'animate-pulse' : '']"
-        src="../assets/imgs/r.png"
+        class="absolute bottom-[216px] left-[560px] w-[140px]"
+        :class="{ 'animate-pulse': isDone }"
+        src="../assets/imgs/6.png"
       />
-      <img class="absolute bottom-10 w-752" src="../assets/imgs/4.png" />
+      <img class="absolute bottom-0 w-752" src="../assets/imgs/4.png" />
     </main>
   </section>
 </template>

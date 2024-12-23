@@ -80,7 +80,7 @@ export default {
           '100%': { transform: 'translateY(60%)' },
         },
         pulse: {
-          '0%, 100%': { opacity: '.9' },
+          '0%, 100%': { opacity: '1' },
           '50%': { opacity: '0' },
         },
       },
@@ -89,7 +89,7 @@ export default {
         'heart-beat': 'heartBeat_k 1.5s 0.3s ease-in-out infinite',
         handle: 'handle 1s ease infinite',
         'next-page': 'next-page 0.9s ease infinite alternate',
-        pulse: 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        pulse: 'pulse 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
       },
     },
   },
