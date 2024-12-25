@@ -1,6 +1,7 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import vueTsEslintConfig from '@vue/eslint-config-typescript'
+import { Linter } from 'eslint'
 import pluginVue from 'eslint-plugin-vue'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -9,6 +10,7 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const gitignorePath = path.resolve(__dirname, '.gitignore')
 
+/** @type{Linter.Config[]} */
 export default [
   includeIgnoreFile(gitignorePath),
 
