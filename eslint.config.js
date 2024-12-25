@@ -13,20 +13,15 @@ export default [
   includeIgnoreFile(gitignorePath),
 
   {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,mts,tsx,vue}'],
-  },
-
-  {
     name: 'app/files-to-ignore',
     ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
   },
 
   ...pluginVue.configs['flat/recommended'],
   ...vueTsEslintConfig(),
-  skipFormatting,
 
   {
+    name: 'app/files-to-lint',
     files: ['**/*.{ts,js,cjs,mts,jsx,tsx,vue}'],
     rules: {
       'no-debugger': 0,
@@ -45,4 +40,6 @@ export default [
       'vue/multi-word-component-names': 0,
     },
   },
+
+  skipFormatting,
 ]
