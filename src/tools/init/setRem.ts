@@ -1,5 +1,6 @@
 import { debounce } from 'lodash-es'
 import { createQRCode } from '~/tools/init/createQRCode'
+import { devModel } from '~/utils/global'
 import { isMobileFun } from '~/utils/uaParser'
 
 function setRem() {
@@ -32,11 +33,13 @@ function setRem() {
 
 setRem()
 
-let prevWidth = window.innerWidth
-window.onresize = debounce(() => {
-  const currentWidth = window.innerWidth
-  if (currentWidth !== prevWidth) {
-    window.location.reload()
-  }
-  prevWidth = currentWidth
-}, 500)
+if (devModel) {
+  let prevWidth = window.innerWidth
+  window.onresize = debounce(() => {
+    const currentWidth = window.innerWidth
+    if (currentWidth !== prevWidth) {
+      window.location.reload()
+    }
+    prevWidth = currentWidth
+  }, 500)
+}
