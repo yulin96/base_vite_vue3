@@ -2,7 +2,6 @@
 import type { ConfigProviderThemeVars } from 'vant'
 import { nextTick, onMounted } from 'vue'
 import { Toaster } from 'vue-sonner'
-import CommonLoading from '~/components/common/Loading.vue'
 import { useLoading } from '~/hooks/useLoading'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
@@ -45,24 +44,24 @@ onMounted(() => {
 </script>
 
 <template>
-  <Toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
+  <toaster :rich-colors="true" :expand="false" position="top-center" :duration="3000" />
 
-  <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
-    <RouterView v-slot="{ Component }">
+  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+    <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <Transition :name>
-          <KeepAlive :include="[]">
-            <Suspense @resolve="isReady">
+        <transition :name>
+          <keep-alive :include="[]">
+            <suspense @resolve="isReady">
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <CommonLoading></CommonLoading>
+                <com-loading></com-loading>
               </template>
-            </Suspense>
-          </KeepAlive>
-        </Transition>
+            </suspense>
+          </keep-alive>
+        </transition>
       </template>
-    </RouterView>
-  </VanConfigProvider>
+    </router-view>
+  </van-config-provider>
 </template>
 
 <style>

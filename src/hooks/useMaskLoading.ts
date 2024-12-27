@@ -1,5 +1,5 @@
 import { type App, createApp } from 'vue'
-import commonLoading from '~/components/common/Loading.vue'
+import comLoading from '~/components/com/loading.vue'
 import { sleep } from '~/utils/common'
 
 export function useMaskLoading() {
@@ -10,7 +10,7 @@ export function useMaskLoading() {
     if (!app) {
       dom = document.createElement('div')
       document.body.appendChild(dom)
-      app = createApp(commonLoading)
+      app = createApp(comLoading)
       app.mount(dom)
     }
   }

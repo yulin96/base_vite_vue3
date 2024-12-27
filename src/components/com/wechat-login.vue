@@ -37,7 +37,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <VanPopup
+  <van-popup
     data-z-wx-login
     :show="show"
     :close-on-click-overlay="false"
@@ -76,5 +76,5 @@ onMounted(async () => {
         <p class="text-[30px]">微信一键登录</p>
       </button>
     </div>
-  </VanPopup>
+  </van-popup>
 </template>
