@@ -23,12 +23,14 @@ const passwordKeyboardIns = ref({
 
 const sealTouches = new Set<{ x: number; y: number }>()
 const touchstart = (e: TouchEvent) => {
+  e.preventDefault()
   for (const touch of e.changedTouches) {
     sealTouches.add({ x: touch.clientX, y: touch.clientY })
   }
 
-  if (sealTouches.size == 5) {
-    emits('next', 'stamp', JSON.stringify([...sealTouches]))
+  if (sealTouches.size >= 5) {
+    emits('next', 'stamp', JSON.stringify([...sealTouches].slice(0, 5)))
+    sealTouches.clear()
   }
 }
 
