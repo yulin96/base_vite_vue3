@@ -48,11 +48,13 @@ const touchend = (e: TouchEvent) => {
       @click.stop="passwordKeyboardIns.open()"
     ></div>
 
-    <com-keyboard
-      v-model:password="passwordKeyboardIns.password"
-      v-model="passwordKeyboardIns.show"
-      :max-length="maxLength"
-      @next="passwordKeyboardIns.next()"
-    ></com-keyboard>
+    <teleport to="body">
+      <com-keyboard
+        v-model:password="passwordKeyboardIns.password"
+        v-model="passwordKeyboardIns.show"
+        :max-length="maxLength"
+        @next="passwordKeyboardIns.next()"
+      ></com-keyboard>
+    </teleport>
   </div>
 </template>
