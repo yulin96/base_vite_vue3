@@ -5,9 +5,7 @@ import { useStore } from '~/stores'
 import { getOpenId } from '~/tools/user/getOpenId'
 import { toUrl } from '~/utils/global'
 
-const shareLink = import.meta.env.VITE_APP_SHARE_LINK
-
-const { url = shareLink, auto = false } = defineProps<{ url?: string; auto?: false }>()
+const { url, auto = false } = defineProps<{ url: string; auto?: false }>()
 
 const show = ref(false)
 
@@ -46,7 +44,7 @@ onMounted(async () => {
       WebkitBackdropFilter: 'blur(20px)',
       backdropFilter: 'blur(20px)',
     }"
-    class="bg-transparent"
+    class="center bg-transparent"
   >
     <div class="flex w-600 flex-col items-center justify-center rounded-[10px] bg-white py-[60px]">
       <p class="mb-[40px] text-[32px]">您还没有登录</p>
