@@ -1,0 +1,98 @@
+.popup-enter-active,
+.popup-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-enter-from,
+.popup-leave-to {
+  opacity: 0 !important;
+  transform: translateY(-50%) scale(0.6) !important;
+}
+
+.popup-bottom-enter-active,
+.popup-bottom-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-bottom-enter-from,
+.popup-bottom-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% + 120px)) !important;
+}
+
+.popup-top-enter-active,
+.popup-top-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-top-enter-from,
+.popup-top-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% - 120px)) !important;
+}
+
+.popup-left-enter-active,
+.popup-left-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-left-enter-from,
+.popup-left-leave-to {
+  opacity: 0 !important;
+  transform: translateX(-120px) translateY(-50%) !important;
+}
+
+.popup-right-enter-active,
+.popup-right-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-right-enter-from,
+.popup-right-leave-to {
+  opacity: 0 !important;
+  transform: translateX(120px) translateY(-50%) !important;
+}
+
+.popup-top-bottom-enter-active,
+.popup-top-bottom-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-top-bottom-enter-from {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% - 120px)) !important;
+}
+
+.popup-top-bottom-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% + 120px)) !important;
+}
+
+.popup-bottom-top-enter-active,
+.popup-bottom-top-leave-active {
+  transition:
+    opacity 0.2s ease,
+    transform 0.3s ease !important;
+}
+
+.popup-bottom-top-enter-from {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% + 120px)) !important;
+}
+
+.popup-bottom-top-leave-to {
+  opacity: 0 !important;
+  transform: translateY(calc(-50% - 120px)) !important;
+}
