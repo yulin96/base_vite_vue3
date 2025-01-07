@@ -20,7 +20,7 @@
     "prepare": "husky"
   },
   "dependencies": {
-    "@number-flow/vue": "^0.3.4",
+    "@number-flow/vue": "^0.4.1",
     "@sentry/vue": "^8.47.0",
     "@tsparticles/engine": "^3.7.1",
     "@types/canvas-confetti": "^1.9.0",
@@ -57,7 +57,7 @@
     "rough-notation": "^0.5.1",
     "typed.js": "^2.1.0",
     "ua-parser-js": "^2.0.0",
-    "uuid": "^11.0.3",
+    "uuid": "^11.0.4",
     "vant": "^4.9.15",
     "vue": "^3.5.13",
     "vue-cropper": "^1.1.4",
@@ -95,7 +95,7 @@
     "postcss-pxtorem": "^6.1.0",
     "prettier": "^3.4.2",
     "prettier-plugin-tailwindcss": "^0.6.9",
-    "rollup-plugin-visualizer": "^5.13.1",
+    "rollup-plugin-visualizer": "^5.14.0",
     "sharp": "^0.33.5",
     "tailwind-merge": "^2.6.0",
     "tailwindcss": "^3.4.17",
