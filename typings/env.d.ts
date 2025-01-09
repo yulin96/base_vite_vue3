@@ -33,6 +33,7 @@ interface Window {
   Zoomist: any
   IMG_RESOURCES: string[]
   tt: any
+  h5sdk: any
 }
 
 type RouteTransitionName =
