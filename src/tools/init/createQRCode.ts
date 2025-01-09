@@ -33,5 +33,15 @@ export function createQRCode(app: HTMLDivElement) {
     div.appendChild(p)
 
     document.body.appendChild(div)
+
+    const divRight = div.getBoundingClientRect().right
+    if (divRight > innerWidth) {
+      div.remove()
+    }
   })
+}
+
+export function removeQRCode() {
+  const codeTips = document.querySelector('.code-tips.pc')
+  if (codeTips) document.body.removeChild(codeTips)
 }

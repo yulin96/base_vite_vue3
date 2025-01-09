@@ -24,7 +24,6 @@ export const isEdge = uaParser.getBrowser().name === 'Edge'
 
 export const isIE = uaParser.getBrowser().name === 'IE'
 
-export const isMobile = uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
+export const isMobile = uaParser.getDevice().type === 'mobile'
 
-export const isMobileFun = () =>
-  uaParser.getDevice().type === 'mobile' || window.screen.availWidth < 768
+export const isMobileFun = () => new UAParser().getDevice().type === 'mobile'
