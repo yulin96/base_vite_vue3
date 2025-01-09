@@ -16,6 +16,7 @@ onMounted(() => {
       success: (res) => {
         // 用户授权后返回预授权码
         const { code } = res
+        console.log(code)
       },
       fail: (error) => {
         // 需要额外根据errno判断是否为 客户端不支持requestAccess导致的失败
@@ -33,16 +34,20 @@ onMounted(() => {
     callRequestAuthCode()
   }
   function callRequestAuthCode() {
+    console.log('callRequestAuthCode')
+
     window.tt.requestAuthCode({
       // 网页应用 App ID
       appId: 'cli_a7f5cf1154b51013',
       success: (res) => {
         // 用户免登录后返回预授权码
         const { code } = res
+        console.log(code)
       },
       fail: (error) => {
         // 免登失败，返回相应的errno和errString
         const { errno, errString } = error
+        console.log(errno, errString)
       },
     })
   }
