@@ -56,6 +56,17 @@ onMounted(() => {
       },
     })
   }
+
+  window.tt.requestAccess({
+    scopeList: ['contact:contact.base:readonly', 'docs_tool:docs_tool'],
+    appID: 'cli_a7f5cf1154b51013s', // 网页应用必传
+    success(res) {
+      console.log(JSON.stringify(res), '1')
+    },
+    fail(res) {
+      console.log(`requestAccess fail: ${JSON.stringify(res)} 2`)
+    },
+  })
 })
 </script>
 
