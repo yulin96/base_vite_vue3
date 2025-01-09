@@ -40,7 +40,7 @@ Sentry.init({
   enabled: !devModel,
   dsn: 'https://5f007f03176727466f42b46c433c17b9@fast-worm-91.deno.dev/4508361921331200',
   integrations: [Sentry.browserTracingIntegration({ router }), Sentry.replayIntegration()],
-  tracesSampleRate: 1.0,
+  tracesSampleRate: 0.5,
   tracePropagationTargets: ['localhost', '192.168.1.2', /^https:\/\/h5.eventnet\.cn/],
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 0.5,
