@@ -36,17 +36,12 @@
     <link rel="apple-touch-icon" href="%VITE_APP_SHARE_IMGURL%" />
     <link rel="dns-prefetch" href="%VITE_APP_API_URL%" />
 
-    <script>
-      const params = new URLSearchParams(window.location.search)
+    <script src="https://lf1-cdn-tos.bytegoofy.com/goofy/lark/op/h5-js-sdk-1.5.16.js"></script>
 
-      if (params.get('dev') !== null) {
-        setTimeout(() => {
-          const vConsole = document.createElement('script')
-          vConsole.src = 'https://oss.eventnet.cn/H5/zz/public/vConsole.js'
-          document.body.appendChild(vConsole)
-          vConsole.onload = () => new window.VConsole()
-        }, 0)
-      }
+    <script src="https://oss.eventnet.cn/H5/zz/public/vConsole.js"></script>
+
+    <script>
+      new window.VConsole()
     </script>
 
     <title>%VITE_APP_TITLE%</title>

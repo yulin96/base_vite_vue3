@@ -32,6 +32,7 @@ interface Window {
   html2canvas: any
   Zoomist: any
   IMG_RESOURCES: string[]
+  tt: any
 }
 
 type RouteTransitionName =
