@@ -82,12 +82,9 @@ select[content=''] {
   /* overscroll-behavior: none; */
 }
 
-/* @font-face {
+@font-face {
   font-family: f-yuan;
-  src:
-    url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff2') format('woff2'),
-    url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.woff') format('woff'),
-    url('https://oss.eventnet.cn/H5/zz/font/fangyuan/AlimamaFangYuanTiVF-Thin.ttf') format('truetype');
+  src: url('../fonts/YunFengFeiYunTi-2.ttf') format('truetype');
   font-display: swap;
 }
 
@@ -105,4 +102,4 @@ input {
     'Open Sans',
     'Helvetica Neue',
     sans-serif;
-} */
+}
