@@ -14,6 +14,7 @@ import vitePluginOrganize from 'vite-plugin-organize-resource'
 import { VantResolver } from '@vant/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
+import vitePluginMetaShare from 'vite-plugin-meta-share'
 
 import postcssPresetEnv from 'postcss-preset-env'
 import pxtorem from 'postcss-pxtorem'
@@ -41,6 +42,13 @@ export default defineConfig(({ command }) => ({
       },
       closeBundle() {},
     },
+    vitePluginMetaShare({
+      enable: true,
+      title: env.VITE_APP_SHARE_TITLE,
+      description: env.VITE_APP_SHARE_DESC,
+      link: env.VITE_APP_SHARE_LINK,
+      image: env.VITE_APP_SHARE_IMGURL,
+    }),
     ViteImageOptimizer({
       exclude: /\.(webp|svg)$/i,
       jpg: {
