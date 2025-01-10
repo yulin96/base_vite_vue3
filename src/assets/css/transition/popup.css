@@ -1,8 +1,15 @@
 .popup-enter-active,
 .popup-leave-active {
-  transition:
-    opacity 0.2s ease,
-    transform 0.3s ease !important;
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+}
+
+.popup-enter-active {
+  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.popup-leave-active {
+  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .popup-enter-from,
@@ -78,21 +85,4 @@
 .popup-top-bottom-leave-to {
   opacity: 0 !important;
   transform: translateY(calc(-50% + 120px)) !important;
-}
-
-.popup-bottom-top-enter-active,
-.popup-bottom-top-leave-active {
-  transition:
-    opacity 0.2s ease,
-    transform 0.3s ease !important;
-}
-
-.popup-bottom-top-enter-from {
-  opacity: 0 !important;
-  transform: translateY(calc(-50% + 120px)) !important;
-}
-
-.popup-bottom-top-leave-to {
-  opacity: 0 !important;
-  transform: translateY(calc(-50% - 120px)) !important;
 }
