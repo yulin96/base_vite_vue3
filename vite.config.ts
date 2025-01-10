@@ -99,7 +99,7 @@ export default defineConfig(({ command }) => ({
       versionType: 'build_timestamp',
     }),
     vitePluginDeployOss({
-      open: true,
+      open: env.VITE_OSS_ROOT_DIR === 'H5/zz/auto2/' ? false : true,
       accessKeyId: process.env.zAccessKeyId || '',
       accessKeySecret: process.env.zAccessKeySecret || '',
       bucket: process.env.zBucket,
@@ -111,7 +111,7 @@ export default defineConfig(({ command }) => ({
 
       alias: `https://oss.eventnet.cn/`,
       // 修改打包后的资源路径
-      configBase: `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIR}/`,
+      configBase: `https://oss.eventnet.cn/${env.VITE_OSS_ROOT_DIR}`,
     }),
     vitePluginOrganize({
       config: {

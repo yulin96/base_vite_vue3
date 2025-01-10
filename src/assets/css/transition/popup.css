@@ -5,11 +5,11 @@
 }
 
 .popup-enter-active {
-  transition-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition-timing-function: cubic-bezier(0.18, 0.9, 0.3, 1.2);
 }
 
 .popup-leave-active {
-  transition-timing-function: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition-timing-function: cubic-bezier(0.8, -0.12, 0.7, 0.05);
 }
 
 .popup-enter-from,
