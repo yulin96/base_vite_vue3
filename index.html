@@ -36,34 +36,10 @@
     <link rel="apple-touch-icon" href="%VITE_APP_SHARE_IMGURL%" />
     <link rel="dns-prefetch" href="%VITE_APP_API_URL%" />
 
-    <script>
-      const params = new URLSearchParams(window.location.search)
-
-      if (params.get('dev') !== null) {
-        setTimeout(() => {
-          const vConsole = document.createElement('script')
-          vConsole.src = 'https://oss.eventnet.cn/H5/zz/public/vConsole.js'
-          document.body.appendChild(vConsole)
-          vConsole.onload = () => new window.VConsole()
-        }, 0)
-      }
-    </script>
-
     <title>%VITE_APP_TITLE%</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
-  <script>
-    if ('%VITE_APP_HM_BAIDU%' && '%PROD%' === 'true') {
-      var _hmt = _hmt || []
-      ;(function () {
-        var hm = document.createElement('script')
-        hm.src = 'https://hm.baidu.com/hm.js?' + '%VITE_APP_HM_BAIDU%'
-        var s = document.getElementsByTagName('script')[0]
-        s.parentNode.insertBefore(hm, s)
-      })()
-    }
-  </script>
 </html>
