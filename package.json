@@ -68,7 +68,7 @@
     "weixin-js-sdk": "^1.6.5"
   },
   "devDependencies": {
-    "@eslint/compat": "^1.2.4",
+    "@eslint/compat": "^1.2.5",
     "@inspira-ui/plugins": "^0.0.1",
     "@plugin-web-update-notification/vite": "^1.7.1",
     "@tsconfig/node22": "^22.0.0",
@@ -87,7 +87,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cross-env": "^7.0.3",
-    "eslint": "^9.17.0",
+    "eslint": "^9.18.0",
     "eslint-plugin-vue": "^9.32.0",
     "husky": "^9.1.7",
     "jsdom": "^26.0.0",
