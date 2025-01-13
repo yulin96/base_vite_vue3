@@ -2,7 +2,7 @@
 import gsap from 'gsap'
 import { onMounted, ref } from 'vue'
 
-const show = ref(false)
+const show = ref(true)
 
 /*  */
 onMounted(() => {
