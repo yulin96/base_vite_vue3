@@ -10,7 +10,6 @@ function convertUnit(length = 100, name = 'px') {
 export default {
   darkMode: 'selector',
   safelist: ['dark'],
-  prefix: '',
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
     spacing: convertUnit(200),
