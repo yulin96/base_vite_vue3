@@ -1,4 +1,4 @@
-const baiduStatistics = import.meta.env.VITE_APP_HM_BAIDU
+const baiduStatistics = import.meta.env?.VITE_APP_HM_BAIDU
 
 if (baiduStatistics) {
   const hm = document.createElement('script')

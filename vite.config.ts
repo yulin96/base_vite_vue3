@@ -9,6 +9,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import obfuscatorPlugin from 'vite-plugin-javascript-obfuscator'
 import vitePluginMetaShare from 'vite-plugin-meta-share'
 import vitePluginOrganize from 'vite-plugin-organize-resource'
 
@@ -34,6 +35,12 @@ const env = loadEnv('production', process.cwd())
 
 export default defineConfig(({ command }) => ({
   plugins: [
+    obfuscatorPlugin({
+      apply: 'build',
+      options: {
+        debugProtection: false,
+      },
+    }),
     {
       name: 'build-check',
       apply: 'build',

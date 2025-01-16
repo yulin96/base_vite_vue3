@@ -59,6 +59,7 @@
     "ua-parser-js": "^2.0.0",
     "uuid": "^11.0.5",
     "vant": "^4.9.15",
+    "vite-plugin-javascript-obfuscator": "^3.1.0",
     "vite-plugin-meta-share": "^0.0.1",
     "vue": "^3.5.13",
     "vue-cropper": "^1.1.4",
