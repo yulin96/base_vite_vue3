@@ -14,7 +14,10 @@ const next = () => {
   if (!userInput.value.uuid) return toast.warning('请输入工号')
   if (!userInput.value.score) return toast.warning('请输入分数')
 
-  const _data = (userInput.value.uuid + userInput.value.score).split('').sort().join('-')
+  const _data = (userInput.value.uuid.toString() + userInput.value.score.toString())
+    .split('')
+    .sort()
+    .join('-')
   const _add = _data.split('-').reduce((a, b) => {
     if (isNaN(Number(b))) return a
     return a + Number(b)
