@@ -205,3 +205,8 @@ export function convertNullToEmpty(obj: any) {
       }
     }
 }
+
+export function arrayBufferToBase64(buffer: any) {
+  const binary = String.fromCharCode.apply(null, new Uint8Array(buffer) as any)
+  return window.btoa(binary)
+}
