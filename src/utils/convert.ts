@@ -206,7 +206,17 @@ export function convertNullToEmpty(obj: any) {
     }
 }
 
-export function arrayBufferToBase64(buffer: any) {
-  const binary = String.fromCharCode.apply(null, new Uint8Array(buffer) as any)
+export function arrayBufferToBase64(buffer: ArrayBuffer): string {
+  const uint8Array = new Uint8Array(buffer)
+  const chunks: string[] = []
+  const chunkSize = 1024 // 每次处理 1024 个字节
+
+  // 按块处理数据
+  for (let i = 0; i < uint8Array.length; i += chunkSize) {
+    const chunk = uint8Array.slice(i, i + chunkSize)
+    chunks.push(String.fromCharCode.apply(null, chunk as any))
+  }
+
+  const binary = chunks.join('')
   return window.btoa(binary)
 }
