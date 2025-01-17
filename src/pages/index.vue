@@ -3,9 +3,9 @@ import gsap from 'gsap'
 import html2canvas from 'html2canvas'
 import { onMounted, ref } from 'vue'
 
-const title = ref('春风化雨')
-const left = ref('春风化雨山山翠')
-const right = ref('政策归心处处春')
+const title = ref('步步高升')
+const left = ref('拼搏奋进得成功')
+const right = ref('坚定信念达辉煌')
 
 const imgURL = ref('')
 
