@@ -47,9 +47,6 @@ importers:
       animate.css:
         specifier: ^4.1.1
         version: 4.1.1
-      auto-scale-box:
-        specifier: ^0.0.5
-        version: 0.0.5
       axios:
         specifier: ^1.7.9
         version: 1.7.9
@@ -1700,9 +1697,6 @@ packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
-
-  auto-scale-box@0.0.5:
-    resolution: {integrity: sha512-b5eXiHwSz+dYNqdk9uq0G/rwi4ysHo4jYhwSTuuhkr/AidkJgEw7vdrJ36N+4036kJuevosy1m33SNrot62G/w==}
 
   autoprefixer@10.4.20:
     resolution: {integrity: sha512-XY25y5xSv/wEoqzDyXXME4AFfkZI0P23z6Fs3YgymDnKJkCGOnkL0iTxCa85UTqaSgfcqyf3UA6+c7wUvx/16g==}
@@ -5628,8 +5622,6 @@ snapshots:
   async@3.2.6: {}
 
   asynckit@0.4.0: {}
-
-  auto-scale-box@0.0.5: {}
 
   autoprefixer@10.4.20(postcss@8.5.1):
     dependencies:
