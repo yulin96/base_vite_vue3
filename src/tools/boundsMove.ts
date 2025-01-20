@@ -1,10 +1,15 @@
-import gsap from 'gsap'
+import { animate } from 'motion'
 
-export function boundsMove(element: HTMLDivElement, from: DOMRect, to: DOMRect) {
+export function boundsMove(element: HTMLDivElement, to: DOMRect, from?: DOMRect) {
   return new Promise<HTMLDivElement>((resolve, reject) => {
     const fromElement = element.cloneNode(true) as HTMLDivElement
 
-    const { left: fromLeft, top: fromTop, width: fromWidth, height: fromHeight } = from
+    const {
+      left: fromLeft,
+      top: fromTop,
+      width: fromWidth,
+      height: fromHeight,
+    } = from || element.getBoundingClientRect()
     const { left: toLeft, top: toTop, width: toWidth, height: toHeight } = to
 
     fromElement.style.position = 'fixed'
@@ -19,15 +24,6 @@ export function boundsMove(element: HTMLDivElement, from: DOMRect, to: DOMRect) 
     const y = -(fromTop - toTop + (fromHeight - toHeight) / 2)
     const scale = toWidth / fromWidth
 
-    gsap.to(fromElement, {
-      scale: scale,
-      x: x,
-      y: y,
-      duration: 1.2,
-      ease: 'back.in',
-      onComplete: () => {
-        resolve(fromElement)
-      },
-    })
+    animate(fromElement, { scale, x, y }, { duration: 1.2, ease: 'backIn' })
   })
 }
