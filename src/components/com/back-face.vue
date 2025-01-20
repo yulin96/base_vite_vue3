@@ -9,6 +9,17 @@ const flipRef = useTemplateRef('flipRef')
 watchPostEffect(() => {
   animate(flipRef.value!, { rotateY: flip ? 180 : 0 }, { type: 'tween', ease: 'easeOut' })
 })
+
+/**
+  <com-back-face :flip="showBack" class="h-500 w-300">
+    <template #default>
+      <div class="h-full w-full rounded-12 bg-sky-200"></div>
+    </template>
+    <template #back>
+      <div class="h-full w-full rounded-12 bg-cyan-600"></div>
+    </template>
+  </com-back-face>
+ */
 </script>
 
 <template>
