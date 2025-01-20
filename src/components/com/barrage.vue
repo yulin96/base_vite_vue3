@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { animate } from 'motion'
 import { onMounted } from 'vue'
 import { randomString } from '~/utils/common'
 
@@ -30,7 +31,7 @@ onMounted(() => {
   autoCreateBarrage()
 })
 
-function createBarrage({
+async function createBarrage({
   params,
   gap,
   speed,
@@ -66,24 +67,20 @@ function createBarrage({
   parent.appendChild(barrage)
 
   const offset = Math.floor(innerWidth + barrage.clientWidth + gap)
-  gsap.to(barrage, {
-    x: -offset,
-    z: 0,
-    duration: offset / speed,
-    ease: 'none',
-    onComplete() {
-      this.kill()
-      parent.removeChild(barrage)
-    },
-  })
+  const _animate = animate(barrage, { x: -offset }, { duration: offset / speed, ease: 'linear' })
+  await _animate
+  _animate.stop()
+  parent.removeChild(barrage)
 }
 
-//示例：
-// <v-barrage v-model="currentId" class="mt-100" :barrage-list="data">
-//   <div class="flex h-100 w-full items-center"></div>
-//   <div class="mt-60 flex h-100 w-full items-center"></div>
-//   <div class="mt-60 flex h-100 w-full items-center"></div>
-// </v-barrage>
+/**
+  <com-barrage v-model="currentId" class="mt-100" :barrage-list="data">
+    <div class="flex h-100 w-full items-center"></div>
+    <div class="mt-60 flex h-100 w-full items-center"></div>
+    <div class="mt-60 flex h-100 w-full items-center"></div>
+    <div class="mt-60 flex h-100 w-full items-center"></div>
+  </com-barrage>
+ */
 </script>
 
 <template>
