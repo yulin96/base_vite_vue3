@@ -18,7 +18,6 @@ export function boundsMove(element: HTMLDivElement, from: DOMRect, to: DOMRect) 
     const x = -(fromLeft - toLeft + (fromWidth - toWidth) / 2)
     const y = -(fromTop - toTop + (fromHeight - toHeight) / 2)
     const scale = toWidth / fromWidth
-    console.log('scale', scale, x, y)
 
     gsap.to(fromElement, {
       scale: scale,
