@@ -49,6 +49,7 @@
     "lodash-es": "^4.17.21",
     "lottie-web": "^5.12.2",
     "lucky-canvas": "^1.7.27",
+    "motion": "^11.18.1",
     "nprogress": "^0.2.0",
     "pinia": "^2.3.0",
     "pinia-plugin-persistedstate": "^4.2.0",
