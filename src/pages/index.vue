@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { animate, scroll } from 'motion'
+import { animate, inView, scroll } from 'motion'
 import { onMounted } from 'vue'
 
 /*  */
@@ -16,6 +16,20 @@ onMounted(() => {
     {
       target: document.querySelector('.move_b2') as HTMLElement,
       container: document.querySelector('.index') as HTMLElement,
+    },
+  )
+
+  inView(
+    '.box7',
+    (entry) => {
+      console.log(entry)
+      const animation = animate(entry, { x: [-200, 0], opacity: [0.1, 1] })
+      return () => {
+        animation.stop()
+      }
+    },
+    {
+      margin: '100px 0px 0px 0px',
     },
   )
 })
