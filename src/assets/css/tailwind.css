@@ -1,0 +1,15 @@
+@import 'tailwindcss';
+@import './tailwindcss/size.css';
+@import './tailwindcss/utility.css';
+@import './tailwindcss/keyframes.css';
+
+@theme {
+  --spacing: 1px;
+
+  --color-placeholder: '#a3a9b5';
+
+  --animate-spin-slow: spin 4s linear infinite;
+  --animate-heart-beat: heartBeat_k 1.5s 0.3s ease-in-out infinite;
+  --animate-handle: handle 1s ease infinite;
+  --animate-next-page: next-page 0.9s ease infinite alternate;
+}

@@ -16,9 +16,9 @@ import { VantResolver } from '@vant/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 
+import tailwindcss from '@tailwindcss/vite'
 import postcssPresetEnv from 'postcss-preset-env'
 import pxtorem from 'postcss-pxtorem'
-import tailwindcss from 'tailwindcss'
 
 const splitDependencies: Record<string, string> = {
   vueuse: '@vueuse/core',
@@ -34,6 +34,7 @@ const env = loadEnv('production', process.cwd())
 
 export default defineConfig(({ command }) => ({
   plugins: [
+    tailwindcss(),
     {
       name: 'build-check',
       apply: 'build',
@@ -174,7 +175,6 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
-        tailwindcss,
         postcssPresetEnv({
           browsers: ['ios >= 11', 'chrome >= 64'],
         }),

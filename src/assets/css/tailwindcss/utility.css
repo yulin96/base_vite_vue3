@@ -1,0 +1,103 @@
+@utility center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@utility state-paused {
+  animation-play-state: paused;
+}
+
+@utility state-running {
+  animation-play-state: running;
+}
+
+@utility text-last-center {
+  text-align-last: center;
+}
+
+@utility text-last-justify {
+  text-align-last: justify;
+}
+
+@utility touch-callout {
+  -webkit-touch-callout: default;
+}
+
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+@utility shark-wrap {
+  @keyframes shark-wrap {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  overflow: hidden;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -20%;
+    background: linear-gradient(45deg, #ffffff00 40%, #ffffffb3, #ffffff00 60%);
+    animation: shark-wrap var(--time, 2s) infinite paused;
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+}
+
+@utility shark-wrap-play {
+  &::after {
+    animation-play-state: running !important;
+  }
+}
+
+@utility occlusion {
+  mask-image: linear-gradient(to right, black 0% 40%, transparent 50% 100%);
+  mask-size: 250% 100%;
+  mask-position: 90%;
+}
+
+@utility shark-text-* {
+  @keyframes shark-text {
+    0% {
+      background-position: -100%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
+
+  color: transparent;
+  background: linear-gradient(45deg, #ffffff00 30%, #ffffffe6, #ffffff00 70%) -100% / 50% no-repeat
+    --value([ *]);
+  background-clip: text;
+  animation: shark-text var(--time, 2s) infinite paused;
+}
+
+@utility shark-text-play {
+  animation-play-state: running !important;
+}
+
+@utility time-* {
+  --time: --value([ *]);
+}
+
+@utility mask-* {
+  -webkit-mask: --value([ *]) 0 0/100%;
+  mask: --value([ *]) 0 0/100%;
+}
+
+@utility back-top {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: top;
+}
+
+@utility back-bottom {
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}

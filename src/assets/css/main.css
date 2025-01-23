@@ -1,5 +1,5 @@
-@import './plugin/tailwind.css';
 @import './base.css';
+@import './tailwind.css';
 @import './plugin/progress.css';
 @import './plugin/piece.css';
 @import './plugin/fixPlugin.css';
@@ -41,13 +41,13 @@ textarea {
   caret-color: currentColor;
 }
 
-input::placeholder {
+/* input::placeholder {
   color: #a3a9b5;
 }
 
 select[content=''] {
   color: #a3a9b5;
-}
+} */
 
 .cover #app {
   position: relative;

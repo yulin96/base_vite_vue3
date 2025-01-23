@@ -1,15 +1,3 @@
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  text-decoration: none;
-  user-select: none;
-  -webkit-touch-callout: none;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-user-drag: none;
-  text-size-adjust: 100%;
-}
-
 *::-webkit-scrollbar {
   display: none;
 }
