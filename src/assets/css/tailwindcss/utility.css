@@ -24,10 +24,6 @@
   -webkit-touch-callout: default;
 }
 
-@utility backface-hidden {
-  backface-visibility: hidden;
-}
-
 @utility shark-wrap {
   @keyframes shark-wrap {
     100% {

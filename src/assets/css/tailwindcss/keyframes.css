@@ -2,21 +2,21 @@
   @keyframes handle {
     0%,
     30%,
-    100%: {
+    100% {
       transform: scale(1);
     }
-    15%: {
+    15% {
       transform: scale(0.96);
     }
   }
 
   @keyframes bounce {
     0%,
-    100%: {
+    100% {
       transform: none;
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
     }
-    50%: {
+    50% {
       transform: translateY(-25%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }

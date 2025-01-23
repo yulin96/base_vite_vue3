@@ -51,7 +51,7 @@ onMounted(() => {
 <template>
   <teleport to="body">
     <div
-      class="absolute right-[50px] top-[50px] z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
+      class="border-4p absolute top-50 right-50 z-2001 rounded-[50%] border-[#fff] p-4"
       :class="['invert']"
     >
       <audio
@@ -65,8 +65,8 @@ onMounted(() => {
       ></audio>
       <img
         ref="playIconRef"
-        class="size-[40px] animate-spin-slow"
-        :class="[isPlay ? 'running' : 'paused']"
+        class="animate-spin-slow size-[40px]"
+        :class="[isPlay ? 'state-running' : 'state-paused']"
         :src="isPlay ? playIcon : pausedIcon"
         @click="togglePlayStatus"
       />

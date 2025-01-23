@@ -23,17 +23,17 @@ watchPostEffect(() => {
 </script>
 
 <template>
-  <div class="perspective-[1200]">
+  <div class="perspective-midrange">
     <section ref="flipRef" class="relative h-full w-full transform-3d">
       <div
         :class="!flip ? 'pointer-events-auto' : 'pointer-events-none'"
-        class="absolute left-0 top-0 h-full w-full backface-hidden"
+        class="absolute top-0 left-0 h-full w-full backface-hidden"
       >
         <slot></slot>
       </div>
       <div
         :class="flip ? 'pointer-events-auto' : 'pointer-events-none'"
-        class="absolute left-0 top-0 h-full w-full backface-hidden rotate-y-[180]"
+        class="absolute top-0 left-0 h-full w-full rotate-y-180 backface-hidden"
       >
         <slot name="back"> </slot>
       </div>
