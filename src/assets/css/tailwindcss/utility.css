@@ -97,3 +97,7 @@
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
+@utility border-image-* {
+  border-image: --value([ *]);
+}
