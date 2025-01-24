@@ -9,7 +9,7 @@ export function createQRCode(app: HTMLDivElement) {
   const clearedUrl = removeUrlParams(pageURL, 't')
 
   QRCode.toDataURL(clearedUrl, { margin: 2, errorCorrectionLevel: 'H', width: 900 }).then((res) => {
-    const left = Math.round(app.getBoundingClientRect().right + 30)
+    const left = Math.round(app.getBoundingClientRect().right + (innerWidth / 100) * 2)
 
     const div = document.createElement('div')
     div.style.left = `${left}px`
