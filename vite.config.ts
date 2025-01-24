@@ -17,7 +17,6 @@ import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 
 import tailwindcss from '@tailwindcss/vite'
-import postcssPresetEnv from 'postcss-preset-env'
 import pxtorem from 'postcss-pxtorem'
 
 const splitDependencies: Record<string, string> = {
@@ -175,9 +174,6 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
-        postcssPresetEnv({
-          browsers: ['ios >= 11', 'chrome >= 64'],
-        }),
         pxtorem({
           rootValue({ file }: any) {
             return file.indexOf('vant') !== -1 ? 5 : 10
