@@ -77,13 +77,25 @@
   animation-play-state: running !important;
 }
 
+@utility shark-text {
+  background-clip: unset;
+}
+
 @utility time-* {
   --time: --value([ *]);
+}
+
+@utility time {
+  --time: 2s;
 }
 
 @utility mask-* {
   -webkit-mask: --value([ *]) 0 0/100%;
   mask: --value([ *]) 0 0/100%;
+}
+
+@utility mask {
+  mask: unset;
 }
 
 @utility back-top {
@@ -100,4 +112,8 @@
 
 @utility border-image-* {
   border-image: --value([ *]);
+}
+
+@utility border-image {
+  border-image: unset;
 }
