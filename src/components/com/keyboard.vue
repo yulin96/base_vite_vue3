@@ -23,7 +23,7 @@ const onKeyboardClose = () => {
     @closed="onPopupClose"
   >
     <van-password-input
-      class="[&_li]:rounded-8 mx-12 pt-50 pb-520"
+      class="mx-[12px] pb-[520px] pt-[50px] [&_li]:rounded-8"
       :value="password"
       :length="maxLength"
       :gutter="6"

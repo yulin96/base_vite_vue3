@@ -20,8 +20,8 @@ const toggleCode = (dispatch?: boolean) => {
 </script>
 
 <template>
-  <div :id="`code-${uuid}`" class="relative z-20" v-bind="$attrs" @click="toggleCode()">
+  <div :id="`code-${uuid}`" class="relative z-[20]" v-bind="$attrs" @click="toggleCode()">
     <img class="h-full w-full" :src="code" />
   </div>
-  <van-overlay :show="isBig" class="z-10" @click="toggleCode(false)"></van-overlay>
+  <van-overlay :show="isBig" class="z-[10]" @click="toggleCode(false)"></van-overlay>
 </template>

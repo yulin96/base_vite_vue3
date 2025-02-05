@@ -17,7 +17,7 @@ const onClick = () => {
   <van-floating-bubble
     v-model:offset="user.backXY"
     axis="xy"
-    class="size-80 rounded-none"
+    class="size-[80px] rounded-none"
     magnetic="x"
     :gap="12"
     :teleport="null"
