@@ -9,7 +9,7 @@
 }
 
 .popup-leave-active {
-  transition-timing-function: cubic-bezier(0.8, -0.12, 0.7, 0.05);
+  transition-timing-function: ease-out;
 }
 
 .popup-enter-from,
