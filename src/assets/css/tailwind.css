@@ -1,4 +1,8 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import 'tailwindcss';
 @import './tailwindcss/size.css';
 @import './tailwindcss/utility.css';
 @import './tailwindcss/keyframes.css';
@@ -13,4 +17,4 @@
   --animate-handle: handle 1s ease infinite;
   --animate-next-page: next-page 0.9s ease infinite alternate;
   --animate-rotate-cube: rotate-cube 5s infinite linear;
-}
+} */
