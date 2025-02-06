@@ -1,12 +1,20 @@
 <script setup lang="ts">
+import { useToggle } from '@vueuse/core'
+import gsap from 'gsap'
 import { onMounted } from 'vue'
 
-/*  */
-onMounted(() => {})
+/**  */
+const [isLoaded, setIsLoaded] = useToggle(false)
+
+onMounted(() => {
+  gsap.context(() => {
+    gsap.timeline({ delay: 0.5 }).then(() => setIsLoaded(true))
+  }, '.index')
+})
 </script>
 
 <template>
-  <section class="index">
+  <section class="index group" :aria-busy="isLoaded">
     <main class="content"></main>
   </section>
 </template>
