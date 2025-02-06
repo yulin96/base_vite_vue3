@@ -16,6 +16,7 @@ import { VantResolver } from '@vant/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 
+import postcssPresetEnv from 'postcss-preset-env'
 import pxtorem from 'postcss-pxtorem'
 import tailwindcss from 'tailwindcss'
 
@@ -174,6 +175,9 @@ export default defineConfig(({ command }) => ({
     postcss: {
       plugins: [
         tailwindcss,
+        postcssPresetEnv({
+          browsers: ['ios >= 12', 'chrome >= 64'],
+        }),
         pxtorem({
           rootValue({ file }: any) {
             return file.indexOf('vant') !== -1 ? 5 : 10
