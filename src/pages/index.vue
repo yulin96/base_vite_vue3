@@ -3,7 +3,6 @@ import { useToggle } from '@vueuse/core'
 import gsap from 'gsap'
 import { onMounted } from 'vue'
 
-/**  */
 const [isLoaded, setIsLoaded] = useToggle(false)
 
 onMounted(() => {
