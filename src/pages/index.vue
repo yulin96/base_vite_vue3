@@ -4,7 +4,6 @@ import gsap from 'gsap'
 import { onMounted } from 'vue'
 
 const [isLoaded, setIsLoaded] = useToggle(false)
-
 onMounted(() => {
   gsap.context(() => {
     gsap.timeline({ delay: 0.5 }).then(() => setIsLoaded(true))
