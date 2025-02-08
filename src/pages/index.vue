@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="index group" :aria-busy="isLoaded">
+  <section class="index group" :aria-expanded="isLoaded">
     <main class="content"></main>
   </section>
 </template>
