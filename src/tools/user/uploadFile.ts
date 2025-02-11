@@ -30,10 +30,9 @@ export async function uploadFile(option: IUploadOption): Promise<[null, string] 
       data: { data: config },
     } = await axios.post('https://center-service.event1.cn/oss/sign', { project_uuid: projectID })
     const { host, dir, accessid: OSSAccessKeyId, policy, signature: Signature } = config
-    const key = `${dir}/${filenameStart}-${filename ?? v4().toString()}.${filetype}`.replace(
-      /\s/g,
-      '',
-    )
+    const key = `${dir}/${
+      filenameStart ? filenameStart + '-' : ''
+    }${filename ?? v4().toString()}.${filetype}`.replace(/\s/g, '')
     const res = await axios.post(
       host,
       toFormData({
