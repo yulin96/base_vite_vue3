@@ -1,5 +1,5 @@
 import { useDocumentVisibility } from '@vueuse/core'
-import { random, sample } from 'lodash-es'
+import { random, randomInt, sample } from 'es-toolkit'
 import { animate, cubicBezier } from 'motion'
 
 export function createStars(starsBox: HTMLDivElement) {
@@ -17,7 +17,7 @@ export function createStars(starsBox: HTMLDivElement) {
         loopCreate()
         if (visibility.value === 'visible') createStar(starsBox)
       },
-      starsBox.children.length > 20 ? random(600, 1000) : random(50, 100),
+      starsBox.children.length > 20 ? randomInt(600, 1000) : randomInt(50, 100),
     )
   }
   loopCreate()
@@ -26,14 +26,14 @@ export function createStars(starsBox: HTMLDivElement) {
 async function createStar(starsBox: HTMLDivElement) {
   const star = document.createElement('img')
   star.src = 'https://oss.eventnet.cn/H5/zz/public/icon/stars.png'
-  const size = Math.floor(random(6, 20))
+  const size = Math.floor(randomInt(6, 20))
   star.style.width = `${size}px`
   star.style.height = `${size}px`
   star.style.opacity = '0'
   star.style.position = 'absolute'
-  star.style.transform = `rotate(${random(0, 360)}deg)`
-  star.style.left = `${Math.floor(random(0, starsBox.clientWidth - 0))}px`
-  star.style.top = `${Math.floor(random(0, starsBox.clientHeight - 0))}px`
+  star.style.transform = `rotate(${randomInt(0, 360)}deg)`
+  star.style.left = `${Math.floor(randomInt(0, starsBox.clientWidth - 0))}px`
+  star.style.top = `${Math.floor(randomInt(0, starsBox.clientHeight - 0))}px`
 
   starsBox.appendChild(star)
 
@@ -61,6 +61,6 @@ async function createStar(starsBox: HTMLDivElement) {
   }
 
   function randomTwoFloat(min: number, max: number) {
-    return +random(min, max, true).toFixed(2)
+    return +random(min, max).toFixed(2)
   }
 }

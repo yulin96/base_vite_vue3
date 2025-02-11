@@ -1,4 +1,4 @@
-import { debounce } from 'lodash-es'
+import { debounce } from 'es-toolkit'
 import { createQRCode, removeQRCode } from '~/tools/init/createQRCode'
 import { isMobileFun } from '~/utils/uaParser'
 
@@ -37,6 +37,9 @@ function setRem() {
 
 setRem()
 
-window.onresize = debounce(() => {
-  setRem()
-}, 100)
+window.addEventListener(
+  'resize',
+  debounce(() => {
+    setRem()
+  }, 100),
+)
