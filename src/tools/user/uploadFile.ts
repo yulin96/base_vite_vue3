@@ -2,16 +2,24 @@ import axios, { toFormData } from 'axios'
 import { v4 } from 'uuid'
 import { toast } from 'vue-sonner'
 
-interface IUploadOption {
+type IUploadOption = {
   projectID: string
   file: File
   filetype?: string
   filenameStart?: string
+  filename?: string
   needLoading?: boolean
 }
 
 export async function uploadFile(option: IUploadOption): Promise<[null, string] | [unknown, null]> {
-  const { projectID, file, filetype = 'png', filenameStart = 'zh', needLoading = true } = option
+  const {
+    projectID,
+    file,
+    filetype = 'png',
+    filenameStart = 'zh',
+    filename,
+    needLoading = false,
+  } = option
 
   let toastId: number | string | null = null
 
@@ -22,7 +30,10 @@ export async function uploadFile(option: IUploadOption): Promise<[null, string] 
       data: { data: config },
     } = await axios.post('https://center-service.event1.cn/oss/sign', { project_uuid: projectID })
     const { host, dir, accessid: OSSAccessKeyId, policy, signature: Signature } = config
-    const key = `${dir}/${filenameStart}-${v4()}.${filetype}`
+    const key = `${dir}/${filenameStart}-${filename ?? v4().toString()}.${filetype}`.replace(
+      /\s/g,
+      '',
+    )
     const res = await axios.post(
       host,
       toFormData({
