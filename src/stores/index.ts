@@ -1,5 +1,6 @@
+import { cloneDeep } from 'es-toolkit'
 import { defineStore } from 'pinia'
-import { reactive } from 'vue'
+import { ref } from 'vue'
 
 interface IIgnore {
   [key: string]: any
@@ -16,47 +17,25 @@ interface IWxInfo {
 export const useStore = defineStore(
   'user',
   () => {
-    const user = reactive({
+    const originData = {
       code: '',
-
-      backXY: {
-        x: -12,
-        y: innerHeight - 200,
-      },
-
       info: {} as Partial<IInfo>,
       wxInfo: {} as Partial<IWxInfo>,
+      bb: false,
+      aa: true,
 
-      clear() {
-        Object.keys(this).forEach((key) => {
-          const element = this[key]
-
-          if (element == null) {
-            this[key] = null
-            return
-          }
-          switch (typeof element) {
-            case 'string':
-              this[key] = ''
-              break
-            case 'number':
-              this[key] = 0
-              break
-            case 'boolean':
-              this[key] = false
-              break
-            case 'object':
-              this[key] = Array.isArray(element) ? [] : {}
-              break
-          }
-        })
-      },
-
+      backXY: { x: -12, y: innerHeight - 200 },
       other: {} as Partial<{ [key: string]: any }>,
       ignore: {} as Partial<IIgnore>,
-    })
+    }
 
-    return { user }
+    const user = ref(cloneDeep(originData))
+
+    const $reset = () => {
+      user.value = cloneDeep(originData)
+    }
+
+    return { user, $reset }
   },
   {
     persist: {
