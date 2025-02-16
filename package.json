@@ -109,6 +109,6 @@
     "vite-plugin-deploy-oss": "^0.0.8",
     "vite-plugin-image-optimizer": "^1.1.8",
     "vite-plugin-organize-resource": "^0.0.10",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^2.2.2"
   }
 }
