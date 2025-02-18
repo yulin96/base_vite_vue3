@@ -48,8 +48,8 @@ onMounted(() => {
     :rich-colors="true"
     :expand="false"
     position="top-center"
-    :visible-toasts="1"
-    :duration="3000"
+    :visible-toasts="2"
+    :duration="2000"
   />
 
   <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
