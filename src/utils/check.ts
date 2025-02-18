@@ -80,3 +80,10 @@ export function isHttps(): boolean {
  */
 export const isDarkMode: boolean =
   window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+
+/**
+ * 检查dom是否存在
+ */
+export function checkDom(selectors: string) {
+  return document.querySelector(selectors)
+}
