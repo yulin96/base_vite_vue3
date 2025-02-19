@@ -17,6 +17,8 @@ const toggleCode = (dispatch?: boolean) => {
 
   isBig.value = dispatch || !isBig.value
 }
+
+defineExpose({ toggleCode })
 </script>
 
 <template>
