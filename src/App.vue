@@ -56,7 +56,7 @@ onMounted(() => {
     <router-view v-slot="{ Component }">
       <template v-if="Component">
         <transition :name>
-          <keep-alive :include="[]">
+          <keep-alive :exclude="[]">
             <suspense @resolve="isReady">
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
