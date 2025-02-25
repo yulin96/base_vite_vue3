@@ -1,6 +1,10 @@
 import { includeIgnoreFile } from '@eslint/compat'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
+import {
+  configureVueProject,
+  defineConfigWithVueTs,
+  vueTsConfigs,
+} from '@vue/eslint-config-typescript'
 import { Linter } from 'eslint'
 import pluginVue from 'eslint-plugin-vue'
 import path from 'node:path'
@@ -10,8 +14,12 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const gitignorePath = path.resolve(__dirname, '.gitignore')
 
+configureVueProject({
+  tsSyntaxInTemplates: false,
+})
+
 /** @type{Linter.Config[]} */
-export default [
+export default defineConfigWithVueTs(
   includeIgnoreFile(gitignorePath),
 
   {
@@ -20,7 +28,7 @@ export default [
   },
 
   ...pluginVue.configs['flat/recommended'],
-  ...vueTsEslintConfig(),
+  vueTsConfigs.recommended,
 
   {
     name: 'app/files-to-lint',
@@ -44,4 +52,4 @@ export default [
   },
 
   skipFormatting,
-]
+)
