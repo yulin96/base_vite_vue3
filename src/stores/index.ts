@@ -1,6 +1,6 @@
-import { cloneDeep } from 'es-toolkit'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
+import { deepClone } from '~/utils/convert'
 
 interface IIgnore {
   [key: string]: any
@@ -21,18 +21,16 @@ export const useStore = defineStore(
       code: '',
       info: {} as Partial<IInfo>,
       wxInfo: {} as Partial<IWxInfo>,
-      bb: false,
-      aa: true,
 
       backXY: { x: -12, y: innerHeight - 200 },
       other: {} as Partial<{ [key: string]: any }>,
       ignore: {} as Partial<IIgnore>,
     }
 
-    const user = ref(cloneDeep(originData))
+    const user = ref(deepClone(originData))
 
     const $reset = () => {
-      user.value = cloneDeep(originData)
+      user.value = deepClone(originData)
     }
 
     return { user, $reset }
