@@ -94,7 +94,7 @@
     "npm-run-all2": "^7.0.2",
     "postcss-preset-env": "^10.1.5",
     "postcss-pxtorem": "^6.1.0",
-    "prettier": "^3.5.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "rollup-plugin-visualizer": "^5.14.0",
     "sharp": "^0.33.5",
