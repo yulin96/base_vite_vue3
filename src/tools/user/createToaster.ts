@@ -12,6 +12,7 @@ export function createToaster(loadingInfo: string) {
     },
     success: (e) => e,
     error: (e) => e,
+    duration: 600,
   })
 
   toastTimeout = setTimeout(() => {

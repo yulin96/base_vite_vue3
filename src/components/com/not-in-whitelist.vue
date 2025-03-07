@@ -8,7 +8,7 @@ defineProps<{ title?: string }>()
   <van-popup v-model:show="show" transition="popup" :close-on-click-overlay="false">
     <div class="center h-900 w-full">
       <div
-        class="center relative h-[588px] w-[561px] flex-col rounded-[12px] bg-[url(https://oss.eventnet.cn/H5/zz/public/tips/whitelist/bg.png)] bg-contain bg-no-repeat"
+        class="relative flex h-[588px] w-[561px] flex-col items-center rounded-[12px] bg-[url(https://oss.eventnet.cn/H5/zz/public/tips/whitelist/bg.png)] bg-contain bg-no-repeat pt-150"
       >
         <img
           class="absolute -top-[100px] w-[203px]"
@@ -20,7 +20,7 @@ defineProps<{ title?: string }>()
           温馨提示
         </div>
         <div
-          class="mt-[40px] w-full whitespace-pre-line px-[20px] text-center indent-[1px] text-30 leading-[1.7] tracking-[1px]"
+          class="mt-[40px] min-h-[120px] w-full whitespace-pre-line px-[20px] text-center indent-[1px] text-30 leading-[1.7] tracking-[1px]"
         >
           {{ title ?? '您输入的信息不在邀请名单中\n请重新输入或联系邀约人' }}
         </div>
