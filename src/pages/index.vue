@@ -1,20 +1,36 @@
 <script setup lang="ts">
-import { useToggle } from '@vueuse/core'
-import gsap from 'gsap'
-import { onMounted } from 'vue'
+import { ref, useTemplateRef } from 'vue'
 
-const [isLoaded, setIsLoaded] = useToggle(false)
+const videoRef = useTemplateRef('videoRef')
 
-onMounted(() => {
-  gsap.context(() => {
-    gsap.timeline({ delay: 0.5 }).then(() => setIsLoaded(true))
-  }, '.index')
-})
+const showTips = ref(true)
+const test = () => {
+  videoRef.value?.play()
+  showTips.value = false
+}
 </script>
 
 <template>
-  <section class="index group" :aria-expanded="isLoaded">
-    <main class="content"></main>
+  <section class="index group">
+    <main class="content center bg-[#FFFFF7]">
+      <video
+        ref="videoRef"
+        src="https://oss.eventnet.cn/H5/zz/auto2/6/222.mp4"
+        class="w-full object-cover"
+        playsinline
+        muted
+        loop
+        poster="https://oss.eventnet.cn/H5/zz/auto2/6/222.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+      ></video>
+
+      <div
+        v-if="showTips"
+        class="center absolute left-0 top-0 h-full w-full bg-[#0003]"
+        @click="test"
+      >
+        <img class="-mt-120 w-120" src="../assets/imgs/play2.png" />
+      </div>
+    </main>
   </section>
 </template>
 
