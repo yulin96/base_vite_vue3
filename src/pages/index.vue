@@ -20,13 +20,20 @@ const test = () => {
         ref="videoRef"
         src="https://oss.eventnet.cn/H5/zz/auto2/6/a1.mp4"
         class="w-full object-cover"
-        playsinline
         muted
         loop
         poster="https://oss.eventnet.cn/H5/zz/auto2/6/a1.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+        controls="true"
+        preload="auto"
+        x5-video-player-fullscreen="true"
+        webkit-playsinline="true"
+        playsinline="true"
+        x5-video-orientation="portraint"
+        x-webkit-airplay="allow"
+        x5-video-player-type="h5-page"
       ></video>
 
-      <div class="absolute -mt-30 flex w-full flex-col items-center">
+      <div class="pointer-events-none absolute z-20 -mt-30 flex w-full flex-col items-center">
         <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_01.png" />
         <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_02.png" />
         <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_03.png" />
