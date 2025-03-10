@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import gsap from 'gsap'
 import { ref, useTemplateRef } from 'vue'
 
 const videoRef = useTemplateRef('videoRef')
@@ -7,21 +8,31 @@ const showTips = ref(true)
 const test = () => {
   videoRef.value?.play()
   showTips.value = false
+
+  gsap.to('[t1]', { stagger: 0.2, opacity: 1, duration: 3, ease: 'none' })
 }
 </script>
 
 <template>
   <section class="index group">
-    <main class="content center bg-[#FFFFF7]">
+    <main class="content center relative bg-[#FFFFF7]">
       <video
         ref="videoRef"
-        src="https://oss.eventnet.cn/H5/zz/auto2/6/310.mp4"
+        src="https://oss.eventnet.cn/H5/zz/auto2/6/a1.mp4"
         class="w-full object-cover"
         playsinline
         muted
         loop
-        poster="https://oss.eventnet.cn/H5/zz/auto2/6/310.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+        poster="https://oss.eventnet.cn/H5/zz/auto2/6/a1.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
       ></video>
+
+      <div class="absolute -mt-30 flex w-full flex-col items-center">
+        <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_01.png" />
+        <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_02.png" />
+        <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_03.png" />
+        <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_04.png" />
+        <img t1 class="w-350 opacity-0" src="../assets/imgs/2x/images/p1@2x_05.png" />
+      </div>
 
       <div
         v-if="showTips"
