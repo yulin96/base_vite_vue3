@@ -1,7 +1,8 @@
 import { useUrlSearchParams } from '@vueuse/core'
-import { useLock } from '~/hooks/useLock'
+import { useRequest } from '~/hooks/useRequest'
 import { useStore } from '~/stores'
 
+const { post: postGetCode } = useRequest(false)
 /**
  * 获取微信用户openid
  * @param name 平台名称
@@ -14,8 +15,7 @@ export function getOpenId(): Promise<boolean | void> {
     const params = useUrlSearchParams()
     const proid = params?.proid
     if (proid) {
-      useLock()
-        .post('https://wechat.event1.cn/api/getCode', { proid })
+      postGetCode('https://wechat.event1.cn/api/getCode', { proid })
         .then((res: Record<string, any>) => {
           if (!res.data?.openid) return resolve(false)
           Object.assign(user.wxInfo, res.data)
