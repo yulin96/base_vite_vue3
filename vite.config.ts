@@ -1,6 +1,6 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig, loadEnv } from 'vite'
+import { defineConfig, loadEnv, Plugin } from 'vite'
 
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 import vue from '@vitejs/plugin-vue'
@@ -105,7 +105,7 @@ export default defineConfig(({ command }) => ({
       },
       injectFileBase: getNoticeUrl(),
       versionType: 'build_timestamp',
-    }),
+    }) as Plugin,
     vitePluginDeployOss({
       open: env.VITE_OSS_ROOT_DIR === 'H5/zz/auto2/' ? false : true,
       accessKeyId: process.env.zAccessKeyId || '',
