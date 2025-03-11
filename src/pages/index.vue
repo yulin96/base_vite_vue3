@@ -1,5 +1,20 @@
 <script setup lang="ts">
+import { useUrlSearchParams } from '@vueuse/core'
 import { ref, useTemplateRef } from 'vue'
+
+const params = useUrlSearchParams()
+const id = Object.keys(params)[0]
+
+const videoMap = {
+  9: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/09.30-1.mp4',
+  10: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/10.30-1.mp4',
+  12: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/12.30-1.mp4',
+  13: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/13.30-1.mp4',
+  14: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/14.30-1.mp4',
+  15: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/15.30-1.mp4',
+  16: 'https://oss.eventnet.cn/H5/zz/auto2/6/b/16.30-1.mp4',
+}
+const videoURL = videoMap[id] || 'https://oss.eventnet.cn/H5/zz/auto2/6/b/16.30-1.mp4'
 
 const videoRef = useTemplateRef('videoRef')
 
@@ -15,12 +30,12 @@ const test = () => {
     <main class="content center bg-[#FFFFF7]">
       <video
         ref="videoRef"
-        src="https://oss.eventnet.cn/H5/zz/auto2/6/b/09.30-1.mp4"
+        :src="videoURL"
         class="w-full object-cover"
         playsinline
         muted
         loop
-        poster="https://oss.eventnet.cn/H5/zz/auto2/6/b/09.30-1.mp4?x-oss-process=video/snapshot,t_1000,w_690,h_1234,f_jpg,m_fast"
+        :poster="`${videoURL}?x-oss-process=video/snapshot,t_1000,w_690,h_1234,f_jpg,m_fast`"
       ></video>
 
       <div
