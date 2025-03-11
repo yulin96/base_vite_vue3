@@ -47,7 +47,7 @@
     "jsencrypt": "^3.3.2",
     "lottie-web": "^5.12.2",
     "lucky-canvas": "^1.7.27",
-    "motion": "^12.4.10",
+    "motion": "^12.4.11",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.1",
     "pinia-plugin-persistedstate": "^4.2.0",
