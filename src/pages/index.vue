@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref, useTemplateRef } from 'vue'
 
-const videoURL = window.base_video_url
 const videoRef = useTemplateRef('videoRef')
 
 const showTips = ref(true)
@@ -16,12 +15,12 @@ const test = () => {
     <main class="content center bg-[#FFFFF7]">
       <video
         ref="videoRef"
-        :src="videoURL"
+        src="https://oss.eventnet.cn/H5/zz/auto2/6/b/09.30-1.mp4"
         class="w-full object-cover"
         playsinline
         muted
         loop
-        :poster="`${videoURL}?x-oss-process=video/snapshot,t_1000,w_690,h_1234,f_jpg,m_fast`"
+        poster="https://oss.eventnet.cn/H5/zz/auto2/6/b/09.30-1.mp4?x-oss-process=video/snapshot,t_1000,w_690,h_1234,f_jpg,m_fast"
       ></video>
 
       <div
