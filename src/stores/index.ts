@@ -2,13 +2,7 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import { deepClone } from '~/utils/convert'
 
-interface IIgnore {
-  [key: string]: any
-}
-interface IInfo {
-  [key: string]: any
-}
-interface IWxInfo {
+type IWxInfo = {
   openid: string
   nickname: string
   avatar: string
@@ -19,21 +13,26 @@ export const useStore = defineStore(
   () => {
     const originData = {
       code: '',
-      info: {} as Partial<IInfo>,
+      info: {} as Partial<Record<string, any>>,
       wxInfo: {} as Partial<IWxInfo>,
 
       backXY: { x: -12, y: innerHeight - 200 },
-      other: {} as Partial<{ [key: string]: any }>,
-      ignore: {} as Partial<IIgnore>,
+      other: {} as Partial<Record<string, any>>,
+      ignore: {} as Partial<Record<string, any>>,
     }
 
-    const user = ref(deepClone(originData))
+    const user = ref({
+      ...deepClone(originData),
+      clear() {
+        const clone = deepClone(originData)
+        Object.keys(this).forEach((key) => {
+          if (key === 'clear') return
+          this[key] = clone[key]
+        })
+      },
+    })
 
-    const $reset = () => {
-      user.value = deepClone(originData)
-    }
-
-    return { user, $reset }
+    return { user }
   },
   {
     persist: {
