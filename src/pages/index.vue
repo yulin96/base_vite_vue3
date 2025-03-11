@@ -15,12 +15,12 @@ const test = () => {
     <main class="content center bg-[#FFFFF7]">
       <video
         ref="videoRef"
-        src="https://oss.eventnet.cn/H5/zz/auto2/6/310.mp4"
+        src="https://oss.eventnet.cn/H5/zz/auto2/6/m/930.mp4"
         class="w-full object-cover"
         playsinline
         muted
         loop
-        poster="https://oss.eventnet.cn/H5/zz/auto2/6/310.mp4?x-oss-process=video/snapshot,t_1000,f_jpg,m_fast"
+        poster="https://oss.eventnet.cn/H5/zz/auto2/6/m/930.mp4?x-oss-process=video/snapshot,t_1000,w_690,h_1234,f_jpg,m_fast"
       ></video>
 
       <div
