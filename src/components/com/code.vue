@@ -31,12 +31,9 @@ onMounted(() => {
   const app = document.querySelector('#app')
   if (bounding && app) {
     const { width, height, top, left } = bounding
-
-    target[0] = Math.floor((app.clientWidth - 50) / width)
-    target[1] = Math.floor(
-      app.clientHeight / 2 - (top + height / 2) + (top < app.clientHeight / 2 ? -20 : 20),
-    )
-    target[2] = Math.floor(innerWidth / 2 - (left + width / 2))
+    target[0] = +((app.clientWidth - 50) / width).toFixed(2)
+    target[1] = +(innerHeight / 2 - (top + height / 2) - 50).toFixed(2)
+    target[2] = +(innerWidth / 2 - (left + width / 2)).toFixed(2)
   }
 })
 </script>
