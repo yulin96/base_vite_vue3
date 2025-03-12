@@ -100,5 +100,5 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
     })
   }
 
-  return { post, get, lock: readonly(lock) }
+  return { post, get, lock: readonly(status) }
 }
