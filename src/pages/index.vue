@@ -3,11 +3,15 @@ import { useToggle } from '@vueuse/core'
 import axios from 'axios'
 import { SHA256 } from 'crypto-js'
 import gsap from 'gsap'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+
+const showLogin = ref(false)
 
 const login = () => {
   location.href =
     'https://sdcsso.lenovo.com/webauthn/gateway?webauthn_action=uilogin&webauthn_realm=fy.event1.cn&webauthn_callback=https://fy.event1.cn/test/callback/'
+
+  // showLogin.value = true
 }
 
 const reg = (url: string) => {
