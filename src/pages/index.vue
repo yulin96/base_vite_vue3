@@ -9,7 +9,9 @@ const showLogin = ref(false)
 
 const login = () => {
   location.href =
-    'https://sdcsso.lenovo.com/webauthn/gateway?webauthn_action=uilogin&webauthn_realm=fy.event1.cn&webauthn_callback=https://fy.event1.cn/test/callback/'
+    'https://sdcsso.lenovo.com/webauthn/gateway?webauthn_action=uilogin&webauthn_realm=fy.event1.cn&webauthn_callback=https://fy.event1.cn/am/callback/'
+  // location.href =
+  //   'https://sdcsso.lenovo.com/webauthn/gateway?webauthn_action=uilogin&webauthn_realm=fy.event1.cn&webauthn_callback=https://fy.event1.cn/test/callback/'
 
   // showLogin.value = true
 }
