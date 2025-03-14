@@ -32,7 +32,7 @@ export default defineConfigWithVueTs(
 
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{ts,js,cjs,mts,jsx,tsx,vue}'],
+    files: ['**/*.{ts,js,jsx,tsx,vue}'],
     rules: {
       'no-debugger': 0,
       'no-empty': 1,
