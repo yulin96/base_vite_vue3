@@ -1,38 +1,31 @@
-import { includeIgnoreFile } from '@eslint/compat'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 import {
   configureVueProject,
   defineConfigWithVueTs,
   vueTsConfigs,
 } from '@vue/eslint-config-typescript'
-import { Linter } from 'eslint'
 import pluginVue from 'eslint-plugin-vue'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const gitignorePath = path.resolve(__dirname, '.gitignore')
 
 configureVueProject({
   tsSyntaxInTemplates: false,
 })
 
-/** @type{Linter.Config[]} */
 export default defineConfigWithVueTs(
-  includeIgnoreFile(gitignorePath),
+  {
+    name: 'app/files-to-lint',
+    files: ['**/*.{js,ts,mts,jsx,tsx,vue}'],
+  },
 
   {
     name: 'app/files-to-ignore',
     ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
   },
 
-  ...pluginVue.configs['flat/recommended'],
+  pluginVue.configs['flat/recommended'],
   vueTsConfigs.recommended,
+  skipFormatting,
 
   {
-    name: 'app/files-to-lint',
-    files: ['**/*.{ts,js,jsx,tsx,vue}'],
     rules: {
       'no-debugger': 0,
       'no-empty': 1,
@@ -50,6 +43,4 @@ export default defineConfigWithVueTs(
       'vue/multi-word-component-names': 0,
     },
   },
-
-  skipFormatting,
 )

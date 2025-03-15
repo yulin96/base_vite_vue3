@@ -5,7 +5,6 @@ import { defineConfig, loadEnv, Plugin } from 'vite'
 import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
@@ -135,7 +134,7 @@ export default defineConfig(({ command }) => ({
       uploadPath: `${env.VITE_FTP_DIRNAME}`,
       alias: `https://h5.eventnet.cn/`,
     }),
-    visualizer(),
+    // visualizer(),
   ],
   resolve: {
     alias: {
