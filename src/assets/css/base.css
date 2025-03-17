@@ -35,6 +35,11 @@ html.cover,
   overflow-y: hidden;
 }
 
+select option {
+  background: #fff;
+  color: #000;
+}
+
 code {
   font-family: inherit;
 }
