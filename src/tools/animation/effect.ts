@@ -1,4 +1,4 @@
-import { animate } from 'motion'
+import gsap from 'gsap'
 
 export function registerButtonEffect() {
   document.addEventListener('click', (e) => {
@@ -8,7 +8,11 @@ export function registerButtonEffect() {
     const ele = target?.hasAttribute('btn') ? target : parent?.hasAttribute('btn') ? parent : null
 
     if (ele) {
-      animate(ele, { scale: [1, 0.9, 1], opacity: [1, 0.6, 1] }, { ease: 'easeOut', duration: 0.2 })
+      gsap.fromTo(
+        ele,
+        { scale: 1, opacity: 1 },
+        { scale: 0.96, opacity: 0.9, duration: 0.1, yoyo: true, repeat: 1 },
+      )
     }
   })
 }

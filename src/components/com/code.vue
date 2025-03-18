@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { animate } from 'motion'
+import gsap from 'gsap'
 import { v4 } from 'uuid'
 import { onMounted, ref } from 'vue'
 
@@ -11,16 +11,13 @@ const isBig = ref(false)
 
 const target: [number, number, number] = [4, 120, 0]
 const toggleCode = () => {
-  animate(
-    `#code-${uuid}`,
-    {
-      scale: isBig.value ? 1 : target[0],
-      y: isBig.value ? 0 : target[1],
-      x: isBig.value ? 0 : target[2],
-    },
-    { type: 'tween', ease: 'backOut' },
-  )
-
+  gsap.to(`#code-${uuid}`, {
+    scale: isBig.value ? 1 : target[0],
+    y: isBig.value ? 0 : target[1],
+    x: isBig.value ? 0 : target[2],
+    duration: 0.3,
+    ease: 'back.out(1.7)',
+  })
   isBig.value = !isBig.value
 }
 
