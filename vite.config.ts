@@ -20,13 +20,13 @@ import pxtorem from 'postcss-pxtorem'
 import tailwindcss from 'tailwindcss'
 
 const splitDependencies: Record<string, string> = {
-  vueuse: '@vueuse/core',
   gsap: 'gsap',
   html2canvas: 'html2canvas',
   lottie: 'lottie-web',
   zoomist: 'zoomist',
   dingtalk: 'dingtalk-jsapi',
-  sentry: '@sentry',
+  // sentry: '@sentry',
+  vueuse: '@vueuse/core',
 }
 
 const env = loadEnv('production', process.cwd())
