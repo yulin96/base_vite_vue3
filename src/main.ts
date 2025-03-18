@@ -2,8 +2,6 @@ import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 import { registerDirective } from '~/tools/init/directive'
-import { getWechatConfig } from '~/tools/wx'
-import { devModel } from '~/utils/global'
 
 import '~/tools/init/dev'
 import '~/tools/init/hm'
@@ -20,8 +18,6 @@ import 'vant/es/image-preview/style'
 import 'vant/es/notify/style'
 import 'vant/es/toast/style'
 import '~/assets/css/main.css'
-
-!devModel && getWechatConfig()
 
 window.document.documentElement.style.setProperty(
   '--main-color',
