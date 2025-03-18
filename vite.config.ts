@@ -120,7 +120,6 @@ export default defineConfig(({ command }) => ({
   build: {
     assetsInlineLimit: 10240,
     assetsDir: 'assets',
-    reportCompressedSize: false,
     chunkSizeWarningLimit: 1000,
     rollupOptions: {
       input: {
