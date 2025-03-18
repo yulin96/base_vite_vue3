@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { random, sample } from 'es-toolkit'
-import { animate } from 'motion'
+import gsap from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
 import pinSvg from '~/assets/imgs/pin.svg'
 import { randomString } from '~/utils/common'
@@ -94,10 +94,15 @@ async function createBarrage({
   parent.appendChild(barrage)
 
   const offset = Math.floor(clientWidth + barrage.clientWidth + gap)
-  const _animate = animate(barrage, { x: -offset }, { duration: offset / speed, ease: 'linear' })
-  await _animate
-  _animate.stop()
-  parent.removeChild(barrage)
+
+  gsap.to(barrage, {
+    x: -offset,
+    duration: offset / speed,
+    ease: 'none',
+    onComplete: () => {
+      parent.removeChild(barrage)
+    },
+  })
 }
 
 /**

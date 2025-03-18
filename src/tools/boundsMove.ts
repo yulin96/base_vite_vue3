@@ -1,4 +1,4 @@
-import { animate } from 'motion'
+import gsap from 'gsap'
 
 export function boundsMove(element: HTMLDivElement, to: DOMRect, from?: DOMRect) {
   return new Promise<HTMLDivElement>((resolve, reject) => {
@@ -24,6 +24,6 @@ export function boundsMove(element: HTMLDivElement, to: DOMRect, from?: DOMRect)
     const y = -(fromTop - toTop + (fromHeight - toHeight) / 2)
     const scale = toWidth / fromWidth
 
-    animate(fromElement, { scale, x, y }, { duration: 1.2, ease: 'backIn' })
+    gsap.to(fromElement, { scale, x, y, duration: 1.2, ease: 'back.in' })
   })
 }

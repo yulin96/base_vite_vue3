@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { random, randomInt, range, sample } from 'es-toolkit'
-import { animate } from 'motion'
+import gsap from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
 
 const {
@@ -43,17 +43,15 @@ const createBubbles = () => {
     buttonRef.value.appendChild(bubble)
 
     const duration = random(1.6, 2.6)
-    animate([
-      [
-        bubble,
-        { y: -buttonRef.value.offsetHeight / 1.2 },
-        { duration: duration, ease: 'easeInOut' },
-      ],
-      [bubble, { opacity: 0 }, { duration: duration, ease: 'easeInOut', at: '<' }],
-    ]).then(() => {
-      buttonRef.value!.removeChild(bubble)
-      bubbles.delete(position)
-    })
+
+    gsap
+      .timeline()
+      .to(bubble, { y: -buttonRef.value.offsetHeight / 1.2, duration: duration, ease: 'easeInOut' })
+      .to(bubble, { opacity: 0, duration: duration, ease: 'easeInOut' }, '<')
+      .then(() => {
+        buttonRef.value!.removeChild(bubble)
+        bubbles.delete(position)
+      })
   }
 
   requestAnimationFrame(createBubbles)
