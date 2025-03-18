@@ -1,7 +1,10 @@
-.popup-enter-active,
-.popup-leave-active {
+.popup-enter-active {
   transition-property: opacity, transform;
   transition-duration: 0.3s;
+}
+.popup-leave-active {
+  transition-property: opacity, transform;
+  transition-duration: 0.2s;
 }
 
 .popup-enter-active {
@@ -9,9 +12,8 @@
 }
 
 .popup-leave-active {
-  transition-timing-function: cubic-bezier(0.7, -0.12, 0.82, 0.1);
+  transition-timing-function: ease-out;
 }
-
 .popup-enter-from,
 .popup-leave-to {
   opacity: 0 !important;
