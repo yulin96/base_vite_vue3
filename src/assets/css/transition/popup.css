@@ -14,10 +14,15 @@
 .popup-leave-active {
   transition-timing-function: ease-out;
 }
-.popup-enter-from,
-.popup-leave-to {
+
+.popup-enter-from {
   opacity: 0 !important;
   transform: translateY(-50%) scale(0.6) !important;
+}
+
+.popup-leave-to {
+  opacity: 0 !important;
+  transform: translateY(-50%) scale(0.9) !important;
 }
 
 .popup-bottom-enter-active,
