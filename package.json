@@ -67,7 +67,6 @@
   "devDependencies": {
     "@eslint/compat": "^1.2.7",
     "@inspira-ui/plugins": "^0.0.1",
-    "@plugin-web-update-notification/vite": "^2.0.0",
     "@tailwindcss/vite": "^4.0.14",
     "@tsconfig/node22": "^22.0.0",
     "@types/crypto-js": "^4.2.2",

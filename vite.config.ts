@@ -1,11 +1,10 @@
 import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
-import { defineConfig, loadEnv, Plugin } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 
-import { webUpdateNotice } from '@plugin-web-update-notification/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-// import { visualizer } from 'rollup-plugin-visualizer'
+import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
@@ -26,7 +25,6 @@ const splitDependencies: Record<string, string> = {
   lottie: 'lottie-web',
   zoomist: 'zoomist',
   dingtalk: 'dingtalk-jsapi',
-  // sentry: '@sentry',
   vueuse: '@vueuse/core',
 }
 
@@ -79,33 +77,6 @@ export default defineConfig(({ command }) => ({
     //   targets: ['ios >= 11', 'chrome >= 64', 'android >= 9'],
     //   modernPolyfills: true,
     // }),
-    webUpdateNotice({
-      hiddenDefaultNotification: true,
-      logVersion: (version) => {
-        const randomColor =
-          'rgb(' +
-          Math.floor(Math.random() * 256) +
-          ',' +
-          Math.floor(Math.random() * 256) +
-          ',' +
-          Math.floor(Math.random() * 256) +
-          ')'
-
-        console.log(
-          `🦄 ☕ %c version: ${version}
-%c        \\   ^__^
-         \\  (oo)\\_______
-            (__)\\       )\\/\\
-                ||----w |
-                ||     ||
-`,
-          `color:${randomColor};font-weight:600`,
-          `color:${randomColor}`,
-        )
-      },
-      injectFileBase: getNoticeUrl(),
-      versionType: 'build_timestamp',
-    }) as Plugin,
     vitePluginDeployOss({
       open: env.VITE_OSS_ROOT_DIR === 'H5/zz/auto2/' ? false : true,
       accessKeyId: process.env.zAccessKeyId || '',
@@ -135,7 +106,7 @@ export default defineConfig(({ command }) => ({
       uploadPath: `${env.VITE_FTP_DIRNAME}`,
       alias: `https://h5.eventnet.cn/`,
     }),
-    // visualizer(),
+    visualizer(),
   ],
   resolve: {
     alias: {
@@ -222,14 +193,4 @@ function handleCheck() {
     logTips('微信分享链接未定义', '微信分享链接', VITE_APP_SHARE_LINK)
     logTips('微信分享图片未定义', '微信分享图片', VITE_APP_SHARE_IMGURL)
   })
-}
-
-function getNoticeUrl() {
-  const baseURL = env.VITE_APP_SHARE_LINK
-  if (!baseURL) return './'
-  const _url = baseURL.substring(
-    0,
-    baseURL.indexOf('#') === -1 ? baseURL.length : baseURL.indexOf('#'),
-  )
-  return _url.substring(0, _url.lastIndexOf('/') + 1)
 }
