@@ -1,5 +1,6 @@
 import type { ToastOptions } from 'vant'
 import { showToast as toast } from 'vant'
+import 'vant/es/toast/style'
 import { useLoading } from '~/hooks/useLoading'
 
 const { start } = useLoading([
@@ -10,7 +11,7 @@ const { start } = useLoading([
 
 start()
 
-export function showStatusToast(
+export function showMyToast(
   option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string,
 ) {
   if (typeof option === 'string') return toast(option)

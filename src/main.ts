@@ -13,10 +13,6 @@ import App from './App.vue'
 import router from './router'
 // 从 '~/lang' 导入 i18n
 
-import 'vant/es/dialog/style'
-import 'vant/es/image-preview/style'
-import 'vant/es/notify/style'
-import 'vant/es/toast/style'
 import '~/assets/css/main.css'
 
 window.document.documentElement.style.setProperty(

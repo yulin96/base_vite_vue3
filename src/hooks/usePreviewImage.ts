@@ -1,4 +1,5 @@
 import { showImagePreview } from 'vant'
+import 'vant/es/image-preview/style'
 import { wechatPreviewImage } from '~/tools/wx'
 import { isHttps } from '~/utils/check'
 import { isWeChat } from '~/utils/uaParser'

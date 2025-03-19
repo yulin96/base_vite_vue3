@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useToggle } from '@vueuse/core'
-import gsap from 'gsap'
 import { onMounted } from 'vue'
+import { gsap } from '~/tools/pip/gsap'
 
 const [isLoaded, setIsLoaded] = useToggle(false)
 
