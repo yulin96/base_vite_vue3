@@ -90,17 +90,17 @@ export function wechatShare(data: IWxShare) {
 }
 
 export function wechatScan(): Promise<string | void> {
-  return new Promise((resolve, reject) => {
+  return new Promise<string>((resolve, reject) => {
     getWechatConfig()
       .then(() => {
         wx.scanQRCode({
           needResult: 1,
           scanType: ['qrCode', 'barCode'],
-          success: (res) => {
-            resolve(res.resultStr)
+          success: (res: any) => {
+            resolve(res?.resultStr || res?.scan_code?.scan_result || '')
           },
-          complete: () => {
-            resolve()
+          fail: () => {
+            resolve('')
           },
         })
       })
