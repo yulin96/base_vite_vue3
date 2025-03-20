@@ -1,4 +1,4 @@
-import { wechatShare } from '~/tools/wx'
+import { wechatShare } from '~/tools/wechat'
 import { isHttps } from '~/utils/check'
 import { isWeChat } from '~/utils/uaParser'
 

@@ -4,7 +4,7 @@ import { Toaster } from 'vue-sonner'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'
-import { getWechatConfig } from '~/tools/wx'
+import { getWechatConfig } from '~/tools/wechat'
 import { isWeChat } from '~/utils/uaParser'
 
 if (isWeChat) {
