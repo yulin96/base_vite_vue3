@@ -165,12 +165,6 @@ export function wechatHideAllNonBaseMenuItem() {
   })
 }
 
-export function wechatPreventShare() {
-  getWechatConfig().then(() => {
-    wx.hideAllNonBaseMenuItem()
-  })
-}
-
 export function closeWindow() {
   isWeChat
     ? getWechatConfig().then(() => {
