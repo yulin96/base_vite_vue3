@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ConfigProviderThemeVars } from 'vant'
+import { nextTick, onMounted } from 'vue'
 import { Toaster } from 'vue-sonner'
+import { useLoading } from '~/hooks/useLoading'
 import { useRouteTransition } from '~/hooks/useRouterTransition'
 import { registerButtonEffect } from '~/tools/animation/effect'
 import { registerWechatShare } from '~/tools/user/share'
@@ -31,14 +33,14 @@ const themeVars = {
   toastLoadingIconColor: '#111',
 } satisfies ConfigProviderThemeVars
 
-// const { start } = useLoading(window.IMG_RESOURCES ?? [])
-// onMounted(() => {
-//   nextTick(() => {
-//     setTimeout(() => {
-//       start()
-//     }, 500)
-//   })
-// })
+const { start } = useLoading(window.IMG_RESOURCES ?? [])
+onMounted(() => {
+  nextTick(() => {
+    setTimeout(() => {
+      start()
+    }, 500)
+  })
+})
 </script>
 
 <template>
