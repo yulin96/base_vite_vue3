@@ -164,23 +164,9 @@ export function wechatHideAllNonBaseMenuItem() {
 }
 
 export function wechatPreventShare() {
-  const onBridgeReady = () => {
-    WeixinJSBridge.call('hideOptionMenu')
-  }
-
-  if (typeof WeixinJSBridge == 'undefined') {
-    if (document.addEventListener) {
-      document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false)
-      // @ts-expect-error 兼容性问题
-    } else if (document.attachEvent) {
-      // @ts-expect-error 兼容性问题
-      document.attachEvent('WeixinJSBridgeReady', onBridgeReady)
-      // @ts-expect-error 兼容性问题
-      document.attachEvent('onWeixinJSBridgeReady', onBridgeReady)
-    }
-  } else {
-    onBridgeReady()
-  }
+  getWechatConfig().then(() => {
+    wx.hideAllNonBaseMenuItem()
+  })
 }
 
 export function closeWindow() {
