@@ -8,6 +8,8 @@ window[wxConfigReady] = false
 export function getWechatConfig() {
   if (window[wxConfigReady]) return Promise.resolve()
 
+  if (!isWeChat) return Promise.reject('not in wechat')
+
   return new Promise<void>((resolve, reject) => {
     const wxLink = location.href.split('#')[0]
     axios
