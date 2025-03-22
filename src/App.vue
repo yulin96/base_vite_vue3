@@ -48,7 +48,7 @@ onMounted(() => {
     :rich-colors="true"
     :expand="false"
     position="top-center"
-    :visible-toasts="2"
+    :visible-toasts="3"
     :duration="2000"
   />
 
