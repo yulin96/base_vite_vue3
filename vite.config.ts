@@ -99,6 +99,10 @@ export default defineConfig(({ command }) => ({
     }),
     vitePluginDeployFtp({
       open: true,
+      // host: process.env.zQRFtpHost as string,
+      // port: +(process.env.zQRFtpPort || 21),
+      // user: process.env.zQRFtpUser as string,
+      // password: process.env.zQRFtpPassword as string,
       host: process.env.zH5FtpHost as string,
       port: +(process.env.zH5FtpPort || 21),
       user: process.env.zH5FtpUser as string,
