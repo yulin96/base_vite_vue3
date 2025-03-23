@@ -250,8 +250,8 @@ importers:
         specifier: ^0.0.6
         version: 0.0.6(@types/node@22.13.11)(vite@6.2.2(@types/node@22.13.11)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
       vite-plugin-deploy-oss:
-        specifier: ^0.0.8
-        version: 0.0.8
+        specifier: ^0.0.12
+        version: 0.0.12
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
         version: 1.1.8(vite@6.2.2(@types/node@22.13.11)(jiti@2.4.2)(lightningcss@1.29.2)(yaml@2.7.0))
@@ -4004,8 +4004,8 @@ packages:
     peerDependencies:
       vite: ^6.0.3
 
-  vite-plugin-deploy-oss@0.0.8:
-    resolution: {integrity: sha512-CMUyVT9RIdgTBe04hifXlhgxzjijVe2WNvhRZGsqPqXGFZoGlqk/OKoeWlJ5ogyu0SJlf459BUoXYI+9VK/1nQ==}
+  vite-plugin-deploy-oss@0.0.12:
+    resolution: {integrity: sha512-x3AC4kiy+XuFRe9a0qH4DandIcSgza/HcoqcmW9QNHGwa/btpbKaPl/2U7byi503rHeTXFHDKOPz5rq/25iLig==}
 
   vite-plugin-image-optimizer@1.1.8:
     resolution: {integrity: sha512-40bYRDHQLUOrIwJIJQqyKJHrfgVshqzDLtMy8SEgf+fB7PnppslSTTkY7PJFrBGqgbCdOdN9KkqsvccXmnEa5Q==}
@@ -7978,7 +7978,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  vite-plugin-deploy-oss@0.0.8:
+  vite-plugin-deploy-oss@0.0.12:
     dependencies:
       '@types/ali-oss': 6.16.11
       '@types/delete-empty': 3.0.5
