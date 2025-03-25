@@ -2,11 +2,15 @@
 import { random, randomInt, range, sample } from 'es-toolkit'
 import gsap from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
+import { useActive } from '~/hooks/useActive'
+import { sleep } from '~/utils/common'
+
+const active = useActive()
 
 const {
   count = 10,
-  bubbleColor = '#1FADE5',
-  bubbleSize = 6,
+  bubbleColor = '#402612',
+  bubbleSize = 5,
 } = defineProps<{
   count?: number
   bubbleColor?: string | string[]
@@ -16,8 +20,8 @@ const {
 const buttonRef = useTemplateRef('buttonRef')
 
 const bubbles = new Map()
-const createBubbles = () => {
-  if (bubbles.size < count) {
+const createBubbles = async () => {
+  if (bubbles.size < count && active.value) {
     if (!buttonRef.value) return
     const bubble = document.createElement('i')
     const size = Array.isArray(bubbleSize) ? randomInt(...bubbleSize) : bubbleSize
@@ -25,6 +29,7 @@ const createBubbles = () => {
     bubble.style.height = `${size}px`
     bubble.style.borderRadius = '9999px'
     bubble.style.position = 'absolute'
+    bubble.style.zIndex = '-10'
     bubble.style.backgroundColor = Array.isArray(bubbleColor) ? sample(bubbleColor) : bubbleColor
     let position: number | undefined
     while (!position || bubbles.has(position)) {
@@ -54,6 +59,7 @@ const createBubbles = () => {
       })
   }
 
+  await sleep(120)
   requestAnimationFrame(createBubbles)
 }
 
@@ -63,8 +69,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="buttonRef" class="button center relative z-0 overflow-hidden">
+  <div class="button center relative z-0 overflow-hidden">
     <div
+      ref="buttonRef"
       class="pointer-events-none absolute left-0 top-0 -z-10 flex h-full w-full items-center justify-evenly"
     ></div>
     <slot></slot>
