@@ -66,7 +66,7 @@ onMounted(() => {
       <img
         ref="playIconRef"
         class="size-[40px] animate-spin-slow"
-        :class="[isPlay ? 'state-running' : 'state-paused']"
+        :class="[isPlay ? 'running' : 'paused']"
         :src="isPlay ? playIcon : pausedIcon"
         @click="togglePlayStatus"
       />
