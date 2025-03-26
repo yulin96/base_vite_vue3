@@ -10,7 +10,7 @@ export function showScanQRCode() {
     if (isScanning) return reject('扫码功能正在运行中')
     isScanning = true
 
-    if (isWeChat) {
+    if (isWeChat()) {
       wechatScan()
         .then((resultStr) => {
           if (resultStr) resolve(resultStr)

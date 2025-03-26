@@ -1,13 +1,13 @@
 import { debounce } from 'es-toolkit'
 import { createQRCode, removeQRCode } from '~/tools/init/createQRCode'
-import { isMobileFun } from '~/utils/uaParser'
+import { isMobile } from '~/utils/uaParser'
 
 function setRem() {
   const baseSize = 10
   const designWidth = 750
   let deviceWidth = innerWidth
 
-  if (!isMobileFun() || deviceWidth > 640) {
+  if (!isMobile() || deviceWidth > 640) {
     const calcHeight = innerHeight
     const calcWidth = (375 / 720) * calcHeight
 

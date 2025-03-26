@@ -8,7 +8,7 @@ window[wxConfigReady] = false
 export function getWechatConfig() {
   if (window[wxConfigReady]) return Promise.resolve()
 
-  if (!isWeChat) return Promise.reject('not in wechat')
+  if (!isWeChat()) return Promise.reject('not in wechat')
 
   return new Promise<void>((resolve, reject) => {
     const wxLink = location.href.split('#')[0]
@@ -166,7 +166,7 @@ export function wechatHideAllNonBaseMenuItem() {
 }
 
 export function closeWindow() {
-  isWeChat
+  isWeChat()
     ? getWechatConfig().then(() => {
         wx.closeWindow()
       })
@@ -174,7 +174,7 @@ export function closeWindow() {
 }
 
 export function wechatDisableTimeline() {
-  if (isWeChat) {
+  if (isWeChat()) {
     wx.hideMenuItems({
       menuList: ['menuItem:share:QZone', 'menuItem:share:timeline'],
     })

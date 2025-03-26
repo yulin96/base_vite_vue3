@@ -8,7 +8,7 @@ export function registerWechatShare() {
   const link = import.meta.env.VITE_APP_SHARE_LINK
   const imgUrl = import.meta.env.VITE_APP_SHARE_IMGURL
 
-  if (isHttps() && isWeChat) {
+  if (isHttps() && isWeChat()) {
     wechatShare({ title, desc, link, imgUrl })
     return true
   } else {

@@ -9,7 +9,7 @@ import { registerWechatShare } from '~/tools/user/share'
 import { getWechatConfig } from '~/tools/wechat'
 import { isWeChat } from '~/utils/uaParser'
 
-if (isWeChat) {
+if (isWeChat()) {
   registerWechatShare() ?? getWechatConfig()
 }
 

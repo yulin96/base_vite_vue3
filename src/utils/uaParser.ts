@@ -1,29 +1,31 @@
-import { UAParser } from 'ua-parser-js'
+function userAgent() {
+  return navigator.userAgent || ''
+}
 
-const uaParser = new UAParser()
+export function isWeChat() {
+  return /MicroMessenger/i.test(userAgent())
+}
 
-export const isWeChat = uaParser.getBrowser().name === 'WeChat'
+export function isChrome() {
+  return /Chrome/i.test(userAgent()) && !/Edg/i.test(userAgent())
+}
 
-export const isIOS = uaParser.getOS().name === 'iOS'
+export function isFirefox() {
+  return /Firefox/i.test(userAgent())
+}
 
-export const isAndroid = uaParser.getOS().name === 'Android'
+export function isMobileSafari() {
+  return /Mobile.*Safari/i.test(userAgent())
+}
 
-export const isMac = uaParser.getOS().name === 'Mac OS'
+export function isEdge() {
+  return /Edg/i.test(userAgent())
+}
 
-export const isWindows = uaParser.getOS().name === 'Windows'
+export function isIE() {
+  return /Trident/i.test(userAgent()) || /MSIE/i.test(userAgent())
+}
 
-export const isLinux = uaParser.getOS().name === 'Linux'
-
-export const isChrome = uaParser.getBrowser().name === 'Chrome'
-
-export const isFirefox = uaParser.getBrowser().name === 'Firefox'
-
-export const isMobileSafari = uaParser.getBrowser().name === 'Mobile Safari'
-
-export const isEdge = uaParser.getBrowser().name === 'Edge'
-
-export const isIE = uaParser.getBrowser().name === 'IE'
-
-export const isMobile = uaParser.getDevice().type === 'mobile'
-
-export const isMobileFun = () => new UAParser().getDevice().type === 'mobile'
+export function isMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent())
+}
