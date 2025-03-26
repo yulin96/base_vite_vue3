@@ -45,7 +45,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
         })
         .finally(() => {
           clearTimeout(requestTimer)
-          toastId && toast.dismiss(toastId)
+          toastId !== null && toast.dismiss(toastId)
 
           showProgress && nprogress?.done()
           delay
@@ -88,7 +88,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
         })
         .finally(() => {
           clearTimeout(requestTimer)
-          toastId && toast.dismiss(toastId)
+          toastId !== null && toast.dismiss(toastId)
 
           showProgress && nprogress?.done()
           delay
