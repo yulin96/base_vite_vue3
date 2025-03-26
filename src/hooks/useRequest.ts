@@ -32,7 +32,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
       let toastId: string | number | null = null
       const requestTimer = setTimeout(() => {
         toastId = toast.loading('加载中...')
-      }, 10000)
+      }, 12000)
 
       axiosPost(url, data, config, dataType)
         .then((res) => {
@@ -75,7 +75,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
       let toastId: string | number | null = null
       const requestTimer = setTimeout(() => {
         toastId = toast.loading('加载中...')
-      }, 10000)
+      }, 12000)
 
       axiosGet(url, params, config, data)
         .then((res) => {
