@@ -1,3 +1,4 @@
+import '@vant/touch-emulator'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
@@ -7,7 +8,6 @@ import '~/tools/init/dev'
 import '~/tools/init/hm'
 import '~/tools/init/resetWxFontSize'
 import '~/tools/init/setRem'
-import '~/tools/init/vant'
 
 import App from './App.vue'
 import router from './router'

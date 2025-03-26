@@ -1,7 +1,19 @@
 import type { ToastOptions } from 'vant'
-import { showToast as toast } from 'vant'
+import { setToastDefaultOptions, showToast as toast } from 'vant'
 import 'vant/es/toast/style'
 import { useLoading } from '~/hooks/useLoading'
+
+setToastDefaultOptions({
+  forbidClick: true,
+  overlay: true,
+  duration: 1200,
+  overlayClass: 'center_toast_overlay',
+  transition: 'center_fromTop_toast',
+  position: 'middle',
+  className: 'center_toast',
+  teleport: '#app',
+})
+setToastDefaultOptions('loading', { duration: 0, loadingType: 'spinner' })
 
 const { start } = useLoading([
   'https://oss.eventnet.cn/H5/zz/public/svg/success.svg',
