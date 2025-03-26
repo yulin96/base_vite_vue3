@@ -1,14 +1,6 @@
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-import {
-  configureVueProject,
-  defineConfigWithVueTs,
-  vueTsConfigs,
-} from '@vue/eslint-config-typescript'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
 import pluginVue from 'eslint-plugin-vue'
-
-configureVueProject({
-  tsSyntaxInTemplates: false,
-})
 
 export default defineConfigWithVueTs(
   {
