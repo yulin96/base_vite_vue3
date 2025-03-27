@@ -48,7 +48,7 @@ export const axiosGet = (
       .get(url, {
         params,
         ...(data ? { data } : {}),
-        adapter: ['fetch', 'xhr'],
+        // adapter: ['fetch', 'xhr'],
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
@@ -65,7 +65,7 @@ export const axiosPost = (
   return new Promise<never>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
-        adapter: ['fetch', 'xhr'],
+        // adapter: ['fetch', 'xhr'],
         ...(config ?? {}),
       })
       .then((response) => resolve(response.data))
