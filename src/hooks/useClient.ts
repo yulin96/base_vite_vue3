@@ -1,101 +1,120 @@
 import { useDocumentVisibility } from '@vueuse/core'
-import { ref, watch } from 'vue'
+import { readonly, shallowRef, watch } from 'vue'
 
-export const useClient = (subScribes: Array<string> | string, pub: string, sub: string) => {
+// 为ROP全局对象定义类型
+declare global {
+  interface Window {
+    ROP: {
+      On: (event: string, callback: (data: any, topic: string) => void) => void
+      Enter: (pub: string, sub: string, suid: string, boolean: boolean) => void
+      Subscribe: (topic: string) => void
+      Publish: (topic: string, message: string) => void
+    }
+  }
+}
+
+/**
+ * ROP客户端连接钩子
+ * @param subScribes 订阅的主题，可以是字符串或字符串数组
+ * @param pub 发布频道
+ * @param sub 订阅频道
+ * @returns 包含接收数据的响应式引用
+ */
+export const useClient = <T = any>(
+  subScribes: Array<string> | string,
+  pub: string,
+  sub: string,
+) => {
   const subIsString = typeof subScribes === 'string'
+  const data = shallowRef<T>()
 
-  const data = ref()
+  // 重试延迟时间（毫秒）
+  const RETRY_DELAY = 2000
+
+  // 生成唯一会话ID
+  const generateSessionId = () => `suid_${Date.now()}${Math.floor(Math.random() * 1_000_000_000)}`
 
   const ROPReady = () => {
+    const ROP = window.ROP
+
+    // 事件处理函数注册
     ROP.On('enter_suc', () => {
       console.log('连接成功')
     })
 
-    // 重连中
     ROP.On('reconnect', () => {
       console.log('重连中')
     })
 
-    // 离线状态，之后会重连
     ROP.On('offline', (err: string) => {
-      console.error('离线!!', err)
-      setTimeout(() => {
-        linkROP()
-      }, 2000)
+      console.error('离线状态:', err)
+      setTimeout(linkROP, RETRY_DELAY)
     })
 
-    // 登陆失败
     ROP.On('enter_fail', (err: string) => {
-      console.error('登陆失败', err)
+      console.error('登录失败:', err)
     })
 
-    // 收到消息
-    ROP.On('publish_data', (message: string, topic: string) => {
+    ROP.On('publish_data', (message: any, topic: string) => {
+      // 只处理订阅的主题消息
       if ((subIsString ? topic === subScribes : subScribes.includes(topic)) && message) {
         try {
-          const _message = JSON.parse(message)
-          if (['number', 'string'].includes(typeof _message))
-            console.warn('收到消息,类型非object', _message)
-          data.value = _message
+          const parsedMessage = JSON.parse(message)
+
+          // 数据类型检查
+          if (typeof parsedMessage !== 'object' || parsedMessage === null) {
+            console.warn('收到的消息不是对象类型:', parsedMessage)
+          } else {
+            data.value = parsedMessage as T
+          }
         } catch (error) {
-          console.log('已连接 , 解析为json失败', error)
+          console.error('JSON解析失败:', error)
         }
-      } else {
-        console.log('连接成功.2', message)
       }
     })
 
-    // 彻底断线了
     ROP.On('losed', () => {
-      console.error('断线')
-
-      setTimeout(() => {
-        linkROP()
-      }, 2000)
+      console.error('连接已断开')
+      setTimeout(linkROP, RETRY_DELAY)
     })
 
-    function Publish() {
-      // ROP.Publish()
-    }
-
-    function OnEnter() {
-      ROP.Enter(pub, sub, 'suid_' + +new Date() + Math.floor(Math.random() * 1_000_000_000), true)
-    }
-
-    function OnJoin() {
-      subIsString
-        ? ROP.Subscribe(subScribes)
-        : subScribes.forEach((item) => {
-            ROP.Subscribe(item)
-          })
-    }
-
-    linkROP()
-
-    const visibility = useDocumentVisibility()
-    watch(visibility, (nv) => {
-      if (nv === 'visible') linkROP()
-    })
-
+    // 连接函数
     function linkROP() {
       try {
-        OnEnter()
-        OnJoin()
+        // 进入频道
+        ROP.Enter(pub, sub, generateSessionId(), true)
+
+        // 订阅主题
+        if (subIsString) {
+          ROP.Subscribe(subScribes as string)
+        } else {
+          ;(subScribes as string[]).forEach((topic) => ROP.Subscribe(topic))
+        }
       } catch (error) {
-        console.error(error, '🔗 🐛')
+        console.error('连接失败:', error)
       }
     }
+
+    // 初始连接
+    linkROP()
+
+    // 监听页面可见性变化，在页面变为可见时重新连接
+    const visibility = useDocumentVisibility()
+    watch(visibility, (newVisibility) => {
+      if (newVisibility === 'visible') linkROP()
+    })
   }
 
-  if (typeof ROP !== 'undefined') {
+  // 加载或使用ROP客户端
+  if (typeof window.ROP !== 'undefined') {
     ROPReady()
   } else {
-    const rop_client = document.createElement('script')
-    rop_client.src = 'https://cdn.aodianyun.com/dms/rop_client.js'
-    rop_client.type = 'text/javascript'
-    rop_client.onload = ROPReady
-    document.head.appendChild(rop_client)
+    const ropScript = document.createElement('script')
+    ropScript.src = 'https://cdn.aodianyun.com/dms/rop_client.js'
+    ropScript.type = 'text/javascript'
+    ropScript.onload = ROPReady
+    document.head.appendChild(ropScript)
   }
 
-  return { data }
+  return { data: readonly(data) }
 }
