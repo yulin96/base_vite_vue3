@@ -29,9 +29,6 @@ importers:
       '@vueuse/core':
         specifier: ^13.0.0
         version: 13.0.0(vue@3.5.13(typescript@5.7.3))
-      '@vueuse/integrations':
-        specifier: ^13.0.0
-        version: 13.0.0(axios@1.8.4)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.3))
       '@vueuse/sound':
         specifier: ^2.1.3
         version: 2.1.3(vue@3.5.13(typescript@5.7.3))
@@ -1993,48 +1990,6 @@ packages:
     resolution: {integrity: sha512-rkgb4a8/0b234lMGCT29WkCjPfsX0oxrIRR7FDndRoW3FsaC9NBzefXg/9TLhAgwM11f49XnutshM4LzJBrQ5g==}
     peerDependencies:
       vue: ^3.5.0
-
-  '@vueuse/integrations@13.0.0':
-    resolution: {integrity: sha512-PXARslYRWf4u0xjdW6N5eC5kVQj2z/dxfZ7ildI1okLm2AwmhL+wiWzaNMSJMxTKX4ew7kNe70yJg1QjnWmE5w==}
-    peerDependencies:
-      async-validator: ^4
-      axios: ^1
-      change-case: ^5
-      drauu: ^0.4
-      focus-trap: ^7
-      fuse.js: ^7
-      idb-keyval: ^6
-      jwt-decode: ^4
-      nprogress: ^0.2
-      qrcode: ^1.5
-      sortablejs: ^1
-      universal-cookie: ^7
-      vue: ^3.5.0
-    peerDependenciesMeta:
-      async-validator:
-        optional: true
-      axios:
-        optional: true
-      change-case:
-        optional: true
-      drauu:
-        optional: true
-      focus-trap:
-        optional: true
-      fuse.js:
-        optional: true
-      idb-keyval:
-        optional: true
-      jwt-decode:
-        optional: true
-      nprogress:
-        optional: true
-      qrcode:
-        optional: true
-      sortablejs:
-        optional: true
-      universal-cookie:
-        optional: true
 
   '@vueuse/metadata@13.0.0':
     resolution: {integrity: sha512-TRNksqmvtvqsuHf7bbgH9OSXEV2b6+M3BSN4LR5oxWKykOFT9gV78+C2/0++Pq9KCp9KQ1OQDPvGlWNQpOb2Mw==}
@@ -6571,16 +6526,6 @@ snapshots:
       '@vueuse/metadata': 13.0.0
       '@vueuse/shared': 13.0.0(vue@3.5.13(typescript@5.7.3))
       vue: 3.5.13(typescript@5.7.3)
-
-  '@vueuse/integrations@13.0.0(axios@1.8.4)(nprogress@0.2.0)(qrcode@1.5.4)(vue@3.5.13(typescript@5.7.3))':
-    dependencies:
-      '@vueuse/core': 13.0.0(vue@3.5.13(typescript@5.7.3))
-      '@vueuse/shared': 13.0.0(vue@3.5.13(typescript@5.7.3))
-      vue: 3.5.13(typescript@5.7.3)
-    optionalDependencies:
-      axios: 1.8.4
-      nprogress: 0.2.0
-      qrcode: 1.5.4
 
   '@vueuse/metadata@13.0.0': {}
 
