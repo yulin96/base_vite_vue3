@@ -1,15 +1,29 @@
 <script setup lang="ts">
 import gsap from 'gsap'
 import { v4 } from 'uuid'
-import { onMounted, ref } from 'vue'
+import { ref, toValue, watchPostEffect, type MaybeRefOrGetter } from 'vue'
 
-defineProps<{ code: string }>()
+const props = defineProps<{ code: string; render?: MaybeRefOrGetter<boolean> }>()
+
+watchPostEffect(() => {
+  const value = toValue(props.render)
+  if (!!value) {
+    const bounding = document.querySelector(`#code-${uuid}`)?.getBoundingClientRect()
+    const app = document.querySelector('#app')
+    if (bounding && app) {
+      const { width, height, top, left } = bounding
+      target[0] = +((app.clientWidth - 50) / width).toFixed(2)
+      target[1] = +(innerHeight / 2 - (top + height / 2) - 50).toFixed(2)
+      target[2] = +(innerWidth / 2 - (left + width / 2)).toFixed(2)
+    }
+  }
+})
 
 const uuid = v4()
 
 const isBig = ref(false)
 
-const target: [number, number, number] = [4, 120, 0]
+const target: [number, number, number] = [2, 0, 0]
 const toggleCode = () => {
   gsap.to(`#code-${uuid}`, {
     scale: isBig.value ? 1 : target[0],
@@ -22,17 +36,6 @@ const toggleCode = () => {
 }
 
 defineExpose({ toggleCode })
-
-onMounted(() => {
-  const bounding = document.querySelector(`#code-${uuid}`)?.getBoundingClientRect()
-  const app = document.querySelector('#app')
-  if (bounding && app) {
-    const { width, height, top, left } = bounding
-    target[0] = +((app.clientWidth - 50) / width).toFixed(2)
-    target[1] = +(innerHeight / 2 - (top + height / 2) - 50).toFixed(2)
-    target[2] = +(innerWidth / 2 - (left + width / 2)).toFixed(2)
-  }
-})
 </script>
 
 <template>
