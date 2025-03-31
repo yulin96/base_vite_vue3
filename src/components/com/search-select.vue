@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <transition name="slide-down">
+  <Transition name="slide-down">
     <div
       v-show="searchIns.show"
       data-search-select
@@ -62,7 +62,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-  </transition>
+  </Transition>
 </template>
 
 <style scoped>

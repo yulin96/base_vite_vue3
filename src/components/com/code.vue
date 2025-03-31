@@ -42,5 +42,5 @@ defineExpose({ toggleCode })
   <div :id="`code-${uuid}`" class="relative z-[20]" v-bind="$attrs" @click="toggleCode">
     <img class="h-full w-full" :src="code" />
   </div>
-  <van-overlay :show="isBig" class="z-[10]" @click="toggleCode"></van-overlay>
+  <VanOverlay :show="isBig" class="z-[10]" @click="toggleCode"></VanOverlay>
 </template>

@@ -44,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <toaster
+  <Toaster
     :rich-colors="true"
     :expand="false"
     position="top-center"
@@ -52,22 +52,22 @@ onMounted(() => {
     :duration="2000"
   />
 
-  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
-    <router-view v-slot="{ Component }">
+  <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
+    <RouterView v-slot="{ Component }">
       <template v-if="Component">
-        <transition :name>
-          <keep-alive :exclude="[]">
-            <suspense @resolve="isReady">
+        <Transition :name>
+          <KeepAlive :exclude="[]">
+            <Suspense @resolve="isReady">
               <component :is="Component" class="wrapper"></component>
               <template #fallback>
-                <com-loading></com-loading>
+                <ComLoading></ComLoading>
               </template>
-            </suspense>
-          </keep-alive>
-        </transition>
+            </Suspense>
+          </KeepAlive>
+        </Transition>
       </template>
-    </router-view>
-  </van-config-provider>
+    </RouterView>
+  </VanConfigProvider>
 </template>
 
 <style>

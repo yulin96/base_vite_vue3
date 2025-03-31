@@ -5,7 +5,7 @@ defineProps<{ title?: string }>()
 </script>
 
 <template>
-  <van-popup v-model:show="show" transition="popup" :close-on-click-overlay="false">
+  <VanPopup v-model:show="show" transition="popup" :close-on-click-overlay="false">
     <div class="center h-900 w-full">
       <div
         class="relative flex h-[588px] w-[561px] flex-col items-center rounded-[12px] bg-[url(https://oss.eventnet.cn/H5/zz/public/tips/whitelist/bg.png)] bg-contain bg-no-repeat pt-150"
@@ -33,5 +33,5 @@ defineProps<{ title?: string }>()
         </div>
       </div>
     </div>
-  </van-popup>
+  </VanPopup>
 </template>

@@ -78,7 +78,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <teleport to="body">
+  <Teleport to="body">
     <div
       class="fixed z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="{
@@ -110,7 +110,7 @@ onUnmounted(() => {
         @click="togglePlayStatus"
       />
     </div>
-  </teleport>
+  </Teleport>
 </template>
 
 <style scoped>
