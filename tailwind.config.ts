@@ -1,5 +1,4 @@
 import type { Config } from 'tailwindcss'
-
 import plugin from 'tailwindcss/plugin'
 
 function convertUnit(length = 100, name = 'px') {
