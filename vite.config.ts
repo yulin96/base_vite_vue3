@@ -75,7 +75,7 @@ export default defineConfig(({ command }) => ({
       directoryAsNamespace: true,
     }),
     legacy({
-      targets: ['defaults', 'ios >= 12', 'not IE 11'],
+      targets: ['defaults', 'ios >= 13', 'not IE 11'],
       modernPolyfills: true,
     }),
     vitePluginDeployOss({
@@ -152,7 +152,7 @@ export default defineConfig(({ command }) => ({
       plugins: [
         tailwindcss,
         postcssPresetEnv({
-          browsers: ['ios >= 12', 'chrome >= 64'],
+          browsers: ['ios >= 13', 'chrome >= 64'],
         }),
         pxtorem({
           rootValue({ file }: any) {
