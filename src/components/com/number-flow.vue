@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NumberFLow from '@number-flow/vue'
+import NumberFLow, { continuous } from '@number-flow/vue'
 import gsap from 'gsap'
 import { v4 } from 'uuid'
 import { onMounted } from 'vue'
@@ -29,6 +29,12 @@ onMounted(() => {
     :id="id"
     :value="value"
     will-change
+    locales="en"
+    :format="{
+      useGrouping: false,
+    }"
+    :trend="0"
+    :plugins="[continuous]"
     @animationsstart="handleAnimationsStart"
     @animationsfinish="handleAnimationsFinish"
   ></NumberFLow>
