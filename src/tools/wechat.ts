@@ -98,10 +98,13 @@ export function wechatScan(): Promise<string | void> {
         wx.scanQRCode({
           needResult: 1,
           scanType: ['qrCode', 'barCode'],
-          success: (res: any) => {
+          success(res: any) {
             resolve(res?.resultStr || res?.scan_code?.scan_result || '')
           },
-          fail: () => {
+          fail() {
+            resolve('')
+          },
+          cancel() {
             resolve('')
           },
         })
