@@ -1,5 +1,5 @@
+import { devModel, reload } from '@/utils/global'
 import { debounce } from 'es-toolkit'
-import { devModel, reload } from '~/utils/global'
 
 if (devModel) {
   const _theWindow = window

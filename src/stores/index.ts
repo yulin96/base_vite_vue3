@@ -1,6 +1,6 @@
+import { deepClone } from '@/utils/convert'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
-import { deepClone } from '~/utils/convert'
 
 type IWxInfo = {
   openid: string

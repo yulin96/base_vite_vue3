@@ -1,6 +1,6 @@
+import { isFromData } from '@/utils/common'
+import { formDataToObj } from '@/utils/convert'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
-import { isFromData } from '~/utils/common'
-import { formDataToObj } from '~/utils/convert'
 
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)

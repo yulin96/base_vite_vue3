@@ -1,4 +1,4 @@
-import { checkWebpFeature } from '~/utils/checkWebpFeature'
+import { checkWebpFeature } from '@/utils/checkWebpFeature'
 
 checkWebpFeature((_, result) => {
   if (result) document.documentElement.classList.add('webp')

@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import backIcon from '@/assets/imgs/back.svg'
+import router from '@/router'
+import { useStore } from '@/stores'
 import type { RouteNamedMap } from 'vue-router/auto-routes'
-import backIcon from '~/assets/imgs/back.svg'
-import router from '~/router'
-import { useStore } from '~/stores'
 
 const { user } = useStore()
 

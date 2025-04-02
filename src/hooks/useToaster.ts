@@ -1,5 +1,5 @@
+import { createToaster } from '@/tools/user/createToaster'
 import { ref } from 'vue'
-import { createToaster } from '~/tools/user/createToaster'
 
 export function useToaster(loadingInfo: string) {
   const isProcessing = ref(false)

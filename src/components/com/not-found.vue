@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useStore } from '@/stores'
+import { randomNum } from '@/utils/common'
 import Lottie from 'lottie-web'
 import { onMounted, useTemplateRef } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from '~/stores'
-import { randomNum } from '~/utils/common'
 
 const router = useRouter()
 const toIndex = () => {

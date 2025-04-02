@@ -1,9 +1,9 @@
+import { userLock } from '@/hooks/useLock'
+import { axiosGet, axiosPost } from '@/tools/request'
 import type { AxiosRequestConfig } from 'axios'
 import nprogress from 'nprogress'
 import { readonly } from 'vue'
 import { toast } from 'vue-sonner'
-import { userLock } from '~/hooks/useLock'
-import { axiosGet, axiosPost } from '~/tools/request'
 
 nprogress.configure({
   showSpinner: false,

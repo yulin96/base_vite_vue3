@@ -1,5 +1,5 @@
+import { removeUrlParams } from '@/utils/common'
 import QRCode from 'qrcode'
-import { removeUrlParams } from '~/utils/common'
 
 export function createQRCode(app: HTMLDivElement) {
   if (document.querySelector('.code-tips.pc'))

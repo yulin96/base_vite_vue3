@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { generateCaptcha } from '@/tools/generateCaptcha'
 import { onMounted, ref, useTemplateRef } from 'vue'
-import { generateCaptcha } from '~/tools/generateCaptcha'
 
 const {
   captchaLength = 5,

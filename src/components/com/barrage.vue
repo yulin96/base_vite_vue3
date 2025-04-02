@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import pinSvg from '@/assets/imgs/pin.svg'
+import { randomString } from '@/utils/common'
 import { random, sample } from 'es-toolkit'
 import gsap from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
-import pinSvg from '~/assets/imgs/pin.svg'
-import { randomString } from '~/utils/common'
 
 const uuid = randomString()
 const uuid2 = randomString()

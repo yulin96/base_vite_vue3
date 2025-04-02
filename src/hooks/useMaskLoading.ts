@@ -1,6 +1,6 @@
+import comLoading from '@/components/com/loading.vue'
+import { sleep } from '@/utils/common'
 import { type App, createApp } from 'vue'
-import comLoading from '~/components/com/loading.vue'
-import { sleep } from '~/utils/common'
 
 export function useMaskLoading() {
   let app: App<Element> | null = null

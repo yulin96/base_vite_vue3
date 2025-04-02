@@ -1,5 +1,5 @@
+import router from '@/router'
 import type { RouteNamedMap } from 'vue-router/auto-routes'
-import router from '~/router'
 
 /**
  * 路由导航辅助函数

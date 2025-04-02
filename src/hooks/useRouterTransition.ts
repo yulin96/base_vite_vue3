@@ -1,9 +1,9 @@
+import { useMaskLoading } from '@/hooks/useMaskLoading'
+import router from '@/router'
 import { useTimeoutFn, useToggle } from '@vueuse/core'
-import { useMaskLoading } from '~/hooks/useMaskLoading'
-import router from '~/router'
 
+import '@/assets/css/transition.css'
 import { ref } from 'vue'
-import '~/assets/css/transition.css'
 
 export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {
   const { createLoading, clearLoading } = useMaskLoading()

@@ -1,9 +1,9 @@
 <script setup lang="ts">
+import { useStore } from '@/stores'
+import { getOpenId } from '@/tools/user/getOpenId'
+import { toUrl } from '@/utils/global'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { useStore } from '~/stores'
-import { getOpenId } from '~/tools/user/getOpenId'
-import { toUrl } from '~/utils/global'
 
 const { url, auto = false } = defineProps<{ url: string; auto?: false }>()
 

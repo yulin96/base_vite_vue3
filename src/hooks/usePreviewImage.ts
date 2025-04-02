@@ -1,8 +1,8 @@
+import { wechatPreviewImage } from '@/tools/wechat'
+import { isHttps } from '@/utils/check'
+import { isWeChat } from '@/utils/uaParser'
 import { showImagePreview } from 'vant'
 import 'vant/es/image-preview/style'
-import { wechatPreviewImage } from '~/tools/wechat'
-import { isHttps } from '~/utils/check'
-import { isWeChat } from '~/utils/uaParser'
 
 export function showImage(url: string[] | string, index: number = 0) {
   const imageUrls = Array.isArray(url) ? url : [url]

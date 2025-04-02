@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import '@/assets/css/plugin/snow.css'
+import { randomNum } from '@/utils/common'
 import { v4 } from 'uuid'
 import { onActivated, onDeactivated, onMounted, onUnmounted } from 'vue'
-import '~/assets/css/plugin/snow.css'
-import { randomNum } from '~/utils/common'
 
 const { img = 'https://oss.eventnet.cn/H5/zz/public/icon/snow.png' } = defineProps<{
   img?: string

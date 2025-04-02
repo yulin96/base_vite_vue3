@@ -1,7 +1,7 @@
+import { useLoading } from '@/hooks/useLoading'
 import type { ToastOptions } from 'vant'
 import { setToastDefaultOptions, showToast as toast } from 'vant'
 import 'vant/es/toast/style'
-import { useLoading } from '~/hooks/useLoading'
 
 setToastDefaultOptions({
   forbidClick: true,

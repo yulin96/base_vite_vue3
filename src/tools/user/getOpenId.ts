@@ -1,6 +1,6 @@
+import { useRequest } from '@/hooks/useRequest'
+import { useStore } from '@/stores'
 import { useUrlSearchParams } from '@vueuse/core'
-import { useRequest } from '~/hooks/useRequest'
-import { useStore } from '~/stores'
 
 const { post: postGetCode } = useRequest(false)
 /**

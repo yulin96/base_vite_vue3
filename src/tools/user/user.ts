@@ -1,6 +1,6 @@
+import { compressImage } from '@/tools/user/compressImage'
+import { blobToFile } from '@/utils/convert'
 import { v1 } from 'uuid'
-import { compressImage } from '~/tools/user/compressImage'
-import { blobToFile } from '~/utils/convert'
 
 /**
  * 获取用户图片

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useMediaSession } from '@/hooks/useMediaSession'
 import { useEventListener, useToggle } from '@vueuse/core'
 import { onMounted, onUnmounted, useTemplateRef } from 'vue'
-import { useMediaSession } from '~/hooks/useMediaSession'
 
 const {
   playIcon = 'https://oss.eventnet.cn/H5/zz/public/svg/music/music_play.svg',

@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import Zoomist from '@/tools/zoomist'
 import { showDialog } from 'vant'
 import { watchPostEffect } from 'vue'
-import Zoomist from '~/tools/zoomist'
 
 const { fillType = 'cover', url } = defineProps<{
   url: string

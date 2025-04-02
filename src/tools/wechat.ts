@@ -1,6 +1,6 @@
+import { isWeChat } from '@/utils/uaParser'
 import axios, { toFormData } from 'axios'
 import wx from 'weixin-js-sdk'
-import { isWeChat } from '~/utils/uaParser'
 
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false

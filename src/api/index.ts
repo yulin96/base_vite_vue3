@@ -1,4 +1,4 @@
-import { useRequest } from '~/hooks/useRequest'
+import { useRequest } from '@/hooks/useRequest'
 
 const { get: getMenus } = useRequest()
 export const apiMenus = (title: string) => {
