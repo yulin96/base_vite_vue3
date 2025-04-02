@@ -87,3 +87,26 @@ export const isDarkMode: boolean =
 export function checkDom(selectors: string) {
   return document.querySelector(selectors)
 }
+
+/**
+ * 检查设备是否有摄像头
+ * @returns {Promise<boolean>} - 如果设备有摄像头则返回 true，否则返回 false
+ */
+export function hasCamera(): Promise<boolean> {
+  return new Promise((resolve) => {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+      resolve(false)
+      return
+    }
+
+    navigator.mediaDevices
+      .enumerateDevices()
+      .then((devices) => {
+        const hasVideoInput = devices.some((device) => device.kind === 'videoinput')
+        resolve(hasVideoInput)
+      })
+      .catch(() => {
+        resolve(false)
+      })
+  })
+}
