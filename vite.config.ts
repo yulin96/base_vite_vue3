@@ -155,9 +155,7 @@ export default defineConfig(({ command }) => ({
           browsers: ['ios >= 13', 'chrome >= 64'],
         }),
         pxtorem({
-          rootValue({ file }: any) {
-            return file.indexOf('vant') !== -1 ? 5 : 10
-          }, // 基准值，可以根据设计稿设置
+          rootValue: ({ file }: any) => (~file.indexOf('node_modules/vant') ? 5 : 10), // 基准值，可以根据设计稿设置
           propList: ['*'], // 哪些属性需要转换，['*'] 表示所有属性
           selectorBlackList: ['.ignore', 'pc'], // 忽略转换的选择器
           replace: true, // 是否替换属性中的 px
