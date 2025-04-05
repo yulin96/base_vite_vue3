@@ -51,13 +51,16 @@ export default defineConfig(({ command }) => ({
     ViteImageOptimizer({
       exclude: /\.(webp|svg)$/i,
       jpg: {
-        quality: 90,
+        quality: 92,
         progressive: true,
+        mozjpeg: true,
       },
       png: {
-        quality: 90,
-        compressionLevel: 9,
+        quality: 92,
+        progressive: true,
+        compressionLevel: 6,
         adaptiveFiltering: true,
+        dither: 0.6,
       },
     }),
     VueRouter({
