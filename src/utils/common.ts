@@ -240,3 +240,26 @@ export function queryStringToObject(queryString: string): Record<string, string>
 
   return result
 }
+
+/**
+ * 生成指定范围内的随机数
+ * @param min 最小值（包含）
+ * @param max 最大值（包含）
+ * @returns 生成的随机数
+ */
+export function randomNum(min: number, max?: number): number {
+  if (max === undefined) {
+    max = min
+    min = 0
+  }
+  if (typeof min !== 'number' || typeof max !== 'number') {
+    throw new TypeError('参数必须是数字类型')
+  }
+
+  if (min > max) {
+    ;[min, max] = [max, min]
+  }
+
+  const randomValue = Math.floor(Math.random() * (max - min + 1)) + min
+  return randomValue
+}
