@@ -1,19 +1,19 @@
 <script setup lang="ts">
+import { useState } from '@/hooks/useState'
 import { gsap } from '@/tools/pip/gsap'
-import { useToggle } from '@vueuse/core'
 import { onMounted } from 'vue'
 
-const [isLoaded, setIsLoaded] = useToggle(false)
+const [loaded, setLoaded] = useState(false)
 
 onMounted(() => {
   gsap.context(() => {
-    gsap.timeline({ delay: 0.5 }).then(() => setIsLoaded(true))
+    gsap.timeline({ delay: 0.5 }).then(() => setLoaded(true))
   }, '.index')
 })
 </script>
 
 <template>
-  <section class="index group" :aria-expanded="isLoaded">
+  <section class="index group" :aria-expanded="loaded">
     <main class="content"></main>
   </section>
 </template>
