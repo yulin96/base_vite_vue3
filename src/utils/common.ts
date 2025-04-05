@@ -1,13 +1,11 @@
 /**
- * 延迟指定的时间。
- * @param time 延迟的时间（以毫秒为单位）。
- * @returns 一个 Promise，在指定的时间后解析。
+ * 延迟指定的时间
+ * @param time 延迟的时间（以毫秒为单位）
+ * @returns 一个 Promise，在指定的时间后解析
  */
-export function sleep(time: number) {
-  return new Promise<void>((resolve, _) => {
-    setTimeout(() => {
-      resolve()
-    }, time)
+export function sleep(time: number): Promise<void> {
+  return new Promise<void>((resolve) => {
+    setTimeout(resolve, time)
   })
 }
 
@@ -17,30 +15,37 @@ export function sleep(time: number) {
  * @returns 处理后的字符串
  */
 export function trimAll(str: string): string {
-  return str.replace(/\s/g, '')
+  return str.replace(/\s+/g, '')
 }
 
 /**
  * 生成随机名称
- * @param {string} prefix - 设备名称，默认为 'z'
- * @param {number} len - 名称长度，默认为 16
- * @returns {string} - 生成的随机名称
+ * @param prefix 前缀，默认为 'z'
+ * @param len 随机部分的长度，默认为 16
+ * @returns 生成的随机名称
  */
-export function randomString(prefix: string = 'z', len: number = 16): string {
+export function randomString(prefix = 'z', len = 16): string {
   const seed = 'abcdefghijklmnopqrstuvwxyz1234567890'
   const timestamp = new Date().getTime()
-  const createStr = Array.from(
+  const randomChars = Array.from(
     { length: len },
     () => seed[Math.floor(Math.random() * seed.length)],
   ).join('')
-  return `${prefix}_${timestamp}_${createStr}`
+
+  return `${prefix}_${timestamp}_${randomChars}`
 }
 
 /**
- * 生成一个随机的 UUID 字符串。
- * @returns 生成的 UUID 字符串。
+ * 生成一个随机的 UUID v4 字符串
+ * @returns 生成的 UUID 字符串
  */
 export function uuid(): string {
+  // 如果可用，使用Web Crypto API
+  if (window.crypto && window.crypto.randomUUID) {
+    return window.crypto.randomUUID()
+  }
+
+  // 回退到手动实现
   return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
     const r = (Math.random() * 16) | 0
     const v = c === 'x' ? r : (r & 0x3) | 0x8
@@ -49,126 +54,120 @@ export function uuid(): string {
 }
 
 /**
- * 生成指定范围内的随机整数。
- * @param m - 范围的最小值（包含）。
- * @param n - 范围的最大值（包含）。
- * @returns 生成的随机整数。
+ * 计算两个日期之间的天数差异
+ * @param date1 第一个日期
+ * @param date2 第二个日期
+ * @returns 两个日期之间的天数差异
  */
-export function randomNum(m: number, n: number): number {
-  return parseInt(String(Math.random() * (n - m + 1) + m))
-}
-
-/**
- * 计算两个日期之间的天数差异。
- * @param date1 - 第一个日期。
- * @param date2 - 第二个日期。
- * @returns 两个日期之间的天数差异。
- */
-export function dayDiff(date1: Date, date2: Date) {
+export function dayDiff(date1: Date, date2: Date): number {
   if (!(date1 instanceof Date) || !(date2 instanceof Date)) {
-    console.error('Invalid date')
+    throw new Error('参数必须是 Date 类型')
   }
-  return Math.ceil(Math.abs(date1.getTime() - date2.getTime()) / 86400000) - 1
-}
-/**
- * 计算给定日期是一年中的第几天。
- * @param date - 要计算的日期。
- * @returns 给定日期是一年中的第几天。
- */
-export function dayOfYear(now = new Date()): number {
-  if (!(now instanceof Date)) {
-    console.error('Invalid date')
-  }
-  const start = new Date(now.getFullYear(), 0, 0)
-  const diff = now.getTime() - start.getTime()
-  const oneDay = 1000 * 60 * 60 * 24
-  const day = Math.floor(diff / oneDay)
-  return day
+
+  // 将两个日期都设置为当天的00:00:00以计算天数差
+  const d1 = new Date(date1.getFullYear(), date1.getMonth(), date1.getDate())
+  const d2 = new Date(date2.getFullYear(), date2.getMonth(), date2.getDate())
+
+  // 一天的毫秒数
+  const ONE_DAY = 1000 * 60 * 60 * 24
+
+  // 计算相差的天数（使用Math.round避免夏令时导致的误差）
+  return Math.round(Math.abs((d1.getTime() - d2.getTime()) / ONE_DAY))
 }
 
 /**
- * 生成一个随机的十六进制颜色值。
- * @returns 一个随机的十六进制颜色值，格式为 "#RRGGBB"。
+ * 计算给定日期是一年中的第几天
+ * @param date 要计算的日期，默认为今天
+ * @returns 给定日期是一年中的第几天
  */
-export function randomHex() {
+export function dayOfYear(date = new Date()): number {
+  if (!(date instanceof Date)) {
+    throw new Error('参数必须是 Date 类型')
+  }
+
+  const start = new Date(date.getFullYear(), 0, 0)
+  const diff = date.getTime() - start.getTime()
+  const oneDay = 1000 * 60 * 60 * 24
+  return Math.floor(diff / oneDay)
+}
+
+/**
+ * 生成一个随机的十六进制颜色值
+ * @returns 一个随机的十六进制颜色值，格式为 "#RRGGBB"
+ */
+export function randomHex(): string {
   return `#${Math.floor(Math.random() * 0xffffff)
     .toString(16)
-    .padEnd(6, '0')}`
+    .padStart(6, '0')}`
 }
 
 /**
- * 判断给定的数据是否为 FormData 对象。
- * @param formData 要检查的数据。
- * @returns 如果给定的数据是 FormData 对象，则返回 true；否则返回 false。
- * @template T 表示 formData 参数的类型。
+ * 判断给定的数据是否为 FormData 对象
+ * @param formData 要检查的数据
+ * @returns 如果给定的数据是 FormData 对象，则返回 true；否则返回 false
  */
-export function isFromData<T>(formData: T) {
+export function isFormData(formData: unknown): formData is FormData {
   return Object.prototype.toString.call(formData) === '[object FormData]'
 }
 
 /**
- * 滚动到顶部
- * @param {Element} e - 要滚动的元素
+ * 平滑滚动到元素顶部
+ * @param element 要滚动的元素
+ * @param options 滚动选项
  */
-export function scrollToTop(e: Element) {
-  if (!(e instanceof Element)) {
-    console.error('Invalid element')
+export function scrollToTop(
+  element: Element,
+  options: ScrollToOptions = { behavior: 'smooth' },
+): void {
+  if (!(element instanceof Element)) {
+    throw new Error('参数必须是 Element 类型')
   }
-  e.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
-  })
+
+  element.scrollTo({ top: 0, left: 0, ...options })
 }
 
 /**
- * 将手机号码进行脱敏处理，只显示前三位和后四位，中间用星号代替。
- * @param phone - 需要脱敏的手机号码
+ * 将手机号码进行脱敏处理，只显示前三位和后四位，中间用星号代替
+ * @param phone 需要脱敏的手机号码
  * @returns 脱敏后的手机号码
  */
-export function maskPhone(phone: string) {
-  if (!/^1[3456789]\d{9}$/.test(phone)) {
-    console.error('意外的手机号：', phone)
+export function maskPhone(phone: string): string {
+  if (!/^1[3-9]\d{9}$/.test(phone)) {
+    console.warn('非标准手机号格式:', phone)
   }
-  return phone.replace(/(\d{3})\d+(\d{4})/u, '$1****$2')
+
+  return phone.replace(/(\d{3})(\d+)(\d{4})/, '$1****$3')
 }
 
 /**
- * 异步加载脚本文件。
- * @param url - 要加载的脚本文件的URL。
- * @returns 当脚本加载成功时，返回一个Promise对象，否则返回一个拒绝的Promise对象。
+ * 从URL中删除指定的参数
+ * @param url 要处理的URL字符串
+ * @param params 要删除的参数名称或参数名称数组
+ * @returns 处理后的URL字符串
  */
-export function importScript(url: string) {
-  return new Promise<void>((resolve, reject) => {
-    const script = document.createElement('script')
-    script.src = url
-    script.onload = () => {
-      resolve()
-      script.remove()
+export function removeUrlParams(url: string, params: string | string[]): string {
+  try {
+    const urlObj = new URL(url)
+    const searchParams = new URLSearchParams(urlObj.search)
+
+    const paramList = Array.isArray(params) ? params : [params]
+
+    for (const param of paramList) {
+      searchParams.delete(param)
     }
-    script.onerror = () => reject()
-    document.body.appendChild(script)
-  })
+
+    urlObj.search = searchParams.toString()
+    return urlObj.toString()
+  } catch (error) {
+    return url
+  }
 }
 
 /**
- * 从URL中删除指定的参数。
- * @param url - 要处理的URL字符串。
- * @param param - 要删除的参数名称或参数名称数组。
- * @returns 处理后的URL字符串。
+ * 获取用户的浏览器语言设置
+ * @returns 用户的浏览器语言设置
  */
-export function removeUrlParams(url: string, param: string | string[]) {
-  const urlObj = new URL(url)
-  const params = new URLSearchParams(urlObj.search)
-
-  const paramList = Array.isArray(param) ? param : [param]
-  for (const item of paramList) params.delete(item)
-  urlObj.search = params.toString()
-
-  return urlObj.toString()
-}
-
-export function userLanguage() {
+export function userLanguage(): string {
   return (
     navigator?.language ||
     (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) ||
@@ -176,18 +175,68 @@ export function userLanguage() {
   )
 }
 
-export function userLanguageIsChinese() {
-  return userLanguage().includes('zh')
+/**
+ * 检查用户语言是否为中文
+ * @returns 如果用户语言为中文则返回true，否则返回false
+ */
+export function isChineseLanguage(): boolean {
+  return userLanguage().startsWith('zh')
 }
 
-export function userLanguageIsChineseSimple() {
-  return userLanguage().includes('zh-CN')
+/**
+ * 检查用户语言是否为简体中文
+ * @returns 如果用户语言为简体中文则返回true，否则返回false
+ */
+export function isSimplifiedChinese(): boolean {
+  return userLanguage() === 'zh-CN' || userLanguage() === 'zh-Hans'
 }
 
-export function userLanguageIsChineseTradition() {
-  return userLanguage().includes('zh') && !userLanguage().includes('CN')
+/**
+ * 检查用户语言是否为繁体中文
+ * @returns 如果用户语言为繁体中文则返回true，否则返回false
+ */
+export function isTraditionalChinese(): boolean {
+  return isChineseLanguage() && !isSimplifiedChinese()
 }
 
-export function userLanguageIsEnglish() {
-  return userLanguage().includes('en')
+/**
+ * 检查用户语言是否为英语
+ * @returns 如果用户语言为英语则返回true，否则返回false
+ */
+export function isEnglishLanguage(): boolean {
+  return userLanguage().startsWith('en')
+}
+
+/**
+ * 将查询参数对象转换为URL查询字符串
+ * @param params 查询参数对象
+ * @returns URL查询字符串
+ */
+export function objectToQueryString(params: Record<string, any>): string {
+  return Object.entries(params)
+    .filter(([_, value]) => value !== undefined && value !== null)
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)
+    .join('&')
+}
+
+/**
+ * 解析URL查询字符串为对象
+ * @param queryString 查询字符串，可以包含前导?
+ * @returns 解析后的对象
+ */
+export function queryStringToObject(queryString: string): Record<string, string> {
+  if (!queryString) return {}
+
+  const normalizedQuery = queryString.startsWith('?') ? queryString.substring(1) : queryString
+
+  const result: Record<string, string> = {}
+
+  for (const pair of normalizedQuery.split('&')) {
+    const [key, value] = pair.split('=')
+    if (key) {
+      result[decodeURIComponent(key)] = decodeURIComponent(value || '')
+    }
+  }
+
+  return result
 }
