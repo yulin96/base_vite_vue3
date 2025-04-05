@@ -1,4 +1,4 @@
-import { isFromData } from '@/utils/common'
+import { isFormData } from '@/utils/common'
 import { formDataToObj } from '@/utils/convert'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 
@@ -16,7 +16,7 @@ const interceptor = (instance: AxiosInstance) => {
 
       const method = response.config.method?.toLowerCase()
       const data = method === 'post' ? response.config?.data : response.config?.params
-      requestBody.data = isFromData(data) ? formDataToObj(data) : data
+      requestBody.data = isFormData(data) ? formDataToObj(data) : data
 
       response.data._request = requestBody
 

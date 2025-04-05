@@ -1,5 +1,5 @@
-import { checkWebpFeature } from '@/utils/checkWebpFeature'
+import { supportsWebp } from '@/utils/check'
 
-checkWebpFeature((_, result) => {
-  if (result) document.documentElement.classList.add('webp')
-}, 'lossless')
+supportsWebp().then((support) => {
+  if (support) document.documentElement.classList.add('webp')
+})
