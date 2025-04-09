@@ -250,8 +250,8 @@ importers:
         specifier: ^0.0.6
         version: 0.0.6(@types/node@22.14.0)(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))
       vite-plugin-deploy-oss:
-        specifier: ^0.0.12
-        version: 0.0.12
+        specifier: ^0.0.14
+        version: 0.0.14
       vite-plugin-image-optimizer:
         specifier: ^1.1.8
         version: 1.1.8(vite@6.2.5(@types/node@22.14.0)(jiti@2.4.2)(lightningcss@1.29.2)(terser@5.39.0)(yaml@2.7.1))
@@ -4358,8 +4358,8 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
-  ufo@1.6.0:
-    resolution: {integrity: sha512-AkgU2cV/+Xb4Uz6cic0kMZbtM42nbltnGvTVOt/8gMCbO2/z64nE47TOygh7HjgFPkUkVRBEyNFqpqi3zo+BJA==}
+  ufo@1.6.1:
+    resolution: {integrity: sha512-9a4/uxlTWJ4+a5i0ooc1rU7C7YOw3wT+UGqdeNNHWnOF9qcMBgLRS+4IYUqbczewFx4mLEig6gawh7X6mFlEkA==}
 
   unctx@2.4.1:
     resolution: {integrity: sha512-AbaYw0Nm4mK4qjhns67C+kgxR2YWiwlDBPzxrN8h8C6VtAdCgditAY5Dezu3IJy4XVqAnbrXt9oQJvsn3fyozg==}
@@ -4482,8 +4482,8 @@ packages:
     peerDependencies:
       vite: ^6.0.3
 
-  vite-plugin-deploy-oss@0.0.12:
-    resolution: {integrity: sha512-x3AC4kiy+XuFRe9a0qH4DandIcSgza/HcoqcmW9QNHGwa/btpbKaPl/2U7byi503rHeTXFHDKOPz5rq/25iLig==}
+  vite-plugin-deploy-oss@0.0.14:
+    resolution: {integrity: sha512-/9MwA0AO2/Cz12VufQYc0lr7V6q4tIcHIVfTcrNCRct9w4trnKMO6NvFShhwMMPyRnMDcmWbg6WLJC3JW4r2zw==}
 
   vite-plugin-image-optimizer@1.1.8:
     resolution: {integrity: sha512-40bYRDHQLUOrIwJIJQqyKJHrfgVshqzDLtMy8SEgf+fB7PnppslSTTkY7PJFrBGqgbCdOdN9KkqsvccXmnEa5Q==}
@@ -6107,7 +6107,7 @@ snapshots:
       scule: 1.3.0
       semver: 7.7.1
       std-env: 3.9.0
-      ufo: 1.6.0
+      ufo: 1.6.1
       unctx: 2.4.1
       unimport: 4.2.0
       untyped: 2.0.0
@@ -7888,7 +7888,7 @@ snapshots:
       acorn: 8.14.1
       pathe: 2.0.3
       pkg-types: 1.3.1
-      ufo: 1.6.0
+      ufo: 1.6.1
 
   motion-dom@12.6.3:
     dependencies:
@@ -8895,7 +8895,7 @@ snapshots:
 
   typescript@5.7.3: {}
 
-  ufo@1.6.0: {}
+  ufo@1.6.1: {}
 
   unctx@2.4.1:
     dependencies:
@@ -9070,7 +9070,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  vite-plugin-deploy-oss@0.0.12:
+  vite-plugin-deploy-oss@0.0.14:
     dependencies:
       '@types/ali-oss': 6.16.11
       '@types/delete-empty': 3.0.5
