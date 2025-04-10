@@ -164,7 +164,7 @@ export default defineConfig(({ command }) => ({
           replace: true,
           minPixelValue: 1,
         }),
-        // postcsspxtoviewport8plugin({
+        // postcssPxToViewport({
         //   unitToConvert: 'px',
         //   viewportWidth: (file) => (~file.indexOf('node_modules/vant') ? 375 : 1920),
         //   unitPrecision: 5,
