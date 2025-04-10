@@ -5,7 +5,7 @@ import { toUrl } from '@/utils/global'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const { url, auto = false } = defineProps<{ url: string; auto?: false }>()
+const { url, auto = false } = defineProps<{ url: string; auto?: boolean }>()
 
 const show = ref(false)
 
@@ -25,12 +25,15 @@ router.beforeEach((to) => {
 })
 
 onMounted(async () => {
-  if (auto) {
-    const body = document.querySelector('body')
-    body && (body.style.display = 'none')
+  if (!(await getOpenId())) {
+    show.value = true
+    if (auto) {
+      const body = document.querySelector('body')
+      body && (body.style.display = 'none')
 
-    openLink()
-  } else if (!(await getOpenId())) show.value = true
+      openLink()
+    }
+  }
 })
 </script>
 
