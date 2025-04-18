@@ -41,10 +41,11 @@ onMounted(() => {
     <a-scene
       id="scene"
       class="hidden"
-      mindar-image="imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false; uiScanning: no;uiLoading:no;"
+      mindar-image="filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false; uiScanning: no;uiLoading:no;"
       vr-mode-ui="enabled: false"
       color-space="sRGB"
       device-orientation-permission-ui="enabled: false"
+      gesture-detector
     >
       <a-entity mindar-camera>
         <a-camera look-controls="enabled: false"> </a-camera>
@@ -60,11 +61,12 @@ onMounted(() => {
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
         <a-gltf-model
           rotation="0 0 0 "
-          position="0 0 0.1"
+          position="0 -0.5 0.1"
           scale="0.2 0.2 0.2"
           src="#avatarModel"
-          animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+          gesture-handler="minScale: 0.1; maxScale: 2"
         >
+          <!--   animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate" -->
         </a-gltf-model>
       </a-entity>
     </a-scene>
