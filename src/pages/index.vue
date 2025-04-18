@@ -53,7 +53,7 @@ onMounted(() => {
       <a-assets>
         <a-asset-item
           id="avatarModel"
-          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs4.glb"
+          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs6.glb"
         ></a-asset-item>
       </a-assets>
 
