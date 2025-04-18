@@ -63,6 +63,14 @@ onMounted(async () => {
     lastX = e.deltaX
     lastY = e.deltaY
   })
+
+  setInterval(() => {
+    const video = document.querySelector('.index video') as HTMLVideoElement
+    if (video) {
+      console.log('video', video)
+      video.play()
+    }
+  }, 1000)
 })
 </script>
 
