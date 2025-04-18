@@ -1,15 +1,13 @@
 <script setup lang="ts">
 import { usePromise } from '@/hooks/usePromise'
-import { onMounted, ref } from 'vue'
-
-const arReady = ref(false)
+import { nextTick, onMounted } from 'vue'
 
 let arSystem: any
 const [arSystemReady, completePromise] = usePromise<void>()
 
-onMounted(() => {
+onMounted(async () => {
+  await nextTick()
   const sceneEl = document.querySelector('a-scene') as any
-
   sceneEl.addEventListener('loaded', function () {
     sceneEl.classList.remove('hidden')
     console.log('MindAR loaded')
@@ -17,16 +15,12 @@ onMounted(() => {
     completePromise()
     arSystem.start()
   })
-
   sceneEl.addEventListener('arError', (event) => {
     console.log('MindAR failed to start')
   })
-
   sceneEl.addEventListener('arReady', (event) => {
     console.log('MindAR is ready')
-    arReady.value = true
   })
-
   document.querySelectorAll('.entity').forEach((entity) => {
     entity.addEventListener('targetFound', () => {
       console.log('targetFound')
@@ -42,14 +36,12 @@ onMounted(() => {
     <a-scene
       id="scene"
       class="hidden"
-      mindar-image="filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false; uiScanning: no;uiLoading:no;"
+      mindar-image="filterMinCF:0.0001; filterBeta: 0.001;imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false;"
       vr-mode-ui="enabled: false"
       color-space="sRGB"
       device-orientation-permission-ui="enabled: false"
     >
-      <a-entity mindar-camera>
-        <a-camera look-controls="enabled: false"> </a-camera>
-      </a-entity>
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-assets>
         <a-asset-item
@@ -67,7 +59,6 @@ onMounted(() => {
           gesture-handler="minScale: 0.1; maxScale: 2"
         >
         </a-gltf-model>
-        <!--   animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate" -->
       </a-entity>
     </a-scene>
   </section>
