@@ -46,16 +46,38 @@ onMounted(() => {
       color-space="sRGB"
       device-orientation-permission-ui="enabled: false"
     >
+      <a-entity mindar-camera>
+        <a-camera look-controls="enabled: false"></a-camera>
+      </a-entity>
+
+      <!-- <a-entity id="hud-camera">
+        <a-entity camera look-controls="enabled: false" position="0 0 0">
+          <a-box
+            position="0 0 -1"
+            width="0.3"
+            height="0.3"
+            depth="0.3"
+            color="#FF00FF"
+            material="depthTest: false; transparent: true; opacity: 1"
+          ></a-box>
+        </a-entity>
+      </a-entity> -->
       <a-assets>
         <a-asset-item
-          id="tree"
+          id="avatarModel"
           src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs.glb"
         ></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"> </a-camera>
-
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
+        <a-gltf-model
+          rotation="0 0 0 "
+          position="0 0 0.1"
+          scale="0.2 0.2 0.2"
+          src="#avatarModel"
+          animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
+        >
+        </a-gltf-model>
       </a-entity>
     </a-scene>
   </section>

@@ -3,6 +3,7 @@
 /// <reference types="unplugin-vue-router/client" />
 
 declare const WeixinJSBridge: any
+declare const AFRAME: any
 
 declare module 'https://oss.eventnet.cn/H5/zz/public/js/sentry-ignore.js' {
   export default [] as string[]
