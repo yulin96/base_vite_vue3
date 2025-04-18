@@ -67,7 +67,13 @@ export default defineConfig(({ command }) => ({
       dts: 'typings/typed-router.d.ts',
       importMode: 'sync',
     }),
-    vue({}),
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('a-'),
+        },
+      },
+    }),
     vueJsx(),
     Components({
       dirs: ['src/components'],
