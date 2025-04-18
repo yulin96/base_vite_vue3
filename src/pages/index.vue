@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { usePromise } from '@/hooks/usePromise'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
+
+const arReady = ref(false)
 
 let arSystem: any
 const [arSystemReady, completePromise] = usePromise<void>()
@@ -9,6 +11,7 @@ onMounted(() => {
   const sceneEl = document.querySelector('a-scene') as any
 
   sceneEl.addEventListener('loaded', function () {
+    sceneEl.classList.remove('hidden')
     console.log('MindAR loaded')
     arSystem = sceneEl.systems['mindar-image-system']
     completePromise()
@@ -21,6 +24,7 @@ onMounted(() => {
 
   sceneEl.addEventListener('arReady', (event) => {
     console.log('MindAR is ready')
+    arReady.value = true
   })
 
   document.querySelectorAll('.entity').forEach((entity) => {
@@ -49,12 +53,10 @@ onMounted(() => {
         ></a-asset-item>
       </a-assets>
 
-      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+      <a-camera position="0 0 0" look-controls="enabled: false"> </a-camera>
 
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
       </a-entity>
-
-      <a-entity gltf-model="#tree"></a-entity>
     </a-scene>
   </section>
 </template>
