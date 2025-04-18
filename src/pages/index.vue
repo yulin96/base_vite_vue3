@@ -48,24 +48,25 @@ onMounted(() => {
       device-orientation-permission-ui="enabled: false"
     >
       <a-entity mindar-camera>
-        <a-camera look-controls="enabled: false">
-          <a-entity
-            gltf-model="url(https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs6.glb)"
-            scale="0.5 0.5 0.5"
-            position="0 -0.5 -1"
-          ></a-entity>
-        </a-camera>
+        <a-camera look-controls="enabled: false"> </a-camera>
       </a-entity>
 
+      <a-assets>
+        <a-asset-item
+          id="avatarModel"
+          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs6.glb"
+        ></a-asset-item>
+      </a-assets>
+
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
-        <!-- <a-gltf-model
+        <a-gltf-model
           rotation="0 0 0 "
           position="0 -0.5 0.1"
           scale="0.2 0.2 0.2"
           src="#avatarModel"
           gesture-handler="minScale: 0.1; maxScale: 2"
         >
-        </a-gltf-model> -->
+        </a-gltf-model>
         <!--   animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate" -->
       </a-entity>
     </a-scene>
