@@ -41,7 +41,7 @@ onMounted(() => {
     <a-scene
       id="scene"
       class="hidden"
-      mindar-image="filterMinCF:0.0001; filterBeta: 0.001; imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false; uiScanning: no;uiLoading:no;"
+      mindar-image="imageTargetSrc:https://oss.eventnet.cn/H5/zz/test/7/tar.mind; autoStart:false; uiScanning: no;uiLoading:no;"
       vr-mode-ui="enabled: false"
       color-space="sRGB"
       device-orientation-permission-ui="enabled: false"
