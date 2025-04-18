@@ -42,10 +42,19 @@ onMounted(() => {
       color-space="sRGB"
       device-orientation-permission-ui="enabled: false"
     >
+      <a-assets>
+        <a-asset-item
+          id="tree"
+          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs.glb"
+        ></a-asset-item>
+      </a-assets>
+
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
       </a-entity>
+
+      <a-entity gltf-model="#tree"></a-entity>
     </a-scene>
   </section>
 </template>
