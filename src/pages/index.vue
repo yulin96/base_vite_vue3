@@ -47,13 +47,13 @@ onMounted(() => {
       device-orientation-permission-ui="enabled: false"
     >
       <a-entity mindar-camera>
-        <a-camera look-controls="enabled: false"></a-camera>
+        <a-camera look-controls="enabled: false"> </a-camera>
       </a-entity>
 
       <a-assets>
         <a-asset-item
           id="avatarModel"
-          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs.glb"
+          src="https://oss.eventnet.cn/H5/zz/auto2/a/8/xhs4.glb"
         ></a-asset-item>
       </a-assets>
 
