@@ -14,12 +14,17 @@ onMounted(async () => {
   sceneEl.addEventListener('loaded', function () {
     sceneEl.classList.remove('hidden')
     console.log('MindAR loaded')
-    arSystem = sceneEl.systems['mindar-image-system']
-    completePromise()
-    setTimeout(() => {
-      arSystem.start()
-      model = sceneEl.querySelector('a-gltf-model')
-    }, 1200)
+
+    try {
+      arSystem = sceneEl.systems['mindar-image-system']
+      completePromise()
+      setTimeout(() => {
+        arSystem.start()
+        model = sceneEl.querySelector('a-gltf-model')
+      }, 1200)
+    } catch (error) {
+      console.log(error)
+    }
   })
   sceneEl.addEventListener('arError', (event) => {
     console.log('MindAR failed to start')
@@ -97,5 +102,5 @@ onMounted(async () => {
 </template>
 
 <route lang="json">
-{ "meta": { "index": 10 } }
+{ "meta": { "index": 20 } }
 </route>
