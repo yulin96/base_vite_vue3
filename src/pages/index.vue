@@ -50,18 +50,6 @@ onMounted(() => {
         <a-camera look-controls="enabled: false"></a-camera>
       </a-entity>
 
-      <!-- <a-entity id="hud-camera">
-        <a-entity camera look-controls="enabled: false" position="0 0 0">
-          <a-box
-            position="0 0 -1"
-            width="0.3"
-            height="0.3"
-            depth="0.3"
-            color="#FF00FF"
-            material="depthTest: false; transparent: true; opacity: 1"
-          ></a-box>
-        </a-entity>
-      </a-entity> -->
       <a-assets>
         <a-asset-item
           id="avatarModel"
