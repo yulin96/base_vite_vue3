@@ -2,7 +2,6 @@ import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 
-import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -83,10 +82,6 @@ export default defineConfig(({ command }) => ({
       dts: './typings/components.d.ts',
       directoryAsNamespace: true,
     }),
-    legacy({
-      targets: ['defaults', 'ios >= 13', 'not IE 11'],
-      modernPolyfills: true,
-    }),
     vitePluginDeployOss({
       open: env.VITE_OSS_ROOT_DIR === 'H5/zz/auto2/' ? false : true,
       accessKeyId: process.env.zAccessKeyId || '',
@@ -141,13 +136,13 @@ export default defineConfig(({ command }) => ({
         index: path.resolve(__dirname, 'index.html'),
       },
       output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            for (const key in splitDependencies) {
-              if (id.includes(splitDependencies[key])) return `chunks/${key}`
-            }
-          }
-        },
+        // manualChunks(id) {
+        //   if (id.includes('node_modules')) {
+        //     for (const key in splitDependencies) {
+        //       if (id.includes(splitDependencies[key])) return `chunks/${key}`
+        //     }
+        //   }
+        // },
       },
     },
   },

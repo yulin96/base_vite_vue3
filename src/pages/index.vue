@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { usePromise } from '@/hooks/usePromise'
+import Hammer from 'hammerjs'
 import { nextTick, onMounted } from 'vue'
 
 let arSystem: any
 const [arSystemReady, completePromise] = usePromise<void>()
+let model: any
+let isTargetFound = false
 
 onMounted(async () => {
   await nextTick()
@@ -13,7 +16,10 @@ onMounted(async () => {
     console.log('MindAR loaded')
     arSystem = sceneEl.systems['mindar-image-system']
     completePromise()
-    arSystem.start()
+    setTimeout(() => {
+      arSystem.start()
+      model = sceneEl.querySelector('a-gltf-model')
+    }, 1200)
   })
   sceneEl.addEventListener('arError', (event) => {
     console.log('MindAR failed to start')
@@ -24,7 +30,33 @@ onMounted(async () => {
   document.querySelectorAll('.entity').forEach((entity) => {
     entity.addEventListener('targetFound', () => {
       console.log('targetFound')
+      isTargetFound = true
     })
+    entity.addEventListener('targetLost', () => {
+      console.log('targetLost')
+      isTargetFound = false
+    })
+  })
+
+  const index = document.querySelector('body')
+  const manager = new Hammer(index!)
+  let lastX = 0
+  let lastY = 0
+
+  manager.on('panstart', (e) => {
+    lastX = e.deltaX
+    lastY = e.deltaY
+  })
+
+  manager.on('panmove', (e) => {
+    const diffX = e.deltaX - lastX
+    if (model) {
+      const { x, y, z } = model.getAttribute('rotation')
+      model.setAttribute('rotation', { x: x, y: y + diffX * 1, z: z })
+    }
+
+    lastX = e.deltaX
+    lastY = e.deltaY
   })
 })
 </script>
@@ -52,7 +84,7 @@ onMounted(async () => {
 
       <a-entity class="entity entity1" mindar-image-target="targetIndex: 0" data-card="1号">
         <a-gltf-model
-          rotation="0 0 0 "
+          rotation="0 0 0"
           position="0 -0.5 0.1"
           scale="0.2 0.2 0.2"
           src="#avatarModel"
