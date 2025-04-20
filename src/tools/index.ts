@@ -1,4 +1,5 @@
 import router from '@/router'
+import { debounce } from 'es-toolkit'
 import type { RouteNamedMap } from 'vue-router/auto-routes'
 
 /**
@@ -26,4 +27,8 @@ export function routerTo<T extends keyof RouteNamedMap>(
     console.error('路由导航失败:', error)
     return Promise.reject(error)
   }
+}
+
+export const debounceLeading = <F extends (...args: any[]) => void>(fn: F, time = 600) => {
+  return debounce(fn, time, { edges: ['leading'] })
 }
