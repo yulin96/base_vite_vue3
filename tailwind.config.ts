@@ -149,6 +149,11 @@ export default {
           'background-repeat': 'no-repeat',
           'background-position': 'bottom',
         },
+        '.back-full': {
+          'background-size': '100% 100%',
+          'background-repeat': 'no-repeat',
+          'background-position': 'center',
+        },
         '.expand': {
           position: 'relative',
           '&::before': {
