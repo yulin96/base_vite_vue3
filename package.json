@@ -74,7 +74,6 @@
     "@types/node": "^22.15.2",
     "@types/nprogress": "^0.2.3",
     "@types/qrcode": "^1.5.5",
-    "@vitejs/plugin-legacy": "^6.1.0",
     "@vitejs/plugin-vue": "^5.2.3",
     "@vitejs/plugin-vue-jsx": "^4.1.2",
     "@vue/eslint-config-prettier": "^10.2.0",
