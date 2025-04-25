@@ -1,32 +1,26 @@
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import {
+  configureVueProject,
+  defineConfigWithVueTs,
+  vueTsConfigs,
+} from '@vue/eslint-config-typescript'
 import pluginVue from 'eslint-plugin-vue'
+import { globalIgnores } from 'eslint/config'
+
+// 是否解析 Vue 模板中的 TypeScript 语法，设置为 false可能会提高性能。
+configureVueProject({ tsSyntaxInTemplates: true })
 
 export default defineConfigWithVueTs(
   {
     name: 'app/files-to-lint',
-    files: ['**/*.{js,ts,mts,jsx,tsx,vue}'],
+    files: ['**/*.{ts,mts,tsx,vue}'],
   },
 
-  {
-    name: 'app/files-to-ignore',
-    ignores: [
-      '**/dist/**',
-      '**/dist-ssr/**',
-      '**/coverage/**',
-      '**/node_modules/**',
-      '**/.git/**',
-      '**/public/**',
-      '**/*.min.js',
-      '**/vendor/**',
-      '**/build/**',
-    ],
-  },
+  globalIgnores(['**/dist/**', '**/dist-ssr/**', '**/coverage/**']),
 
   pluginVue.configs['flat/recommended'],
   vueTsConfigs.recommended,
   skipFormatting,
-
   {
     rules: {
       'no-debugger': 0,
