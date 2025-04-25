@@ -62,6 +62,8 @@ export default defineConfig(({ command }) => ({
         adaptiveFiltering: true,
         dither: 0.6,
       },
+      cache: true,
+      cacheLocation: 'node_modules/.cache-image/',
     }),
     VueRouter({
       dts: 'typings/typed-router.d.ts',
