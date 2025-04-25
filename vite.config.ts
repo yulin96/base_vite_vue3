@@ -2,7 +2,6 @@ import path from 'node:path'
 import { fileURLToPath, URL } from 'node:url'
 import { defineConfig, loadEnv } from 'vite'
 
-import legacy from '@vitejs/plugin-legacy'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -78,10 +77,6 @@ export default defineConfig(({ command }) => ({
       resolvers: [VantResolver()],
       dts: './typings/components.d.ts',
       directoryAsNamespace: true,
-    }),
-    legacy({
-      targets: ['defaults', 'ios >= 13', 'not IE 11'],
-      modernPolyfills: true,
     }),
     vitePluginDeployOss({
       open: env.VITE_OSS_ROOT_DIR === 'H5/zz/auto2/' ? false : true,
