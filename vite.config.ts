@@ -16,6 +16,7 @@ import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 
 import pxtorem from '@minko-fe/postcss-pxtorem'
+import { vanillaExtractPlugin } from '@vanilla-extract/vite-plugin'
 import postcssPresetEnv from 'postcss-preset-env'
 import tailwindcss from 'tailwindcss'
 
@@ -40,6 +41,7 @@ export default defineConfig(({ command }) => ({
       },
       closeBundle() {},
     },
+
     vitePluginMetaShare({
       enable: true,
       title: env.VITE_APP_SHARE_TITLE,
@@ -69,6 +71,7 @@ export default defineConfig(({ command }) => ({
       importMode: 'async',
     }),
     vue({}),
+    vanillaExtractPlugin(),
     vueJsx(),
     Components({
       dirs: ['src/components'],
