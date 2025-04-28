@@ -31,18 +31,3 @@ interface Window {
   Zoomist: any
   IMG_RESOURCES: string[]
 }
-
-type RouteTransitionName =
-  | 'fade'
-  | 'blur'
-  | 'zoom'
-  | 'slide'
-  | 'flip-y'
-  | 'collapse-y'
-  | 'diagonally-fade-out'
-  | 'left-fly-out'
-  | 'slide-page'
-  | 'slide-cover'
-  | (string & {})
-
-type IFormDataOrJSON = 'FormData' | 'JSON'
