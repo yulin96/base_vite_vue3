@@ -1,3 +1,4 @@
+import '@/assets/css/pc.css'
 import { createQRCode, removeQRCode } from '@/tools/init/createQRCode'
 import { isMobile } from '@/utils/uaParser'
 import { debounce } from 'es-toolkit'

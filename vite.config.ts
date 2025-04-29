@@ -127,6 +127,7 @@ export default defineConfig(({ command }) => ({
     assetsInlineLimit: 10240,
     assetsDir: 'assets',
     chunkSizeWarningLimit: 1000,
+    cssCodeSplit: false,
     rollupOptions: {
       input: {
         index: path.resolve(__dirname, 'index.html'),
