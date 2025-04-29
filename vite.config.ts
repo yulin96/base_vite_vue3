@@ -11,13 +11,13 @@ import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import vitePluginMetaShare from 'vite-plugin-meta-share'
 import vitePluginOrganize from 'vite-plugin-organize-resource'
 
+import tailwindcss from '@tailwindcss/vite'
 import { VantResolver } from '@vant/auto-import-resolver'
 import Components from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 
 import pxtorem from '@minko-fe/postcss-pxtorem'
 import postcssPresetEnv from 'postcss-preset-env'
-import tailwindcss from 'tailwindcss'
 
 const splitDependencies: Record<string, string> = {
   gsap: 'gsap',
@@ -70,6 +70,7 @@ export default defineConfig(({ command }) => ({
     }),
     vue({}),
     vueJsx(),
+    tailwindcss(),
     Components({
       dirs: ['src/components'],
       extensions: ['vue'],
@@ -151,9 +152,12 @@ export default defineConfig(({ command }) => ({
   css: {
     postcss: {
       plugins: [
-        tailwindcss,
         postcssPresetEnv({
           browsers: ['ios >= 13', 'chrome >= 64'],
+          autoprefixer: {},
+          features: {
+            'cascade-layers': false,
+          },
         }),
         pxtorem({
           rootValue: ({ file }: any) => (~file.indexOf('node_modules/vant') ? 5 : 10),

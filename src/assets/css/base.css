@@ -56,7 +56,7 @@ audio,
 iframe,
 embed,
 object {
-  max-width: none;
+  max-width: inherit;
   display: unset;
 }
 
