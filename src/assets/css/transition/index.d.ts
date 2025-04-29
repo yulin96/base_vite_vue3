@@ -1,0 +1,12 @@
+type RouteTransitionName =
+  | 'fade'
+  | 'blur'
+  | 'zoom'
+  | 'slide'
+  | 'flip-y'
+  | 'collapse-y'
+  | 'diagonally-fade-out'
+  | 'left-fly-out'
+  | 'slide-page'
+  | 'slide-cover'
+  | (string & {})

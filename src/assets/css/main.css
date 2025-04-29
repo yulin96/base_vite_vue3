@@ -7,6 +7,7 @@
 @import './plugin/sonner.css';
 @import './snippet.css';
 @import './pc.css';
+@import './plugin/popup.css';
 
 #app {
   -webkit-font-smoothing: antialiased;
