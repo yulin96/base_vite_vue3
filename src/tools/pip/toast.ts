@@ -2,6 +2,9 @@ import { useLoading } from '@/hooks/useLoading'
 import type { ToastOptions } from 'vant'
 import { setToastDefaultOptions, showToast as toast } from 'vant'
 import 'vant/es/toast/style'
+import fail from './toast-icon/fail.svg'
+import info from './toast-icon/info.svg'
+import success from './toast-icon/success.svg'
 
 setToastDefaultOptions({
   forbidClick: true,
@@ -15,13 +18,10 @@ setToastDefaultOptions({
 })
 setToastDefaultOptions('loading', { duration: 0, loadingType: 'spinner' })
 
-const { start } = useLoading([
-  'https://oss.eventnet.cn/H5/zz/public/svg/success.svg',
-  'https://oss.eventnet.cn/H5/zz/public/svg/info.svg',
-  'https://oss.eventnet.cn/H5/zz/public/svg/fail.svg',
-])
-
+const { start } = useLoading([success, info, fail])
 start()
+
+const statusMap = { success, info, fail }
 
 export function showMyToast(
   option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string,
@@ -29,7 +29,7 @@ export function showMyToast(
   if (typeof option === 'string') return toast(option)
 
   const _message = option?.status
-    ? `<img style="height: 20px;margin-right:6px;" src="https://oss.eventnet.cn/H5/zz/public/svg/${option.status}.svg" /><p>${option?.message || ''}</p>`
+    ? `<img style="height: 20px;margin-right:6px;" src="${statusMap[option.status]}" /><p>${option?.message || ''}</p>`
     : option?.message || ''
 
   return toast({ ...option, message: _message, type: 'html' })
