@@ -164,7 +164,7 @@ export default defineConfig(({ command }) => ({
           propList: ['*'],
           selectorBlackList: ['.ignore', 'pc'],
           replace: true,
-          minPixelValue: 1,
+          minPixelValue: 0,
         }),
         // postcssPxToViewport({
         //   unitToConvert: 'px',
