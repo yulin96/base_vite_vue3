@@ -1,16 +1,17 @@
-import _gsap from 'gsap'
-import { MotionPathPlugin } from 'gsap/MotionPathPlugin'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { TextPlugin } from 'gsap/TextPlugin'
+import { gsap } from 'gsap'
 
-_gsap.registerPlugin(MotionPathPlugin)
-_gsap.registerPlugin(TextPlugin)
-_gsap.registerPlugin(ScrollTrigger)
+// import './gsap-register/drawSVGPlugin'
+// import './gsap-register/motionPathPlugin'
+// import './gsap-register/scrambleTextPlugin'
+// import './gsap-register/scrollSmoother'
+// import './gsap-register/scrollTrigger'
+// import './gsap-register/splitText'
 
-_gsap.config({ force3D: true })
-_gsap.defaults({
+gsap.config({ force3D: true })
+gsap.defaults({
   duration: 0.36,
   ease: 'power1.out',
+  overwrite: 'auto',
 })
 
-export const gsap = _gsap
+export default gsap
