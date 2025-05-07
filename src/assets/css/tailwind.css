@@ -9,6 +9,8 @@
 @theme {
   --spacing: 1px;
 
+  --radius-full: 9999px;
+
   --color-placeholder: #a3a9b5;
 
   --animate-spin-slow: spin 4s linear infinite;
