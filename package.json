@@ -48,7 +48,7 @@
     "motion": "^12.10.5",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.2",
-    "pinia-plugin-persistedstate": "^4.2.0",
+    "pinia-plugin-persistedstate": "^4.3.0",
     "postcss-px-to-viewport-8-plugin": "^1.2.5",
     "qrcode": "^1.5.4",
     "rough-notation": "^0.5.1",
