@@ -20,7 +20,7 @@ function setRem() {
 
     if (app) {
       app.classList.add('pc')
-      createQRCode(app)
+      innerWidth >= 1000 && createQRCode(app)
     }
   } else {
     const app = document.querySelector('#app') as HTMLDivElement
