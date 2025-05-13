@@ -1,6 +1,6 @@
+import gsap from '@/tools/pip/gsap'
 import { useDocumentVisibility } from '@vueuse/core'
 import { random, randomInt, sample } from 'es-toolkit'
-import { animate, cubicBezier } from 'motion'
 
 export function createStars(starsBox: HTMLDivElement) {
   const style = window.getComputedStyle(starsBox)
@@ -37,26 +37,28 @@ async function createStar(starsBox: HTMLDivElement) {
 
   starsBox.appendChild(star)
 
-  await animate(
-    star,
-    { opacity: randomTwoFloat(0.8, 1), scale: randomTwoFloat(1, 2) },
-    {
-      duration: randomTwoFloat(2, 4),
-      repeat: 1,
-      repeatType: 'reverse',
-      ease: randomCubicBezier(),
-      repeatDelay: randomTwoFloat(0.6, 1),
+  await gsap.to(star, {
+    opacity: randomTwoFloat(0.8, 1),
+    scale: randomTwoFloat(1, 2),
+    duration: randomTwoFloat(2, 4),
+    repeat: 1,
+    yoyo: true,
+    ease: randomCubicBezier(),
+    repeatDelay: randomTwoFloat(0.6, 1),
+    onComplete: () => {
+      if (starsBox && star.parentNode === starsBox) {
+        starsBox.removeChild(star)
+      }
     },
-  )
-  starsBox.removeChild(star)
+  })
 
   function randomCubicBezier() {
     return sample([
-      cubicBezier(0.33, 0.75, 0.19, 1),
-      cubicBezier(0.62, 0.68, 0.67, 0.99),
-      cubicBezier(0.09, 0.67, 0.06, 0.98),
-      cubicBezier(0.42, 0.81, 0.72, 1.13),
-      cubicBezier(0.71, 0.47, 0.45, 0.98),
+      'cubic-bezier(0.33, 0.75, 0.19, 1)',
+      'cubic-bezier(0.62, 0.68, 0.67, 0.99)',
+      'cubic-bezier(0.09, 0.67, 0.06, 0.98)',
+      'cubic-bezier(0.42, 0.81, 0.72, 1.13)',
+      'cubic-bezier(0.71, 0.47, 0.45, 0.98)',
     ])
   }
 
