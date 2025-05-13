@@ -20,7 +20,7 @@ function setRem() {
 
     if (app) {
       app.classList.add('pc')
-      innerWidth >= 1000 && createQRCode(app)
+      innerWidth >= 1000 ? createQRCode(app) : removeQRCode()
     }
   } else {
     const app = document.querySelector('#app') as HTMLDivElement
