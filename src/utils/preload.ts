@@ -118,11 +118,7 @@ export function preloadVideo(url: string, options: PreloadOptions = {}): Promise
  * @param options 预加载选项
  * @returns Promise<FontFace>
  */
-export function preloadFont(
-  fontFamily: string,
-  url: string,
-  options: PreloadOptions = {},
-): Promise<FontFace> {
+export function preloadFont(fontFamily: string, url: string, options: PreloadOptions = {}): Promise<FontFace> {
   return new Promise((resolve, reject) => {
     // 检查FontFace API是否可用
     if (!('FontFace' in window)) {
@@ -212,10 +208,7 @@ export function preloadAudio(url: string, options: PreloadOptions = {}): Promise
  * @param options 预加载选项
  * @returns Promise<PreloadResult>
  */
-export async function preloadResources(
-  items: PreloadItem[],
-  options: PreloadOptions = {},
-): Promise<PreloadResult> {
+export async function preloadResources(items: PreloadItem[], options: PreloadOptions = {}): Promise<PreloadResult> {
   const timeout = options.timeout ?? 30000 // 默认30秒超时
   const total = items.length
   let loaded = 0

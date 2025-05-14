@@ -27,10 +27,7 @@ export function trimAll(str: string): string {
 export function randomString(prefix = 'z', len = 16): string {
   const seed = 'abcdefghijklmnopqrstuvwxyz1234567890'
   const timestamp = new Date().getTime()
-  const randomChars = Array.from(
-    { length: len },
-    () => seed[Math.floor(Math.random() * seed.length)],
-  ).join('')
+  const randomChars = Array.from({ length: len }, () => seed[Math.floor(Math.random() * seed.length)]).join('')
 
   return `${prefix}_${timestamp}_${randomChars}`
 }
@@ -115,10 +112,7 @@ export function isFormData(formData: unknown): formData is FormData {
  * @param element 要滚动的元素
  * @param options 滚动选项
  */
-export function scrollToTop(
-  element: Element,
-  options: ScrollToOptions = { behavior: 'smooth' },
-): void {
+export function scrollToTop(element: Element, options: ScrollToOptions = { behavior: 'smooth' }): void {
   if (!(element instanceof Element)) {
     throw new Error('参数必须是 Element 类型')
   }
@@ -168,11 +162,7 @@ export function removeUrlParams(url: string, params: string | string[]): string 
  * @returns 用户的浏览器语言设置
  */
 export function userLanguage(): string {
-  return (
-    navigator?.language ||
-    (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) ||
-    'zh-CN'
-  )
+  return navigator?.language || (Array.isArray(navigator?.languages) && navigator?.languages?.[0]) || 'zh-CN'
 }
 
 /**

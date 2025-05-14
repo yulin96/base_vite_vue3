@@ -12,9 +12,7 @@ const show = ref(false)
 const openLink = () => {
   if (!url) return console.error('url is required')
 
-  toUrl(
-    `https://wechat.event1.cn/api/getCode?name=hudongweipingtai&action=${auto ? 2 : 1}&cUrl=${url}`,
-  )
+  toUrl(`https://wechat.event1.cn/api/getCode?name=hudongweipingtai&action=${auto ? 2 : 1}&cUrl=${url}`)
 }
 
 const router = useRouter()
@@ -45,7 +43,7 @@ onMounted(async () => {
     :overlay-class="'bg-black/30 backdrop-blur-md'"
     class="center bg-transparent"
   >
-    <div class="flex w-[600px] flex-col items-center justify-center rounded-10 bg-white py-[60px]">
+    <div class="rounded-10 flex w-[600px] flex-col items-center justify-center bg-white py-[60px]">
       <p class="mb-[40px] text-[32px]">您还没有登录</p>
       <p class="mb-[40px] text-[32px]">点击微信一键登录参与活动</p>
       <button

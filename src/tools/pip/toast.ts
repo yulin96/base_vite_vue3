@@ -23,9 +23,7 @@ start()
 
 const statusMap = { success, info, fail }
 
-export function showMyToast(
-  option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string,
-) {
+export function showMyToast(option: (ToastOptions & { status?: 'success' | 'info' | 'fail' }) | string) {
   if (typeof option === 'string') return toast(option)
 
   const _message = option?.status

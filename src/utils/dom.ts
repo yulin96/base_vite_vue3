@@ -55,10 +55,7 @@ export function detectionElements(num = 10): Set<Element> {
  * @param options - 加载选项
  * @returns Promise 对象，解析为 void
  */
-export function loadScript(
-  url: string,
-  options: { async?: boolean; defer?: boolean } = {},
-): Promise<void> {
+export function loadScript(url: string, options: { async?: boolean; defer?: boolean } = {}): Promise<void> {
   const { async = true, defer = false } = options
 
   return new Promise((resolve, reject) => {
@@ -119,10 +116,7 @@ export function getElementViewportPosition(element: Element): DOMRect {
  * @param options - 配置选项
  * @returns 如果元素在视口中可见则返回 true，否则返回 false
  */
-export function isElementInViewport(
-  element: Element,
-  options: { threshold?: number } = {},
-): boolean {
+export function isElementInViewport(element: Element, options: { threshold?: number } = {}): boolean {
   const { threshold = 0 } = options
   const rect = element.getBoundingClientRect()
 

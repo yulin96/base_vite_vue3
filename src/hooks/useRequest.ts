@@ -20,8 +20,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
     config?: AxiosRequestConfig<any>,
     dataType?: IFormDataOrJSON,
   ): Promise<never> => {
-    if (status.value && !disableLock)
-      return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
+    if (status.value && !disableLock) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
     showProgress && nprogress?.start()
     lock()
@@ -63,8 +62,7 @@ export function useRequest(disableLock = false, showProgress = false, delay = 50
     config?: AxiosRequestConfig<any>,
     data?: Record<string, any>,
   ): Promise<never> => {
-    if (status.value && !disableLock)
-      return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
+    if (status.value && !disableLock) return Promise.reject({ code: -9996, error: '请求正在进行中，请稍后再试' })
 
     showProgress && nprogress?.start()
     lock()

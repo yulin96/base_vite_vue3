@@ -87,9 +87,7 @@ export default class FrameAnimation {
 
     if (loop) this.fromTo = [loopStartIndex, loopEndIndex - 1]
 
-    const imgList = Array.from({ length: maxLength }, (_, i) =>
-      loadImg(`${urlPrefix}${i + 1}${urlSuffix}`),
-    )
+    const imgList = Array.from({ length: maxLength }, (_, i) => loadImg(`${urlPrefix}${i + 1}${urlSuffix}`))
     let index = 0
     for await (const img of imgList) {
       this.imgList.push(img)
@@ -114,9 +112,7 @@ export default class FrameAnimation {
     const frame = (time: number) => {
       if (!this.playing) return
       const interval =
-        this.cycles === 0
-          ? _fps
-          : (_fps / (this.fromTo![1] + 1 - this.fromTo![0])) * this.option.maxLength
+        this.cycles === 0 ? _fps : (_fps / (this.fromTo![1] + 1 - this.fromTo![0])) * this.option.maxLength
       if (time - lastTime >= interval) {
         this.animationCtx.clearRect(...this.path)
         this.animationCtx.drawImage(this.imgList[this.currentIndex], ...this.path)

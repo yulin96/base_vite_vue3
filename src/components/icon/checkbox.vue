@@ -4,7 +4,7 @@ defineProps<{ checked?: boolean; color?: string }>()
 
 <template>
   <div
-    class="size-90 overflow-hidden rounded-12 border-[0.5rem] border-current transition-all duration-150 ease-in-out"
+    class="rounded-12 size-90 overflow-hidden border-[0.5rem] border-current transition-all duration-150 ease-in-out"
     :class="[checked ? 'bg-current' : 'bg-transparent']"
   >
     <svg

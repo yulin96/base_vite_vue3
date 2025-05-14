@@ -82,9 +82,9 @@ onUnmounted(() => {
     <div
       class="fixed z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="{
-        'right-50 top-50': position === 'top-right',
-        'left-50 top-50': position === 'top-left',
-        'bottom-50 right-50': position === 'bottom-right',
+        'top-50 right-50': position === 'top-right',
+        'top-50 left-50': position === 'top-left',
+        'right-50 bottom-50': position === 'bottom-right',
         'bottom-50 left-50': position === 'bottom-left',
         invert: invert,
       }"
@@ -100,7 +100,7 @@ onUnmounted(() => {
       ></audio>
       <img
         ref="playIconRef"
-        class="size-[40px] animate-spin-slow cursor-pointer"
+        class="animate-spin-slow size-[40px] cursor-pointer"
         :class="{
           'animation-running': isPlay,
           'animation-paused': !isPlay,

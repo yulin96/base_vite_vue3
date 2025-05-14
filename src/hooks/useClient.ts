@@ -20,11 +20,7 @@ declare global {
  * @param sub 订阅频道
  * @returns 包含接收数据的响应式引用
  */
-export const useClient = <T = any>(
-  subScribes: Array<string> | string,
-  pub: string,
-  sub: string,
-) => {
+export const useClient = <T = any>(subScribes: Array<string> | string, pub: string, sub: string) => {
   const subIsString = typeof subScribes === 'string'
   const data = shallowRef<T>()
 

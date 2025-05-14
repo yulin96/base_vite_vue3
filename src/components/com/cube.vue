@@ -3,7 +3,7 @@ const { play = false } = defineProps<{ play?: boolean }>()
 </script>
 
 <template>
-  <div class="perspective-distant mx-auto mt-[90px] size-[200px]">
+  <div class="mx-auto mt-[90px] size-[200px] perspective-distant">
     <div
       class="relative size-[200px] transform-3d *:absolute *:size-[200px] *:bg-cover"
       :class="[play ? 'animate-rotate-cube' : '']"

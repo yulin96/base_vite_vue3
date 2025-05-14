@@ -34,11 +34,7 @@ const createBubbles = async () => {
     let position: number | undefined
     while (!position || bubbles.has(position)) {
       position = sample(
-        range(
-          12,
-          buttonRef.value!.clientWidth! - 12,
-          Math.floor(buttonRef.value!.clientWidth / count / 2),
-        ),
+        range(12, buttonRef.value!.clientWidth! - 12, Math.floor(buttonRef.value!.clientWidth / count / 2)),
       )
     }
 
@@ -72,7 +68,7 @@ onMounted(() => {
   <div class="button center relative z-0 overflow-hidden">
     <div
       ref="buttonRef"
-      class="pointer-events-none absolute left-0 top-0 -z-10 flex h-full w-full items-center justify-evenly"
+      class="pointer-events-none absolute top-0 left-0 -z-10 flex h-full w-full items-center justify-evenly"
     ></div>
     <slot></slot>
   </div>

@@ -8,11 +8,7 @@ import { onMounted, useTemplateRef } from 'vue'
 const uuid = randomString()
 const uuid2 = randomString()
 
-const {
-  gap = 20,
-  speed = 90,
-  barrageList,
-} = defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>()
+const { gap = 20, speed = 90, barrageList } = defineProps<{ barrageList: Array<any>; gap?: number; speed?: number }>()
 
 const currentId = defineModel<number>({ required: true })
 
@@ -78,9 +74,7 @@ async function createBarrage({
     { background: '#E88823', foreground: '#fff' },
     { background: '#FFFF48', foreground: '#333' },
   ]
-  const { background, foreground } = params.pin
-    ? { background: '#493D9E', foreground: '#fff' }
-    : sample(colors)
+  const { background, foreground } = params.pin ? { background: '#493D9E', foreground: '#fff' } : sample(colors)
   barrage.style.backgroundColor = background
   barrage.style.color = foreground
   if (params.pin) {

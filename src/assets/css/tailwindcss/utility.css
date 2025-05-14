@@ -67,8 +67,7 @@
   }
 
   color: transparent;
-  background: linear-gradient(45deg, #ffffff00 30%, #ffffffe6, #ffffff00 70%) -100% / 50% no-repeat
-    --value([ *]);
+  background: linear-gradient(45deg, #ffffff00 30%, #ffffffe6, #ffffff00 70%) -100% / 50% no-repeat --value([ *]);
   background-clip: text;
   animation: shark-text var(--time, 2s) infinite paused;
 }

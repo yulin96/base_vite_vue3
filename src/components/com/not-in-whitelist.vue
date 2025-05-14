@@ -14,13 +14,9 @@ defineProps<{ title?: string }>()
           class="absolute -top-[100px] w-[203px]"
           src="https://oss.eventnet.cn/H5/zz/public/tips/whitelist/icon.png"
         />
+        <div class="-mt-[60px] indent-[4px] text-[50px] font-semibold tracking-[4px] text-[#c42420]">温馨提示</div>
         <div
-          class="-mt-[60px] indent-[4px] text-[50px] font-semibold tracking-[4px] text-[#c42420]"
-        >
-          温馨提示
-        </div>
-        <div
-          class="mt-[40px] min-h-[120px] w-full whitespace-pre-line px-[20px] text-center indent-[1px] text-30 leading-[1.7] tracking-[1px]"
+          class="text-30 mt-[40px] min-h-[120px] w-full px-[20px] text-center indent-[1px] leading-[1.7] tracking-[1px] whitespace-pre-line"
         >
           {{ title ?? '您输入的信息不在邀请名单中\n请重新输入或联系邀约人' }}
         </div>

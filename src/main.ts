@@ -15,10 +15,7 @@ import router from './router'
 
 import '@/assets/css/main.css'
 
-window.document.documentElement.style.setProperty(
-  '--main-color',
-  import.meta.env.VITE_APP_MAIN_COLOR,
-)
+window.document.documentElement.style.setProperty('--main-color', import.meta.env.VITE_APP_MAIN_COLOR)
 
 const app = createApp(App)
 

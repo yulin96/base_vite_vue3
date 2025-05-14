@@ -2,8 +2,7 @@ import { removeUrlParams } from '@/utils/common'
 import QRCode from 'qrcode'
 
 export function createQRCode(app: HTMLDivElement) {
-  if (document.querySelector('.code-tips.pc'))
-    document.body.removeChild(document.querySelector('.code-tips.pc')!)
+  if (document.querySelector('.code-tips.pc')) document.body.removeChild(document.querySelector('.code-tips.pc')!)
 
   const pageURL = location.href.replace('pc.html', 'index.html')
   const clearedUrl = removeUrlParams(pageURL, 't').split('#')[0]

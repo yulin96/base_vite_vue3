@@ -266,10 +266,7 @@ export function toVw(text: string, screenSize = 750): string {
  * @param screenSize 屏幕宽度基准值，默认为 750px
  * @returns 转换后的 Vant 组件库主题配置对象
  */
-export function convertConfigToPx(
-  config?: ConfigProviderThemeVars,
-  screenSize = 750,
-): ConfigProviderThemeVars {
+export function convertConfigToPx(config?: ConfigProviderThemeVars, screenSize = 750): ConfigProviderThemeVars {
   if (!config) return {}
 
   const result: ConfigProviderThemeVars = {}
@@ -346,7 +343,7 @@ export function deepClone<T>(obj: T, maxDepth = 100, visited = new WeakMap()): T
   }
 
   // 标记当前对象为已访问
-  const cloned = Array.isArray(obj) ? [] : {} as any
+  const cloned = Array.isArray(obj) ? [] : ({} as any)
   visited.set(obj, cloned)
 
   // 处理日期
@@ -398,10 +395,7 @@ export function deepClone<T>(obj: T, maxDepth = 100, visited = new WeakMap()): T
  * @param mimeType MIME 类型，默认为 'application/octet-stream'
  * @returns Blob 对象
  */
-export function arrayBufferToBlob(
-  buffer: ArrayBuffer,
-  mimeType = 'application/octet-stream',
-): Blob {
+export function arrayBufferToBlob(buffer: ArrayBuffer, mimeType = 'application/octet-stream'): Blob {
   return new Blob([buffer], { type: mimeType })
 }
 

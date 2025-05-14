@@ -3,10 +3,7 @@ defineProps<{ color: string }>()
 </script>
 
 <template>
-  <div
-    class="center rounded-full p-0 indent-2 font-semibold tracking-2"
-    :style="{ backgroundColor: color }"
-  >
+  <div class="center tracking-2 rounded-full p-0 indent-2 font-semibold" :style="{ backgroundColor: color }">
     <div class="conic center h-full w-full rounded-full">
       <slot />
     </div>
