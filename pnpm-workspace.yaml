@@ -1,6 +1,5 @@
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
-  - '@tsparticles/engine'
   - esbuild
   - sharp
   - vue-demi
