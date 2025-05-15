@@ -52,9 +52,20 @@ export function useTransform(options: TransformOptions) {
   const handleWheel = (e: WheelEvent) => {
     e.preventDefault()
 
-    // 根据未缩放的图像计算鼠标位置
-    const mouseXInElement = (e.clientX - positionMark.x) / scaleMark
-    const mouseYInElement = (e.clientY - positionMark.y) / scaleMark
+    // 确保元素和容器元素都存在
+    if (!moveElement.value || !containerElement) return
+
+    // 获取容器的边界矩形
+    const containerRect = containerElement.getBoundingClientRect()
+
+    // 计算鼠标相对于容器的位置
+    const mouseXInContainer = e.clientX - containerRect.left
+    const mouseYInContainer = e.clientY - containerRect.top
+
+    // 计算鼠标在元素原始坐标系中的位置
+    // 将鼠标位置从容器坐标系转换到未缩放的元素坐标系
+    const mouseXInElement = (mouseXInContainer - positionMark.x) / scaleMark
+    const mouseYInElement = (mouseYInContainer - positionMark.y) / scaleMark
 
     // 确定缩放因子 - 根据需要调整灵敏度
     const zoomIntensity = 0.1
@@ -68,8 +79,9 @@ export function useTransform(options: TransformOptions) {
     }
 
     // 计算新位置以保持鼠标下方的点静止
-    const newX = e.clientX - mouseXInElement * newScale
-    const newY = e.clientY - mouseYInElement * newScale
+    // 公式：新位置 = 鼠标位置 - 元素中鼠标位置 * 新缩放比例
+    const newX = mouseXInContainer - mouseXInElement * newScale
+    const newY = mouseYInContainer - mouseYInElement * newScale
 
     scaleMark = newScale
     positionMark = getBoundedPosition(newX, newY)
