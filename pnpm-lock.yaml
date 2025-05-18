@@ -247,8 +247,8 @@ importers:
         specifier: ^6.3.5
         version: 6.3.5(@types/node@22.15.18)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.2)(yaml@2.8.0)
       vite-plugin-deploy-ftp:
-        specifier: ^0.0.7
-        version: 0.0.7(@types/node@22.15.18)(vite@6.3.5(@types/node@22.15.18)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.2)(yaml@2.8.0))
+        specifier: ^0.0.8
+        version: 0.0.8(@types/node@22.15.18)(vite@6.3.5(@types/node@22.15.18)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.2)(yaml@2.8.0))
       vite-plugin-deploy-oss:
         specifier: ^0.0.14
         version: 0.0.14
@@ -3911,8 +3911,8 @@ packages:
     peerDependencies:
       vue: ^3.0.0
 
-  vite-plugin-deploy-ftp@0.0.7:
-    resolution: {integrity: sha512-ZgIV+vn34nXageJFMWoT/t2z3PFZB+M8cq0VkON2SJUU4po53ElhE4PJmczE48HPc7ifap/b5l0Bgs5tpR3AOQ==}
+  vite-plugin-deploy-ftp@0.0.8:
+    resolution: {integrity: sha512-B5kUiqICg9Jtqbw3FpxkNyyzn9Bje3lO+y/ufHw3MwM1ipur5JFIsCD0lCjgyx35jhcBDAacGwd6Ga8NkWT3Ig==}
     peerDependencies:
       vite: ^6.0.3
 
@@ -7832,7 +7832,7 @@ snapshots:
       '@vue/shared': 3.5.14
       vue: 3.5.14(typescript@5.7.3)
 
-  vite-plugin-deploy-ftp@0.0.7(@types/node@22.15.18)(vite@6.3.5(@types/node@22.15.18)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.2)(yaml@2.8.0)):
+  vite-plugin-deploy-ftp@0.0.8(@types/node@22.15.18)(vite@6.3.5(@types/node@22.15.18)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.39.2)(yaml@2.8.0)):
     dependencies:
       '@inquirer/prompts': 7.5.1(@types/node@22.15.18)
       '@types/archiver': 6.0.3
