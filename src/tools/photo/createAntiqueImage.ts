@@ -7,7 +7,7 @@
 export async function createAntiqueImage(
   file: File,
   options: {
-    colorRetention?: number // 色彩保留程度，0-1之间，默认0.2
+    colorRetention?: number // 色彩保留程度，0-1之间，默认0.6
     brightness?: number // 亮度调整，0-2之间，1为原始亮度，小于1变暗，大于1变亮，默认1
     contrast?: number // 对比度调整，0-2之间，1为原始对比度，默认0.85
     noise?: number // 噪点强度，0-100之间，默认60
@@ -19,12 +19,12 @@ export async function createAntiqueImage(
   // 设置默认值
   const {
     colorRetention = 0.6,
-    brightness = 1.16,
-    contrast = 0.7,
+    brightness = 1,
+    contrast = 0.85,
     noise = 60,
     redAdjust = 0,
     greenAdjust = 0,
-    blueAdjust = 6,
+    blueAdjust = 0,
   } = options
 
   // 将文件转换为图片对象
