@@ -46,7 +46,7 @@ onMounted(() => {
 
 <template>
   <Teleport to="body">
-    <Toaster :rich-colors="true" :expand="false" position="top-right" :visible-toasts="1" :duration="2000" />
+    <Toaster :rich-colors="true" :expand="false" position="top-center" :visible-toasts="1" :duration="2000" />
   </Teleport>
 
   <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
