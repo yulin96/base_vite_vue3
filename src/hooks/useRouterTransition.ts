@@ -4,7 +4,7 @@ import router from '@/router'
 import { useTimeoutFn, useToggle } from '@vueuse/core'
 import { ref } from 'vue'
 
-export function useRouteTransition(transitionName: RouteTransitionName = 'Slide') {
+export function useRouteTransition(transitionName: RouteTransitionName = 'slide') {
   import(`@/assets/css/transition/${transitionName}.css`).catch((err) => {
     console.error('Error loading transition CSS:', err)
   })

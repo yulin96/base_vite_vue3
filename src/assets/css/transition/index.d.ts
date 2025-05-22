@@ -9,4 +9,3 @@ type RouteTransitionName =
   | 'left-fly-out'
   | 'slide-page'
   | 'slide-cover'
-  | (string & {})

@@ -17,7 +17,7 @@ if (isWeChat()) {
 registerButtonEffect()
 
 /* 路由动画 */
-const { name, isReady } = useRouteTransition('slide')
+const { name, isReady } = useRouteTransition()
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
