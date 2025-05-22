@@ -17,7 +17,7 @@ watchPostEffect(() => {
     const dom = document.querySelector(`.zoomist.${uuid}`)
     if (dom) {
       if (zoom) zoom?.update()
-      else zoom = new Zoomist(dom, { height: false, fill: fillType })
+      else zoom = new Zoomist(dom, { height: false, fill: fillType, maxRatio: 4 })
     } else showDialog({ message: 'NOT_HAVE_DOM' })
   }
 })
