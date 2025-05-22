@@ -8,6 +8,7 @@ import { isWeChat } from '@/utils/uaParser'
 import type { ConfigProviderThemeVars } from 'vant'
 import { nextTick, onMounted } from 'vue'
 import { Toaster } from 'vue-sonner'
+import 'vue-sonner/style.css'
 
 if (isWeChat()) {
   registerWechatShare() ?? getWechatConfig()
@@ -44,7 +45,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <Toaster :rich-colors="true" :expand="false" position="top-center" :visible-toasts="3" :duration="2000" />
+  <Teleport to="body">
+    <Toaster :rich-colors="true" :expand="false" position="top-right" :visible-toasts="1" :duration="2000" />
+  </Teleport>
 
   <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
     <RouterView v-slot="{ Component }">

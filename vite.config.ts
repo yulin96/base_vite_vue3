@@ -163,6 +163,9 @@ export default defineConfig(({ command }) => ({
           rootValue: ({ file }: any) => (~file.indexOf('node_modules/vant') ? 5 : 10),
           propList: ['*'],
           selectorBlackList: ['.ignore', 'pc'],
+          exclude(filePath) {
+            return filePath.includes('vue-sonner')
+          },
           replace: true,
           minPixelValue: 0,
         }),

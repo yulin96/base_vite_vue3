@@ -17,38 +17,31 @@
 }
 
 :root [data-sonner-toaster][data-theme='light'] {
-  --normal-bg: #fff;
+  --normal-bg: #fffe;
   --normal-border: var(--gray4);
   --normal-text: var(--gray12);
-  --success-bg: #fff;
+  --success-bg: #fffe;
   --success-border: #d3fde5;
   --success-text: #008a2e;
-  --info-bg: #fff;
+  --info-bg: #fffe;
   --info-border: #d3e0fd;
   --info-text: #0973dc;
-  --warning-bg: #fff;
+  --warning-bg: #fffe;
   --warning-border: #fdf5d3;
   --warning-text: #dc7609;
-  --error-bg: #fff;
+  --error-bg: #fffe;
   --error-border: #ffe0e1;
   --error-text: #e60000;
 }
 
-#app [data-sonner-toaster][data-theme='light'] li {
-  border-radius: 6px;
-  backdrop-filter: blur(12px);
-  pointer-events: none;
-  border-radius: 12px;
-}
+@media screen and (max-width: 768px) {
+  body [data-sonner-toaster][data-theme='light'] li {
+    border-radius: 8px;
+    backdrop-filter: blur(8px);
+    font-size: 30px;
+  }
 
-#app [data-sonner-toast] [data-title] {
-  font-size: 28px;
-}
-
-#app [data-sonner-toast][data-styled='true'] {
-  padding: 36px 32px;
-}
-
-#app [data-sonner-toast] [data-description] {
-  font-size: 26px;
+  body [data-sonner-toast][data-styled='true'] {
+    padding: 34px 32px;
+  }
 }
