@@ -235,11 +235,11 @@ importers:
         specifier: ^5.39.2
         version: 5.39.2
       unplugin-auto-import:
-        specifier: ^19.2.0
-        version: 19.2.0(@nuxt/kit@3.17.4)(@vueuse/core@13.2.0(vue@3.5.14(typescript@5.7.3)))
+        specifier: ^19.3.0
+        version: 19.3.0(@nuxt/kit@3.17.4)(@vueuse/core@13.2.0(vue@3.5.14(typescript@5.7.3)))
       unplugin-vue-components:
-        specifier: ^28.5.0
-        version: 28.5.0(@babel/parser@7.27.2)(@nuxt/kit@3.17.4)(vue@3.5.14(typescript@5.7.3))
+        specifier: ^28.7.0
+        version: 28.7.0(@babel/parser@7.27.2)(@nuxt/kit@3.17.4)(vue@3.5.14(typescript@5.7.3))
       unplugin-vue-router:
         specifier: ^0.12.0
         version: 0.12.0(vue-router@4.5.1(vue@3.5.14(typescript@5.7.3)))(vue@3.5.14(typescript@5.7.3))
@@ -3859,8 +3859,8 @@ packages:
     resolution: {integrity: sha512-1YWzPj6wYhtwHE+9LxRlyqP4DiRrhGfJxdtH475im8ktyZXO3jHj/3PZ97zDdvkYoovFdi0K4SKl3a7l92v3sQ==}
     engines: {node: '>=18.12.0'}
 
-  unplugin-auto-import@19.2.0:
-    resolution: {integrity: sha512-DGRHg86nUDKEYpny1p2kFZjeLg7kHQmknsPQ8krAshvpeypps7dFxNBsAqhBaxYINjetbgQilF8wbjuZxpdomg==}
+  unplugin-auto-import@19.3.0:
+    resolution: {integrity: sha512-iIi0u4Gq2uGkAOGqlPJOAMI8vocvjh1clGTfSK4SOrJKrt+tirrixo/FjgBwXQNNdS7ofcr7OxzmOb/RjWxeEQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@nuxt/kit': ^3.2.2
@@ -3875,8 +3875,8 @@ packages:
     resolution: {integrity: sha512-8U/MtpkPkkk3Atewj1+RcKIjb5WBimZ/WSLhhR3w6SsIj8XJuKTacSP8g+2JhfSGw0Cb125Y+2zA/IzJZDVbhA==}
     engines: {node: '>=18.12.0'}
 
-  unplugin-vue-components@28.5.0:
-    resolution: {integrity: sha512-o7fMKU/uI8NiP+E0W62zoduuguWqB0obTfHFtbr1AP2uo2lhUPnPttWUE92yesdiYfo9/0hxIrj38FMc1eaySg==}
+  unplugin-vue-components@28.7.0:
+    resolution: {integrity: sha512-3SuWAHlTjOiZckqRBGXRdN/k6IMmKyt2Ch5/+DKwYaT321H0ItdZDvW4r8/YkEKQpN9TN3F/SZ0W342gQROC3Q==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -7768,7 +7768,7 @@ snapshots:
       unplugin: 2.3.4
       unplugin-utils: 0.2.4
 
-  unplugin-auto-import@19.2.0(@nuxt/kit@3.17.4)(@vueuse/core@13.2.0(vue@3.5.14(typescript@5.7.3))):
+  unplugin-auto-import@19.3.0(@nuxt/kit@3.17.4)(@vueuse/core@13.2.0(vue@3.5.14(typescript@5.7.3))):
     dependencies:
       local-pkg: 1.1.1
       magic-string: 0.30.17
@@ -7785,7 +7785,7 @@ snapshots:
       pathe: 2.0.3
       picomatch: 4.0.2
 
-  unplugin-vue-components@28.5.0(@babel/parser@7.27.2)(@nuxt/kit@3.17.4)(vue@3.5.14(typescript@5.7.3)):
+  unplugin-vue-components@28.7.0(@babel/parser@7.27.2)(@nuxt/kit@3.17.4)(vue@3.5.14(typescript@5.7.3)):
     dependencies:
       chokidar: 3.6.0
       debug: 4.4.1
