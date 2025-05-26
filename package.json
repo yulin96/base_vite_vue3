@@ -11,12 +11,12 @@
   "scripts": {
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
-    "build-no-up": "cross-env VITE_OSS_DIRNAME=\"\" run-p type-check \"build-only {@}\" --",
+    "build-no-oss": "cross-env VITE_OSS_ROOT_DIR=H5/zz/auto2/ run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
-    "build-only": "cross-env VITE_OSS_DIRNAME=\"\" && vite build",
-    "type-check": "vue-tsc --build --force",
-    "lint": "eslint --fix .",
-    "format": "prettier --write ."
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build",
+    "lint": "eslint . --fix",
+    "format": "prettier --write src/"
   },
   "dependencies": {
     "@iconify/vue": "5.0.0",
