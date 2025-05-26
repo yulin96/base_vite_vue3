@@ -8,7 +8,7 @@ function setRem() {
   const designWidth = 750
   let deviceWidth = innerWidth
 
-  if (!isMobile() || deviceWidth > 640) {
+  if (!isMobile() && deviceWidth > 500) {
     const calcHeight = innerHeight
     const calcWidth = (375 / 720) * calcHeight
 
