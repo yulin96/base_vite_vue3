@@ -1,14 +1,15 @@
 <script setup lang="ts">
 import gsap from 'gsap'
-import { v4 } from 'uuid'
-import { ref, toValue, watchPostEffect, type MaybeRefOrGetter } from 'vue'
+import { ref, toValue, useTemplateRef, watchPostEffect, type MaybeRefOrGetter } from 'vue'
+
+const qrCodeRef = useTemplateRef('qrCodeRef')
 
 const props = defineProps<{ code: string; render?: MaybeRefOrGetter<boolean> }>()
 
 watchPostEffect(() => {
   const value = toValue(props.render)
-  if (!!value) {
-    const bounding = document.querySelector(`#code-${uuid}`)?.getBoundingClientRect()
+  if (value) {
+    const bounding = qrCodeRef.value?.getBoundingClientRect()
     const app = document.querySelector('#app')
     if (bounding && app) {
       const { width, height, top, left } = bounding
@@ -19,13 +20,13 @@ watchPostEffect(() => {
   }
 })
 
-const uuid = v4()
-
 const isBig = ref(false)
 
 const target: [number, number, number] = [2, 0, 0]
-const toggleCode = () => {
-  gsap.to(`#code-${uuid}`, {
+
+const toggleCode = (close?: boolean) => {
+  if (close) isBig.value = true
+  gsap.to(qrCodeRef.value, {
     scale: isBig.value ? 1 : target[0],
     y: isBig.value ? 0 : target[1],
     x: isBig.value ? 0 : target[2],
@@ -39,8 +40,8 @@ defineExpose({ toggleCode })
 </script>
 
 <template>
-  <div :id="`code-${uuid}`" class="relative z-[20]" v-bind="$attrs" @click="toggleCode">
+  <div ref="qrCodeRef" class="relative z-[20]" v-bind="$attrs" @click="toggleCode()">
     <img class="h-full w-full" :src="code" />
   </div>
-  <VanOverlay :show="isBig" class="z-[10]" @click="toggleCode"></VanOverlay>
+  <VanOverlay :show="isBig" class="z-[10]" @click="toggleCode()"></VanOverlay>
 </template>
