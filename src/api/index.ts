@@ -9,8 +9,8 @@ export const apiMenus = (title: string) => {
     remark: string
   }
   return new Promise<[boolean, T | null]>((resolve) => {
-    getMenus('https://cdeapi.event1.cn/api/cmenu', { title })
-      .then((res: any) => {
+    getMenus<ResData<T>>('https://cdeapi.event1.cn/api/cmenu', { title })
+      .then((res) => {
         resolve([res.data?.status == 1, res.data])
       })
       .catch(() => {
