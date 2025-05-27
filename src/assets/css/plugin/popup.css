@@ -1,13 +1,11 @@
-body .popup-enter-active {
-  transition-property: opacity, transform;
-  transition-duration: 0.3s;
-}
 body .popup-leave-active {
   transition-property: opacity, transform;
   transition-duration: 0.2s;
 }
 
 body .popup-enter-active {
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.18, 0.9, 0.3, 1.2);
 }
 
