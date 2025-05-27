@@ -49,7 +49,7 @@ export const axiosGet = (
         params,
         ...(data ? { data } : {}),
         // adapter: ['fetch', 'xhr'],
-        ...(config ?? {}),
+        ...config,
       })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error))
@@ -66,7 +66,7 @@ export const axiosPost = (
     ;(url.startsWith('http') ? instanceHttp : instance)
       .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
         // adapter: ['fetch', 'xhr'],
-        ...(config ?? {}),
+        ...config,
       })
       .then((response) => resolve(response.data))
       .catch((error) => reject(error))
