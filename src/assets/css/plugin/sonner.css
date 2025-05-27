@@ -1,4 +1,4 @@
-:root [data-sonner-toaster][data-theme='light'] {
+/* :root [data-sonner-toaster][data-theme='light'] {
   --normal-bg: #fff;
   --normal-border: var(--gray4);
   --normal-text: var(--gray12);
@@ -14,7 +14,7 @@
   --error-bg: #fff0f0ee;
   --error-border: #ffe0e1;
   --error-text: #e60000;
-}
+} */
 
 :root [data-sonner-toaster][data-theme='light'] {
   --normal-bg: #fffe;
