@@ -1,15 +1,4 @@
-#app.pc {
-  box-shadow:
-    #0000001f 0px 1px 3px,
-    #0000003d 0px 1px 2px;
-  box-shadow:
-    rgba(0, 0, 0, 0.1) 0px 0.0625em 0.0625em,
-    rgba(0, 0, 0, 0.1) 0px 0.125em 0.5em,
-    rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  transform: scale(1);
-  margin: 0 auto;
-}
-
+#app.pc,
 .cover #app.pc {
   box-shadow:
     #0000001f 0px 1px 3px,
