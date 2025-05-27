@@ -25,12 +25,6 @@
 }
 
 @utility shark-wrap {
-  @keyframes shark-wrap {
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
   overflow: hidden;
   position: relative;
   &::after {
@@ -57,15 +51,6 @@
 }
 
 @utility shark-text-* {
-  @keyframes shark-text {
-    0% {
-      background-position: -100%;
-    }
-    100% {
-      background-position: 200%;
-    }
-  }
-
   color: transparent;
   background: linear-gradient(45deg, #ffffff00 30%, #ffffffe6, #ffffff00 70%) -100% / 50% no-repeat --value([ *]);
   background-clip: text;
@@ -121,4 +106,10 @@
 
 @utility border-image {
   border-image: unset;
+}
+
+@utility loquat {
+  mask-image: linear-gradient(to right, black 0% 40%, transparent 50% 100%);
+  mask-size: 250% 100%;
+  mask-position: 90%;
 }

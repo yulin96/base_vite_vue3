@@ -41,4 +41,19 @@
       transform: rotateX(360deg) rotateY(360deg);
     }
   }
+
+  @keyframes shark-wrap {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes shark-text {
+    0% {
+      background-position: -100%;
+    }
+    100% {
+      background-position: 200%;
+    }
+  }
 }
