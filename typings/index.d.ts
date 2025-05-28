@@ -1,11 +1,9 @@
-type ResData<T> = IRes & { data: T & { [x: string]: any } }
-
-interface IRes {
+type ResData<T extends object = {}> = {
   code: number
   msg?: string
   message?: string
-  [x: string]: any
-}
+  data: T
+} & Record<PropertyKey, any>
 
 type FStamp = (type: 'password' | 'stamp', content: string) => any
 
