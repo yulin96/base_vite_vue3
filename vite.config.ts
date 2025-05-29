@@ -112,6 +112,7 @@ export default defineConfig(({ command }) => ({
       user: process.env.zH5FtpUser as string,
       password: process.env.zH5FtpPassword as string,
       alias: `https://h5.eventnet.cn/`,
+      singleBack: true,
     }),
     visualizer(),
   ],
@@ -134,7 +135,6 @@ export default defineConfig(({ command }) => ({
         index: path.resolve(__dirname, 'index.html'),
       },
       output: {
-        experimentalMinChunkSize: 20 * 1024,
         manualChunks(id) {
           if (id.includes('node_modules')) {
             for (const key in splitDependencies) {
