@@ -54,7 +54,7 @@ export const useClient = <T = any>(
   const retryCount = ref(0)
 
   // 定时器引用，用于清理
-  let retryTimer: NodeJS.Timeout | undefined
+  let retryTimer: number | undefined
   let visibilityWatcher: (() => void) | null = null
 
   // 生成唯一会话ID
@@ -80,7 +80,7 @@ export const useClient = <T = any>(
     connectionStatus.value = 'reconnecting'
     retryCount.value++
 
-    retryTimer = setTimeout(() => {
+    retryTimer = window.setTimeout(() => {
       linkROP()
     }, retryDelay)
   }

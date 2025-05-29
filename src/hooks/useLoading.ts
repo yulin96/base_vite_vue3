@@ -1,7 +1,7 @@
 import { computed, onDeactivated, onUnmounted, readonly, shallowRef } from 'vue'
 
 export function useLoading(imgList: string[], next?: () => never, delay: number = 300) {
-  let timer: NodeJS.Timeout | undefined
+  let timer: number | undefined
   const progressValue = shallowRef(0)
   const images: HTMLImageElement[] = []
 
@@ -47,7 +47,7 @@ export function useLoading(imgList: string[], next?: () => never, delay: number 
         progressValue.value = loadedCount
 
         if (loadedCount >= imgList.length) {
-          timer = setTimeout(() => {
+          timer = window.setTimeout(() => {
             next?.()
           }, delay)
         }
