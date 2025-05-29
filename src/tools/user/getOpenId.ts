@@ -1,8 +1,8 @@
-import { useRequest } from '@/hooks/useRequest'
+import { useLockRequest } from '@/hooks/useLockRequest'
 import { useStore } from '@/stores'
 import { useUrlSearchParams } from '@vueuse/core'
 
-const { post: postGetCode } = useRequest(false)
+const { post: postGetCode } = useLockRequest(false)
 /**
  * 获取微信用户openid
  * @param name 平台名称

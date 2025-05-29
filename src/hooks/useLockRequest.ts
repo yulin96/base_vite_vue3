@@ -11,7 +11,7 @@ nprogress.configure({
   trickleSpeed: 120,
 })
 
-export function useRequest(disableLock = false, showProgress = false, delay = 500) {
+export function useLockRequest(disableLock = false, showProgress = false, delay = 500) {
   const [status, lock, unLock] = userLock()
 
   const makeRequest = <T>(requestFn: () => Promise<T>): Promise<T> => {

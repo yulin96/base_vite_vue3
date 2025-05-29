@@ -1,7 +1,7 @@
 import type { ResData } from '@/api/types'
-import { useRequest } from '@/hooks/useRequest'
+import { useLockRequest } from '@/hooks/useLockRequest'
 
-const { get: getMenus } = useRequest()
+const { get: getMenus } = useLockRequest()
 export const apiMenus = (title: string) => {
   type T = {
     title: string
