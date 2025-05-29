@@ -1,3 +1,4 @@
+import type { ResData } from '@/api/types'
 import { useRequest } from '@/hooks/useRequest'
 
 const { get: getMenus } = useRequest()
