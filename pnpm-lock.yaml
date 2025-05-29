@@ -256,8 +256,8 @@ importers:
         specifier: ^1.1.8
         version: 1.1.8(vite@6.3.5(@types/node@22.15.24)(jiti@2.4.2)(lightningcss@1.30.1)(terser@5.40.0)(yaml@2.8.0))
       vite-plugin-organize-resource:
-        specifier: ^0.0.10
-        version: 0.0.10
+        specifier: ^0.0.12
+        version: 0.0.12
       vue-tsc:
         specifier: 2.2.10
         version: 2.2.10(typescript@5.7.3)
@@ -3953,8 +3953,8 @@ packages:
   vite-plugin-meta-share@0.0.1:
     resolution: {integrity: sha512-NxIMZhtft9F38KpnVOpq+HvRvMZzxEG/VZZoULZROKpdE8kABYilLl85cpKGOIJXEVL2LDE8MWP1dBLnsNhAkg==}
 
-  vite-plugin-organize-resource@0.0.10:
-    resolution: {integrity: sha512-9/thmNSq7qfxMbwD0ADRCiJzLOd6B0Q7QRvDxPVR7mL5j1QKpbUdi4tUmeD5KYTjZY+6UEUe+eoj+yFBMDfyqA==}
+  vite-plugin-organize-resource@0.0.12:
+    resolution: {integrity: sha512-/FK6ZKtm+XjwRonTSNZ/wDlZW8SeoDCPQWMejwFtAB+GeWmU3wK5mFnL4BGHeigXAowETI0I7/fJm5Nhv1ItMQ==}
 
   vite@6.3.5:
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
@@ -7923,7 +7923,7 @@ snapshots:
     dependencies:
       chalk: 5.4.1
 
-  vite-plugin-organize-resource@0.0.10:
+  vite-plugin-organize-resource@0.0.12:
     dependencies:
       chalk: 5.4.1
 

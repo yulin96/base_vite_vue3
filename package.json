@@ -103,7 +103,7 @@
     "vite-plugin-deploy-ftp": "^0.0.8",
     "vite-plugin-deploy-oss": "^0.0.14",
     "vite-plugin-image-optimizer": "^1.1.8",
-    "vite-plugin-organize-resource": "^0.0.10",
+    "vite-plugin-organize-resource": "^0.0.12",
     "vue-tsc": "2.2.10"
   }
 }

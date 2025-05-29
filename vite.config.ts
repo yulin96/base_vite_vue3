@@ -134,6 +134,7 @@ export default defineConfig(({ command }) => ({
         index: path.resolve(__dirname, 'index.html'),
       },
       output: {
+        experimentalMinChunkSize: 20 * 1024,
         manualChunks(id) {
           if (id.includes('node_modules')) {
             for (const key in splitDependencies) {
