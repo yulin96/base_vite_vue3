@@ -37,13 +37,13 @@ const instanceHttp = axios.create({})
 interceptor(instance)
 interceptor(instanceHttp)
 
-export const axiosGet = (
+export const axiosGet = <T = any>(
   url: string,
   params?: Record<string, any>,
   config?: AxiosRequestConfig<any>,
   data?: Record<string, any>,
-) => {
-  return new Promise<unknown>((resolve, reject) => {
+): Promise<T> => {
+  return new Promise<T>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .get(url, {
         params,
@@ -56,13 +56,13 @@ export const axiosGet = (
   })
 }
 
-export const axiosPost = (
+export const axiosPost = <T = any>(
   url: string,
   data?: Record<string, any>,
   config?: AxiosRequestConfig<any>,
   dataType: IFormDataOrJSON = 'FormData',
-) => {
-  return new Promise<unknown>((resolve, reject) => {
+): Promise<T> => {
+  return new Promise<T>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
         // adapter: ['fetch', 'xhr'],
