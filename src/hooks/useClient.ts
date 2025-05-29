@@ -54,7 +54,7 @@ export const useClient = <T = any>(
   const retryCount = ref(0)
 
   // 定时器引用，用于清理
-  let retryTimer: ReturnType<typeof setTimeout> | null = null
+  let retryTimer: NodeJS.Timeout | undefined
   let visibilityWatcher: (() => void) | null = null
 
   // 生成唯一会话ID
@@ -64,7 +64,7 @@ export const useClient = <T = any>(
   const clearRetryTimer = () => {
     if (retryTimer) {
       clearTimeout(retryTimer)
-      retryTimer = null
+      retryTimer = undefined
     }
   }
 
