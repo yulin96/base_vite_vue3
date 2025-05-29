@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from '@/stores'
+import { useStore } from '@/stores/user'
 import { randomNum } from '@/utils/common'
 import Lottie from 'lottie-web'
 import { onMounted, useTemplateRef } from 'vue'

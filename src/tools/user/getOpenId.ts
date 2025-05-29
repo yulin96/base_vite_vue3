@@ -1,5 +1,5 @@
 import { useLockRequest } from '@/hooks/useLockRequest'
-import { useStore } from '@/stores'
+import { useStore } from '@/stores/user'
 import { useUrlSearchParams } from '@vueuse/core'
 
 const { post: postGetCode } = useLockRequest(false)

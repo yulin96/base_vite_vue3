@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useStore } from '@/stores'
+import { useStore } from '@/stores/user'
 import { getOpenId } from '@/tools/user/getOpenId'
 import { toUrl } from '@/utils/global'
 import { onMounted, ref } from 'vue'
