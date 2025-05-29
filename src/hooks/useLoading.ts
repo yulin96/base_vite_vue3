@@ -1,6 +1,6 @@
 import { computed, onDeactivated, onUnmounted, readonly, shallowRef } from 'vue'
 
-export function useLoading(imgList: string[], next?: () => unknown, delay: number = 300) {
+export function useLoading(imgList: string[], next?: () => void, delay: number = 300) {
   let timer: number | undefined
   const progressValue = shallowRef(0)
   const images: HTMLImageElement[] = []
@@ -65,7 +65,7 @@ export function useLoading(imgList: string[], next?: () => unknown, delay: numbe
   return { count, start, cleanup }
 }
 
-export function useAutoLoading(speed: number = 20, next?: () => unknown) {
+export function useAutoLoading(speed: number = 20, next?: () => void) {
   const count = shallowRef(0)
   let intervalId: NodeJS.Timeout | undefined
 
