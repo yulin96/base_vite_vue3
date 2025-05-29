@@ -415,3 +415,11 @@ export function extractNumbers(str: string, returnAsArray = false): number[] | n
   const numbers = matches.map(Number)
   return returnAsArray ? numbers : numbers[0]
 }
+
+export function toFixedNumber(num: number, digits: number = 2): number {
+  const n = typeof num === 'number' ? num : Number(num)
+
+  if (isNaN(n)) return num
+
+  return Number(n.toFixed(digits))
+}
