@@ -1,13 +1,13 @@
 import { createToaster } from '@/tools/user/createToaster'
-import { ref } from 'vue'
+import { readonly, shallowRef } from 'vue'
 
 export function useToaster(loadingInfo: string) {
-  const isProcessing = ref(false)
+  const isProcessing = shallowRef(false)
 
   function createToast(delay = 500) {
     isProcessing.value = true
 
-    const [resolve, reject, promise] = createToaster(loadingInfo)
+    const { promise, resolve, reject } = createToaster(loadingInfo)
     promise.finally(() =>
       setTimeout(() => {
         isProcessing.value = false
@@ -17,5 +17,5 @@ export function useToaster(loadingInfo: string) {
     return [resolve, reject] as const
   }
 
-  return [isProcessing, createToast] as const
+  return [readonly(isProcessing), createToast] as const
 }

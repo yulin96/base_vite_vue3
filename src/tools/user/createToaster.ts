@@ -2,7 +2,7 @@ import { usePromise } from '@/hooks/usePromise'
 import { toast } from 'vue-sonner'
 
 export function createToaster(loadingInfo: string) {
-  const [promise, resolve, reject] = usePromise<string>()
+  const { promise, resolve, reject } = usePromise<string>()
   let toastTimeout: NodeJS.Timeout | undefined = undefined
 
   const toastId = toast.promise(promise, {
@@ -10,14 +10,14 @@ export function createToaster(loadingInfo: string) {
     finally: () => {
       clearTimeout(toastTimeout)
     },
-    success: (e) => e,
-    error: (e) => e,
+    success: (e: string) => e,
+    error: (e: string) => e,
     duration: 600,
   })
 
   toastTimeout = setTimeout(() => {
     toastId && toast.dismiss()
-  }, 30000)
+  }, 12000)
 
-  return [resolve, reject, promise] as const
+  return { promise, resolve, reject, toastId }
 }
