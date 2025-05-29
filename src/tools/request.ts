@@ -43,7 +43,7 @@ export const axiosGet = (
   config?: AxiosRequestConfig<any>,
   data?: Record<string, any>,
 ) => {
-  return new Promise<never>((resolve, reject) => {
+  return new Promise<unknown>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .get(url, {
         params,
@@ -62,7 +62,7 @@ export const axiosPost = (
   config?: AxiosRequestConfig<any>,
   dataType: IFormDataOrJSON = 'FormData',
 ) => {
-  return new Promise<never>((resolve, reject) => {
+  return new Promise<unknown>((resolve, reject) => {
     ;(url.startsWith('http') ? instanceHttp : instance)
       .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
         // adapter: ['fetch', 'xhr'],

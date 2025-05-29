@@ -13,12 +13,12 @@ export const useStore = defineStore(
   () => {
     const originData = {
       code: '',
-      info: {} as Partial<Record<string, any>>,
+      info: {} as Partial<Record<string, unknown>>,
       wxInfo: {} as Partial<IWxInfo>,
 
       backXY: { x: -12, y: innerHeight - 200 },
-      other: {} as Partial<Record<string, any>>,
-      ignore: {} as Partial<Record<string, any>>,
+      other: {} as Partial<Record<string, unknown>>,
+      ignore: {} as Partial<Record<string, unknown>>,
     }
 
     const user = ref({

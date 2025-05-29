@@ -10,7 +10,7 @@ export interface UsePromiseReturn<T> {
   reset: () => UsePromiseReturn<T>
 }
 
-export function usePromise<T = never>(): UsePromiseReturn<T> {
+export function usePromise<T = unknown>(): UsePromiseReturn<T> {
   const isPending = shallowRef(true)
   const isResolved = shallowRef(false)
   const isRejected = shallowRef(false)
