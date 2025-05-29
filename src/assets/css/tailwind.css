@@ -2,9 +2,9 @@
 @import 'tailwindcss/preflight.css';
 @import 'tailwindcss/utilities.css';
 
-@import './tailwindcss/size.css';
-@import './tailwindcss/utility.css';
-@import './tailwindcss/keyframes.css';
+@import './tailwind/size.css';
+@import './tailwind/utility.css';
+@import './tailwind/keyframes.css';
 
 @theme {
   --spacing: 1px;

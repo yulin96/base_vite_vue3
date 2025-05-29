@@ -1,4 +1,3 @@
-// import '@/assets/css/transition.css'
 import { useMaskLoading } from '@/hooks/useMaskLoading'
 import router from '@/router'
 import { useTimeoutFn, useToggle } from '@vueuse/core'

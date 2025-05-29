@@ -2,10 +2,11 @@
 @import './base.css';
 @import './plugin/progress.css';
 @import './plugin/piece.css';
-@import './plugin/fixPlugin.css';
+@import './plugin/vant.css';
 @import './plugin/sonner.css';
 @import './snippet.css';
 @import './plugin/popup.css';
+@import './transition.css';
 
 #app {
   -webkit-font-smoothing: antialiased;

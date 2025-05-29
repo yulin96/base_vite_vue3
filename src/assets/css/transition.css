@@ -1,19 +1,9 @@
-/*
-  power1: 0.4, 0.8, 0.74, 1
-  power2: 0.32, 0.94, 0.6, 1
-  power3: 0.26, 1, 0.48, 1
-  power4: 0.22, 1, 0.36, 1
-*/
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
 
-@import './transition/fade.css';
-@import './transition/blur.css';
-@import './transition/zoom.css';
-@import './transition/slide.css';
-@import './transition/flip-y.css';
-@import './transition/collapse-y.css';
-@import './transition/diagonally-fade-out.css';
-@import './transition/left-fly-out.css';
-@import './transition/slide-page.css';
-@import './transition/slide-cover.css';
-@import './transition/scale.css';
-@import './transition/popup.css';
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
