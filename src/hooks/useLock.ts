@@ -1,7 +1,7 @@
-import { readonly, ref } from 'vue'
+import { readonly, shallowRef } from 'vue'
 
 export function userLock() {
-  const status = ref(false)
+  const status = shallowRef(false)
 
   const lock = () => {
     status.value = true
