@@ -1,3 +1,4 @@
+import { registerGuards } from '@/router/guards'
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
@@ -22,14 +23,13 @@ router.addRoute({
   meta: { index: 404 },
 })
 
-router.beforeEach(async (to, from) => {})
-
-router.afterEach((to, from) => {})
+registerGuards(router)
 
 declare module 'vue-router' {
   interface RouteMeta {
     index?: number
     transitionName?: string
+    needLogin?: boolean
     [x: string]: string | number | boolean | undefined
   }
 }
