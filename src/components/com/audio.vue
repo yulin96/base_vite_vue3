@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useMediaSession } from '@/hooks/useMediaSession'
 import { useEventListener, useToggle } from '@vueuse/core'
 import { onMounted, onUnmounted, useTemplateRef } from 'vue'
 
@@ -50,8 +49,6 @@ const clickPlay = (ele: MouseEvent) => {
 const cleanupClick = useEventListener(document, 'click', clickPlay, { once: true })
 const cleanupTouchend = useEventListener(document, 'touchend', clickPlay, { once: true })
 
-useMediaSession(audioRef)
-
 let weixinJSBridgeListener: (() => void) | null = null
 
 onMounted(() => {
@@ -68,13 +65,45 @@ onMounted(() => {
   }
 
   document.addEventListener('WeixinJSBridgeReady', weixinJSBridgeListener, { once: true })
+
+  if (audioRef.value) registerMediaSession(audioRef.value)
 })
 
 onUnmounted(() => {
   if (weixinJSBridgeListener) {
     document.removeEventListener('WeixinJSBridgeReady', weixinJSBridgeListener)
   }
+  unregisterMediaSession()
 })
+
+function registerMediaSession(dom: HTMLAudioElement) {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+      title: import.meta.env.VITE_APP_SHARE_TITLE || import.meta.env.VITE_APP_TITLE,
+      artist: import.meta.env.VITE_APP_SHARE_DESC,
+      album: import.meta.env.VITE_APP_SHARE_TITLE || import.meta.env.VITE_APP_TITLE,
+      artwork: [
+        {
+          src: import.meta.env.VITE_APP_SHARE_IMGURL || 'https://oss.eventnet.cn/H5/zz/public/favicon.png',
+        },
+      ],
+    })
+    navigator.mediaSession.setActionHandler('play', () => {
+      dom.play().catch(() => {})
+    })
+    navigator.mediaSession.setActionHandler('pause', function () {
+      dom.pause()
+    })
+  }
+}
+
+function unregisterMediaSession() {
+  if ('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = null
+    navigator.mediaSession.setActionHandler('play', null)
+    navigator.mediaSession.setActionHandler('pause', null)
+  }
+}
 </script>
 
 <template>
