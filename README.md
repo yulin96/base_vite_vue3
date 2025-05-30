@@ -1,214 +1,161 @@
 # 移动端项目基础库
 
-## 项目说明
+本项目是基于 Vue3 + Vite 的移动端项目基础库，集成了丰富的组件、自动化开发体验、常用工具函数和最佳实践，适合快速搭建高质量移动端应用。
 
-本项目是一个基于vue的移动端项目基础库，包含了一些常用的组件和工具函数，方便快速开发移动端项目。
+---
 
-- pc端自动添加右侧二维码，点击可以下载
-- 自动注册路由
-- 路由都有完善的类型提示
-- 自动同步store到本地存储
-- 打包后自动压缩图片（依赖sharp,node需求^18.17.0||^20.3.0||>=21.0.0）
-- 自动上传oss（需要配置zAccessKeyId,zAccessKeySecret,zBucket）
-- <b>All is automatic, enjoy!</b>
+## 主要特性
 
-## 使用
+- **自动化开发体验**：
 
-> [!TIP]
-> 推荐使用pnpm安装依赖，pnpm可以共享依赖，节省磁盘空间。<br>
-> 搭配[代码片段](https://github.com/yulin96/yulin96/blob/main/javascript-and-typescript.code-snippets)使用,效果贼好
+  - PC 端自动添加右侧二维码，扫码即可体验。
+  - `pages` 目录下页面自动注册为路由，支持类型推断。
+  - 路由类型自动提示，开发更安全。
+  - Pinia store 自动同步到本地存储，刷新不丢失。
+  - 打包后自动压缩图片（依赖 sharp，需 Node 18.17.0+）。
+  - 自动上传 OSS（需配置 zAccessKeyId、zAccessKeySecret、zBucket）。
+  - 支持只打包不上传（`pnpm build-only`）。
+
+- **丰富的目录结构**：
+
+  - `api/`：接口请求与类型定义。
+  - `assets/`：全局样式、图片资源。
+  - `components/`：高复用基础组件，覆盖音频、图片缩放、密码键盘等。
+  - `hooks/`：常用自定义 hooks，提升开发效率。
+  - `pages/`：页面文件，自动注册路由。
+  - `router/`：路由守卫、权限控制。
+  - `stores/`：Pinia 状态管理，自动本地持久化。
+  - `utils/`：常用工具函数，详见 [src/utils/README.md](src/utils/README.md)。
+  - `shared/`：通用方法、第三方集成、全局配置。
+
+- **现代工程化**：
+  - Vite 极速开发与热更新。
+  - TypeScript 全面类型支持。
+  - Tailwind CSS 按需原子化样式。
+  - 代码分割、懒加载、自动导入。
+  - 代码片段推荐，提升开发效率。
+
+---
+
+## 快速开始
+
+> 推荐使用 pnpm 安装依赖，节省磁盘空间。
 
 ```bash
 pnpm install
 pnpm dev
 
-# build 打包会自动上传到oss 需要在环境变量配置 zAccessKeyId zAccessKeySecret zBucket
-# 配置方式
-# windows下配置 setx zAccessKeyId "xxx"
-# mac下配置 export zAccessKeyId="xxx"
-# 上传路径位于.env中的VITE_OSS_ROOT_DIRNAME/VITE_OSS_DIRNAME
+# 打包并自动上传 OSS（需配置环境变量 zAccessKeyId、zAccessKeySecret、zBucket）
 pnpm build
 
-# 只打包不上传
+# 只打包不上传 OSS
 pnpm build-only
-
-
 ```
 
-## 项目结构
+### 环境变量配置
 
-- [api](src/api) 存放接口请求
-- [assets](src/assets) 存放公共样式和资源
-- [components](src/components) 存放公共组件
-- [hooks](src/hooks) 存放自定义hooks
-- [pages](src/pages) 存放页面
-- [router](src/router) 存放路由配置
-- [store](src/store) 存放pinia配置
-- [tools](src/tools) 存放工具函数
-- [env](.env) 项目主要配置文件
+- Windows：
+  ```powershell
+  setx zAccessKeyId "xxx"
+  setx zAccessKeySecret "xxx"
+  setx zBucket "xxx"
+  ```
+- Mac/Linux：
+  ```bash
+  export zAccessKeyId="xxx"
+  export zAccessKeySecret="xxx"
+  export zBucket="xxx"
+  ```
+- 上传路径由 `.env` 中 `VITE_OSS_ROOT_DIRNAME` 和 `VITE_OSS_DIRNAME` 控制。
 
 ---
 
-### 常用hooks介绍
+## 目录结构说明
 
-#### [useCountDown](src/hooks/useCountDown.ts) 倒计时
-
-- 倒计时hook，一般用于验证码倒计时
-
-> [!TIP]
-> 离开页面会自动清除定时器，不需要手动清除
-
-```ts
-// sending 是否正在发送验证码 Ref<boolean>
-// timerText 倒计时文本 Ref<string> 默认为 '获取验证码'，发送中为 '**秒'
-// startTimer 开始倒计时函数
-const { sending, timerText, startTimer } = useCountdown()
-```
-
-#### [useClient](src/hooks/useClient.ts)
-
-- 快速建立长链接<sup>第三方</sup>
-
-```ts
-//subScribes 加入的群组 string[] | string
-//pub sub 订阅使用的账号信息
-const { data } = useClient('subScribes', 'pub', 'sub')
-
-watch(data, (newVal) => {
-  console.log('newVal', newVal)
-})
-```
-
-#### [useLock](src/hooks/useLock.ts)
-
-- 请求hooks,防止重复请求
-- 请求的baseURL为[.env](.env)中的VITE_APP_API_URL
-
-```ts
-// lock 是否正在请求 Ref<boolean>
-// post get 请求函数  请求的函数url不以http开头会使用baseURL拼接 以http开头的url不会拼接
-const { post: post*, lock } = useLock()
-const { get: get*, lock } = useLock()
-
-```
+- `api/`：接口请求与类型定义。
+- `assets/`：全局样式、图片资源。
+- `components/`：高复用基础组件。
+- `hooks/`：常用自定义 hooks。
+- `pages/`：页面文件，自动注册路由。
+- `router/`：路由守卫、权限控制。
+- `stores/`：Pinia 状态管理。
+- `utils/`：常用工具函数，详见 [src/utils/README.md](src/utils/README.md)。
+- `shared/`：通用方法、第三方集成、全局配置。
 
 ---
 
-- 也可以把所有请求放置在api文件夹下，方便管理
+## 常用 hooks 说明
 
-```ts
-// 由于catch已经在useLock中处理，所以不需要再次处理，当然也可以自行处理
-const { post: postTest } = useLock()
-export const apiTest = (data?: Record<string, any>) => {
-  type T = any
-  return new Promise<ResData<T>>((resolve, _) => {
-    postTest('/test', data)
-      .then((res) => {
-        resolve(res as ResData<T>)
-      })
-      .catch(() => {})
-  })
-}
-
-//使用
-const res = await apiTest()
-if (res.code != 200) return toast.info(res?.message || res?.msg || '正在处理中...')
-```
-
-#### [useToaster](src/hooks/useToaster.ts)
-
-- promise toast提示
-
-```ts
-const [isProcessing, createToast] = useToaster('加载中...')
-
-const handleRequest = async () => {
-  if (isProcessing.value) return
-
-  const [resolve, reject] = createToast()
-  //...
-  await sleep(2000)
-  resolve('加载成功')
-}
-```
+- `useCountDown`：验证码倒计时，离开页面自动清理定时器。
+- `useClient`：快速建立长链接，支持 pub/sub。
+- `useLock`：防止重复请求，自动拼接 baseURL。
+- `useToaster`：Promise Toast 便捷提示。
+- 其余 hooks 详见 `src/hooks/` 目录源码。
 
 ---
 
-### pages介绍
+## 常用组件说明
 
-> [!TIP]
-> pages下的文件会自动注册到路由中，无需手动配置
+- `audio`：背景音乐播放，支持微信自动播放。
+- `image-scale`：图片缩放，支持双指缩放、单指拖动。
+- `keyboard`：自定义密码输入框。
+- 其余组件详见 `src/components/` 目录。
 
 ---
 
-### router介绍
+## 工具函数说明
 
-- 由于无需手动配置路由，router不需要手动配置
-- 一般需要做权限控制会在router中配置
+详见 [src/utils/README.md](src/utils/README.md)。涵盖动画、加密、DOM、图片、用户操作、校验等。
+
+### 常用工具函数示例
+
+#### 1. 复制文本到剪贴板
 
 ```ts
-router.beforeEach(async (to, from) => {
-  // 配置路由拦截
-})
+import { copyText } from '@/utils'
+await copyText('hello world')
 ```
 
----
-
-### store介绍
-
-- store使用pinia
-- store数据会自动同步到本地存储中，储存路径位于[.env](.env)中VITE_APP_LOCALSTORAGE_NAME
-- 刷新页面数据不会丢失
+#### 2. 随机数与随机字符串
 
 ```ts
-const { user } = useStore()
-// store中的数据一般存放在user.info中 为了方便，类型设置为了any 可以随意添加😂
+import { randomNum, randomString } from '@/utils'
+const n = randomNum(1, 10)
+const str = randomString('prefix', 8)
 ```
+
+#### 3. 校验邮箱/手机号/身份证
+
+```ts
+import { isEmail, isPhone, isIdCard } from '@/utils'
+isEmail('test@xx.com') // true/false
+isPhone('13800138000') // true/false
+isIdCard('110101199003071234') // true/false
+```
+
+#### 4. 图片压缩
+
+```ts
+import { compressImage } from '@/utils'
+const blob = await compressImage(file)
+```
+
+#### 5. 页面跳转
+
+```ts
+import { toUrl } from '@/utils'
+toUrl('https://example.com', { newTab: true })
+```
+
+更多用法详见 [src/utils/README.md](src/utils/README.md) 及各工具源码。
 
 ---
 
-### 常用组件价绍
+## 进阶用法
 
-#### [audio](src/components/common/audio.vue) 背景音乐播放
+- **自动路由注册**：`pages` 下页面自动注册，无需手动配置。
+- **路由守卫**：在 `router/guards.ts` 配置权限控制。
+- **Pinia 自动持久化**：store 数据自动同步本地存储，刷新不丢失。
+- **OSS 上传**：打包后自动上传，支持自定义路径。
 
-- 集成了在微信中自动播放，以及右上角播放图标点击播放暂停功能
-
-```html
-<CommonAudio src="路径"></CommonAudio>
-```
-
-#### [image-scale](src/components/common/image-scale.vue) 图片缩放组件
-
-- 图片缩放组件，支持双指缩放，单指拖动
-- 可以缩放后使用html2canvas截图
-
-> [!WARNING]
-> 组件外层必须使用一个固定大小的容器包裹，否则无法正常使用
-
-```html
-<div class="h-500 w-600">
-  <CommonImageScale
-    url="https://oss.eventnet.cn/H5/zz/auto/benz2407_20240704/assets/bg-DIEWG6gQ.jpg"
-  ></CommonImageScale>
-</div>
-```
-
-#### [keyboard](src/components/common/keyboard.vue) 密码输入框
-
-- 密码输入框，支持自定义长度
-
-```vue
-<script setup lang="ts">
-const show = ref(true)
-
-const next = (text: string) => {
-  console.log(text)
-}
-</script>
-
-<template>
-  <CommonKeyboard v-model="show" @next="next" :max-length="4"></CommonKeyboard>
-</template>
-```
-
-### ...
+---
