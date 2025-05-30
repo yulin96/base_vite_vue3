@@ -3,7 +3,7 @@ import { useLoading, useRouteTransition } from '@/hooks'
 import { getWechatConfig } from '@/shared'
 import { isWeChat, registerButtonEffect, registerWechatShare } from '@/utils'
 import type { ConfigProviderThemeVars } from 'vant'
-import { nextTick, onMounted } from 'vue'
+import { nextTick, onMounted, onUnmounted } from 'vue'
 import { Toaster } from 'vue-sonner'
 import 'vue-sonner/style.css'
 
@@ -31,13 +31,17 @@ const themeVars = {
   toastLoadingIconColor: '#111',
 } satisfies ConfigProviderThemeVars
 
-const { start } = useLoading(window.IMG_RESOURCES ?? [])
+const { start, cleanup } = useLoading(window.IMG_RESOURCES ?? [])
 onMounted(() => {
   nextTick(() => {
     setTimeout(() => {
       start()
     }, 500)
   })
+})
+
+onUnmounted(() => {
+  cleanup()
 })
 </script>
 

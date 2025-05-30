@@ -1,6 +1,8 @@
 import { formDataToObj, isFormData } from '@/utils'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 
+export type IFormDataOrJSON = 'FormData' | 'JSON'
+
 const interceptor = (instance: AxiosInstance) => {
   instance.interceptors.request.use((config) => config)
 

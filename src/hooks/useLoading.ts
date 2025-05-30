@@ -59,9 +59,6 @@ export function useLoading(imgList: string[], next?: () => void, delay: number =
     }
   }
 
-  onUnmounted(cleanup)
-  onDeactivated(cleanup)
-
   return { count, start, cleanup }
 }
 

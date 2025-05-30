@@ -1,5 +1,5 @@
 import { userLock } from '@/hooks'
-import { axiosGet, axiosPost } from '@/shared'
+import { axiosGet, axiosPost, type IFormDataOrJSON } from '@/shared'
 import type { AxiosRequestConfig } from 'axios'
 import nprogress from 'nprogress'
 import { readonly } from 'vue'

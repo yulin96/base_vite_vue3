@@ -27,7 +27,5 @@ interface ImportMetaEnv {
 }
 
 interface Window {
-  html2canvas: any
-  Zoomist: any
-  IMG_RESOURCES: string[]
+  IMG_RESOURCES?: string[]
 }
