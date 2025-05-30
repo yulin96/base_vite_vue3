@@ -1,5 +1,5 @@
 import { toast } from 'vue-sonner'
-//TODO: 移动到hooks
+
 export default class LineCanvas {
   private el: HTMLElement
   private lineWidth: number
