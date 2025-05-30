@@ -1,4 +1,4 @@
-import { useLockRequest } from '@/hooks/useLockRequest'
+import { useLockRequest } from '@/hooks'
 import { useStore } from '@/stores/user'
 import { useUrlSearchParams } from '@vueuse/core'
 

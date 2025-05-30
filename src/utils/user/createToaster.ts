@@ -1,4 +1,4 @@
-import { usePromise } from '@/hooks/usePromise'
+import { usePromise } from '@/hooks'
 import { toast } from 'vue-sonner'
 
 export function createToaster(loadingInfo: string) {

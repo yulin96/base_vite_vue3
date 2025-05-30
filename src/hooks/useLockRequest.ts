@@ -1,4 +1,4 @@
-import { userLock } from '@/hooks/useLock'
+import { userLock } from '@/hooks'
 import { axiosGet, axiosPost } from '@/shared'
 import type { AxiosRequestConfig } from 'axios'
 import nprogress from 'nprogress'

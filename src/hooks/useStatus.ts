@@ -5,7 +5,7 @@ import { ref } from 'vue'
  * @param initialValue 初始状态值，默认为false
  * @returns [state, toggle] 状态和切换函数的元组
  */
-export function useState(initialValue: boolean = false) {
+export function useStatus(initialValue: boolean = false) {
   // 创建一个响应式的布尔状态
   const state = ref(initialValue)
 

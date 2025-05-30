@@ -1,4 +1,4 @@
-import { useLoading } from '@/hooks/useLoading'
+import { useLoading } from '@/hooks'
 import type { ToastOptions } from 'vant'
 import { setToastDefaultOptions, showToast as toast } from 'vant'
 import 'vant/es/toast/style'

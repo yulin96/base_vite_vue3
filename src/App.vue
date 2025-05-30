@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { useLoading } from '@/hooks/useLoading'
-import { useRouteTransition } from '@/hooks/useRouterTransition'
+import { useLoading, useRouteTransition } from '@/hooks'
 import { getWechatConfig } from '@/shared'
 import { isWeChat, registerButtonEffect, registerWechatShare } from '@/utils'
 import type { ConfigProviderThemeVars } from 'vant'

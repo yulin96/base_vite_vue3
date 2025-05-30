@@ -1,4 +1,4 @@
-import { useMaskLoading } from '@/hooks/useMaskLoading'
+import { useMaskLoading } from '@/hooks'
 import router from '@/router'
 import { useTimeoutFn, useToggle } from '@vueuse/core'
 import { ref } from 'vue'
