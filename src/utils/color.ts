@@ -1,4 +1,4 @@
-import type { RGBColor } from './typings'
+export type RGBColor = [number, number, number]
 
 // 缓存颜色转换结果
 const hexToRgbCache = new Map<string, RGBColor>()
