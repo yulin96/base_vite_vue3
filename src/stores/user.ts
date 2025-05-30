@@ -1,4 +1,4 @@
-import { deepClone } from '@/utils/convert'
+import { deepClone } from '@/utils'
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 

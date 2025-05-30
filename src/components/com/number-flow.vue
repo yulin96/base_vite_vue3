@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { gsap } from '@/shared'
 import NumberFLow, { continuous } from '@number-flow/vue'
-import gsap from 'gsap'
 import { v4 } from 'uuid'
 import { onMounted } from 'vue'
 

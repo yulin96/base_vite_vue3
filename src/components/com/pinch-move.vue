@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTransform } from '@/hooks/useTransform'
+import { useTransform } from '@/hooks'
 import { useTemplateRef } from 'vue'
 
 const moveElement = useTemplateRef('moveElement')

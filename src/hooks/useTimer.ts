@@ -1,4 +1,4 @@
-import { toFixedNumber } from '@/utils/convert'
+import { toFixedNumber } from '@/utils'
 import { computed, onDeactivated, onUnmounted, ref } from 'vue'
 
 export interface UseTimerOptions {

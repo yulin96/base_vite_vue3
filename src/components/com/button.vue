@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { useActive } from '@/hooks/useActive'
-import { sleep } from '@/utils/common'
+import { useActive } from '@/hooks'
+import { gsap, sleep } from '@/shared'
 import { random, randomInt, range, sample } from 'es-toolkit'
-import gsap from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
 
 const active = useActive()

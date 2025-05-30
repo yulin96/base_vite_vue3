@@ -1,13 +1,13 @@
-import { registerDirective } from '@/tools/init/directive'
+import { registerDirective } from '@/shared'
 import '@vant/touch-emulator'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 
-import '@/tools/init/dev'
-import '@/tools/init/hm'
-import '@/tools/init/resetWxFontSize'
-import '@/tools/init/setRem'
+import '@/shared/setup/dev'
+import '@/shared/setup/hm'
+import '@/shared/setup/resetWxFontSize'
+import '@/shared/setup/setRem'
 
 import App from './App.vue'
 import router from './router'

@@ -1,10 +1,7 @@
 <script setup lang="ts">
-import { useLoading } from '@/hooks/useLoading'
-import { useRouteTransition } from '@/hooks/useRouterTransition'
-import { registerButtonEffect } from '@/tools/animation/effect'
-import { registerWechatShare } from '@/tools/user/share'
-import { getWechatConfig } from '@/tools/wechat'
-import { isWeChat } from '@/utils/uaParser'
+import { useLoading, useRouteTransition } from '@/hooks'
+import { getWechatConfig } from '@/shared'
+import { isWeChat, registerButtonEffect, registerWechatShare } from '@/utils'
 import type { ConfigProviderThemeVars } from 'vant'
 import { nextTick, onMounted } from 'vue'
 import { Toaster } from 'vue-sonner'
