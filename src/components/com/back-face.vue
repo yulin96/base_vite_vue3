@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import gsap from '@/tools/pip/gsap'
+import { gsap } from '@/shared'
 import { useTemplateRef, watchPostEffect } from 'vue'
 
 const { flip = false } = defineProps<{ flip?: boolean }>()

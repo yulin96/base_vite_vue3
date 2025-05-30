@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useState } from '@/hooks/useState'
-import gsap from '@/tools/pip/gsap'
+import gsap from '@/shared/gsap'
 import { onMounted } from 'vue'
 
 const [loaded, setLoaded] = useState(false)

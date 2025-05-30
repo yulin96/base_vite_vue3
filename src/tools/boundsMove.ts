@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+import { gsap } from '@/shared'
 
 export function boundsMove(element: HTMLDivElement, to: DOMRect, from?: DOMRect) {
   return new Promise<HTMLDivElement>((resolve, reject) => {

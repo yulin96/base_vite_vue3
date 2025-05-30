@@ -1,4 +1,4 @@
-import gsap from '@/tools/pip/gsap'
+import gsap from '@/shared/gsap'
 import { useDocumentVisibility } from '@vueuse/core'
 import { random, randomInt, sample } from 'es-toolkit'
 

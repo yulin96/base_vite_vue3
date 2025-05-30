@@ -2,9 +2,9 @@ import { useLoading } from '@/hooks/useLoading'
 import type { ToastOptions } from 'vant'
 import { setToastDefaultOptions, showToast as toast } from 'vant'
 import 'vant/es/toast/style'
-import fail from './toast-icon/fail.svg'
-import info from './toast-icon/info.svg'
-import success from './toast-icon/success.svg'
+import fail from './icon/fail.svg'
+import info from './icon/info.svg'
+import success from './icon/success.svg'
 
 setToastDefaultOptions({
   forbidClick: true,

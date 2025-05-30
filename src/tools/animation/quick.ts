@@ -1,4 +1,4 @@
-import gsap from '@/tools/pip/gsap'
+import gsap from '@/shared/gsap'
 
 export const quickShakeX = (query: string, repeat?: number, repeatDelay?: number) => {
   const item = document.querySelector(query)
