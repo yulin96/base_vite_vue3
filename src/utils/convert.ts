@@ -423,3 +423,25 @@ export function toFixedNumber(num: number, digits: number = 2): number {
 
   return Number(n.toFixed(digits))
 }
+
+/**
+ * 将手机号码进行脱敏处理，只显示前三位和后四位，中间用星号代替
+ * @param phone 需要脱敏的手机号码
+ * @returns 脱敏后的手机号码
+ */
+export function maskPhone(phone: string): string {
+  if (!/^1[3-9]\d{9}$/.test(phone)) {
+    console.warn('非标准手机号格式:', phone)
+  }
+
+  return phone.replace(/(\d{3})(\d+)(\d{4})/, '$1****$3')
+}
+
+/**
+ * 去除字符串中的所有空格
+ * @param str 要处理的字符串
+ * @returns 处理后的字符串
+ */
+export function trimAll(str: string): string {
+  return str.replace(/\s+/g, '')
+}
