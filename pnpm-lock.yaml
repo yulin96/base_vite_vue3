@@ -160,7 +160,7 @@ importers:
         specifier: ^21.1.7
         version: 21.1.7
       '@types/node':
-        specifier: ^22.15.27
+        specifier: ^22.15.29
         version: 22.15.29
       '@types/nprogress':
         specifier: ^0.2.3
@@ -214,7 +214,7 @@ importers:
         specifier: ^3.5.3
         version: 3.5.3
       prettier-plugin-tailwindcss:
-        specifier: ^0.6.11
+        specifier: ^0.6.12
         version: 0.6.12(prettier@3.5.3)
       rollup-plugin-visualizer:
         specifier: ^6.0.1
