@@ -10,7 +10,7 @@ const { fillType = 'cover', url } = defineProps<{
 
 const uuid = 'zoomist_' + +new Date()
 
-let zoom: any = null
+let zoom: Zoomist | undefined
 
 watchPostEffect(() => {
   if (url) {

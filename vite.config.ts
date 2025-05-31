@@ -161,7 +161,7 @@ export default defineConfig(({ command }) => ({
           },
         }),
         pxtorem({
-          rootValue: ({ file }: any) => (~file.indexOf('node_modules/vant') ? 5 : 10),
+          rootValue: (root) => ((root?.file ?? '').indexOf('node_modules/vant') !== -1 ? 5 : 10),
           propList: ['*'],
           selectorBlackList: ['.ignore', 'pc'],
           exclude(filePath) {

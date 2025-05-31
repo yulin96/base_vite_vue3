@@ -2,7 +2,7 @@
 import Lottie, { type AnimationItem } from 'lottie-web'
 import { onMounted, onUnmounted, useTemplateRef, watchPostEffect } from 'vue'
 
-const { like, json } = defineProps<{ like: boolean; json: any }>()
+const { like, json } = defineProps<{ like: boolean; json: string }>()
 
 // fetch('https://oss.eventnet.cn/H5/zz/public/lotties/like/like1.json')
 //   .then((res) => res.json())

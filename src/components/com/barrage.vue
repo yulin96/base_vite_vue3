@@ -37,7 +37,10 @@ async function createBarrage({
   speed,
   parents,
 }: {
-  params: any
+  params: {
+    content: string
+    pin?: boolean
+  }
   gap: number
   speed: number
   parents: NodeListOf<HTMLDivElement>
