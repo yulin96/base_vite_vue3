@@ -89,7 +89,7 @@
     "npm-run-all2": "^8.0.4",
     "postcss-preset-env": "^10.2.0",
     "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11",
+    "prettier-plugin-tailwindcss": "^0.6.12",
     "rollup-plugin-visualizer": "^6.0.1",
     "sharp": "^0.34.2",
     "tailwind-merge": "^3.3.0",
