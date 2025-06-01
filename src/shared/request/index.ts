@@ -33,10 +33,7 @@ const instance = axios.create({
   baseURL: import.meta.env.VITE_APP_API_URL,
 })
 
-const instanceHttp = axios.create({})
-
 interceptor(instance)
-interceptor(instanceHttp)
 
 export const axiosGet = <T = any>(
   url: string,
@@ -45,7 +42,7 @@ export const axiosGet = <T = any>(
   data?: Record<string, any>,
 ): Promise<T> => {
   return new Promise<T>((resolve, reject) => {
-    ;(url.startsWith('http') ? instanceHttp : instance)
+    instance
       .get(url, {
         params,
         ...(data ? { data } : {}),
@@ -64,7 +61,7 @@ export const axiosPost = <T = any>(
   dataType: IFormDataOrJSON = 'FormData',
 ): Promise<T> => {
   return new Promise<T>((resolve, reject) => {
-    ;(url.startsWith('http') ? instanceHttp : instance)
+    instance
       .post(url, data && (dataType === 'FormData' ? toFormData(data) : data), {
         // adapter: ['fetch', 'xhr'],
         ...config,
