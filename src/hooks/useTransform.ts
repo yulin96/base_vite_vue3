@@ -1,8 +1,7 @@
-import { onBeforeUnmount, onMounted, type ShallowRef } from 'vue'
+import { v4 } from 'uuid'
+import { onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 
 type TransformOptions = {
-  moveElement: Readonly<ShallowRef<HTMLDivElement | null>>
-
   scale?: {
     default?: number
     min?: number
@@ -16,11 +15,14 @@ type TransformOptions = {
 }
 
 export function useTransform(options: TransformOptions) {
-  const { moveElement, scale, position } = options
+  const key = v4()
+
+  const { scale, position } = options
   const { default: defaultScale = 1, min: minScale = 1, max: maxScale = 5 } = scale || {}
   const { x: defaultX = 0, y: defaultY = 0 } = position || {}
   const defaultPosition = { x: defaultX, y: defaultY }
 
+  const moveElement = useTemplateRef<HTMLElement>(key)
   let containerElement: HTMLElement | null = null
 
   // 保存当前位置和缩放值
@@ -32,8 +34,8 @@ export function useTransform(options: TransformOptions) {
   let startY = 0
   let startDistance = 0
   let startScale = 1
-  let isDragging = false
-  let isScaling = false
+  const isDragging = ref(false)
+  const isScaling = ref(false)
 
   // 添加一个新变量跟踪是否真正发生了拖动（移动超过阈值）
   let hasMoved = false
@@ -43,7 +45,7 @@ export function useTransform(options: TransformOptions) {
   let pinchStartCompositionX = 0
   let pinchStartCompositionY = 0
 
-  let lastTapTime = 0
+  const lastTapTime = 0
   const DOUBLE_TAP_DELAY = 300
 
   // 一个变量用于跟踪拖动后阻止点击的计时器
@@ -98,8 +100,8 @@ export function useTransform(options: TransformOptions) {
     hasMoved = false
     movedDistance = 0
 
-    isDragging = true
-    isScaling = false
+    isDragging.value = true
+    isScaling.value = false
     startX = e.clientX - positionMark.x
     startY = e.clientY - positionMark.y
 
@@ -110,7 +112,7 @@ export function useTransform(options: TransformOptions) {
 
   // 处理鼠标移动事件
   const handleMouseMove = (e: MouseEvent) => {
-    if (!isDragging) return
+    if (!isDragging.value) return
 
     e.preventDefault()
 
@@ -146,7 +148,7 @@ export function useTransform(options: TransformOptions) {
     const wasMoving = hasMoved
 
     // 结束拖动状态
-    isDragging = false
+    isDragging.value = false
 
     // 移除文档级事件监听器
     document.removeEventListener('mousemove', handleMouseMove)
@@ -174,13 +176,13 @@ export function useTransform(options: TransformOptions) {
 
   const handleTouchStart = (e: TouchEvent) => {
     const touches = e.touches
-    const now = Date.now()
-    if (now - lastTapTime < DOUBLE_TAP_DELAY && touches.length === 1) {
-      resetPosition()
-      lastTapTime = 0
-      return
-    }
-    lastTapTime = now
+    // const now = Date.now()
+    // if (now - lastTapTime < DOUBLE_TAP_DELAY && touches.length === 1) {
+    //   resetPosition()
+    //   lastTapTime = 0
+    //   return
+    // }
+    // lastTapTime = now
 
     // 重置移动状态
     hasMoved = false
@@ -188,14 +190,14 @@ export function useTransform(options: TransformOptions) {
 
     if (touches.length === 1) {
       // 单指操作 - 准备拖动
-      isDragging = true
-      isScaling = false
+      isDragging.value = true
+      isScaling.value = false
       startX = touches[0].clientX - positionMark.x
       startY = touches[0].clientY - positionMark.y
     } else if (touches.length === 2) {
       // 双指操作 - 准备缩放
-      isDragging = false
-      isScaling = true
+      isDragging.value = false
+      isScaling.value = true
       startDistance = getDistance(touches[0], touches[1])
       startScale = scaleMark
 
@@ -211,12 +213,12 @@ export function useTransform(options: TransformOptions) {
 
   // 处理触摸移动事件
   const handleTouchMove = (e: TouchEvent) => {
-    if (!isDragging && !isScaling) return
+    if (!isDragging.value && !isScaling.value) return
 
     e.preventDefault() // <- 在move事件中调用，以阻止拖动/缩放时的页面滚动等默认行为
     const touches = e.touches
 
-    if (isDragging && touches.length === 1) {
+    if (isDragging.value && touches.length === 1) {
       // 单指拖动
       const newX = touches[0].clientX - startX
       const newY = touches[0].clientY - startY
@@ -236,7 +238,7 @@ export function useTransform(options: TransformOptions) {
       positionMark = boundedPosition
 
       updateItemPosition()
-    } else if (isScaling && touches.length === 2) {
+    } else if (isScaling.value && touches.length === 2) {
       // 标记为已移动，因为缩放也应该阻止点击
       hasMoved = true
 
@@ -275,8 +277,8 @@ export function useTransform(options: TransformOptions) {
     const wasMoving = hasMoved
 
     // 结束拖动和缩放状态
-    isDragging = false
-    isScaling = false
+    isDragging.value = false
+    isScaling.value = false
 
     // 如果发生了真正的拖动，设置拦截点击事件
     if (wasMoving) {
@@ -388,6 +390,11 @@ export function useTransform(options: TransformOptions) {
     if (hasMoved) {
       e.stopPropagation()
       e.preventDefault()
+
+      isDragging.value = false
+      isScaling.value = false
     }
   }
+
+  return { isDragging, isScaling, key }
 }
