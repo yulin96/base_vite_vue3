@@ -1,47 +1,28 @@
-import { useMaskLoading } from '@/hooks'
-import router from '@/router'
-import { useTimeoutFn, useToggle } from '@vueuse/core'
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 
 export function useRouteTransition(transitionName: RouteTransitionName = 'slide') {
   import(`@/assets/css/transition/${transitionName}.css`).catch((err) => {
     console.error('Error loading transition CSS:', err)
   })
 
-  const { createLoading, clearLoading } = useMaskLoading()
-  const { start: startTimeout, stop: stopTimeout } = useTimeoutFn(createLoading, 600, {
-    immediate: false,
-  })
-  const [isFirstLoad, setIsFirstLoad] = useToggle(true)
-
   const name = ref('fade')
+  const route = useRoute()
+  watch(
+    () => route.meta,
+    (to, from) => {
+      if (to.transitionName) return (name.value = to.transitionName)
 
-  router.beforeEach((to, from) => {
-    if (!isFirstLoad.value && to.name !== from.name) {
-      startTimeout()
-    }
+      const toMetaIndex = to.index || 0
+      const fromMetaIndex = from.index || 0
 
-    if (to.meta.transitionName) {
-      name.value = to.meta.transitionName
-      return
-    }
+      if (!toMetaIndex || !fromMetaIndex || toMetaIndex === fromMetaIndex) {
+        name.value = 'fade'
+      } else {
+        name.value = transitionName + (toMetaIndex > fromMetaIndex ? '-right' : '-left')
+      }
+    },
+  )
 
-    const toMetaIndex = to.meta.index || 0
-    const fromMetaIndex = from.meta.index || 0
-
-    if (!toMetaIndex || !fromMetaIndex || toMetaIndex === fromMetaIndex) {
-      name.value = 'fade'
-    } else {
-      name.value = transitionName + (toMetaIndex > fromMetaIndex ? '-right' : '-left')
-    }
-  })
-
-  const isReady = () => {
-    setIsFirstLoad(false)
-
-    stopTimeout()
-    clearLoading()
-  }
-
-  return { name, isReady }
+  return { name }
 }

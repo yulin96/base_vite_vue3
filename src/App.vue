@@ -14,7 +14,7 @@ if (isWeChat()) {
 registerButtonEffect()
 
 /* 路由动画 */
-const { name, isReady } = useRouteTransition()
+const { name } = useRouteTransition()
 
 // const { locale } = useI18n()
 // const { VITE_APP_LOCALSTORAGE_NAME: localName } = import.meta.env
@@ -55,12 +55,7 @@ onUnmounted(() => {
       <template v-if="Component">
         <Transition :name>
           <KeepAlive :exclude="[]">
-            <Suspense @resolve="isReady">
-              <component :is="Component" class="wrapper"></component>
-              <template #fallback>
-                <ComLoading></ComLoading>
-              </template>
-            </Suspense>
+            <component :is="Component" class="wrapper"></component>
           </KeepAlive>
         </Transition>
       </template>
