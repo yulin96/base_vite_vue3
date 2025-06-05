@@ -69,8 +69,8 @@ importers:
         specifier: ^1.3.6
         version: 1.3.6
       es-toolkit:
-        specifier: ^1.38.0
-        version: 1.38.0
+        specifier: ^1.39.0
+        version: 1.39.0
       gsap:
         specifier: ^3.13.0
         version: 3.13.0
@@ -2201,8 +2201,8 @@ packages:
     resolution: {integrity: sha512-j6vWzfrGVfyXxge+O0x5sh6cvxAog0a/4Rdd2K36zCMV5eJ+/+tOAngRO8cODMNWbVRdVlmGZQL2YS3yR8bIUA==}
     engines: {node: '>= 0.4'}
 
-  es-toolkit@1.38.0:
-    resolution: {integrity: sha512-OT3AxczYYd3W50bCj4V0hKoOAfqIy9tof0leNQYekEDxVKir3RTVTJOLij7VAe6fsCNsGhC0JqIkURpMXTCSEA==}
+  es-toolkit@1.39.0:
+    resolution: {integrity: sha512-EoVtfsblZAUBu1pLM7SS0JH6mOUSln+l7IPkdTAasDFO1jYJIrdFv6usRuGbUFKIuA78OVlvpGldGSztAihQQQ==}
 
   esbuild@0.25.5:
     resolution: {integrity: sha512-P8OtKZRv/5J5hhz0cUAdu/cLuPIKXpQl1R9pZtvmHWQvrAUVd0UNIPT4IB4W3rNOqVO0rlqHmCIbSwxh/c9yUQ==}
@@ -6115,7 +6115,7 @@ snapshots:
       has-tostringtag: 1.0.2
       hasown: 2.0.2
 
-  es-toolkit@1.38.0: {}
+  es-toolkit@1.39.0: {}
 
   esbuild@0.25.5:
     optionalDependencies:
