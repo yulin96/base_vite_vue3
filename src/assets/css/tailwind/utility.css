@@ -20,8 +20,12 @@
   text-align-last: justify;
 }
 
-@utility touch-callout {
+@utility callout-default {
   -webkit-touch-callout: default;
+}
+
+@utility callout-none {
+  -webkit-touch-callout: none;
 }
 
 @utility shark-wrap {
