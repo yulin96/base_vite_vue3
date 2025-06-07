@@ -5,52 +5,68 @@ import wx from 'weixin-js-sdk'
 const wxConfigReady = Symbol('wxConfigReady')
 window[wxConfigReady] = false
 
+const JS_API_LIST: wx.jsApiList = [
+  'scanQRCode',
+  'updateAppMessageShareData',
+  'updateTimelineShareData',
+  'openLocation',
+  'previewImage',
+  'hideAllNonBaseMenuItem',
+  'closeWindow',
+  'hideMenuItems',
+  'hideOptionMenu',
+]
+
+const OPEN_TAG_LIST: wx.openTagList = ['wx-open-launch-app', 'wx-open-launch-weapp']
+
+function setupWxConfig(data: any, debug = false): Promise<void> {
+  return new Promise((resolve, reject) => {
+    wx.config({
+      debug,
+      appId: data.appId,
+      timestamp: data.timestamp,
+      nonceStr: data.nonceStr,
+      signature: data.signature,
+      jsApiList: JS_API_LIST,
+      openTagList: OPEN_TAG_LIST,
+    })
+
+    wx.ready(() => {
+      resolve()
+      window[wxConfigReady] = true
+    })
+
+    wx.error((res) => {
+      reject(res.errMsg)
+    })
+  })
+}
+
 export function getWechatConfig() {
   if (window[wxConfigReady]) return Promise.resolve()
 
   if (!isWeChat()) return Promise.reject('not in wechat')
 
-  return new Promise<void>((resolve, reject) => {
-    const wxLink = location.href.split('#')[0]
-    axios
+  const url = location.href.split('#')[0]
+
+  // 根据域名选择不同的配置接口
+  if (url.includes('illqq.com') || url.includes('meevo.cn')) {
+    return axios
+      .get('https://wx.illqq.com/config?url=' + encodeURIComponent(url))
+      .then(({ data }) => setupWxConfig(data))
+      .catch((error) => Promise.reject(error))
+  } else {
+    return axios
       .post(
-        `https://wechat.event1.cn/api/getJsSdk`,
+        'https://wechat.event1.cn/api/getJsSdk',
         toFormData({
-          url: wxLink,
+          url: url,
           name: 'hudongweipingtai',
         }),
       )
-      .then(({ data: { data } }) => {
-        wx.config({
-          appId: data.appId,
-          timestamp: data.timestamp,
-          nonceStr: data.nonceStr,
-          signature: data.signature,
-          jsApiList: [
-            'scanQRCode',
-            'updateAppMessageShareData',
-            'updateTimelineShareData',
-            'openLocation',
-            'previewImage',
-            'hideAllNonBaseMenuItem',
-            'closeWindow',
-            'hideMenuItems',
-            'hideOptionMenu',
-          ],
-          openTagList: ['wx-open-launch-app', 'wx-open-launch-weapp'],
-        })
-        wx.ready(function () {
-          resolve()
-          window[wxConfigReady] = true
-        })
-        wx.error(function (res) {
-          reject(res.errMsg)
-        })
-      })
-      .catch(function (error) {
-        reject(error)
-      })
-  })
+      .then(({ data: { data } }) => setupWxConfig(data))
+      .catch((error) => Promise.reject(error))
+  }
 }
 
 export type IWxShare = Pick<wx.IupdateAppMessageShareData, 'title' | 'desc' | 'link' | 'imgUrl'>
