@@ -1,4 +1,4 @@
-import { gsap } from '@/shared'
+import gsap from 'gsap'
 
 export function registerButtonEffect() {
   document.addEventListener('click', (e) => {

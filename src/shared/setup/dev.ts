@@ -1,4 +1,4 @@
-import { loadScript } from '@/utils'
+import { loadScript } from '@/utils/dom/dom'
 
 const params = new URLSearchParams(window.location.search)
 

@@ -416,6 +416,12 @@ export function extractNumbers(str: string, returnAsArray = false): number[] | n
   return returnAsArray ? numbers : numbers[0]
 }
 
+/**
+ * 将数字转换为指定小数位数的固定小数
+ * @param num 要转换的数字
+ * @param digits 小数位数，默认为 2
+ * @returns 转换后的数字
+ */
 export function toFixedNumber(num: number, digits: number = 2): number {
   const n = typeof num === 'number' ? num : Number(num)
 

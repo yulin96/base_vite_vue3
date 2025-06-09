@@ -1,5 +1,6 @@
-import { isDingDing, wechatScan } from '@/shared'
-import { isWeChat } from '@/utils'
+import { isDingDing } from '@/shared/third/dingtalk'
+import { wechatScan } from '@/shared/third/wx'
+import { isWeChat } from '@/utils/ua'
 import { biz } from 'dingtalk-jsapi'
 import { showDialog } from 'vant'
 

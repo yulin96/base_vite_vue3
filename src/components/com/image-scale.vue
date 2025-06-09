@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Zoomist } from '@/shared'
+import Zoomist from '@/shared/zoomist'
 import { showDialog } from 'vant'
 import { watchPostEffect } from 'vue'
 

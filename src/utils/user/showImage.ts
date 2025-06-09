@@ -1,5 +1,6 @@
-import { wechatPreviewImage } from '@/shared'
-import { isHttps, isWeChat } from '@/utils'
+import { wechatPreviewImage } from '@/shared/third/wx'
+import { isWeChat } from '@/utils/ua'
+import { isHttps } from '@/utils/validator'
 import { showImagePreview } from 'vant'
 import 'vant/es/image-preview/style'
 

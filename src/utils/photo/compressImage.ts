@@ -1,6 +1,6 @@
 import Compressor from 'compressorjs'
 
-export function compressImage(file: File, options?: Compressor.Options) {
+export function compressPhoto(file: File, options?: Compressor.Options) {
   return new Promise<Blob>((resolve, reject) => {
     new Compressor(file, {
       quality: 0.6,

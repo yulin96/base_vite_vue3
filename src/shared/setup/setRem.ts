@@ -1,6 +1,6 @@
 import '@/assets/css/pc.css'
-import { createQRCode, removeQRCode } from '@/shared'
-import { isMobile } from '@/utils'
+import { createQRCode, removeQRCode } from '@/shared/setup/createQRCode'
+import { isMobile } from '@/utils/ua'
 import { debounce } from 'es-toolkit'
 
 function setRem() {

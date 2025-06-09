@@ -1,4 +1,5 @@
-import { formDataToObj, isFormData } from '@/utils'
+import { formDataToObj } from '@/utils/convert'
+import { isFormData } from '@/utils/validator'
 import axios, { toFormData, type AxiosInstance, type AxiosRequestConfig } from 'axios'
 
 export type IFormDataOrJSON = 'FormData' | 'JSON'

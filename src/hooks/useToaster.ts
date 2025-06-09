@@ -1,4 +1,4 @@
-import { createToaster } from '@/utils'
+import { createToaster } from '@/utils/user/createToaster'
 import { readonly, shallowRef } from 'vue'
 
 export function useToaster(loadingInfo: string) {

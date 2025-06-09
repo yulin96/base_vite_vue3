@@ -1,4 +1,5 @@
-import { blobToFile, compressImage } from '@/utils'
+import { blobToFile } from '@/utils/convert'
+import { compressPhoto } from '@/utils/photo/compressImage'
 import { v1 } from 'uuid'
 
 /**
@@ -22,7 +23,7 @@ export function getUserImage(option?: Compressor.Options) {
       const file = (e.target as HTMLInputElement).files?.[0]
       if (!file) return
       if (file) {
-        compressImage(file, option)
+        compressPhoto(file, option)
           .then((f) => {
             resolve(blobToFile(f, `${v1()}.jpg`))
           })

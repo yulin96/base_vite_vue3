@@ -76,10 +76,12 @@
 
 ## 使用方式
 
-所有工具均可通过 `@/utils` 直接导入使用。例如：
+所有工具均可直接从具体文件导入使用。例如：
 
 ```ts
-import { copyText, randomNum, isEmail } from '@/utils'
+import { copyText } from '@/utils/user/copyText'
+import { randomNum } from '@/utils/random'
+import { isEmail } from '@/utils/validator'
 ```
 
 ---
@@ -89,14 +91,14 @@ import { copyText, randomNum, isEmail } from '@/utils'
 ### 1. 复制文本到剪贴板
 
 ```ts
-import { copyText } from '@/utils'
+import { copyText } from '@/utils/user/copyText'
 await copyText('hello world')
 ```
 
 ### 2. 随机数与随机字符串
 
 ```ts
-import { randomNum, randomString } from '@/utils'
+import { randomNum, randomString } from '@/utils/random'
 const n = randomNum(1, 10)
 const str = randomString('prefix', 8)
 ```
@@ -104,7 +106,7 @@ const str = randomString('prefix', 8)
 ### 3. 校验邮箱/手机号/身份证
 
 ```ts
-import { isEmail, isPhone, isIdCard } from '@/utils'
+import { isEmail, isPhone, isIdCard } from '@/utils/validator'
 isEmail('test@xx.com') // true/false
 isPhone('13800138000') // true/false
 isIdCard('110101199003071234') // true/false
@@ -113,14 +115,14 @@ isIdCard('110101199003071234') // true/false
 ### 4. 图片压缩
 
 ```ts
-import { compressImage } from '@/utils'
+import { compressImage } from '@/utils/photo/compressImage'
 const blob = await compressImage(file)
 ```
 
 ### 5. 页面跳转
 
 ```ts
-import { toUrl } from '@/utils'
+import { toUrl } from '@/utils/user/location'
 toUrl('https://example.com', { newTab: true })
 ```
 

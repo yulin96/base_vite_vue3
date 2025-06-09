@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useTransform } from '@/hooks'
+import { useTransform } from '@/hooks/useTransform'
 
 const { key } = useTransform({
   scale: {

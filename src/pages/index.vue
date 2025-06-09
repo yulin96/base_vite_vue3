@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useStatus } from '@/hooks'
-import { gsap } from '@/shared'
+import { useStatus } from '@/hooks/useStatus'
+import gsap from 'gsap'
 import { onMounted } from 'vue'
 
 const [loaded, setLoaded] = useStatus(false)

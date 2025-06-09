@@ -20,10 +20,11 @@
 
 ## 使用方式
 
-可通过 `@/shared` 直接导入需要的内容。例如：
+可直接从具体文件导入需要的内容。例如：
 
 ```ts
-import { createQRCode, setRem } from '@/shared/setup'
+import { createQRCode } from '@/shared/setup/createQRCode'
+import { setRem } from '@/shared/setup/setRem'
 import { wx } from '@/shared/third/wx'
 ```
 

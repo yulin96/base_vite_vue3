@@ -1,4 +1,4 @@
-import { registerDirective } from '@/shared'
+import { registerDirective } from '@/shared/directive'
 import '@vant/touch-emulator'
 import { createPinia } from 'pinia'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'

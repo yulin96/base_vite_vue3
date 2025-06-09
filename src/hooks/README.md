@@ -20,10 +20,11 @@
 
 ## 使用方式
 
-所有 hooks 可直接导入使用，例如：
+所有 hooks 可直接从具体文件导入使用，例如：
 
 ```ts
-import { useLock, useToaster } from '@/hooks'
+import { useLock } from '@/hooks/useLock'
+import { useToaster } from '@/hooks/useToaster'
 ```
 
 ## 常用 hooks 示例
@@ -31,6 +32,7 @@ import { useLock, useToaster } from '@/hooks'
 ### 1. useLock 防止重复请求
 
 ```ts
+import { useLock } from '@/hooks/useLock'
 const { post, lock } = useLock()
 const onSubmit = async () => {
   if (lock.value) return
@@ -41,6 +43,7 @@ const onSubmit = async () => {
 ### 2. useToaster 异步 Toast 提示
 
 ```ts
+import { useToaster } from '@/hooks/useToaster'
 const [isProcessing, createToast] = useToaster('加载中...')
 const handleRequest = async () => {
   if (isProcessing.value) return
@@ -57,6 +60,7 @@ const handleRequest = async () => {
 ### 3. useTimer 倒计时
 
 ```ts
+import { useTimer } from '@/hooks/useTimer'
 const { sending, timerText, startTimer } = useTimer(60)
 // sending: Ref<boolean> 是否倒计时中
 timerText.value // 显示剩余秒数文本
@@ -66,6 +70,7 @@ startTimer() // 开始倒计时
 ### 4. useQRCode 生成二维码
 
 ```ts
+import { useQRCode } from '@/hooks/useQRCode'
 const { qrcodeUrl, createQRCode } = useQRCode()
 createQRCode('https://example.com')
 // qrcodeUrl.value 即为二维码图片地址

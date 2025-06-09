@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { gsap } from '@/shared'
+import gsap from 'gsap'
 import { ref, toValue, useTemplateRef, watchPostEffect, type MaybeRefOrGetter } from 'vue'
 
 const qrCodeRef = useTemplateRef('qrCodeRef')

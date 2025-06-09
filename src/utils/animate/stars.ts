@@ -1,6 +1,6 @@
-import { gsap } from '@/shared'
 import { useDocumentVisibility } from '@vueuse/core'
 import { random, randomInt, sample } from 'es-toolkit'
+import gsap from 'gsap'
 
 export function createStars(starsBox: HTMLDivElement) {
   const style = window.getComputedStyle(starsBox)

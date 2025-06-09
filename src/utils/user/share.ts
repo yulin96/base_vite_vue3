@@ -1,5 +1,6 @@
-import { wechatShare } from '@/shared'
-import { isHttps, isWeChat } from '@/utils'
+import { wechatShare } from '@/shared/third/wx'
+import { isWeChat } from '@/utils/ua'
+import { isHttps } from '@/utils/validator'
 
 export function registerWechatShare() {
   const title = import.meta.env.VITE_APP_SHARE_TITLE

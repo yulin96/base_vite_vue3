@@ -1,4 +1,4 @@
-import { removeUrlParams } from '@/shared'
+import { removeUrlParams } from '@/shared/common'
 import QRCode from 'qrcode'
 
 export function createQRCode(app: HTMLDivElement) {
