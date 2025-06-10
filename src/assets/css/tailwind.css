@@ -1,6 +1,7 @@
 @import 'tailwindcss/theme.css';
 @import 'tailwindcss/preflight.css';
 @import 'tailwindcss/utilities.css';
+@import 'tw-animate-css';
 
 @import './tailwind/size.css';
 @import './tailwind/utility.css';
