@@ -1,5 +1,5 @@
-import { createToaster } from '@/utils/user/createToaster'
-import { toUrl } from '@/utils/user/location'
+import { createToaster } from '@/shared/user/createToaster'
+import { toUrl } from '@/shared/user/location'
 
 let lock = false
 export function downloadFile(url: string, filename?: string) {

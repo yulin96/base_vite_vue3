@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { getOpenId } from '@/shared/user/getOpenId'
+import { toUrl } from '@/shared/user/location'
 import { useStore } from '@/stores/user'
-import { getOpenId } from '@/utils/user/getOpenId'
-import { toUrl } from '@/utils/user/location'
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
