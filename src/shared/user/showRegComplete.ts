@@ -1,12 +1,14 @@
 import regComplete from '@/components/com/reg-complete/index.vue'
-import { createApp } from 'vue'
+import { createApp, type ComponentPublicInstance } from 'vue'
 
 let appRoot: HTMLElement | null = null
 let app: ReturnType<typeof createApp> | null = null
 
+let instance: ComponentPublicInstance<typeof regComplete> | null = null
+
 export function showRegComplete(text?: string) {
   if (app) {
-    app._instance?.exposed?.show()
+    instance?.show()
     return
   }
   const container = document.createElement('div')
@@ -15,5 +17,5 @@ export function showRegComplete(text?: string) {
   appRoot.appendChild(container)
   app = createApp(regComplete, { text })
 
-  app.mount(container)
+  instance = app.mount(container)
 }
