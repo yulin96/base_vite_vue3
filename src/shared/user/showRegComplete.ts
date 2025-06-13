@@ -8,6 +8,7 @@ let instance: ComponentPublicInstance<typeof regComplete> | null = null
 
 export function showRegComplete(text?: string) {
   if (app) {
+    instance?.setText(text)
     instance?.show()
     return
   }
@@ -15,7 +16,9 @@ export function showRegComplete(text?: string) {
   appRoot = document.querySelector('#app')
   if (!appRoot) return console.error('App root not found')
   appRoot.appendChild(container)
-  app = createApp(regComplete, { text })
+  app = createApp(regComplete)
 
   instance = app.mount(container)
+  instance?.setText(text)
+  instance?.show()
 }

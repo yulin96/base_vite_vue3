@@ -7,6 +7,7 @@ let app: ReturnType<typeof createApp> | null = null
 let instance: ComponentPublicInstance<typeof comingSoon> | null = null
 export function showComingSoon(text?: string) {
   if (app) {
+    instance?.setText(text)
     instance?.show()
     return
   }
@@ -14,7 +15,9 @@ export function showComingSoon(text?: string) {
   appRoot = document.querySelector('#app')
   if (!appRoot) return console.error('App root not found')
   appRoot.appendChild(container)
-  app = createApp(comingSoon, { text })
+  app = createApp(comingSoon)
 
   instance = app.mount(container)
+  instance?.setText(text)
+  instance?.show()
 }
