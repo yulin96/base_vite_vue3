@@ -1,4 +1,4 @@
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 
 export function focus(name: string) {
   const dom = document.querySelector(`[${name}]`)

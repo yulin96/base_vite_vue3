@@ -2,7 +2,7 @@
 import pinSvg from '@/assets/imgs/pin.svg'
 import { randomString } from '@/utils/random'
 import { random, sample } from 'es-toolkit'
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 import { onMounted, useTemplateRef } from 'vue'
 
 const uuid = randomString()

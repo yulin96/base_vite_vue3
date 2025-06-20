@@ -1,7 +1,7 @@
-import gsap from 'gsap'
+import { gsap } from 'gsap'
 
 export function boundsMove(element: HTMLDivElement, to: DOMRect, from?: DOMRect) {
-  return new Promise<HTMLDivElement>((resolve, reject) => {
+  return new Promise<HTMLDivElement>(() => {
     const fromElement = element.cloneNode(true) as HTMLDivElement
 
     const {
