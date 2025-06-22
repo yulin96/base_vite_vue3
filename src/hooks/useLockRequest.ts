@@ -1,4 +1,4 @@
-import { userLock } from '@/hooks/useLock'
+import { useLock } from '@/hooks/useLock'
 import { type IFormDataOrJSON, axiosGet, axiosPost } from '@/shared/request'
 import type { AxiosRequestConfig } from 'axios'
 import nprogress from 'nprogress'
@@ -12,7 +12,7 @@ nprogress.configure({
 })
 
 export function useLockRequest(disableLock = false, showProgress = false, delay = 500) {
-  const [status, lock, unLock] = userLock()
+  const [status, lock, unLock] = useLock()
 
   const makeRequest = <T>(requestFn: () => Promise<T>): Promise<T> => {
     if (status.value && !disableLock) {
