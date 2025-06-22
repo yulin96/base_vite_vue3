@@ -1,39 +1,36 @@
+import { useLock } from '@/hooks/useLock'
 import { createToaster } from '@/shared/user/createToaster'
 import { toUrl } from '@/shared/user/location'
+import { isWeChat } from '@/utils/ua'
+import { isIOS } from '@vueuse/core'
 
-let lock = false
+const [status, lock, unLock] = useLock()
+
 export function downloadFile(url: string, filename?: string) {
-  if (lock) return
-  lock = true
-  const { resolve, reject } = createToaster('下载中...')
-  if (typeof fetch === 'function') {
+  if (typeof fetch === 'function' && isWeChat() && isIOS) {
+    if (status.value) return
+    lock()
+    const { resolve, reject } = createToaster('下载中...')
     fetch(url)
       .then((response) => response.blob())
       .then((blob) => {
-        const url = URL.createObjectURL(new Blob([blob]))
+        resolve('下载完成')
+        const tempUrl = URL.createObjectURL(new Blob([blob]))
         const a = document.createElement('a')
-        a.href = url
-        a.download = filename ?? url.split('/')?.pop() ?? 'download'
+        a.href = tempUrl
+        a.download = decodeURIComponent(filename ?? url.split('/')?.pop() ?? 'download')
         a.click()
-        URL.revokeObjectURL(url)
-
-        setTimeout(() => {
-          resolve('下载完成')
-        }, 500)
+        URL.revokeObjectURL(tempUrl)
       })
       .catch(() => {
         reject('下载失败')
       })
       .finally(() => {
         setTimeout(() => {
-          lock = false
+          unLock()
         }, 500)
       })
   } else {
     toUrl(url)
-    setTimeout(() => {
-      resolve('下载完成')
-      lock = false
-    }, 500)
   }
 }
