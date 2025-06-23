@@ -33,7 +33,7 @@ export function useLockRequest(disableLock = false, showProgress = false, delay 
         .catch((err) => {
           reject(err)
           if (err.name !== 'CanceledError') {
-            toast.error('请求失败，请重试', { duration: 3000 })
+            toast.error('正在加载中...', { duration: 3000 })
           }
         })
         .finally(() => {
