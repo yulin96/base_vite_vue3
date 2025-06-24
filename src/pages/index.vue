@@ -13,8 +13,10 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="index group" :aria-expanded="loaded">
-    <main class="content"></main>
+  <section>
+    <main v-bind="$attrs" class="index">
+      <div class="content"></div>
+    </main>
   </section>
 </template>
 
