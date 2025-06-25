@@ -126,6 +126,7 @@ export default defineConfig(({ command }) => ({
     drop: command === 'serve' ? [] : env.VITE_DROP_CONSOLE == '1' ? ['console', 'debugger'] : [],
   },
   build: {
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
     assetsInlineLimit: 10240,
     assetsDir: 'assets',
     chunkSizeWarningLimit: 1000,
