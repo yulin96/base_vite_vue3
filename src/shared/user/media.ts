@@ -64,6 +64,28 @@ export function getUserVideo() {
   })
 }
 
+export function getUserFile(accept = '*') {
+  return new Promise<File>((resolve, reject) => {
+    const input = document.createElement('input')
+    document.body.appendChild(input)
+    input.type = 'file'
+    input.accept = accept
+    input.multiple = false
+
+    input.onchange = (e) => {
+      const file = (e.target as HTMLInputElement).files?.[0]
+      if (!file) return
+      if (file) {
+        resolve(file)
+      } else {
+        reject(new Error('No file selected'))
+      }
+      document.body.removeChild(input)
+    }
+    input.click()
+  })
+}
+
 export function getPosition() {
   return new Promise<GeolocationCoordinates>((resolve, reject) => {
     if (navigator.geolocation) {

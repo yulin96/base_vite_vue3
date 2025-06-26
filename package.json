@@ -34,6 +34,7 @@
     "chalk": "^5.4.1",
     "compressorjs": "^1.2.1",
     "copy-to-clipboard": "^3.3.3",
+    "cos-js-sdk-v5": "^1.10.1",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.13",
     "dingtalk-jsapi": "^3.1.0",
