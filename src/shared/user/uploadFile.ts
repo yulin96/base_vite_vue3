@@ -56,9 +56,9 @@ export async function uploadFile(option: IUploadOption): Promise<[null, string] 
           await sleep(5000)
           const url = `https://oss.1ycloud.com/${Key}`
           if (test) {
-            const isImage = await isImageUrl(url)
-            if (!isImage) {
-              return (uploadToast(toastId, '上传图片不符合规范，请更换图片重试'), resolve([err, null]))
+            const forbidden = await isForbidden(url)
+            if (forbidden) {
+              return (uploadToast(toastId, '上传文件不符合规范，请更换文件重试'), resolve([err, null]))
             }
           }
           uploadToast(toastId, '上传成功', true)
@@ -79,11 +79,11 @@ function uploadToast(toastId: number | string | null, message: string, success?:
   }
 }
 
-export function isImageUrl(url: string): Promise<boolean> {
-  return new Promise((resolve) => {
-    const img = new Image()
-    img.onload = () => resolve(true)
-    img.onerror = () => resolve(false)
-    img.src = url
-  })
+async function isForbidden(url: string): Promise<boolean> {
+  try {
+    const res = await fetch(url, { method: 'HEAD' })
+    return res.status >= 400 && res.status < 600
+  } catch {
+    return false
+  }
 }
