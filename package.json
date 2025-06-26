@@ -88,7 +88,7 @@
     "jsdom": "^26.1.0",
     "npm-run-all2": "^8.0.4",
     "postcss-preset-env": "^10.2.3",
-    "prettier": "^3.6.0",
+    "prettier": "^3.6.1",
     "prettier-plugin-tailwindcss": "^0.6.13",
     "rollup-plugin-visualizer": "^6.0.3",
     "sharp": "^0.34.2",
