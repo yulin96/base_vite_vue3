@@ -23,7 +23,7 @@ export async function uploadFile(option: IUploadOption): Promise<[null, string] 
     try {
       const {
         data: { data },
-      } = await axios.post('https://rally.event1.cn/bn9z/sts', toFormData({ puid: id }))
+      } = await axios.post('https://rally.event1.cn/bn9z/sts', toFormData({ puid: id, type: 'sts' }))
 
       const { startTime, expiredTime, bucket, region, dir } = data
       const { sessionToken, tmpSecretId, tmpSecretKey } = data.credentials
