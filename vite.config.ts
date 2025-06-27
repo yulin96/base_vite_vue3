@@ -103,7 +103,7 @@ export default defineConfig(({ command }) => ({
       open: true,
       uploadPath: `${env.VITE_FTP_DIRNAME}`,
       singleBack: true,
-      // defaultFtp: process.env.zQRFtpName,
+      // defaultFtp: process.env.zH5FtpName,
       ftps: [
         {
           name: process.env.zH5FtpName || process.env.zH5FtpAlias || '',
@@ -112,6 +112,14 @@ export default defineConfig(({ command }) => ({
           user: process.env.zH5FtpUser,
           password: process.env.zH5FtpPassword,
           alias: process.env.zH5FtpAlias,
+        },
+        {
+          name: process.env.zH5FtpName2 || process.env.zH5FtpAlias2 || '',
+          host: process.env.zH5FtpHost2,
+          port: +(process.env.zH5FtpPort2 || 21),
+          user: process.env.zH5FtpUser2,
+          password: process.env.zH5FtpPassword2,
+          alias: process.env.zH5FtpAlias2,
         },
         {
           name: process.env.zQRFtpName || process.env.zQRFtpAlias || '',
