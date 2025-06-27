@@ -53,7 +53,7 @@ export async function uploadFile(option: IUploadOption): Promise<[null, string] 
         async (err, data) => {
           if (err) return (uploadToast(toastId, '上传失败'), resolve([err, null]))
 
-          await sleep(5000)
+          await sleep(3000)
           const url = `https://oss.1ycloud.com/${Key}`
           if (test) {
             const available = await isResourceAvailable(url)
