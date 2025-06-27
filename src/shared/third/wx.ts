@@ -49,13 +49,10 @@ export function getWechatConfig() {
 
   const url = location.href.split('#')[0]
 
-  // 根据域名选择不同的配置接口
-  if (url.includes('illqq.com') || url.includes('meevo.cn')) {
-    return axios
-      .get('https://wx.illqq.com/config?url=' + encodeURIComponent(url))
-      .then(({ data }) => setupWxConfig(data))
-      .catch((error) => Promise.reject(error))
-  } else {
+  const urls = ['events.net.cn', 'eventnet.cn', 'event1.cn', 'myevent.com.cn', '1ycloud.com']
+  const isInclude = urls.some((item) => url.includes(item))
+
+  if (isInclude) {
     return axios
       .post(
         'https://wechat.event1.cn/api/getJsSdk',
@@ -65,6 +62,11 @@ export function getWechatConfig() {
         }),
       )
       .then(({ data: { data } }) => setupWxConfig(data))
+      .catch((error) => Promise.reject(error))
+  } else {
+    return axios
+      .get('https://wx.yul.ink/config?url=' + encodeURIComponent(url))
+      .then(({ data }) => setupWxConfig(data))
       .catch((error) => Promise.reject(error))
   }
 }
