@@ -7,6 +7,7 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import { visualizer } from 'rollup-plugin-visualizer'
 import vitePluginDeployFtp from 'vite-plugin-deploy-ftp'
 import vitePluginDeployOss from 'vite-plugin-deploy-oss'
+import { createHtmlPlugin } from 'vite-plugin-html'
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
 import vitePluginMetaShare from 'vite-plugin-meta-share'
 import vitePluginOrganize from 'vite-plugin-organize-resource'
@@ -130,6 +131,25 @@ export default defineConfig(({ command }) => ({
           alias: process.env.zQRFtpAlias,
         },
       ],
+    }),
+    createHtmlPlugin({
+      minify: false,
+      inject: {
+        data: {
+          baiduTongji: env?.VITE_APP_HM_BAIDU
+            ? `<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?${env.VITE_APP_HM_BAIDU}";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+`
+            : '',
+        },
+      },
     }),
     visualizer(),
   ],

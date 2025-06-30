@@ -5,7 +5,6 @@ import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import { createApp } from 'vue'
 
 import '@/shared/setup/dev'
-import '@/shared/setup/hm'
 import '@/shared/setup/resetWxFontSize'
 import '@/shared/setup/setRem'
 

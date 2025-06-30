@@ -102,6 +102,7 @@
     "vite": "^7.0.0",
     "vite-plugin-deploy-ftp": "^1.0.1",
     "vite-plugin-deploy-oss": "^1.0.0",
+    "vite-plugin-html": "^3.2.2",
     "vite-plugin-image-optimizer": "^2.0.1",
     "vite-plugin-meta-share": "^0.0.1",
     "vite-plugin-organize-resource": "^0.0.12",
