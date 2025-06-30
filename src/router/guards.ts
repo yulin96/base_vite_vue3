@@ -5,7 +5,7 @@ export function registerGuards(router: Router) {
 
   router.afterEach((to, from) => {
     if (typeof window._hmt !== 'undefined') {
-      window._hmt.push(['_trackPageview', to.fullPath])
+      window._hmt.push(['_trackPageview', `${location.pathname}#${to.fullPath}`])
     }
   })
 }
