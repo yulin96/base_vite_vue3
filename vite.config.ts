@@ -67,7 +67,7 @@ export default defineConfig(({ command }) => ({
     }),
     VueRouter({
       dts: 'typings/typed-router.d.ts',
-      importMode: 'async',
+      importMode: command == 'build' ? 'sync' : 'async',
     }),
     vue({}),
     vueJsx(),
