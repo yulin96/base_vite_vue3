@@ -7,6 +7,7 @@ import { createApp } from 'vue'
 import '@/shared/setup/dev'
 import '@/shared/setup/resetWxFontSize'
 import '@/shared/setup/setRem'
+import '@/shared/setup/showShareImage'
 
 import App from './App.vue'
 import router from './router'
