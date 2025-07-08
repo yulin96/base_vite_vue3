@@ -4,5 +4,5 @@ updates:
     directory: '/'
     schedule:
       interval: 'daily'
-    # allow:
-    #   - dependency-type: 'all'
+      time: '06:00'
+      timezone: 'Asia/Shanghai'
