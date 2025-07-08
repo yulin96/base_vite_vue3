@@ -1,0 +1,9 @@
+ignoredBuiltDependencies:
+  - '@tsparticles/engine'
+  - cos-js-sdk-v5
+
+onlyBuiltDependencies:
+  - '@tailwindcss/oxide'
+  - esbuild
+  - sharp
+  - vue-demi
