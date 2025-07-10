@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { gsap } from 'gsap'
+import { agsap } from '@/shared/gsap'
 import { useTemplateRef, watchPostEffect } from 'vue'
 
 const { flip = false } = defineProps<{ flip?: boolean }>()
@@ -7,7 +7,7 @@ const { flip = false } = defineProps<{ flip?: boolean }>()
 const flipRef = useTemplateRef('flipRef')
 
 watchPostEffect(() => {
-  gsap.to(flipRef.value, { rotateY: flip ? 180 : 0, duration: 0.3, ease: 'power1' })
+  agsap.to(flipRef.value, { rotateY: flip ? 180 : 0, duration: 0.3, ease: 'power1' })
 })
 
 /**

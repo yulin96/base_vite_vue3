@@ -1,6 +1,6 @@
+import { agsap } from '@/shared/gsap'
 import { useDocumentVisibility } from '@vueuse/core'
 import { random, randomInt, sample } from 'es-toolkit'
-import { gsap } from 'gsap'
 import { v4 } from 'uuid'
 import { onActivated, onDeactivated, onMounted, onUnmounted, useTemplateRef } from 'vue'
 
@@ -105,7 +105,7 @@ async function createStar(starsBox: HTMLDivElement) {
 
   starsBox.appendChild(star)
 
-  await gsap.to(star, {
+  await agsap.to(star, {
     opacity: 1,
     scale: randomTwoFloat(0.9, 1),
     duration: randomTwoFloat(2, 4),

@@ -25,4 +25,4 @@ gsap.defaults({
 // import { ScrollSmoother } from 'gsap/ScrollSmoother'
 // gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
 
-export default gsap
+export { gsap as agsap }
