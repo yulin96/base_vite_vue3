@@ -14,7 +14,7 @@ const onClick = () => {
 </script>
 
 <template>
-  <VanFloatingBubble
+  <van-floating-bubble
     v-model:offset="user.backXY"
     axis="xy"
     class="size-[80px] rounded-none"
@@ -23,5 +23,5 @@ const onClick = () => {
     :teleport="null"
   >
     <img class="w-full" :src="icon || backIcon" @click="onClick" />
-  </VanFloatingBubble>
+  </van-floating-bubble>
 </template>

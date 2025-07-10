@@ -21,7 +21,7 @@ defineExpose({
 </script>
 
 <template>
-  <VanPopup v-model:show="showPopup" :transition-appear="true" :close-on-click-overlay="false" transition="popup">
+  <van-popup v-model:show="showPopup" :transition-appear="true" :close-on-click-overlay="false" transition="popup">
     <div
       class="back-full flex h-420 w-520 flex-col items-center pt-40 shadow-2xl"
       :style="{ backgroundImage: `url(${bg})` }"
@@ -36,5 +36,5 @@ defineExpose({
         好的
       </div>
     </div>
-  </VanPopup>
+  </van-popup>
 </template>

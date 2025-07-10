@@ -49,21 +49,21 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Teleport to="body">
-    <Toaster :rich-colors="true" :expand="false" position="top-center" :visible-toasts="1" :duration="2000" />
-  </Teleport>
+  <teleport to="body">
+    <toaster :rich-colors="true" :expand="false" position="top-center" :visible-toasts="1" :duration="2000" />
+  </teleport>
 
-  <VanConfigProvider :theme-vars="themeVars" theme-vars-scope="global">
-    <RouterView v-slot="{ Component }">
+  <van-config-provider :theme-vars="themeVars" theme-vars-scope="global">
+    <router-view v-slot="{ Component }">
       <template v-if="Component">
-        <Transition :name>
-          <KeepAlive :exclude="[]">
+        <transition :name>
+          <keep-alive :exclude="[]">
             <component :is="Component" class="wrapper"></component>
-          </KeepAlive>
-        </Transition>
+          </keep-alive>
+        </transition>
       </template>
-    </RouterView>
-  </VanConfigProvider>
+    </router-view>
+  </van-config-provider>
 </template>
 
 <style>

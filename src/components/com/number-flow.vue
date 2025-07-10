@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { agsap } from '@/shared/gsap'
-import NumberFLow, { continuous } from '@number-flow/vue'
+import { continuous } from '@number-flow/vue'
 import { v4 } from 'uuid'
 import { onMounted } from 'vue'
 
@@ -25,7 +25,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <NumberFLow
+  <number-flow
     :id="id"
     :value="value"
     will-change
@@ -37,5 +37,5 @@ onMounted(() => {
     :plugins="[continuous]"
     @animationsstart="handleAnimationsStart"
     @animationsfinish="handleAnimationsFinish"
-  ></NumberFLow>
+  ></number-flow>
 </template>

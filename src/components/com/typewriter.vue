@@ -50,6 +50,10 @@ onMounted(async () => {
   await nextTick()
   writeText()
 })
+// <com-typewriter
+//     :texts="['别急', '月亮总会在云后升起', '就算黑夜漫长', '也挡不住清晨那一缕微光']"
+//     :speed="[90, 160]"
+// ></com-typewriter>
 </script>
 
 <template>

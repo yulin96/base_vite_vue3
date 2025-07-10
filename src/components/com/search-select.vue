@@ -44,20 +44,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <Transition name="slide-down">
+  <transition name="slide-down">
     <div
       v-show="searchIns.show"
       data-search-select
       class="absolute top-full flex h-[600px] w-full flex-col overflow-hidden rounded-[6px] bg-white shadow-lg"
     >
-      <VanSearch v-model="searchIns.value" placeholder="请输入搜索关键词" @click.stop />
+      <van-search v-model="searchIns.value" placeholder="请输入搜索关键词" @click.stop />
       <div class="w-full flex-1 overflow-auto">
         <div v-for="item in searchIns.list" :key="item.key" class="px-[30px] py-[15px]" @click="choose(item.value)">
           {{ item.value }}
         </div>
       </div>
     </div>
-  </Transition>
+  </transition>
 </template>
 
 <style scoped>

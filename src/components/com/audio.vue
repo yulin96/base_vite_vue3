@@ -107,7 +107,7 @@ function unregisterMediaSession() {
 </script>
 
 <template>
-  <Teleport to="body">
+  <teleport to="body">
     <div
       class="fixed z-[2001] rounded-[50%] border-[4px] border-[#fff] p-[4px]"
       :class="{
@@ -139,7 +139,7 @@ function unregisterMediaSession() {
         @click="togglePlayStatus"
       />
     </div>
-  </Teleport>
+  </teleport>
 </template>
 
 <style scoped>

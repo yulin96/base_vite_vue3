@@ -43,5 +43,5 @@ defineExpose({ toggleCode })
   <div ref="qrCodeRef" class="relative z-[20]" v-bind="$attrs" @click="toggleCode()">
     <img class="h-full w-full" :src="code" />
   </div>
-  <VanOverlay :show="isBig" class="z-[10]" @click="toggleCode()"></VanOverlay>
+  <van-overlay :show="isBig" class="z-[10]" @click="toggleCode()"></van-overlay>
 </template>

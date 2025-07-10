@@ -1,7 +1,7 @@
 <template>
-  <Transition name="slide-up">
+  <transition name="slide-up">
     <slot></slot>
-  </Transition>
+  </transition>
 </template>
 
 <style>
