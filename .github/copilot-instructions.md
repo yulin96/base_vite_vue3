@@ -22,11 +22,16 @@ pnpm lint             # ESLint with auto-fix
 
 ## Key Patterns & Conventions
 
-### Mobile-First Styling
+### Mobile-First Styling with Tailwind 4
 
 - Use design mockup `px` values directly - PostCSS auto-converts to `rem`
 - Prefer Tailwind CSS atomic classes over custom CSS
-- Example: `<div class="w-375 h-200">` (375px becomes responsive rem)
+- **Custom size utilities**: Use predefined sizes `text-{1-90}`, `radius-{1-90}`, `tracking-{1-17}`
+- **Custom utility classes**: `center` (flex center), `shark-wrap` (shimmer effect), `state-paused/running`
+- **Typography**: `text-last-center`, `text-last-justify` for text alignment
+- **Touch controls**: `callout-none/default` for mobile touch behavior
+- **Class merging**: Use `cn()` helper from `@/shared/common.ts` for conditional classes
+- Example: `<div class="w-375 h-200 text-16 radius-8 center">` (combines size, text, radius, and centering)
 
 ### State Management
 
@@ -89,6 +94,10 @@ user.value.clear() // Built-in clear method
 
 // Lock pattern for API calls
 const [isLocked, lock, unlock] = useLock()
+
+// Tailwind 4 custom utilities and class merging
+import { cn } from '@/shared/common'
+const buttonClass = cn('center text-16 radius-8', isActive && 'shark-wrap')
 
 // Utility imports - organized by domain
 import { copyText } from '@/utils/user/copyText'
