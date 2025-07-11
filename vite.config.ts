@@ -101,7 +101,7 @@ export default defineConfig(({ command }) => ({
       },
     }),
     vitePluginDeployFtp({
-      open: true,
+      open: !!env.VITE_FTP_DIRNAME,
       uploadPath: `${env.VITE_FTP_DIRNAME}`,
       singleBack: true,
       // defaultFtp: process.env.zH5FtpName,
